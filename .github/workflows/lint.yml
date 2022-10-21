@@ -10,6 +10,8 @@ on:
     branches:
       - develop
 
+permissions: write-all
+
 jobs:
   run-linters:
     name: Run linters
