@@ -1,0 +1,20 @@
+import { ExaminationType } from '../../../enum/ExaminationType.enum';
+import { AppointmentService } from '../../../service/appointment.service';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { ReschedulingAppointmentDTO } from './../../../interface/ReschedulingAppointmentDTO';
+import { Component, OnInit } from '@angular/core';
+import { Room } from '../../../interface/Room';
+
+@Component({
+  selector: 'app-rescheduling-appointment',
+  templateUrl: './rescheduling-appointment.component.html',
+  styleUrls: ['./rescheduling-appointment.component.scss']
+})
+export class ReschedulingAppointmentComponent implements OnInit {
+
+  constructor(private appointmentService: AppointmentService, private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
+}
