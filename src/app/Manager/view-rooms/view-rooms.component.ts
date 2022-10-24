@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import * as THREE from "three";
 import { Vector, Vector2 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { IRoom } from '../Model/Room';
+import { RoomService } from '../service/room-service.service';
 import { CameraBuilder } from './model/CameraBuilder';
 import { GraphicRoom } from './model/GraphicRoom';
 import SceneBuilder from "./model/SceneBuilder"
@@ -16,7 +18,7 @@ import SceneBuilder from "./model/SceneBuilder"
 
 export class ViewRoomsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private roomService: RoomService) { }
 
   private scene?: SceneBuilder
   private camera?: CameraBuilder
@@ -24,87 +26,22 @@ export class ViewRoomsComponent implements OnInit {
   private building: string = ""
   private clickedRoom? : GraphicRoom
   private renderer? : THREE.WebGLRenderer
+  private sub?: Subscription
 
-  rooms : IRoom[] = [
-    {
-      number: 101,
-      floor: 1,
-      building: {
-        name: "Hospital1",
-        address: "fruskogorska 5"
-      },
-      x: 1,
-      z: 1
-    },
-    {
-      number: 102,
-      floor: 1,
-      building: {
-        name: "Hospital1",
-        address: "fruskogorska 5"
-      },
-      x: 2,
-      z: 1
-    },
-    {
-      number: 103,
-      floor: 1,
-      building: {
-        name: "Hospital1",
-        address: "fruskogorska 5"
-      },
-      x: 3,
-      z: 1
-    },
-    {
-      number: 104,
-      floor: 1,
-      building: {
-        name: "Hospital1",
-        address: "fruskogorska 5"
-      },
-      x: 1,
-      z: 3
-    },
-    {
-      number: 105,
-      floor: 1,
-      building: {
-        name: "Hospital1",
-        address: "fruskogorska 5"
-      },
-      x: 2,
-      z: 3
-    },
-    {
-      number: 106,
-      floor: 1,
-      building: {
-        name: "Hospital1",
-        address: "fruskogorska 5"
-      },
-      x: 3,
-      z: 3
-    },
-    {
-      number: 206,
-      floor: 2,
-      building: {
-        name: "Hospital1",
-        address: "fruskogorska 5"
-      },
-      x: 3,
-      z: 3
-    }
-  ]
+
+  rooms : IRoom[] = []
 
   ngOnInit(): void {
+
+    this.sub = this.roomService.getRooms().subscribe(data =>{
+      this.rooms = data
+      this.scene = new SceneBuilder(this.rooms);
+    } )
 
     window.addEventListener('mousedown', (e) => {
       this.handleIntersectClick(e)
     })
 
-    this.scene = new SceneBuilder(this.rooms);
     this.camera = new CameraBuilder()
 
     this.renderer = new THREE.WebGLRenderer();
@@ -129,16 +66,16 @@ export class ViewRoomsComponent implements OnInit {
     animate();
   }
 
+  ngOnDestroy(){
+    this.sub?.unsubscribe()
+  }
+
   selectFloor(evt: any){
-
-
-    console.log('okida floor ', evt)
     this.floor = evt.value
     this.scene?.displayFloor(this.floor, this.building)
   }
 
   selectHospital(evt: any){
-    console.log('okida hospital ', evt)
     this.building = evt.value
     this.scene?.displayFloor(this.floor, this.building)
   }

@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< HEAD
 import { AppointmentModule } from './doctor/appointment/appointment.module';
 import { HttpClientModule } from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CommonModule, DatePipe } from '@angular/common';
 
+=======
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> 8d47ab6 (room service implemented)
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

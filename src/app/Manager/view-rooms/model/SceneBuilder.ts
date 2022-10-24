@@ -41,11 +41,13 @@ export class SceneBuilder {
   displayFloor(floor: number, building: string) {
     this.resetScene()
     this.createHallway()
+    console.log(floor, building, this.rooms)
     for (let i = 0; i < this.rooms.length; i++) {
-      if (this.rooms[i].floor == floor && this.rooms[i].building.name == building) {
+      if (this.rooms[i].floor.number == floor && this.rooms[i].building.name == building) {
+        console.log(this.rooms[i])
         const box = new THREE.BoxGeometry(1, 1, 1)
         const color = new THREE.Color().setHSL(0 / 8, 1, .5)
-        var mesh = this.createRoom(box, color, this.rooms[i].x, this.rooms[i].floor, this.rooms[i].z, this.rooms[i].number.toString())
+        var mesh = this.createRoom(box, color, this.rooms[i].x, this.rooms[i].floor.number, this.rooms[i].z, this.rooms[i].number.toString())
         this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]))
       }
     }
