@@ -38,4 +38,4 @@ import { PatientTableComponent } from './doctor/patients/patient-table/patient-t
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
   ]
 })
-export class AppModule { }
+export class AppModule {}
