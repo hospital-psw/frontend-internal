@@ -1,5 +1,5 @@
 import { Room } from './Room';
-import { ExaminationType } from "../enum/ExaminationType.enum";
+import { ExaminationType } from '../enum/ExaminationType.enum';
 
 export interface Appointment {
   id: number;

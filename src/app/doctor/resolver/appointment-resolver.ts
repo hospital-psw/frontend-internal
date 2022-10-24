@@ -4,12 +4,10 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AppointmentService } from 'src/app/doctor/service/appointment.service';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppointmentResolver implements Resolve<Appointment> {
-
   constructor(private appointmentService: AppointmentService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Appointment> {

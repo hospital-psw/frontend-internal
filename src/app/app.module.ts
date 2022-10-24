@@ -30,12 +30,9 @@ import { PatientTableComponent } from './doctor/patients/patient-table/patient-t
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   bootstrap: [AppComponent],
-  providers: [
-    DatePipe,
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-  ]
+  providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
 export class AppModule {}

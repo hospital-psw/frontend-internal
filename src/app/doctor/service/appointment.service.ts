@@ -7,20 +7,27 @@ import { ReschedulingAppointmentDTO } from '../interface/ReschedulingAppointment
 import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppointmentService {
-
   private apiServerUrl = environment.apiAppointmentUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public scheduleAppointment(appointment: ScheduleAppointmentDTO): Observable<Appointment> {
+  public scheduleAppointment(
+    appointment: ScheduleAppointmentDTO
+  ): Observable<Appointment> {
     return this.http.post<Appointment>(`${this.apiServerUrl}`, appointment);
   }
 
-  public rescheduleAppointment(appointmentId: number, appointment: ReschedulingAppointmentDTO): Observable<Appointment> {
-    return this.http.put<Appointment>(`${this.apiServerUrl}/${appointmentId}`, appointment);
+  public rescheduleAppointment(
+    appointmentId: number,
+    appointment: ReschedulingAppointmentDTO
+  ): Observable<Appointment> {
+    return this.http.put<Appointment>(
+      `${this.apiServerUrl}/${appointmentId}`,
+      appointment
+    );
   }
 
   public getAppointment(appointmentId: number): Observable<Appointment> {

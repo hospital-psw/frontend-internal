@@ -13,9 +13,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AppointmentsComponent } from './show-all/appointments/appointments.component';
 
 @NgModule({
-  declarations: [
-    AppointmentsComponent
-  ],
+  declarations: [AppointmentsComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -26,10 +24,8 @@ import { AppointmentsComponent } from './show-all/appointments/appointments.comp
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
   ],
-  providers: [
-    AppointmentService
-  ],
+  providers: [AppointmentService],
 })
-export class AppointmentModule { }
+export class AppointmentModule {}

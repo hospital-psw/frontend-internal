@@ -1,5 +1,5 @@
 import { ExaminationType } from './../enum/ExaminationType.enum';
-import { Room } from "./Room";
+import { Room } from './Room';
 
 export interface ReschedulingAppointmentDTO {
   id: number;

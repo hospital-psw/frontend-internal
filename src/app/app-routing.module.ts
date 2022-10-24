@@ -11,8 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'patients',
-    component: PatientTableComponent
-  }
+    component: PatientTableComponent,
+  },
 ];
 
 @NgModule({

@@ -4,24 +4,20 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-doctor-main',
   templateUrl: './doctor-main.component.html',
-  styleUrls: ['./doctor-main.component.scss']
+  styleUrls: ['./doctor-main.component.scss'],
 })
 export class DoctorMainComponent implements OnInit {
-
-  name : string;
+  name: string;
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
-      if (this.router.url == 'appointments'){
+      if (this.router.url == 'appointments') {
         this.name = 'Appointments';
-      } else if (this.router.url == 'patients'){
-        this.name = 'Patients'
+      } else if (this.router.url == 'patients') {
+        this.name = 'Patients';
       }
-    }
-    )
+    });
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
