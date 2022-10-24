@@ -1,5 +1,5 @@
 import { IBuilding } from "./Building";
-import { IFloor } from "./FLoor";
+import { IFloor } from "./Floor";
 
 export interface IRoom{
   number: number;
