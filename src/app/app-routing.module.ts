@@ -1,4 +1,3 @@
-import { ReschedulingAppointmentComponent } from './doctor/appointment/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { PatientTableComponent } from './doctor/patients/patient-table/patient-table.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
