@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiAppointmentUrl: 'http://localhost:16177/api/Appointment',
 };
 
 /*
