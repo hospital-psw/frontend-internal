@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from "three";
-import { Vector, Vector2 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { IRoom } from '../Model/Room';
+import { IRoomMap } from '../Model/RoomMap';
 import { RoomService } from '../service/room-service.service';
 import { CameraBuilder } from './model/CameraBuilder';
 import { GraphicRoom } from './model/GraphicRoom';
@@ -29,7 +28,7 @@ export class ViewRoomsComponent implements OnInit {
   private sub?: Subscription
 
 
-  rooms : IRoom[] = []
+  rooms : IRoomMap[] = []
 
   ngOnInit(): void {
 
@@ -107,7 +106,7 @@ export class ViewRoomsComponent implements OnInit {
   }
 
   isRoomClicked(room: GraphicRoom, intersected: any) : boolean{
-    if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().floor == intersected[0].object.position.y && room.getRoomData().z == intersected[0].object.position.z)
+    if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().room.floor == intersected[0].object.position.y && room.getRoomData().z == intersected[0].object.position.z)
       return true
     return false
   }

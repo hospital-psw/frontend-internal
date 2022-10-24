@@ -17,15 +17,16 @@ import {
   FontLoader
 } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry';
+import { IRoomMap } from "../../Model/RoomMap";
 
 export class SceneBuilder {
 
   private scene: THREE.Scene;
   private graphicRooms: GraphicRoom[] = []
-  constructor(private readonly rooms: IRoom[]) {
+  constructor(private readonly rooms: IRoomMap[]) {
     this.scene = new THREE.Scene();
 
-    this.scene.background = new THREE.Color('gray'); //siva pozadina
+    this.scene.background = new THREE.Color('white');
 
     this.addLight(-1, 2, 4);
     this.addLight(1, -1, -2);
@@ -43,11 +44,11 @@ export class SceneBuilder {
     this.createHallway()
     console.log(floor, building, this.rooms)
     for (let i = 0; i < this.rooms.length; i++) {
-      if (this.rooms[i].floor.number == floor && this.rooms[i].building.name == building) {
+      if (this.rooms[i].room.floor.number == floor && this.rooms[i].room.building.name == building) {
         console.log(this.rooms[i])
         const box = new THREE.BoxGeometry(1, 1, 1)
         const color = new THREE.Color().setHSL(0 / 8, 1, .5)
-        var mesh = this.createRoom(box, color, this.rooms[i].x, this.rooms[i].floor.number, this.rooms[i].z, this.rooms[i].number.toString())
+        var mesh = this.createRoom(box, color, this.rooms[i].x, 1, this.rooms[i].z, this.rooms[i].room.number.toString())
         this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]))
       }
     }

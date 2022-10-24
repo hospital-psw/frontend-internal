@@ -11,6 +11,6 @@ export class RoomService {
   constructor(private http:HttpClient) { }
 
   getRooms() {
-    return this.http.get<IRoom[]>('http://localhost:16177/api/rooms/all')
+    return this.http.get<[]>('http://localhost:16177/api/map/all')
   }
 }

@@ -1,12 +1,13 @@
 import { IRoom } from "../../Model/Room";
+import { IRoomMap } from "../../Model/RoomMap";
 
 
 export class GraphicRoom {
 
   private graphicRoom: THREE.Mesh
-  private roomData: IRoom
+  private roomData: IRoomMap
 
-  constructor(element: THREE.Mesh, roomData: IRoom) {
+  constructor(element: THREE.Mesh, roomData: IRoomMap) {
     this.graphicRoom = element
     this.roomData = roomData
   }
