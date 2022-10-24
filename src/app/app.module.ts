@@ -11,12 +11,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './common/navigation-bar/navigation-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { DoctorMainComponent } from './doctor/doctor-main/doctor-main.component';
+import { PatientTableComponent } from './doctor/patients/patient-table/patient-table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
-
+    SidebarComponent,
+    DoctorMainComponent,
+    PatientTableComponent,
   ],
   imports: [
     BrowserModule,

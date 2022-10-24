@@ -13,12 +13,14 @@ import { MatCardModule } from '@angular/material/card';
 import { ReschedulingAppointmentFormComponent } from './../appointment/rescheduling/rescheduling-appointment-form/rescheduling-appointment-form.component';
 import { ReschedulingAppointmentHeaderComponent } from './rescheduling/rescheduling-appointment-header/rescheduling-appointment-header.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { AppointmentsComponent } from './show-all/appointments/appointments.component';
 
 @NgModule({
   declarations: [
     ReschedulingAppointmentComponent,
     ReschedulingAppointmentFormComponent,
-    ReschedulingAppointmentHeaderComponent
+    ReschedulingAppointmentHeaderComponent,
+    AppointmentsComponent
   ],
   imports: [
     CommonModule,

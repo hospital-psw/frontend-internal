@@ -1,15 +1,18 @@
 import { ReschedulingAppointmentComponent } from './doctor/appointment/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
+import { PatientTableComponent } from './doctor/patients/patient-table/patient-table.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppointmentResolver } from './doctor/resolver/appointment-resolver';
+import { AppointmentsComponent } from './doctor/appointment/show-all/appointments/appointments.component';
 
 const routes: Routes = [
   {
-    path: 'reschedule-appointment/:id',
-    component: ReschedulingAppointmentComponent,
-    resolve: {
-      appointment: AppointmentResolver
-    }
+    path: 'appointments',
+    component: AppointmentsComponent,
+  },
+  {
+    path: 'patients',
+    component: PatientTableComponent
   }
 ];
 
