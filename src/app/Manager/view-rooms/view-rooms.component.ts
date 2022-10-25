@@ -32,6 +32,7 @@ export class ViewRoomsComponent implements OnInit {
   rooms : IRoomMap[] = []
 
   ngOnInit(): void {
+    let selectedCanvas: any = document.querySelector(".canvas")
 
     this.sub = this.roomService.getRooms().subscribe(data =>{
       this.rooms = data
@@ -44,8 +45,8 @@ export class ViewRoomsComponent implements OnInit {
 
     this.camera = new CameraBuilder()
 
-    this.renderer = new THREE.WebGLRenderer();
-    this.renderer.setSize(2*window.innerWidth/3, 2*window.innerHeight/3);
+    this.renderer = new THREE.WebGLRenderer({canvas: selectedCanvas});
+    this.renderer.setPixelRatio(window.devicePixelRatio)
     document.body.appendChild(this.renderer.domElement);
 
     const controls = new OrbitControls(this.camera.getCamera(), this.renderer.domElement);
@@ -64,6 +65,8 @@ export class ViewRoomsComponent implements OnInit {
         context.renderer.render(context.scene.getScene(), context.camera.getCamera());
     };
     animate();
+    let holder = document.getElementById("canvas-holder")
+    holder?.appendChild(selectedCanvas)
   }
 
   ngOnDestroy(){
@@ -80,11 +83,10 @@ export class ViewRoomsComponent implements OnInit {
     this.scene?.displayFloor(this.floor, this.building)
   }
 
-
   handleIntersectClick(event: any) {
     const raycaster = new THREE.Raycaster()
     const mouse = new THREE.Vector2()
-    let canvas: any = document.querySelector("canvas")
+    let canvas: any = document.querySelector(".canvas")
     let width = canvas.offsetWidth
     let height = canvas.offsetHeight
 

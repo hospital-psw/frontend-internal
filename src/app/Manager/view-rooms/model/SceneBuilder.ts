@@ -26,7 +26,7 @@ export class SceneBuilder {
   constructor(private readonly rooms: IRoomMap[]) {
     this.scene = new THREE.Scene();
 
-    this.scene.background = new THREE.Color('white');
+    this.scene.background = new THREE.Color('transparent');
 
     this.addLight(-1, 2, 4);
     this.addLight(1, -1, -2);
