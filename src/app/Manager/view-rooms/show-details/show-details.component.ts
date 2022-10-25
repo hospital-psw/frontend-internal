@@ -10,10 +10,11 @@ import { GraphicRoom } from '../model/GraphicRoom';
 export class ShowDetailsComponent implements OnInit {
 
   constructor() { }
-  @Input() clickedRoom: GraphicRoom;
+  @Input() room: any;
 
   ngOnInit(): void {
   }
+
 
   isDisabled() : boolean{
     return true;

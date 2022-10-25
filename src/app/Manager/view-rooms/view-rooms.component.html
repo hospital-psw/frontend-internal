@@ -16,5 +16,6 @@
     </mat-select>
   </mat-form-field>
 </div>
-  <div><app-show-details *ngIf="showDetails"></app-show-details></div>
+<div *ngIf="showDetails"><app-show-details [room]="clickedRoom"></app-show-details></div>
+<!--<div>{{stampanje}}</div>-->
 
