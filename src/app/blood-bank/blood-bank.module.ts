@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 import { AllComponent } from './all/all.component';
-import { DetailComponent } from './detail/detail.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -11,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   { path: 'bloodbank', component: AllComponent },
   { path: 'bloodbank/add', component: CreateComponent },
-  { path: 'bloodbank/:id', component: DetailComponent },  
   { path: 'bloodbank/:id/update', component: UpdateComponent },
 ];
 
@@ -19,8 +17,7 @@ const routes: Routes = [
   declarations: [
     CreateComponent,
     UpdateComponent,
-    AllComponent,
-    DetailComponent
+    AllComponent
   ],
   imports: [
     CommonModule,

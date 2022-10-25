@@ -13,7 +13,7 @@ import { BloodBankService } from '../services/blood-bank.service';
 export class AllComponent implements OnInit {
   
   public dataSource = new MatTableDataSource<BloodBank>();
-  public displayedColumns = ['id', 'name', 'email'];
+  public displayedColumns = ['id', 'name', 'email', 'apiUrl', 'getBloodTypeAvailability', 'getBloodTypeAndAmountAvailability', 'apiKey', 'update', 'delete'];
   public bloodBanks: BloodBank[] = [];
 
   constructor(private bloodBankService: BloodBankService, private router: Router) { }

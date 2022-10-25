@@ -19,6 +19,22 @@
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Email </th>
             <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.email}}</td>
         </ng-container>
+        <ng-container matColumnDef="apiUrl">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> API URL </th>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.apiUrl}}</td>
+        </ng-container>
+        <ng-container matColumnDef="getBloodTypeAvailability">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> GET blood types endpoint </th>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.getBloodTypeAvailability}}</td>
+        </ng-container>
+        <ng-container matColumnDef="getBloodTypeAndAmountAvailability">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> GET blood types by ammount endpoint </th>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.getBloodTypeAndAmountAvailability}}</td>
+        </ng-container>
+        <ng-container matColumnDef="apiKey">
+            <th mat-header-cell *matHeaderCellDef class="cell-center"> API key </th>
+            <td mat-cell *matCellDef="let bloodBank" class="cell-center">{{bloodBank.apiKey}}</td>
+        </ng-container>
 
         <ng-container matColumnDef="update">
             <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
