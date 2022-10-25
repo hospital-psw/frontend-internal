@@ -14,6 +14,7 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { DoctorMainComponent } from './doctor/doctor-main/doctor-main.component';
 import { PatientTableComponent } from './doctor/patients/patient-table/patient-table.component';
 import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
+import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
 
 
 

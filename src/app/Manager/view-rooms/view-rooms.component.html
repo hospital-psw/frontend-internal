@@ -15,5 +15,6 @@
       <mat-option value="3">3</mat-option>
     </mat-select>
   </mat-form-field>
-
+  <app-show-details *ngIf="showDetails"></app-show-details>
+  <p *ngIf="showDetails">{{stampaj}}</p>
 </div>
