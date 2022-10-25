@@ -1,37 +1,85 @@
-<p>radi</p>
-
 <div>
-    <label>Zgrada:</label>
     <table>
         <tr>
-            <td><label>Naziv:</label></td>
-            <td><label>neki naziv</label></td>
+            <td></td>
+            <td><h1>Informacije</h1></td>
+            <td></td>
         </tr>
         <tr>
-            <td><label>Adresa:</label></td>
-            <td><label>neka adresa</label></td>
+            <td><h2>Zgrada</h2>Zgrada</td>
+            <td><h2>Sprat</h2></td>
+            <td><h2>Soba</h2></td>  
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <mat-label>Naziv:</mat-label>
+                        </td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>binduj naziv zgrade</mat-label>
+                                <input matInput disabled="isDisabled()">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Adresa:</label></td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>binduj adresu zgrade</mat-label>
+                                <input matInput disabled="isDisabled()">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td><label>Broj:</label></td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>binduj broj sprata</mat-label>
+                                <input matInput disabled="isDisabled()">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Svrha:</label></td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>binduj svrhu zgrade</mat-label>
+                                <input matInput disabled="isDisabled()">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td><label>Broj:</label></td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>binduj broj sobe</mat-label>
+                                <input matInput disabled="isDisabled()">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Svrha:</label></td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>binduj svrhu sobe</mat-label>
+                                <input matInput disabled="isDisabled()">
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                </table>
+            </td>
         </tr>
     </table>
-    <label>Sprat:</label>
-    <table>
-        <tr>
-            <td><label>Broj:</label></td>
-            <td><label>neki broj</label></td>
-        </tr>
-        <tr>
-            <td><label>Svrha:</label></td>
-            <td><label>neka svrha</label></td>
-        </tr>
-    </table>
-    <label>Soba:</label>
-    <table>
-        <tr>
-            <td><label>Broj:</label></td>
-            <td><label>neka soba</label></td>
-        </tr>
-        <tr>
-            <td><label>Svrha:</label></td>
-            <td><label>neka svrha</label></td>
-        </tr>
-    </table>
+    
 </div>

@@ -15,4 +15,8 @@ export class ShowDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isDisabled() : boolean{
+    return true;
+  }
+
 }

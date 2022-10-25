@@ -7,7 +7,6 @@ import { RoomService } from '../service/room-service.service';
 import { CameraBuilder } from './model/CameraBuilder';
 import { GraphicRoom } from './model/GraphicRoom';
 import SceneBuilder from "./model/SceneBuilder"
-import { ShowDetailsComponent } from './show-details/show-details.component';
 
 
 @Component({
@@ -24,22 +23,17 @@ export class ViewRoomsComponent implements OnInit {
   private camera?: CameraBuilder
   private floor: number = -1
   private building: string = ""
-  private clickedRoom? : GraphicRoom //bila private
+  private clickedRoom? : GraphicRoom
   private renderer? : THREE.WebGLRenderer
   private sub?: Subscription
 
 
   rooms : IRoomMap[] = []
   showDetails: boolean = true;
-  stampaj: string="nesto";
 
   @Output() clicked: GraphicRoom;
 
   ngOnInit(): void {
-
-    //testna soba za spajanje
-    //this.clicked = new GraphicRoom();
-    //this.clicked.getRoomData().room.building.name = "neki naziv zgradice";
     
 
     this.sub = this.roomService.getRooms().subscribe(data =>{
@@ -110,33 +104,23 @@ export class ViewRoomsComponent implements OnInit {
     let intersected = raycaster.intersectObjects(this.scene?.getScene() ? this.scene.getScene().children : [])
 
     if(this.scene && intersected.length > 0)
-    {
-      this.stampaj = "dodje ovde";
-      for(let room of this.scene?.getGraphicRooms()){
-        this.stampaj = "menja";
-        if(this.isRoomClicked(room, intersected))
-          this.showDetails = true;  //treba da se okine da prikaze sobu
-          this.clickedRoom = room
-      }
-    }
-      
-    /*
-    if(this.scene && intersected.length > 0)
       for(let room of this.scene?.getGraphicRooms()){
         if(this.isRoomClicked(room, intersected))
-          this.showDetails = true;  //treba da se okine da priakaze sobu
+        {
+          this.showDetails = true  //treba da se okine da priakaze sobu
           this.clickedRoom = room
+        }
+        else
+        {
+          this.showDetails = false
+        }
       }
-      */
   }
 
   isRoomClicked(room: GraphicRoom, intersected: any) : boolean{
-    if(room.getRoomData().x == intersected[0].object.position.x && /*room.getRoomData().room.floor == intersected[0].object.position.y &&*/ room.getRoomData().z == intersected[0].object.position.z)
-    {
-      this.stampaj = "nadje";
+    if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().room.floor == intersected[0].object.position.y && room.getRoomData().z == intersected[0].object.position.z)
       return true
-    }
-    this.stampaj = "ne nadje";
+    
     return false
   }
 
