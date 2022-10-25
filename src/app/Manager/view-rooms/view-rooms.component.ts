@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { IRoom } from '../Model/Room';
 import { IRoomMap } from '../Model/RoomMap';
 import { RoomService } from '../service/room-service.service';
 import { CameraBuilder } from './model/CameraBuilder';
@@ -23,7 +24,7 @@ export class ViewRoomsComponent implements OnInit {
   private camera?: CameraBuilder
   private floor: number = -1
   private building: string = ""
-  private clickedRoom? : GraphicRoom
+  private clickedRoom? : IRoom
   private renderer? : THREE.WebGLRenderer
   private sub?: Subscription
 
@@ -100,13 +101,15 @@ export class ViewRoomsComponent implements OnInit {
 
     if(this.scene && intersected.length > 0)
       for(let room of this.scene?.getGraphicRooms()){
-        if(this.isRoomClicked(room, intersected))
-          this.clickedRoom = room
+        if(this.isRoomClicked(room, intersected)){
+          this.clickedRoom = room.getRoomData().room
+          console.log(this.clickedRoom)
+        }
       }
   }
 
   isRoomClicked(room: GraphicRoom, intersected: any) : boolean{
-    if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().room.floor == intersected[0].object.position.y && room.getRoomData().z == intersected[0].object.position.z)
+    if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().z == intersected[0].object.position.z)
       return true
     return false
   }
