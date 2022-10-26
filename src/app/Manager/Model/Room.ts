@@ -6,6 +6,6 @@ export interface IRoom{
   number: number;
   floor: IFloor;
   building: IBuilding;
-  workingHous: IWorkingHours;
-  purpose: string
+  purpose: string;
+  workigHours: IWorkingHours;
 }

@@ -16,9 +16,12 @@ export class ShowDetailsComponent implements OnInit {
   showWorkingHours: boolean = false;
 
   ngOnInit(): void {
-    if(this.room.workingHous.start != null && this.room.workingHous.end != null)
+    this.room.workigHoursDTO.start;
+    if(this.room.workigHoursDTO.start != " " && this.room.workigHoursDTO.end != " ")
     {
       this.showWorkingHours = true;
+    }else{
+      this.showWorkingHours = false;
     }
   }
 
