@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CommonModule, DatePipe } from '@angular/common';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +13,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { DoctorMainComponent } from './doctor/doctor-main/doctor-main.component';
 import { PatientTableComponent } from './doctor/patients/patient-table/patient-table.component';
+import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
+
+
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { PatientTableComponent } from './doctor/patients/patient-table/patient-t
     RouterModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    ViewRoomsModule
   ],
   bootstrap: [AppComponent],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
