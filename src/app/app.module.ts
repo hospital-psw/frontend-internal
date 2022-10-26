@@ -14,6 +14,11 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { DoctorMainComponent } from './doctor/doctor-main/doctor-main.component';
 import { PatientTableComponent } from './doctor/patients/patient-table/patient-table.component';
 import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
+import { MatTableModule } from '@angular/material/table';
+import { FeedbackModule } from './Manager/feedback/feedback.module';
+
+
+
 
 
 
@@ -24,6 +29,7 @@ import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
     SidebarComponent,
     DoctorMainComponent,
     PatientTableComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,10 @@ import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
     RouterModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    ViewRoomsModule
+    ViewRoomsModule,
+    MatTableModule,
+    FeedbackModule
+    
   ],
   bootstrap: [AppComponent],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
