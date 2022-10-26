@@ -9,7 +9,13 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule, BloodBankModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    BloodBankModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

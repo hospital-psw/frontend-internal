@@ -1,0 +1,90 @@
+.card {
+  width: 80%;
+  margin: 3rem auto;
+  font-size: 62.5%;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  button {
+    margin-top: 2rem;
+    height: 2rem;
+  }
+}
+
+.btnDelete:hover {
+  background-color: #ff5252;
+  color: white;
+}
+
+.btnEdit:hover {
+  background-color: black;
+  color: white;
+}
+.card h1 {
+  //   text-align: center;
+  color: black;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 2rem;
+}
+
+.specialType {
+  width: 6rem;
+}
+.specButton {
+  width: 1rem;
+  padding: 0;
+  font-size: 0.7rem;
+  height: 2rem;
+}
+.specButton:hover {
+  background-color: white;
+  color: blue;
+}
+.table_
+.email,
+.url,
+.key {
+  width: 10rem;
+}
+
+.wraper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  margin-bottom: 2rem;
+
+  &__form {
+    display: flex;
+  }
+}
+
+@media (max-width: 700px) {
+  .title {
+    display: flex;
+    flex-direction: column;
+    .button__group {
+      text-align: center;
+    }
+    .button_ h1 {
+      margin: 1rem;
+    }
+    button {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+  }
+  .wraper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    .email,
+    .url,
+    .key {
+      margin-bottom: 1rem;
+    }
+  }
+}
