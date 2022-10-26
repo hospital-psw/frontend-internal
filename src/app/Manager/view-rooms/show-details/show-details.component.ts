@@ -14,6 +14,7 @@ export class ShowDetailsComponent implements OnInit {
   @Input() room: any;
 
   showWorkingHours: boolean = false;
+  isDisabled: boolean = true;
 
   ngOnInit(): void {
     this.room.workigHoursDTO.start;
@@ -23,11 +24,6 @@ export class ShowDetailsComponent implements OnInit {
     }else{
       this.showWorkingHours = false;
     }
-  }
-
-
-  isDisabled() : boolean{
-    return true;
   }
 
 }

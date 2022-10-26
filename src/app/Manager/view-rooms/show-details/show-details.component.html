@@ -1,117 +1,71 @@
-
-<div>
-    <table>
-        <tr>
-            <td></td>
-            <td><h1>Informacije</h1></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><h2>Zgrada</h2>Zgrada</td>
-            <td><h2>Sprat</h2></td>
-            <td><h2>Soba</h2></td>  
-        </tr>
-        <tr>
-            <td>
-                <table>
-                    <tr>
-                        <td>
-                            <mat-label>Naziv:</mat-label>
-                        </td>
-                        <td>
-                            <mat-form-field appearance="fill">
-                                <mat-label>{{this.room.building.name}}</mat-label>
-                                <input matInput disabled="isDisabled()">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Adresa:</label></td>
-                        <td>
-                            <mat-form-field appearance="fill">
-                                <mat-label>{{this.room.building.address}}</mat-label>
-                                <input matInput disabled="isDisabled()">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <tr>
-                        <td><label>Broj:</label></td>
-                        <td>
-                            <mat-form-field appearance="fill">
-                                <mat-label>{{this.room.floor.number}}</mat-label>
-                                <input matInput disabled="isDisabled()">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Svrha:</label></td>
-                        <td>
-                            <mat-form-field appearance="fill">
-                                <mat-label>{{this.room.floor.purpose}}</mat-label>
-                                <input matInput disabled="isDisabled()">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table>
-                    <tr>
-                        <td><label>Broj:</label></td>
-                        <td>
-                            <mat-form-field appearance="fill">
-                                <mat-label>{{this.room.number}}</mat-label>
-                                <input matInput disabled="isDisabled()">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Svrha:</label></td>
-                        <td>
-                            <mat-form-field appearance="fill">
-                                <mat-label>{{this.room.purpose}}</mat-label>
-                                <input matInput disabled="isDisabled()">
-                            </mat-form-field>
-                        </td>
-                    </tr>
-                    <tr *ngIf="showWorkingHours">
-                        <table>
-                            <tr>
-                                <td>Radno vreme: </td>
-                                <td>
-                                    <table>
-                                        <tr>
-                                            <td>Početak:</td>
-                                            <td>
-                                                <mat-form-field appearance="fill">
-                                                    <mat-label>{{this.room.workigHoursDTO.start}}</mat-label>
-                                                    <input matInput disabled="isDisabled()">
-                                                </mat-form-field>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kraj: </td>
-                                            <td>
-                                                <mat-form-field appearance="fill">
-                                                    <mat-label>{{this.room.workigHoursDTO.start}}</mat-label>
-                                                    <input matInput disabled="isDisabled()">
-                                                </mat-form-field>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                            
-                        </table>
-                        
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    
-</div>
+<form>
+    <div class="blocks">
+        <h2>Zgrada</h2>
+        <div class="details">
+            <mat-label>Naziv:</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>{{this.room.building.name}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+        <div class="details">
+            <mat-label>Adresa:</mat-label>
+                <mat-form-field appearance="fill">
+                <mat-label>{{this.room.building.address}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="blocks">
+        <h2>Sprat</h2>
+        <div class="details">
+            <mat-label>Broj:</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>{{this.room.floor.number}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+        <div class="details">
+            <mat-label>Svrha:</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>{{this.room.floor.purpose}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="blocks">
+        <h2>Soba</h2>
+        <div class="details">
+            <mat-label>Broj:</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>{{this.room.number}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+        <div class="details">
+            <mat-label>Svrha:</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>{{this.room.purpose}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="blocks" *ngIf="showWorkingHours">
+        <mat-label>Radno vreme:</mat-label>
+        <div class="details">
+            <mat-label>Početak:</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>{{this.room.workigHoursDTO.start}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+        <div class="details">
+            <mat-label>Kraj:</mat-label>
+            <mat-form-field appearance="fill">
+                <mat-label>{{this.room.workigHoursDTO.end}}</mat-label>
+                <input matInput disabled="isDisabled">
+            </mat-form-field>
+        </div>
+    </div>
+            
+</form>
