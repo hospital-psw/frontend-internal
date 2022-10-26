@@ -6,13 +6,13 @@ import { FeedbackViewComponent } from './feedback-view/feedback-view.component';
 
 
 
+
 @NgModule({
   declarations: [
     FeedbackViewComponent
   ],
   imports: [
     CommonModule,
-    
     
   ]
 })

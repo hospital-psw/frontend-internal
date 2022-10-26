@@ -4,13 +4,15 @@
         <p class="table-title">Feedback</p>
         
     </div>
-    <table mat-table >
+    <table mat-table>
         <ng-container matColumnDef="creator">
             <th mat-header-cell  class="cell-center"> Creator </th>
         </ng-container>
         <ng-container matColumnDef="message">
             <th mat-header-cell  class="cell-center"> Message </th>
         </ng-container>
-      
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
 </div>
