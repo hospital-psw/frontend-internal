@@ -89,9 +89,15 @@ export class ViewRoomsComponent implements OnInit {
     let canvas: any = document.querySelector(".canvas")
     let width = canvas.offsetWidth
     let height = canvas.offsetHeight
+    let x = 0
+    let y = 0
 
-    let x = (event.clientX / width) * 2 - 1
-    let y = -(event.clientY / height) * 2 + 1
+    let holder = this.renderer?.domElement
+    let rect = holder?.getBoundingClientRect()
+    if(rect && holder){
+      x = ((event.pageX - rect?.left - window.scrollX) / holder?.clientWidth) * 2 - 1
+      y = -((event.pageY - rect.top - window.scrollY) / holder.clientHeight) * 2 + 1
+    }
 
     mouse.x = x
     mouse.y = y
@@ -100,12 +106,11 @@ export class ViewRoomsComponent implements OnInit {
       raycaster.setFromCamera(mouse, this.camera.getCamera())
 
     let intersected = raycaster.intersectObjects(this.scene?.getScene() ? this.scene.getScene().children : [])
-
     if(this.scene && intersected.length > 0)
       for(let room of this.scene?.getGraphicRooms()){
         if(this.isRoomClicked(room, intersected)){
           this.clickedRoom = room.getRoomData().room
-          console.log(this.clickedRoom)
+          console.log('eee', this.clickedRoom)
         }
       }
   }
