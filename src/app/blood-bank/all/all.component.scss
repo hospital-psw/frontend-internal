@@ -1,5 +1,5 @@
 .cont {
-  font-size: 62.5%;
+  padding-bottom: 7rem;
   h1 {
     color: black;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -29,7 +29,9 @@
   text-align: center;
   font-size: 1rem;
 }
-
+.table tr:hover {
+  cursor: pointer;
+}
 .table th {
   background-color: darkblue;
   color: white;

@@ -8,7 +8,6 @@
   justify-content: center;
   button {
     margin-top: 2rem;
-    height: 2rem;
   }
 }
 
@@ -16,7 +15,9 @@
   background-color: #ff5252;
   color: white;
 }
-
+.btnDelete {
+  padding: 0;
+}
 .btnEdit:hover {
   background-color: black;
   color: white;
@@ -26,28 +27,28 @@
   color: black;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 3rem;
   margin: 2rem;
 }
 
 .specialType {
-  width: 6rem;
+  width: 13rem;
+  font-size: 1.2rem;
 }
 .specButton {
   width: 1rem;
-  padding: 0;
-  font-size: 0.7rem;
-  height: 2rem;
+  height: 4.5rem;
+  font-size: 1rem;
 }
 .specButton:hover {
   background-color: white;
   color: blue;
 }
-.table_
 .email,
 .url,
 .key {
-  width: 10rem;
+  width: 20rem;
+  font-size: 1.2rem;
 }
 
 .wraper {
@@ -68,6 +69,7 @@
     flex-direction: column;
     .button__group {
       text-align: center;
+      height: 5rem;
     }
     .button_ h1 {
       margin: 1rem;

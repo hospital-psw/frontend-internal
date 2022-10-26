@@ -83,51 +83,53 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table> </div> -->
-<div class="cont">
-  <h1>Blood banks</h1>
-  <div class class="component">
-    <div class="table-wrap">
-      <button
-        class="add-button"
-        mat-mini-fab
-        matTooltip="New blood bank"
-        matTooltipPosition="right"
-        (click)="addBloodBank()"
-      >
-        <mat-icon>add</mat-icon>
-      </button>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th class="email">Email</th>
-            <th>URL</th>
-            <th class="edit"></th>
-            <th class="delete"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let bb of bloodBanks" (click)="detailBloodBank(bb.id)">
-            <td>
-              {{ bb.name }}
-            </td>
-            <td class="email">{{ bb.email }}</td>
-            <td>
-              {{ bb.apiUrl }}
-            </td>
-            <td class="edit">
-              <button mat-icon-button (click)="updateBloodBank(bb.id)">
-                <mat-icon matTooltip="update">edit</mat-icon>
-              </button>
-            </td>
-            <td class="delete">
-              <button mat-icon-button (click)="deleteBloodBank(bb.id)">
-                <mat-icon matTooltip="delete">delete</mat-icon>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<mat-card>
+  <div class="cont">
+    <h1>Blood banks</h1>
+    <div class class="component">
+      <div class="table-wrap">
+        <button
+          class="add-button"
+          mat-mini-fab
+          matTooltip="New blood bank"
+          matTooltipPosition="right"
+          (click)="addBloodBank()"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th class="email">Email</th>
+              <th>URL</th>
+              <th class="edit"></th>
+              <th class="delete"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bb of bloodBanks" (click)="detailBloodBank(bb.id)">
+              <td>
+                {{ bb.name }}
+              </td>
+              <td class="email">{{ bb.email }}</td>
+              <td>
+                {{ bb.apiUrl }}
+              </td>
+              <td class="edit">
+                <button mat-icon-button (click)="updateBloodBank(bb.id)">
+                  <mat-icon matTooltip="update">edit</mat-icon>
+                </button>
+              </td>
+              <td class="delete">
+                <button mat-icon-button (click)="deleteBloodBank(bb.id)">
+                  <mat-icon matTooltip="delete">delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
+</mat-card>
