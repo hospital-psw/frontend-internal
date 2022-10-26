@@ -24,7 +24,8 @@ export class ViewRoomsComponent implements OnInit {
   private camera?: CameraBuilder
   private floor: number = -1
   private building: string = ""
-  public clickedRoom? : GraphicRoom
+  //public clickedRoom? : GraphicRoom
+  public clickedRoom? : IRoom
   private renderer? : THREE.WebGLRenderer
   private sub?: Subscription
 
@@ -109,8 +110,8 @@ export class ViewRoomsComponent implements OnInit {
         if(this.isRoomClicked(room, intersected))
         {
           this.showDetails = true 
-          //this.clickedRoom = room.getRoomData().room
-          this.clickedRoom = room
+          this.clickedRoom = room.getRoomData().room
+          //this.clickedRoom = room
         }
         else
         {

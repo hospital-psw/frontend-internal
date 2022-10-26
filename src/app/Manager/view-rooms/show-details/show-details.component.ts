@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/doctor/interface/Room';
+import { IRoom } from '../../Model/Room';
 import { GraphicRoom } from '../model/GraphicRoom';
 
 @Component({
@@ -13,6 +14,7 @@ export class ShowDetailsComponent implements OnInit {
   @Input() room: any;
 
   ngOnInit(): void {
+
   }
 
 
