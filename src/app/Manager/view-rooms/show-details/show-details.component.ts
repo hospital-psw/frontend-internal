@@ -13,8 +13,13 @@ export class ShowDetailsComponent implements OnInit {
   constructor() { }
   @Input() room: any;
 
-  ngOnInit(): void {
+  showWorkingHours: boolean = false;
 
+  ngOnInit(): void {
+    if(this.room.workingHous.start != null && this.room.workingHous.end != null)
+    {
+      this.showWorkingHours = true;
+    }
   }
 
 
