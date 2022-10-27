@@ -16,6 +16,8 @@ import { PatientTableComponent } from './doctor/patients/patient-table/patient-t
 import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
 import { MatTableModule } from '@angular/material/table';
 import { FeedbackModule } from './Manager/feedback/feedback.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -41,7 +43,9 @@ import { FeedbackModule } from './Manager/feedback/feedback.module';
     MatToolbarModule,
     ViewRoomsModule,
     MatTableModule,
-    FeedbackModule
+    FeedbackModule,
+    MatButtonModule,
+    MatIconModule
     
   ],
   bootstrap: [AppComponent],

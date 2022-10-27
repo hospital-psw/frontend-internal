@@ -4,6 +4,16 @@ import { Router } from '@angular/router';
 import { Feedback } from '../interface/feedback';
 import { FeedbackService } from '../service/feedback.service';
 
+/**
+ * const ELEMENT_DATA: Feedback[] = [
+  {creator: 'pera', message: 'ok'},
+  {creator: 'lol', message: 'ne'},
+  {creator: 'ana', message: 'da'},
+  
+];
+ */
+
+
 @Component({
   selector: 'app-feedback-view',
   templateUrl: './feedback-view.component.html',
@@ -11,10 +21,12 @@ import { FeedbackService } from '../service/feedback.service';
 })
 export class FeedbackViewComponent implements OnInit {
 
-  @Input() fb:Feedback = {creator: '', message: ''}
 
-  public dataSource = new MatTableDataSource<Feedback>();
-  public displayedColumns = ['creator', 'message'];
+/*
+  public dataSource = ELEMENT_DATA;
+  */
+ public dataSource = new MatTableDataSource<Feedback>();
+  public displayedColumns = ['creator', 'message', 'approve', 'deny'];
   public feedbacks: Feedback[] = [];
   constructor(private fbservice: FeedbackService, private router: Router) { }
 

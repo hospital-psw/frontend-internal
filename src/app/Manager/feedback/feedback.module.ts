@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeedbackViewComponent } from './feedback-view/feedback-view.component';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -13,7 +15,9 @@ import { FeedbackViewComponent } from './feedback-view/feedback-view.component';
   ],
   imports: [
     CommonModule,
-    
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class FeedbackModule { }

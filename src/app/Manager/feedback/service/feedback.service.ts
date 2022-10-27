@@ -9,10 +9,11 @@ import { Feedback } from '../interface/feedback';
 export class FeedbackService {
 
   apiHost: string = 'http://localhost:16177/';
+  headers: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) { }
 
   getFeedback(): Observable<Feedback[]>{
-    return this.http.get<Feedback[]>(this.apiHost + 'api/Feedback/get/welcome/page');
+    return this.http.get<Feedback[]>(this.apiHost + 'api/Feedback/get/welcome/page', {headers: this.headers});
   }
 }
