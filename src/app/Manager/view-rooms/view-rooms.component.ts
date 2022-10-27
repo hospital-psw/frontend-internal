@@ -20,14 +20,7 @@ import {ApplicationRef } from '@angular/core';
 
 export class ViewRoomsComponent implements OnInit {
 
-  constructor(private roomService: RoomService, private cdRef:ChangeDetectorRef, private ref: ApplicationRef) {
-    //this.showDetails = false;
-    //cdRef.detach();
-    //setInterval(() => {
-    //  this.cdRef.detectChanges();
-    //}, 100);
-    
-  }
+  constructor(private roomService: RoomService, private cdRef:ChangeDetectorRef, private ref: ApplicationRef) {}
 
   private scene?: SceneBuilder
   private camera?: CameraBuilder
