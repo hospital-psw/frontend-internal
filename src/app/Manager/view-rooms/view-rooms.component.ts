@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -8,6 +8,8 @@ import { RoomService } from '../service/room-service.service';
 import { CameraBuilder } from './model/CameraBuilder';
 import { GraphicRoom } from './model/GraphicRoom';
 import SceneBuilder from "./model/SceneBuilder"
+import { Observable } from 'rxjs';
+import {ApplicationRef } from '@angular/core';
 
 
 @Component({
@@ -18,7 +20,14 @@ import SceneBuilder from "./model/SceneBuilder"
 
 export class ViewRoomsComponent implements OnInit {
 
-  constructor(private roomService: RoomService) { }
+  constructor(private roomService: RoomService, private cdRef:ChangeDetectorRef, private ref: ApplicationRef) {
+    //this.showDetails = false;
+    //cdRef.detach();
+    //setInterval(() => {
+    //  this.cdRef.detectChanges();
+    //}, 100);
+    
+  }
 
   private scene?: SceneBuilder
   private camera?: CameraBuilder
@@ -28,10 +37,11 @@ export class ViewRoomsComponent implements OnInit {
   public clickedRoom? : IRoom
   private renderer? : THREE.WebGLRenderer
   private sub?: Subscription
+ 
 
 
   rooms : IRoomMap[] = []
-  showDetails: boolean = false;
+  public showDetails: boolean = false;
 
   ngOnInit(): void {
 
@@ -110,20 +120,19 @@ export class ViewRoomsComponent implements OnInit {
 
     let intersected = raycaster.intersectObjects(this.scene?.getScene() ? this.scene.getScene().children : [])
 
+    let roomFound = false;
     if(this.scene && intersected.length > 0)
       for(let room of this.scene?.getGraphicRooms()){
 
         if(this.isRoomClicked(room, intersected))
         {
-          this.showDetails = true 
           this.clickedRoom = room.getRoomData().room
-          //this.clickedRoom = room
-        }
-        else
-        {
-          this.showDetails = false
+          roomFound = true;
+          break;
         }
       }
+      this.showDetails = roomFound;
+      this.cdRef.detectChanges();
   }
 
   isRoomClicked(room: GraphicRoom, intersected: any) : boolean{
