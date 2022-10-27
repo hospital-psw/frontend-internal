@@ -3,29 +3,42 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: #aeccd6;
 }
 .blocks{
-    display: inline;
-    float: left;
-    margin-left: 20px;
-    margin-right: 20px;
+    display: block;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #aeccd6;
+    border-left: solid 2px;
+    border-right: solid 2px;
+    border-color: #94acb3;
+    min-width: 180px;
+    min-height: 162px;
 }
 
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #aeccd6;
+}
   
-  .example-full-width {
-    width: 100%;
+.example-full-width {
+  width: 100%;
+}
+
+h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   }
 
-  h2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+.inputText{
+  color: black;
+}
 
   
