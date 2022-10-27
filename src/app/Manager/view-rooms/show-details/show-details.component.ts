@@ -10,13 +10,29 @@ import { GraphicRoom } from '../model/GraphicRoom';
 })
 export class ShowDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    setInterval(() => {
+      this.checkWorkingHours();
+    }, 100);
+   }
   @Input() room: any;
 
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
   ngOnInit(): void {
+    /*
+    this.room.workigHoursDTO.start;
+    if(this.room.workigHoursDTO.start != " " && this.room.workigHoursDTO.end != " ")
+    {
+      this.showWorkingHours = true;
+    }else{
+      this.showWorkingHours = false;
+    }
+    */
+  }
+
+  checkWorkingHours():void{
     this.room.workigHoursDTO.start;
     if(this.room.workigHoursDTO.start != " " && this.room.workigHoursDTO.end != " ")
     {
