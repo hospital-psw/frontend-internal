@@ -1,60 +1,50 @@
 <form class="example-form">
     <div class="blocks">
-        <h2>Zgrada</h2>
         <div class="details">
             <mat-form-field>
-                <mat-label>Naziv</mat-label>
+                <mat-label>Naziv zgrade</mat-label>
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.building.name}}">
             </mat-form-field>
         </div>
         <div class="details">
             <mat-form-field>
-                <mat-label>Adresa</mat-label>
+                <mat-label>Adresa zgrade</mat-label>
                 <input class="inputText" disabled="isDisabled" matInput value="{{this.room.building.address}}">
             </mat-form-field>
         </div>
-    </div>
-    <div class="blocks">
-        <h2>Sprat</h2>
         <div class="details">
             <mat-form-field>
-                <mat-label>Broj</mat-label>
+                <mat-label>Broj sprata</mat-label>
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.floor.number}}">
             </mat-form-field>
         </div>
         <div class="details">
             <mat-form-field>
-                <mat-label>Svrha</mat-label>
+                <mat-label>Svrha sprata</mat-label>
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.floor.purpose}}">
             </mat-form-field>
         </div>
-    </div>
-    <div class="blocks">
-        <h2>Soba</h2>
         <div class="details">
             <mat-form-field>
-                <mat-label>Broj</mat-label>
+                <mat-label>Broj sobe</mat-label>
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.number}}">
             </mat-form-field>
         </div>
         <div class="details">
             <mat-form-field>
-                <mat-label>Svrha</mat-label>
+                <mat-label>Svrha sobe</mat-label>
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.purpose}}">
             </mat-form-field>
         </div>
-    </div>
-    <div class="blocks">
-        <h2 *ngIf="showWorkingHours">Radno vreme</h2>
         <div *ngIf="showWorkingHours" class="details">
             <mat-form-field>
-                <mat-label>Početak</mat-label>
+                <mat-label>Početak radnog vremena</mat-label>
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workigHoursDTO.start}}">
             </mat-form-field>
         </div>
         <div *ngIf="showWorkingHours" class="details">
             <mat-form-field>
-                <mat-label>Kraj</mat-label>
+                <mat-label>Kraj radnog vremena</mat-label>
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workigHoursDTO.end}}">
             </mat-form-field>
         </div>

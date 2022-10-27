@@ -4,16 +4,15 @@
     align-items: center;
     flex-direction: column;
     background-color: #aeccd6;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .blocks{
     display: block;
-    padding-bottom: 15px;
-    padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
     background-color: #aeccd6;
-    border-left: solid 2px;
-    border-right: solid 2px;
+    border: solid 2px;
     border-color: #94acb3;
     min-width: 180px;
     min-height: 162px;
