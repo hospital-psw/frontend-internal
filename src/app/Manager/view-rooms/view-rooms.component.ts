@@ -119,22 +119,18 @@ export class ViewRoomsComponent implements OnInit {
       raycaster.setFromCamera(mouse, this.camera.getCamera())
 
     let intersected = raycaster.intersectObjects(this.scene?.getScene() ? this.scene.getScene().children : [])
-
     let roomFound = false;
     if(this.scene && intersected.length > 0)
       for(let room of this.scene?.getGraphicRooms()){
-
-        if(this.isRoomClicked(room, intersected))
-        {
+        if(this.isRoomClicked(room, intersected)){
           this.clickedRoom = room.getRoomData().room
           roomFound = true;
-          break;
+          this.showDetails = roomFound;
+          this.cdRef.detectChanges();
+          console.log('eee', this.clickedRoom)
         }
       }
-      this.showDetails = roomFound;
-      this.cdRef.detectChanges();
   }
-
   isRoomClicked(room: GraphicRoom, intersected: any) : boolean{
     if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().z == intersected[0].object.position.z)
       return true
