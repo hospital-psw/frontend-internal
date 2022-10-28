@@ -11,9 +11,10 @@ export class DoctorMainComponent implements OnInit {
 
   constructor(private router: Router) {
     this.router.events.subscribe(() => {
-      if (this.router.url == 'appointments') {
+      console.log(this.router.url);
+      if (this.router.url == '/appointments') {
         this.name = 'Appointments';
-      } else if (this.router.url == 'patients') {
+      } else if (this.router.url == '/patients') {
         this.name = 'Patients';
       }
     });
