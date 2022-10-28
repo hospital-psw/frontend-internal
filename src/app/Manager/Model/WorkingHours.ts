@@ -1,4 +1,6 @@
+import { Time } from "@angular/common";
+
 export interface IWorkingHours{
-    start: string,
-    end: string
+    start: Date,
+    end: Date
   }

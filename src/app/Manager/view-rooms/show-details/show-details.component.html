@@ -39,13 +39,13 @@
         <div *ngIf="showWorkingHours" class="details">
             <mat-form-field>
                 <mat-label>Početak radnog vremena</mat-label>
-                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workigHoursDTO.start}}">
+                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workingHours.start | date :'hh:mm'}}">
             </mat-form-field>
         </div>
         <div *ngIf="showWorkingHours" class="details">
             <mat-form-field>
                 <mat-label>Kraj radnog vremena</mat-label>
-                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workigHoursDTO.end}}">
+                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workingHours.end | date :'hh:mm'}}">
             </mat-form-field>
         </div>
     </div>          

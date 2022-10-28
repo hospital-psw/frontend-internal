@@ -24,9 +24,9 @@ export class ShowDetailsComponent implements OnInit {
   }
 
   checkWorkingHours():void{
-    this.room.workigHoursDTO.start;
-    if(this.room.workigHoursDTO.start != " " && this.room.workigHoursDTO.end != " ")
+    if(this.room.workingHours.start != this.room.workingHours.end)
     {
+      console.log()
       this.showWorkingHours = true;
     }else{
       this.showWorkingHours = false;
