@@ -31,6 +31,7 @@ import { PatientTableComponent } from './doctor/patients/patient-table/patient-t
     RouterModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
