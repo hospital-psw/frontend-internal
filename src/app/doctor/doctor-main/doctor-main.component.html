@@ -2,7 +2,7 @@
   <div class="sidebar" *ngIf="hamburger" [@openClose]>
     <app-sidebar [show]="hamburger"></app-sidebar>
   </div>
-  <div class="main-panel" [@followHamburger]="hamburger ? 'open' : 'closed'">
+  <div class="main-panel">
     <app-navigation-bar
       [name]="name"
       (sidebarButtonClicked)="handleHamburger($event)"

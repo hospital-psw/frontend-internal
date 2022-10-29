@@ -15,7 +15,7 @@ import {
   animations: [
     trigger('openClose', [
       transition(':enter', [
-        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        style({ transform: 'translateX(-100%)', opacity: 0}),
         animate('500ms', style({ transform: 'translateX(0%)', opacity: 1 })),
       ]),
       transition(':leave', [
@@ -23,16 +23,16 @@ import {
         animate('500ms', style({ transform: 'translateX(-100%)', opacity: 0 })),
       ]),
     ]),
-    trigger('followHamburger', [
+    /*trigger('followHamburger', [
       transition('open => closed', [
-        style({ transform: 'translateX(0)' }),
-        animate('0.5s', style({ transform: 'translateX(-26rem)' })),
+        style({ transform: 'translateX(0)', width: '100%'}),
+        animate('0.5s', style({ transform: 'translateX(-26rem)', width: '100%' })),
       ]),
       transition('closed => open', [
-        style({ transform: 'translateX(-26rem)' }),
-        animate('0.5s', style({ transform: 'translateX(0rem)' })),
+        style({ transform: 'translateX(-26rem)', width: '100%'}),
+        animate('0.5s', style({ transform: 'translateX(0rem)', width: '100%' })),
       ]),
-    ]),
+    ]),*/
   ],
 })
 export class DoctorMainComponent implements OnInit {
