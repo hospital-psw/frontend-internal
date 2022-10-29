@@ -4,7 +4,7 @@ import { Appointment } from './../../interface/Appointment';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExaminationType } from '../../enum/ExaminationType.enum';
-import { Room } from '../../interface/Room';
+import { IRoom } from '../../../Manager/Model/Room';
 import { ScheduleService } from '../../service/schedule.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Output, EventEmitter } from '@angular/core';
@@ -17,7 +17,7 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
 
   @Output() outputDates = new EventEmitter<Date[]>();
   appointment: Appointment;
-  rooms: Room[];
+  rooms: IRoom[];
   recommendedDto : RecommendedDTO;
   examinationTypes: ExaminationType[];
   num: any;

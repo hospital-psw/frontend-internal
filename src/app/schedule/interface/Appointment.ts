@@ -1,6 +1,6 @@
 import { Doctor } from './Doctor';
 import { Patient } from './Patient';
-import { Room } from './Room';
+import { IRoom } from '../../Manager/Model/Room';
 import { ExaminationType } from '../enum/ExaminationType.enum';
 
 export interface Appointment {
@@ -9,7 +9,7 @@ export interface Appointment {
   duration: number;
   examType: ExaminationType;
   isDone: boolean;
-  room: Room;
+  room: IRoom;
   patient: Patient;
   doctor: Doctor;
 }

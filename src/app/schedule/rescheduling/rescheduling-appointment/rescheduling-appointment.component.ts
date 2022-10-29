@@ -4,7 +4,7 @@ import { ExaminationType } from '../../enum/ExaminationType.enum';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { ReschedulingAppointmentDTO } from './../../interface/ReschedulingAppointmentDTO';
 import { Component, OnInit } from '@angular/core';
-import { Room } from '../../interface/Room';
+import { IRoom } from '../../../Manager/Model/Room';
 
 @Component({
   selector: 'app-rescheduling-appointment',
