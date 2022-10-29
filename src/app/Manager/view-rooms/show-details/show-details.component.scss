@@ -3,24 +3,23 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #aeccd6;
+    background-color: #537895;
     padding-top: 5px;
     padding-bottom: 5px;
 
     .inputText{
-      color: black;
+      color: white;
     }
 }
 .blocks{
     display: block;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #aeccd6;
-    border: solid 2px;
-    border-color: #94acb3;
+    background-color: #537895;
     border-radius: 10px;
     min-width: 180px;
     min-height: 162px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .details-form {
@@ -29,6 +28,7 @@
   width: 100%;
   background-color: #aeccd6;
   border-radius: 10px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .details-full-width {
@@ -42,5 +42,8 @@ h2{
   flex-direction: column;
   }
 
+  mat-label{
+    color: white;
+  }
 
 
