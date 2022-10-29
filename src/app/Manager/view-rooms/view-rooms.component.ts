@@ -89,11 +89,13 @@ export class ViewRoomsComponent implements OnInit {
   selectFloor(evt: any) {
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
+    this.showDetails = false;
   }
 
   selectHospital(evt: any) {
     this.building = evt.value;
     this.getRooms(this.building, this.floor);
+    this.showDetails = false;
   }
 
   getRooms(building: string, floor: number) {
