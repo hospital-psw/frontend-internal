@@ -18,20 +18,22 @@
 }
 
 .info{
-  float: left;
-  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
 }
 
 .canvas{
   height: 100%!important;
   width: 100%!important;
-  max-width: 400px;
-  max-height: 300px;
+  min-width: 900px;
+  max-width: 900px;
+  max-height: 450px;
+  min-height: 450px;
 }
 
 .all{
-  margin-top: 50px;
-  display: inline;
+  display: flex;
+  gap: 35px;
 }
 
 
