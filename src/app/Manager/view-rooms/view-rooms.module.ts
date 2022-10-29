@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RoomComponent } from './Room/room/room.component';
 import { ViewRoomsComponent } from './view-rooms.component';
 import {MatSelectModule} from '@angular/material/select';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
@@ -10,7 +9,6 @@ import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    RoomComponent,
     ViewRoomsComponent,
     ShowDetailsComponent
   ],

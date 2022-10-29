@@ -5,7 +5,6 @@ import { IWorkingHours } from "./WorkingHours";
 export interface IRoom{
   number: number;
   floor: IFloor;
-  building: IBuilding;
   purpose: string;
   workigHours: IWorkingHours;
 }

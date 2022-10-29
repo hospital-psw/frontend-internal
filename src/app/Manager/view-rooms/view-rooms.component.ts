@@ -10,6 +10,7 @@ import { GraphicRoom } from './model/GraphicRoom';
 import SceneBuilder from "./model/SceneBuilder"
 import { Observable } from 'rxjs';
 import {ApplicationRef } from '@angular/core';
+import { TorusGeometry } from 'three';
 
 
 @Component({
@@ -26,11 +27,10 @@ export class ViewRoomsComponent implements OnInit {
   private camera?: CameraBuilder
   private floor: number = -1
   private building: string = ""
-  //public clickedRoom? : GraphicRoom
   public clickedRoom? : IRoom
   private renderer? : THREE.WebGLRenderer
   private sub?: Subscription
- 
+
 
 
   rooms : IRoomMap[] = []
@@ -39,11 +39,7 @@ export class ViewRoomsComponent implements OnInit {
   ngOnInit(): void {
 
     let selectedCanvas: any = document.querySelector(".canvas")
-
-    this.sub = this.roomService.getRooms().subscribe(data =>{
-      this.rooms = data
-      this.scene = new SceneBuilder(this.rooms);
-    } )
+    this.scene = new SceneBuilder();
 
     window.addEventListener('mousedown', (e) => {
       this.handleIntersectClick(e)
@@ -51,9 +47,15 @@ export class ViewRoomsComponent implements OnInit {
 
     this.camera = new CameraBuilder()
 
-    this.renderer = new THREE.WebGLRenderer({canvas: selectedCanvas});
-    this.renderer.setPixelRatio(window.devicePixelRatio)
-    document.body.appendChild(this.renderer.domElement);
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: selectedCanvas,
+      antialias: true,
+      preserveDrawingBuffer: true,
+      alpha: true
+    });
+    this.renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1)
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+
 
     const controls = new OrbitControls(this.camera.getCamera(), this.renderer.domElement);
     controls.target.set(0, 0, 0);
@@ -81,12 +83,30 @@ export class ViewRoomsComponent implements OnInit {
 
   selectFloor(evt: any){
     this.floor = evt.value
-    this.scene?.displayFloor(this.floor, this.building)
+    this.getRooms(this.building, this.floor)
   }
 
   selectHospital(evt: any){
     this.building = evt.value
-    this.scene?.displayFloor(this.floor, this.building)
+    this.getRooms(this.building, this.floor)
+  }
+
+  getRooms(building: string, floor: number){
+    if(building !== "" && floor === -1){
+      console.log('udario')
+      this.roomService.getBuilding(building).subscribe(data => {
+        this.rooms = data
+        this.scene?.setRooms(this.rooms)
+        this.scene?.display(this.floor, this.building)
+      })
+    }
+    if(building !== "" && floor !== -1){
+      this.roomService.getRooms(building, floor.toString()).subscribe(data => {
+        this.rooms = data
+        this.scene?.setRooms(this.rooms)
+        this.scene?.display(this.floor, this.building)
+      })
+    }
   }
 
   handleIntersectClick(event: any) {
@@ -120,11 +140,21 @@ export class ViewRoomsComponent implements OnInit {
           roomFound = true;
           this.showDetails = roomFound;
           this.cdRef.detectChanges();
-          console.log('eee', this.clickedRoom)
         }
       }
   }
   isRoomClicked(room: GraphicRoom, intersected: any) : boolean{
+    if(this.doCoordinatesOverlap(room, intersected))
+      return true
+    return false
+  }
+
+  doCoordinatesOverlap(room: GraphicRoom, intersected: any){
+    if(this.floor === -1){
+      if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().room.floor.number === intersected[0].object.position.y && room.getRoomData().z == intersected[0].object.position.z)
+        return true
+      return false
+    }
     if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().z == intersected[0].object.position.z)
       return true
     return false

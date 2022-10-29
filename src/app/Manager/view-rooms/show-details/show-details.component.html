@@ -3,13 +3,13 @@
         <div class="details">
             <mat-form-field>
                 <mat-label>Naziv zgrade</mat-label>
-                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.building.name}}">
+                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.floor.building.name}}">
             </mat-form-field>
         </div>
         <div class="details">
             <mat-form-field>
                 <mat-label>Adresa zgrade</mat-label>
-                <input class="inputText" disabled="isDisabled" matInput value="{{this.room.building.address}}">
+                <input class="inputText" disabled="isDisabled" matInput value="{{this.room.floor.building.address}}">
             </mat-form-field>
         </div>
         <div class="details">
@@ -48,5 +48,5 @@
                 <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workingHours.end | date :'hh:m'}}">
             </mat-form-field>
         </div>
-    </div>          
+    </div>
 </form>
