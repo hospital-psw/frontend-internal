@@ -1,5 +1,7 @@
-export interface IFloor {
-  number: number;
-  purpose: string;
-  building: IFloor;
+import { IBuilding } from "./Building"
+
+export interface IFloor{
+  number: number,
+  purpose: string
+  building: IBuilding
 }
