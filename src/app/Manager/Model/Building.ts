@@ -1,4 +1,4 @@
-export interface IBuilding{
-  name: string,
-  address: string
+export interface IBuilding {
+  name: string;
+  address: string;
 }
