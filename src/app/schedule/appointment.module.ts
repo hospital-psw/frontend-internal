@@ -1,24 +1,27 @@
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReschedulingAppointmentComponent } from './../appointment/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
+import { ReschedulingAppointmentComponent } from './../schedule/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import { AppointmentService } from './../service/appointment.service';
+import { ScheduleService } from './service/schedule.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
-import { ReschedulingAppointmentFormComponent } from './../appointment/rescheduling/rescheduling-appointment-form/rescheduling-appointment-form.component';
+import { ReschedulingAppointmentFormComponent } from './../schedule/rescheduling/rescheduling-appointment-form/rescheduling-appointment-form.component';
 import { ReschedulingAppointmentHeaderComponent } from './rescheduling/rescheduling-appointment-header/rescheduling-appointment-header.component';
-import { MatDividerModule } from '@angular/material/divider';
+import { ReschedulingAppointmentTableComponent } from './rescheduling/rescheduling-appointment-table/rescheduling-appointment-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     ReschedulingAppointmentComponent,
     ReschedulingAppointmentFormComponent,
-    ReschedulingAppointmentHeaderComponent
+    ReschedulingAppointmentHeaderComponent,
+    ReschedulingAppointmentTableComponent
   ],
   imports: [
     CommonModule,
@@ -30,10 +33,11 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    MatDividerModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
-    AppointmentService
+    ScheduleService
   ],
 })
 export class AppointmentModule { }

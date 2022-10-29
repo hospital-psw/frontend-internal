@@ -5,7 +5,8 @@ export interface ReschedulingAppointmentDTO {
   id: number;
   date: Date;
   duration: number;
-  examType: ExaminationType;
-  isDone: boolean;
-  room: Room;
+  examType: any;
+  roomId: number;
+  patientId: number;
+  //doctorId: number;
 }

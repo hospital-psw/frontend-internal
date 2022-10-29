@@ -1,0 +1,9 @@
+<app-rescheduling-appointment-header></app-rescheduling-appointment-header>
+<div class="formTable">
+  <app-rescheduling-appointment-form
+    (outputDates)="storeFromChildForm($event)"
+  ></app-rescheduling-appointment-form>
+  <app-rescheduling-appointment-table
+    [recommendedDatesForTable]="recommendedDatesFromParent"
+  ></app-rescheduling-appointment-table>
+</div>

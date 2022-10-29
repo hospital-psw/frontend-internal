@@ -1,7 +1,7 @@
-import { ReschedulingAppointmentComponent } from './doctor/appointment/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
+import { ReschedulingAppointmentComponent } from './schedule/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppointmentResolver } from './doctor/resolver/appointment-resolver';
+import { AppointmentResolver } from './schedule/resolver/appointment-resolver';
 
 const routes: Routes = [
   {

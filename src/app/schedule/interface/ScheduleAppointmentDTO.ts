@@ -1,11 +1,9 @@
-import { Room } from './Room';
 import { ExaminationType } from "../enum/ExaminationType.enum";
+import { Room } from "./Room";
 
-export interface Appointment {
-  id: number;
+export interface ScheduleAppointmentDTO {
   date: Date;
   duration: number;
   examType: ExaminationType;
-  isDone: boolean;
   room: Room;
 }

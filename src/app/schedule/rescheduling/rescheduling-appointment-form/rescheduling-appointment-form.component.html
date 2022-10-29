@@ -2,14 +2,14 @@
   <div class="container">
     <div class="form">
       <div class="form__column">
-        <label class="form__column__label" for="date">Date and Time</label>
+        <label class="form__column__label" for="date">From</label>
         <mat-form-field appearance="fill" class="form__column__field">
           <mat-label>Date and Time</mat-label>
           <input
             id="date"
             matInput
             [matDatepicker]="picker"
-            [(ngModel)]="reschedulingAppointment.date"
+            [(ngModel)]="recommendedDto.date"
             name="dateAndTime"
             required
           />
@@ -27,22 +27,21 @@
           <input
             id="duration"
             matInput
-            [(ngModel)]="reschedulingAppointment.duration"
+            [(ngModel)]="appointment.duration"
             name="duration"
-            [disabled]="true"
+            readonly="true"
             required
           />
         </mat-form-field>
-      </div>
 
-      <div class="form__column">
         <label for="room" class="form__column__label">Room</label>
         <mat-form-field class="form__column__field" appearance="fill">
           <mat-label>Room</mat-label>
           <mat-select
             id="room"
             name="room"
-            [(ngModel)]="reschedulingAppointment.room"
+            disabled="true"
+            [(ngModel)]="appointment.room"
             required
           >
             <mat-option>All</mat-option>
@@ -50,6 +49,23 @@
               >Number: {{ r.number }} Floor: {{ r.floor }}</mat-option
             >
           </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form__column">
+        <label for="patient" class="form__column__label">Patient</label>
+        <mat-form-field appearance="fill" class="form__column__field">
+          <mat-label>Info</mat-label>
+          <input
+            id="patient"
+            matInput
+            [value]="
+              appointment.patient.firstName + ' ' + appointment.patient.lastName
+            "
+            name="patient"
+            readonly="true"
+            required
+          />
         </mat-form-field>
 
         <label for="examType" class="form__column__label"
@@ -60,11 +76,12 @@
           <mat-select
             id="examType"
             name="examType"
-            [(ngModel)]="reschedulingAppointment.examType"
+            disabled="true"
+            [(ngModel)]="appointment.examType"
             required
           >
             <mat-option>All</mat-option>
-            <mat-option *ngFor="let et of examinationTypes" value="{{ et }}">{{
+            <mat-option *ngFor="let et of examinationTypes" [value]="et">{{
               et | titlecase
             }}</mat-option>
           </mat-select>
@@ -73,8 +90,12 @@
     </div>
 
     <div class="button">
-      <button mat-stroked-button color="primary" (click)="updateAppointment()">
-        Update appointment
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="onClickShowRecommended()"
+      >
+        Show recommended appointments
       </button>
     </div>
   </div>

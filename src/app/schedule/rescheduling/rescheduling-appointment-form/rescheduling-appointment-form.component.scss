@@ -1,7 +1,6 @@
 .card {
   max-width: 60rem;
   max-height: 60rem;
-  margin-left: 5%;
   font-size: small;
   font-weight: 400;
 
@@ -19,8 +18,7 @@ label {
   justify-content: space-around;
 
   &__column {
-   margin-top: 2rem;
-   margin-bottom: 2rem;
+   margin: 4rem;
 
    &__label {
     margin-top: 2rem;

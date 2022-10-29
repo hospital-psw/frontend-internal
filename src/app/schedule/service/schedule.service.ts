@@ -1,3 +1,4 @@
+import { RecommendedDTO } from '../interface/RecommendedDTO';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,7 +10,7 @@ import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
 @Injectable({
   providedIn: 'root'
 })
-export class AppointmentService {
+export class ScheduleService {
 
   private apiServerUrl = environment.apiAppointmentUrl;
 
@@ -19,8 +20,8 @@ export class AppointmentService {
     return this.http.post<Appointment>(`${this.apiServerUrl}`, appointment);
   }
 
-  public rescheduleAppointment(appointmentId: number, appointment: ReschedulingAppointmentDTO): Observable<Appointment> {
-    return this.http.put<Appointment>(`${this.apiServerUrl}/${appointmentId}`, appointment);
+  public rescheduleAppointment(appointment: ReschedulingAppointmentDTO): Observable<Appointment> {
+    return this.http.put<Appointment>(`${this.apiServerUrl}`, appointment);
   }
 
   public getAppointment(appointmentId: number): Observable<Appointment> {
@@ -33,5 +34,9 @@ export class AppointmentService {
 
   public getAllAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(`${this.apiServerUrl}/all`);
+  }
+
+  public getAllRecommended(recommendedDto: RecommendedDTO): Observable<Date[]> {
+    return this.http.get<Date[]>(`${this.apiServerUrl}/recommended`);
   }
 }
