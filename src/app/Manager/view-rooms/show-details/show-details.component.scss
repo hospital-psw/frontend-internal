@@ -6,6 +6,10 @@
     background-color: #aeccd6;
     padding-top: 5px;
     padding-bottom: 5px;
+
+    .inputText{
+      color: black;
+    }
 }
 .blocks{
     display: block;
@@ -18,14 +22,14 @@
     min-height: 162px;
 }
 
-.example-form {
+.details-form {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
   background-color: #aeccd6;
 }
   
-.example-full-width {
+.details-full-width {
   width: 100%;
 }
 
@@ -36,8 +40,6 @@ h2{
   flex-direction: column;
   }
 
-.inputText{
-  color: black;
-}
+
 
   
