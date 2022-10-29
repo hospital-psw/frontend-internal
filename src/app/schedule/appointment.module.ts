@@ -15,13 +15,18 @@ import { ReschedulingAppointmentHeaderComponent } from './rescheduling/reschedul
 import { ReschedulingAppointmentTableComponent } from './rescheduling/rescheduling-appointment-table/rescheduling-appointment-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDividerModule } from '@angular/material/divider';
+import { AppointmentsComponent } from './show-all/appointments/appointments.component';
+import { SchedulingComponent } from './scheduling/scheduling.component';
 
 @NgModule({
   declarations: [
     ReschedulingAppointmentComponent,
     ReschedulingAppointmentFormComponent,
     ReschedulingAppointmentHeaderComponent,
-    ReschedulingAppointmentTableComponent
+    ReschedulingAppointmentTableComponent,
+    AppointmentsComponent,
+    SchedulingComponent
   ],
   imports: [
     CommonModule,
@@ -34,10 +39,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatNativeDateModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDividerModule
   ],
   providers: [
-    ScheduleService
-  ],
+    ScheduleService,
+  ]
 })
-export class AppointmentModule { }
+export class AppointmentModule {}

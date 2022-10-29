@@ -1,0 +1,46 @@
+.details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #aeccd6;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    .inputText{
+      color: black;
+    }
+}
+.blocks{
+    display: block;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #aeccd6;
+    border: solid 2px;
+    border-color: #94acb3;
+    border-radius: 10px;
+    min-width: 180px;
+    min-height: 162px;
+}
+
+.details-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #aeccd6;
+  border-radius: 10px;
+}
+
+.details-full-width {
+  width: 100%;
+}
+
+h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  }
+
+
+

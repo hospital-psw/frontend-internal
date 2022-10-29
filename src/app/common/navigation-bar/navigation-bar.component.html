@@ -1,3 +1,12 @@
-<mat-toolbar>
-  <span>Hospital</span>
-</mat-toolbar>
+<nav class="navbar">
+  <div class="navbar__header">
+    <span>{{ name }}</span>
+  </div>
+  <button (click)="showHamburger()">Show sidebar</button>
+  <div class="navbar__profile">
+    <svg class="navbar__profile-icon">
+      <use xlink:href="../../assets/SVG/sprite.svg#icon-user-check"></use>
+    </svg>
+    <span>Milos Gravara</span>
+  </div>
+</nav>

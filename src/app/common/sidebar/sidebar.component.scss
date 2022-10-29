@@ -1,0 +1,101 @@
+.sidebar-wrapper {
+    position: relative;
+    max-height: 100vh;
+    min-height: 100%;
+    width: 26rem;
+    z-index: 4;
+}
+
+.logo {
+    padding: 2rem 2.5rem;
+    border-bottom: .1rem solid rgba(255,255,255, .2);
+
+    &__simple-text {
+        text-transform: uppercase;
+        padding: .5rem 0 .5rem 1.5rem;
+        font-size: 2.5rem;
+        line-height: 3rem;
+        letter-spacing: .5rem;
+        font-weight: 400;
+        color: #fff;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    &__icon-box {
+        display: flex;
+        align-items: center;
+    }
+
+    &__icon-hospital {
+        height: 3rem;
+        width: 3rem;
+        fill: #fff
+    }
+}
+
+.nav {
+    margin-top: 2rem;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .list-element {
+        position: relative;
+        width: 90%;
+        display: flex;
+        align-items: center;
+
+        a.active {
+            opacity: 1;
+            background: rgba(255,255,255,.23);
+            transform: scale(1.05);
+           
+        }
+
+        &__link {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            margin: 1rem 1.5rem;
+            border-radius: .4rem;
+            padding: 1.5rem 2rem;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            transition-duration: .3s;
+
+            &-icon {
+                width: 2.25rem;
+                height: 2.25rem;
+                fill: #fff;
+                margin-right: 1rem;
+            }
+
+            &-text {
+                margin: 0;
+            }
+        }
+
+        &__link:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, .23);
+            transform: scale(1.05);
+            transition-duration: .4s;
+        }
+
+        &__link:active {
+            transform: scale(0.85);
+            transition-duration: .5s;
+        }
+        
+    }
+
+    
+}

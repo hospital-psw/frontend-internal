@@ -4,9 +4,8 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ScheduleService } from 'src/app/schedule/service/schedule.service';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppointmentResolver implements Resolve<Appointment> {
 
