@@ -57,20 +57,33 @@
     </mat-form-field>
   </div>
   <div class="wraper">
-    <div class="wraper__form">
-      <mat-form-field appearance="fill" class="specialType">
-        <mat-label>Select</mat-label>
-        <mat-select [(ngModel)]="selected" (ngModelChange)="ff()">
-          <mat-option
-            *ngFor="let type of bloodTypes; let i = index"
-            [value]="type"
-            >{{ bloodTypes[i] }}</mat-option
-          >
-        </mat-select>
-      </mat-form-field>
-      <button mat-raised-button color="primary" class="specButton">
-        Check
-      </button>
+    <div class="wrap__answer">
+      <div class="wraper__form">
+        <mat-form-field appearance="fill" class="specialType">
+          <mat-label>Select</mat-label>
+          <mat-select [(ngModel)]="selected" (ngModelChange)="hideResponse()">
+            <mat-option
+              *ngFor="let type of bloodTypes; let i = index"
+              [value]="type"
+              >{{ bloodTypes[i] }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="checkBoodType(bloodBank.id)"
+          class="specButton"
+        >
+          Check
+        </button>
+      </div>
+      <div *ngIf="showAnwser">
+        <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
+          >Bank <span *ngIf="showResponse">has</span>
+          <span *ngIf="!showResponse">hasn't</span> that blood type.</label
+        >
+      </div>
     </div>
   </div>
 </mat-card>
