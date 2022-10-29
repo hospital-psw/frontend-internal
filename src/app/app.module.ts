@@ -17,7 +17,6 @@ import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
 import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,

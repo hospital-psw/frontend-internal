@@ -7,15 +7,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
   @Input() name: string;
-  
-  @Output() sidebarButtonClicked: EventEmitter<string> = new EventEmitter<string>();
+
+  @Output() sidebarButtonClicked: EventEmitter<string> =
+    new EventEmitter<string>();
 
   constructor() {}
 
   ngOnInit(): void {}
 
   showHamburger() {
-    this.sidebarButtonClicked.emit("Button Clicked!");
+    this.sidebarButtonClicked.emit('Button Clicked!');
   }
-
 }

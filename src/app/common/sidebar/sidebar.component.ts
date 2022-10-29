@@ -5,7 +5,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit {
-
   @Input() show: boolean;
 
   constructor() {}

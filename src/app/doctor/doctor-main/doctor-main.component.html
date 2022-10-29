@@ -3,7 +3,10 @@
     <app-sidebar [show]="hamburger"></app-sidebar>
   </div>
   <div class="main-panel" [@followHamburger]="hamburger ? 'open' : 'closed'">
-    <app-navigation-bar [name]="name" (sidebarButtonClicked)="handleHamburger($event)"></app-navigation-bar>
+    <app-navigation-bar
+      [name]="name"
+      (sidebarButtonClicked)="handleHamburger($event)"
+    ></app-navigation-bar>
     <div class="router-wrapper">
       <router-outlet></router-outlet>
     </div>

@@ -1,33 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { transition, animate, trigger, state, style } from '@angular/animations';
+import {
+  transition,
+  animate,
+  trigger,
+  state,
+  style,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-doctor-main',
   templateUrl: './doctor-main.component.html',
   styleUrls: ['./doctor-main.component.scss'],
   animations: [
-    trigger('openClose',[
+    trigger('openClose', [
       transition(':enter', [
-        style({transform: 'translateX(-100%)', opacity: 0}),
-        animate('500ms', style({transform: 'translateX(0%)', opacity: 1}))
+        style({ transform: 'translateX(-100%)', opacity: 0 }),
+        animate('500ms', style({ transform: 'translateX(0%)', opacity: 1 })),
       ]),
       transition(':leave', [
-        style({transform: 'translateX(0)', opacity: 1}),
-        animate('500ms', style({transform: 'translateX(-100%)', opacity: 0}))
+        style({ transform: 'translateX(0)', opacity: 1 }),
+        animate('500ms', style({ transform: 'translateX(-100%)', opacity: 0 })),
       ]),
     ]),
     trigger('followHamburger', [
       transition('open => closed', [
-        style({transform: 'translateX(0)'}),
-        animate('0.5s', style({transform: 'translateX(-26rem)'}))
+        style({ transform: 'translateX(0)' }),
+        animate('0.5s', style({ transform: 'translateX(-26rem)' })),
       ]),
       transition('closed => open', [
-        style({transform: 'translateX(-26rem)'}),
-        animate('0.5s',style({transform: 'translateX(0rem)'}))
-      ])
-    ])
-  ]
+        style({ transform: 'translateX(-26rem)' }),
+        animate('0.5s', style({ transform: 'translateX(0rem)' })),
+      ]),
+    ]),
+  ],
 })
 export class DoctorMainComponent implements OnInit {
   name: string;
@@ -50,8 +56,8 @@ export class DoctorMainComponent implements OnInit {
     this.hamburger = true;
   }
 
-  handleHamburger(valueEmitted: any){
-    console.log("Hello from doctor main component");
+  handleHamburger(valueEmitted: any) {
+    console.log('Hello from doctor main component');
     this.valueEmittedFromChild = valueEmitted;
     this.hamburger = !this.hamburger;
   }
