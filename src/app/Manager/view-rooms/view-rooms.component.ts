@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from "three";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -8,6 +8,8 @@ import { RoomService } from '../service/room-service.service';
 import { CameraBuilder } from './model/CameraBuilder';
 import { GraphicRoom } from './model/GraphicRoom';
 import SceneBuilder from "./model/SceneBuilder"
+import { Observable } from 'rxjs';
+import {ApplicationRef } from '@angular/core';
 
 
 @Component({
@@ -18,20 +20,24 @@ import SceneBuilder from "./model/SceneBuilder"
 
 export class ViewRoomsComponent implements OnInit {
 
-  constructor(private roomService: RoomService) { }
+  constructor(private roomService: RoomService, private cdRef:ChangeDetectorRef, private ref: ApplicationRef) {}
 
   private scene?: SceneBuilder
   private camera?: CameraBuilder
   private floor: number = -1
   private building: string = ""
-  private clickedRoom? : IRoom
+  //public clickedRoom? : GraphicRoom
+  public clickedRoom? : IRoom
   private renderer? : THREE.WebGLRenderer
   private sub?: Subscription
+ 
 
 
   rooms : IRoomMap[] = []
+  public showDetails: boolean = false;
 
   ngOnInit(): void {
+
     let selectedCanvas: any = document.querySelector(".canvas")
 
     this.sub = this.roomService.getRooms().subscribe(data =>{
@@ -106,15 +112,18 @@ export class ViewRoomsComponent implements OnInit {
       raycaster.setFromCamera(mouse, this.camera.getCamera())
 
     let intersected = raycaster.intersectObjects(this.scene?.getScene() ? this.scene.getScene().children : [])
+    let roomFound = false;
     if(this.scene && intersected.length > 0)
       for(let room of this.scene?.getGraphicRooms()){
         if(this.isRoomClicked(room, intersected)){
           this.clickedRoom = room.getRoomData().room
+          roomFound = true;
+          this.showDetails = roomFound;
+          this.cdRef.detectChanges();
           console.log('eee', this.clickedRoom)
         }
       }
   }
-
   isRoomClicked(room: GraphicRoom, intersected: any) : boolean{
     if(room.getRoomData().x == intersected[0].object.position.x && room.getRoomData().z == intersected[0].object.position.z)
       return true
