@@ -9,8 +9,8 @@ import { IRoomMap } from '../../Model/RoomMap';
 
 export class SceneBuilder {
   private scene: THREE.Scene;
-  private graphicRooms: GraphicRoom[] = []
-  private rooms: IRoomMap[] = []
+  private graphicRooms: GraphicRoom[] = [];
+  private rooms: IRoomMap[] = [];
   constructor() {
     this.scene = new THREE.Scene();
 
@@ -27,25 +27,46 @@ export class SceneBuilder {
   }
 
   display(floor: number, building: string) {
-    this.graphicRooms = []
-    this.resetScene()
-    if(floor === -1 && building === "") return
-    this.createHallway()
+    this.graphicRooms = [];
+    this.resetScene();
+    if (floor === -1 && building === '') return;
+    this.createHallway();
     for (let i = 0; i < this.rooms.length; i++) {
-        var mesh = this.createMesh(this.rooms[i], floor)
-        this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]))
+      var mesh = this.createMesh(this.rooms[i], floor);
+      this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]));
     }
   }
 
-  createMesh(room: IRoomMap, floor: number){
-    const box = new THREE.BoxGeometry(room.width, 1, room.depth)
-    const color = new THREE.Color().setHSL(0 / 8, 1, .5)
-    if(floor === -1)
-      return this.createRoom(box, color, room.x, room.room.floor.number, room.z, room.room.number.toString())
-    return this.createRoom(box, color, room.x, 1, room.z, room.room.number.toString())
+  createMesh(room: IRoomMap, floor: number) {
+    const box = new THREE.BoxGeometry(room.width, 1, room.depth);
+    const color = new THREE.Color().setHSL(0 / 8, 1, 0.5);
+    if (floor === -1)
+      return this.createRoom(
+        box,
+        color,
+        room.x,
+        room.room.floor.number,
+        room.z,
+        room.room.number.toString()
+      );
+    return this.createRoom(
+      box,
+      color,
+      room.x,
+      1,
+      room.z,
+      room.room.number.toString()
+    );
   }
 
-  createRoom(geometry: THREE.BoxGeometry, color: THREE.Color, x: number, y: number, z: number, roomNum: string) : THREE.Mesh {
+  createRoom(
+    geometry: THREE.BoxGeometry,
+    color: THREE.Color,
+    x: number,
+    y: number,
+    z: number,
+    roomNum: string
+  ): THREE.Mesh {
     const material = new THREE.MeshPhongMaterial({
       color,
       opacity: 0.5,
@@ -102,12 +123,11 @@ export class SceneBuilder {
     return this.graphicRooms;
   }
 
-  setRooms(rooms: IRoomMap[]){
-    console.log('setujem', rooms)
-    this.rooms = rooms
-    console.log('rezultat', this.rooms)
+  setRooms(rooms: IRoomMap[]) {
+    console.log('setujem', rooms);
+    this.rooms = rooms;
+    console.log('rezultat', this.rooms);
   }
-
 }
 
 export default SceneBuilder;
