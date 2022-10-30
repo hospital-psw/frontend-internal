@@ -1,9 +1,10 @@
 
 <div class="container">
-    <div class="table-header">
-        <p class="table-title">Feedback</p>
+ 
+    <!--<div class="table-header">
+        <p class="table-title">FEEDBACK</p>
         
-    </div>
+    </div>-->
     <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="creator">
             <th mat-header-cell *matHeaderCellDef class="cell-center"> Creator </th>
@@ -33,4 +34,6 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <mat-paginator>
+    </mat-paginator>
 </div>

@@ -18,7 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { FeedbackModule } from './Manager/feedback/feedback.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -31,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     SidebarComponent,
     DoctorMainComponent,
     PatientTableComponent,
+    
     
   ],
   imports: [
@@ -45,7 +46,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     FeedbackModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule
     
   ],
   bootstrap: [AppComponent],
