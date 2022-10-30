@@ -19,4 +19,8 @@ export class RoomService {
   getBuilding(building: string){
     return this.http.get<IRoomMap[]>(`http://localhost:16177/api/map/getBuilding/${building}`)
   }
+
+  editRoom(room: IRoom){
+    return this.http.put<IRoom>(`http://localhost:16177/api/rooms`, room)
+  }
 }

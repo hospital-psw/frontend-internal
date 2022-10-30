@@ -27,26 +27,28 @@
         <div class="details">
             <mat-form-field>
                 <mat-label>Broj sobe</mat-label>
-                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.number}}">
+                <input class="inputText" matInput [disabled]='isDisabled' value="{{this.room.number}}" #number>
             </mat-form-field>
         </div>
         <div class="details">
             <mat-form-field>
                 <mat-label>Svrha sobe</mat-label>
-                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.purpose}}">
+                <input class="inputText" id="purpose-input" matInput [disabled]='isDisabled' value="{{this.room.purpose}}" #purpose>
             </mat-form-field>
         </div>
-        <div *ngIf="showWorkingHours" class="details">
+        <div [hidden]='showWorkingHours' class="details">
             <mat-form-field>
                 <mat-label>Početak radnog vremena</mat-label>
-                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workingHours.start | date :'hh:mm'}}">
+                <input name="start" class="inputText" id="start" matInput [disabled]='isDisabled' value="{{this.room.workingHours.start | date :'hh:mm'}}" #start>
             </mat-form-field>
         </div>
-        <div *ngIf="showWorkingHours" class="details">
+        <div [hidden]='showWorkingHours' class="details">
             <mat-form-field>
                 <mat-label>Kraj radnog vremena</mat-label>
-                <input class="inputText" matInput disabled="isDisabled" value="{{this.room.workingHours.end | date :'hh:m'}}">
+                <input class="inputText" id="end" matInput [disabled]='isDisabled' value="{{this.room.workingHours.end | date :'hh:mm'}}" #end>
             </mat-form-field>
         </div>
+        <button mat-button class="button" (click)="enableFields()" type="button">Edit</button>
+        <button mat-button class="button" (click)="editRoom(purpose.value, start.value, end.value, number.value)" type="button">Save</button>
     </div>
 </form>

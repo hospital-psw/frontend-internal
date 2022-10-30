@@ -3,8 +3,9 @@ import { IFloor } from "./Floor";
 import { IWorkingHours } from "./WorkingHours";
 
 export interface IRoom{
-  number: number;
+  id: number;
+  number: string;
   floor: IFloor;
   purpose: string;
-  workigHours: IWorkingHours;
+  workingHours: IWorkingHours;
 }

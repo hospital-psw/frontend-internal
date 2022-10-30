@@ -16,6 +16,8 @@ import { PatientTableComponent } from './doctor/patients/patient-table/patient-t
 import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
 import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Moment } from 'moment';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
     MatToolbarModule,
     ViewRoomsModule,
     BloodBankModule,
+    FormsModule
   ],
   bootstrap: [AppComponent],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
