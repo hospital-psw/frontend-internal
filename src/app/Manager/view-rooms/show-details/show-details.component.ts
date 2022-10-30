@@ -5,6 +5,8 @@ import { Room } from 'src/app/doctor/interface/Room';
 import { GraphicRoom } from '../model/GraphicRoom';
 import { RoomService } from '../../service/room-service.service';
 import * as moment from 'moment';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 
 @Component({
@@ -21,11 +23,23 @@ export class ShowDetailsComponent implements OnInit {
   }
   @Input() room: any;
 
+  reactiveForm: FormGroup;
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
   purpose: string = "";
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.reactiveForm = new FormGroup({
+      buildingName: new FormControl(this.room.floor.building.name),
+      buildingAdsress: new FormControl(this.room.floor.building.address),
+      numberOfFloor: new FormControl(this.room.floor.number),
+      purposeOfFloor: new FormControl(this.room.floor.purpose),
+      numberOfRoom: new FormControl(this.room.number),
+      purposeOfRoom: new FormControl(this.room.purpose),
+      startWorkingHours: new FormControl(this.room.workingHours.start),
+      endWorkingHours: new FormControl(this.room.workingHours.end)
+    });
+  }
 
   checkWorkingHours(): void {
     if (this.room.workingHours.start != this.room.workingHours.end) {

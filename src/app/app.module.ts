@@ -38,9 +38,14 @@ import { Moment } from 'moment';
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
 export class AppModule {}
