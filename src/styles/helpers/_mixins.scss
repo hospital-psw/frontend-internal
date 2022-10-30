@@ -1,0 +1,16 @@
+// available arguments for breakpoints
+// -phone 
+// -tablet
+// -wide-screen
+
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media (max-width: 600px) { @content };
+    }
+    @if $breakpoint == tablet {
+        @media (max-width: 1000px) { @content };
+    }
+    @if $breakpoint == wide-screen {
+        @media (min-width: 2560px) { @content };
+    }
+}

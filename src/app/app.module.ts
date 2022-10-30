@@ -19,7 +19,6 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Moment } from 'moment';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +35,7 @@ import { Moment } from 'moment';
     RouterModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
     FormsModule

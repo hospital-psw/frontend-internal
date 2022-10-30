@@ -55,6 +55,7 @@
             opacity: 1;
             background: rgba(255,255,255,.23);
             transform: scale(1.05);
+           
         }
 
         &__link {
@@ -63,7 +64,7 @@
             align-items: center;
             margin: 1rem 1.5rem;
             border-radius: .4rem;
-            padding: .2rem 2rem;
+            padding: 1.5rem 2rem;
             text-decoration: none;
             color: #fff;
             font-size: 1.5rem;
@@ -76,13 +77,22 @@
                 fill: #fff;
                 margin-right: 1rem;
             }
+
+            &-text {
+                margin: 0;
+            }
         }
 
         &__link:hover {
             opacity: 1;
             background: rgba(255, 255, 255, .23);
             transform: scale(1.05);
-            transition-duration: .3s;
+            transition-duration: .4s;
+        }
+
+        &__link:active {
+            transform: scale(0.85);
+            transition-duration: .5s;
         }
         
     }

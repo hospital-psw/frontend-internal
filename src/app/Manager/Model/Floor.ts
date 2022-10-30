@@ -1,4 +1,4 @@
-import { IBuilding } from "./Building"
+import { IBuilding } from './Building';
 
 export interface IFloor{
   id: number,

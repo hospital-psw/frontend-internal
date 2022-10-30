@@ -10,7 +10,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-show-details',
   templateUrl: './show-details.component.html',
-  styleUrls: ['./show-details.component.scss']
+  styleUrls: ['./show-details.component.scss'],
 })
 export class ShowDetailsComponent implements OnInit {
 
@@ -18,21 +18,19 @@ export class ShowDetailsComponent implements OnInit {
     setInterval(() => {
       this.checkWorkingHours();
     }, 100);
-   }
+  }
   @Input() room: any;
 
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
   purpose: string = "";
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  checkWorkingHours():void{
-    if(this.room.workingHours.id != -1)
-    {
+  checkWorkingHours(): void {
+    if (this.room.workingHours.start != this.room.workingHours.end) {
       this.showWorkingHours = true;
-    }else{
+    } else {
       this.showWorkingHours = false;
     }
   }
