@@ -8,5 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PatientTableComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    return;
+  }
 }

@@ -19,5 +19,7 @@ export class DoctorMainComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    return;
+  }
 }

@@ -1,22 +1,20 @@
-import { IRoom } from "../../Model/Room";
-import { IRoomMap } from "../../Model/RoomMap";
-
+import { IRoom } from '../../Model/Room';
+import { IRoomMap } from '../../Model/RoomMap';
 
 export class GraphicRoom {
-
-  private graphicRoom: THREE.Mesh
-  private roomData: IRoomMap
+  private graphicRoom: THREE.Mesh;
+  private roomData: IRoomMap;
 
   constructor(element: THREE.Mesh, roomData: IRoomMap) {
-    this.graphicRoom = element
-    this.roomData = roomData
+    this.graphicRoom = element;
+    this.roomData = roomData;
   }
 
   getGraphicRoom() {
-    return this.graphicRoom
+    return this.graphicRoom;
   }
 
-  getRoomData(){
-    return this.roomData
+  getRoomData() {
+    return this.roomData;
   }
 }

@@ -1,9 +1,9 @@
-import { IBuilding } from "./Building";
-import { IFloor } from "./Floor";
+import { IBuilding } from './Building';
+import { IFloor } from './Floor';
 
-export interface IRoom{
+export interface IRoom {
   number: number;
   floor: IFloor;
   building: IBuilding;
-  purpose: string
+  purpose: string;
 }

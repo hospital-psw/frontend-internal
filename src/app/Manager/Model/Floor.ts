@@ -1,4 +1,4 @@
-export interface IFloor{
-  number: number,
-  purpose: string
+export interface IFloor {
+  number: number;
+  purpose: string;
 }

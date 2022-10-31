@@ -16,9 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'display',
-    component: ViewRoomsComponent
-  }
-]
+    component: ViewRoomsComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
