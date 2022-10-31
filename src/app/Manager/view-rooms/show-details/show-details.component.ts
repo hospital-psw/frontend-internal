@@ -15,6 +15,9 @@ export class ShowDetailsComponent implements OnInit {
     }, 100);
   }
   @Input() room: any;
+  @Input() showBuildingDetails: boolean;
+  @Input() showFloorDetails: boolean;
+  @Input() showRoomDetails: boolean;
 
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;

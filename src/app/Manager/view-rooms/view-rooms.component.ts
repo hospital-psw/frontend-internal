@@ -33,7 +33,11 @@ export class ViewRoomsComponent implements OnInit {
   private sub?: Subscription;
 
   rooms: IRoomMap[] = [];
+  private buildingRooms: IRoomMap[] = [];
   public showDetails: boolean = false;
+  public showBuildingDetails = false;
+  public showFloorDetails = false;
+  public showRoomDetails: boolean = false;
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -89,13 +93,23 @@ export class ViewRoomsComponent implements OnInit {
   selectFloor(evt: any) {
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
-    this.showDetails = false;
+    this.showRoomDetails = false;
+    this.showDetails = true;
   }
 
   selectHospital(evt: any) {
     this.building = evt.value;
     this.getRooms(this.building, this.floor);
-    this.showDetails = false;
+    if(this.floor != -1)
+    {
+      this.showFloorDetails = true;
+    }
+    else
+    {
+      this.showFloorDetails = false;
+    }
+    this.showRoomDetails = false;
+    this.showDetails = true;
   }
 
   getRooms(building: string, floor: number) {
@@ -105,6 +119,8 @@ export class ViewRoomsComponent implements OnInit {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
         this.scene?.display(this.floor, this.building);
+        this.clickedRoom = this.rooms[0].room
+        this.showBuildingDetails = true
       });
     }
     if (building !== '' && floor !== -1) {
@@ -114,6 +130,8 @@ export class ViewRoomsComponent implements OnInit {
           this.rooms = data;
           this.scene?.setRooms(this.rooms);
           this.scene?.display(this.floor, this.building);
+          this.clickedRoom = this.rooms[0].room
+          this.showFloorDetails = true;
         });
     }
   }
@@ -157,6 +175,7 @@ export class ViewRoomsComponent implements OnInit {
           this.cdRef.detectChanges();
         }
       }
+      this.showRoomDetails = roomFound;
   }
   isRoomClicked(room: GraphicRoom, intersected: any): boolean {
     if (this.doCoordinatesOverlap(room, intersected)) return true;
