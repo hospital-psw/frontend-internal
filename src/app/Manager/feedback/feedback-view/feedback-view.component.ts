@@ -26,24 +26,48 @@ export class FeedbackViewComponent implements OnInit {
   public dataSource = ELEMENT_DATA;
   */
  public dataSource = new MatTableDataSource<Feedback>();
-  public displayedColumns = ['creator', 'message', 'approve', 'deny'];
+  public displayedColumns = ['creator', 'message', 'status'];
   public feedbacks: Feedback[] = [];
   constructor(private fbservice: FeedbackService, private router: Router) { }
-
+ 
+  ngOnInit(): void {
+    this.fbservice.getFeedback().subscribe(res => {
+      this.feedbacks = res;
+      this.dataSource.data = this.feedbacks;
+    })
+  }
   getAnonymous(): void {
     this.fbservice.getAnonymous().subscribe(res => {
       this.feedbacks = res;
       this.dataSource.data = this.feedbacks;
     })
   }
-  getApproved(): void {
-    this.fbservice.getApproved().subscribe(res => {
+  getDenied(): void {
+    this.fbservice.getDenied().subscribe(res => {
       this.feedbacks = res;
       this.dataSource.data = this.feedbacks;
     })
   }
-  ngOnInit(): void {
-    this.fbservice.getFeedback().subscribe(res => {
+  getPending(): void {
+    this.fbservice.getPending().subscribe(res => {
+      this.feedbacks = res;
+      this.dataSource.data = this.feedbacks;
+    })
+  }
+  getPublic(): void {
+    this.fbservice.getPublic().subscribe(res => {
+      this.feedbacks = res;
+      this.dataSource.data = this.feedbacks;
+    })
+  }
+  getPrivate(): void {
+    this.fbservice.getPrivate().subscribe(res => {
+      this.feedbacks = res;
+      this.dataSource.data = this.feedbacks;
+    })
+  }
+  getApproved(): void {
+    this.fbservice.getApproved().subscribe(res => {
       this.feedbacks = res;
       this.dataSource.data = this.feedbacks;
     })
