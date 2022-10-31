@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+  OnDestroy,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -17,7 +23,7 @@ import { TorusGeometry } from 'three';
   templateUrl: './view-rooms.component.html',
   styleUrls: ['./view-rooms.component.scss'],
 })
-export class ViewRoomsComponent implements OnInit {
+export class ViewRoomsComponent implements OnInit, OnDestroy {
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -99,12 +105,9 @@ export class ViewRoomsComponent implements OnInit {
   selectHospital(evt: any) {
     this.building = evt.value;
     this.getRooms(this.building, this.floor);
-    if(this.floor != -1)
-    {
+    if (this.floor != -1) {
       this.showFloorDetails = true;
-    }
-    else
-    {
+    } else {
       this.showFloorDetails = false;
     }
     this.showRoomDetails = false;
@@ -118,8 +121,8 @@ export class ViewRoomsComponent implements OnInit {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
         this.scene?.display(this.floor, this.building);
-        this.clickedRoom = this.rooms[0].room
-        this.showBuildingDetails = true
+        this.clickedRoom = this.rooms[0].room;
+        this.showBuildingDetails = true;
       });
     }
     if (building !== '' && floor !== -1) {
@@ -129,7 +132,7 @@ export class ViewRoomsComponent implements OnInit {
           this.rooms = data;
           this.scene?.setRooms(this.rooms);
           this.scene?.display(this.floor, this.building);
-          this.clickedRoom = this.rooms[0].room
+          this.clickedRoom = this.rooms[0].room;
           this.showFloorDetails = true;
         });
     }
@@ -174,7 +177,7 @@ export class ViewRoomsComponent implements OnInit {
           this.cdRef.detectChanges();
         }
       }
-      this.showRoomDetails = roomFound;
+    this.showRoomDetails = roomFound;
   }
   isRoomClicked(room: GraphicRoom, intersected: any): boolean {
     if (this.doCoordinatesOverlap(room, intersected)) return true;
