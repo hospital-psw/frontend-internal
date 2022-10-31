@@ -51,6 +51,21 @@
   font-size: 1.2rem;
 }
 
+.wrap__answer {
+  display: flex;
+  flex-direction: column;
+}
+
+.response__pos {
+  font-size: 1.2rem;
+  color: green;
+}
+
+.response__neg {
+  font-size: 1.2rem;
+  color: red;
+}
+
 .wraper {
   display: flex;
   justify-content: space-around;
@@ -63,7 +78,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1100px) {
   .title {
     display: flex;
     flex-direction: column;
