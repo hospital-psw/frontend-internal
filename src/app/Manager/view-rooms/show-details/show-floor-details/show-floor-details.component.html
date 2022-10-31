@@ -1,0 +1,27 @@
+<form class="details-form">
+    <div class="blocks">
+      <div class="details">
+        <mat-form-field>
+          <mat-label>Broj sprata</mat-label>
+          <input
+            class="inputText"
+            matInput
+            disabled="isDisabled"
+            value="{{ this.room.floor.number }}"
+          />
+        </mat-form-field>
+      </div>
+      <div class="details">
+        <mat-form-field>
+          <mat-label>Svrha sprata</mat-label>
+          <input
+            class="inputText"
+            matInput
+            disabled="isDisabled"
+            value="{{ this.room.floor.purpose }}"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  
