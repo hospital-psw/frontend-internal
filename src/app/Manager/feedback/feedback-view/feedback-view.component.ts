@@ -30,6 +30,18 @@ export class FeedbackViewComponent implements OnInit {
   public feedbacks: Feedback[] = [];
   constructor(private fbservice: FeedbackService, private router: Router) { }
 
+  getAnonymous(): void {
+    this.fbservice.getAnonymous().subscribe(res => {
+      this.feedbacks = res;
+      this.dataSource.data = this.feedbacks;
+    })
+  }
+  getApproved(): void {
+    this.fbservice.getApproved().subscribe(res => {
+      this.feedbacks = res;
+      this.dataSource.data = this.feedbacks;
+    })
+  }
   ngOnInit(): void {
     this.fbservice.getFeedback().subscribe(res => {
       this.feedbacks = res;
