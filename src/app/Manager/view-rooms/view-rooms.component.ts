@@ -33,7 +33,6 @@ export class ViewRoomsComponent implements OnInit {
   private sub?: Subscription;
 
   rooms: IRoomMap[] = [];
-  private buildingRooms: IRoomMap[] = [];
   public showDetails: boolean = false;
   public showBuildingDetails = false;
   public showFloorDetails = false;
