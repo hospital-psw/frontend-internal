@@ -14,6 +14,8 @@ export class DetailComponent implements OnInit {
   bloodTypes = Object.values(BloodType).splice(0, 8);
   hide = true;
   selected: any = '';
+  showResponse = false;
+  showAnwser = false;
 
   constructor(
     private bloodBankService: BloodBankService,
@@ -29,8 +31,16 @@ export class DetailComponent implements OnInit {
       });
     });
   }
-  ff(): void {
-    alert(this.selected);
+  checkBoodType(id: number): void {
+    // alert(this.selected);
+    this.bloodBankService.checkBoodType(id, this.selected).subscribe((res) => {
+      this.showAnwser = true;
+      this.showResponse = res;
+    });
+  }
+
+  hideResponse(): void {
+    this.showAnwser = false;
   }
 
   public updateBloodBank() {
