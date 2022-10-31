@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+  OnDestroy,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -17,7 +23,7 @@ import { TorusGeometry } from 'three';
   templateUrl: './view-rooms.component.html',
   styleUrls: ['./view-rooms.component.scss'],
 })
-export class ViewRoomsComponent implements OnInit {
+export class ViewRoomsComponent implements OnInit, OnDestroy {
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -38,6 +44,7 @@ export class ViewRoomsComponent implements OnInit {
   public showFloorDetails = false;
   public showRoomDetails: boolean = false;
   public switchDetails: number; //0 - building; 1 - floor; 2 - room
+
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -98,6 +105,7 @@ export class ViewRoomsComponent implements OnInit {
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
     //this.showDetails = true;
+
   }
 
   selectHospital(evt: any) {
