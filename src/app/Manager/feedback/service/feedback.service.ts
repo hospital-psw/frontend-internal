@@ -34,4 +34,10 @@ export class FeedbackService {
   getFeedback(): Observable<Feedback[]>{
     return this.http.get<Feedback[]>(this.apiHost + 'api/Feedback/get/managerfeedback', {headers: this.headers});
   }
+  MakeApproved(id: number): Observable<Feedback>{
+    return this.http.put<Feedback>(this.apiHost + 'api/Feedback/make/approved/'+ id ,{headers: this.headers});
+  }
+  MakeDenied(id: number): Observable<Feedback>{
+    return this.http.put<Feedback>(this.apiHost + 'api/Feedback/make/denied/'+ id ,{headers: this.headers});
+  }
 }

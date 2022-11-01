@@ -72,4 +72,22 @@ export class FeedbackViewComponent implements OnInit {
       this.dataSource.data = this.feedbacks;
     })
   }
+  
+  public MakeApproved(id: number) {
+    this.fbservice.MakeApproved(id).subscribe(res => {
+      this.fbservice.getApproved().subscribe(res => {
+        this.feedbacks = res;
+        this.dataSource.data = this.feedbacks;
+      })
+    })
+  }
+  public MakeDenied(id: number) {
+    this.fbservice.MakeDenied(id).subscribe(res => {
+      this.fbservice.getDenied().subscribe(res => {
+        this.feedbacks = res;
+        this.dataSource.data = this.feedbacks;
+      })
+    })
+  }
+  
 }
