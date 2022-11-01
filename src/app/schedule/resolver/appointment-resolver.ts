@@ -8,12 +8,11 @@ import { ScheduleService } from '../service/schedule.service';
   providedIn: 'root',
 })
 export class AppointmentResolver implements Resolve<Appointment> {
-
   constructor(private appointmentService: ScheduleService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<Appointment> {
     console.log('Called get Appointment in resolver...', route);
-    let appointmentId = parseInt(route.paramMap.get("id") as any);
+    let appointmentId = parseInt(route.paramMap.get('id') as any);
     return this.appointmentService.getAppointment(appointmentId);
   }
 }

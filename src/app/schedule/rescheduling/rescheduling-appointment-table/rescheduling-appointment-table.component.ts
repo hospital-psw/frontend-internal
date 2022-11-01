@@ -13,18 +13,16 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-rescheduling-appointment-table',
   templateUrl: './rescheduling-appointment-table.component.html',
-  styleUrls: ['./rescheduling-appointment-table.component.scss']
+  styleUrls: ['./rescheduling-appointment-table.component.scss'],
 })
 export class ReschedulingAppointmentTableComponent implements OnInit {
-
   //podatak koji se dobija iz kartice (child-a)
   appointment: Appointment;
   @Input() recommendedDates: RecommendedDatesDTO[] = null as any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.appointment = this.route.snapshot.data["appointment"];
+    this.appointment = this.route.snapshot.data['appointment'];
   }
-
 }

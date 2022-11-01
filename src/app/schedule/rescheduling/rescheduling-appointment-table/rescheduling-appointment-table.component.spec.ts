@@ -8,9 +8,8 @@ describe('ReschedulingAppointmentTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ReschedulingAppointmentTableComponent ]
-    })
-    .compileComponents();
+      declarations: [ReschedulingAppointmentTableComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ReschedulingAppointmentTableComponent);
     component = fixture.componentInstance;

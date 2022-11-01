@@ -1,11 +1,5 @@
 {
   "root": true,
-  "prettier/prettier": [
-    "error",
-    {
-      "endOfLine": "auto"
-    }
-  ],
   "ignorePatterns": [
     "projects/**/*"
   ],

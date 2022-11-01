@@ -36,7 +36,7 @@ const colors: Record<string, EventColor> = {
   yellow: {
     primary: '#e3bc08',
     secondary: '#FDF1BA',
-  }
+  },
 };
 
 @Component({
@@ -66,7 +66,7 @@ export class AppointmentsComponent implements OnInit {
   examinationTypes: ExaminationType[];
 
   canClick: boolean = false;
-  selectedEvent : CalendarEvent<{ appointment: Appointment }> = {
+  selectedEvent: CalendarEvent<{ appointment: Appointment }> = {
     title: null as any,
     start: null as any,
     color: { ...colors['blue'] },
@@ -74,7 +74,10 @@ export class AppointmentsComponent implements OnInit {
     meta: null as any,
   };
 
-  constructor(private appointmentService: ScheduleService, private router: Router) {}
+  constructor(
+    private appointmentService: ScheduleService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.canClick = false;
@@ -143,18 +146,21 @@ export class AppointmentsComponent implements OnInit {
     this.viewDateEnd = addDays(this.viewDate, 6);
   }
 
-  onEventClick(event : any) : void {
+  onEventClick(event: any): void {
     this.canClick = true;
     this.selectedEvent.color = colors['blue'];
     this.selectedEvent = event.event;
     this.selectedEvent.color = colors['red'];
   }
 
-  rescheduleAppointment(event: any) : void {
-    this.router.navigate(['/reschedule-appointment', this.selectedEvent.meta?.appointment.id]);
+  rescheduleAppointment(event: any): void {
+    this.router.navigate([
+      '/reschedule-appointment',
+      this.selectedEvent.meta?.appointment.id,
+    ]);
   }
 
-  cancelAppointment(event: any) : void {
-    console.log('kita')
+  cancelAppointment(event: any): void {
+    console.log('kita');
   }
 }

@@ -22,7 +22,7 @@ import {
         style({ transform: 'translateX(0)', opacity: 1 }),
         animate('500ms', style({ transform: 'translateX(-100%)', opacity: 0 })),
       ]),
-    ])
+    ]),
   ],
 })
 export class ApplicationMainComponent implements OnInit {

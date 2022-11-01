@@ -12,7 +12,6 @@ import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
   providedIn: 'root',
 })
 export class ScheduleService {
-
   private apiServerUrl = environment.apiAppointmentUrl;
 
   constructor(private http: HttpClient) {}
@@ -23,7 +22,9 @@ export class ScheduleService {
     return this.http.post<Appointment>(`${this.apiServerUrl}`, appointment);
   }
 
-  public rescheduleAppointment(appointment: ReschedulingAppointmentDTO): Observable<Appointment> {
+  public rescheduleAppointment(
+    appointment: ReschedulingAppointmentDTO
+  ): Observable<Appointment> {
     return this.http.put<Appointment>(`${this.apiServerUrl}`, appointment);
   }
 
@@ -39,7 +40,12 @@ export class ScheduleService {
     return this.http.get<Appointment[]>(`${this.apiServerUrl}/doctor/8`);
   }
 
-  public getAllRecommended(recommendedDto: RecommendedDTO): Observable<RecommendedDatesDTO[]> {
-    return this.http.post<RecommendedDatesDTO[]>(`${this.apiServerUrl}/recommend`, recommendedDto);
+  public getAllRecommended(
+    recommendedDto: RecommendedDTO
+  ): Observable<RecommendedDatesDTO[]> {
+    return this.http.post<RecommendedDatesDTO[]>(
+      `${this.apiServerUrl}/recommend`,
+      recommendedDto
+    );
   }
 }

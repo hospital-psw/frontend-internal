@@ -14,46 +14,59 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-rescheduling-appointment-form',
   templateUrl: './rescheduling-appointment-form.component.html',
-  styleUrls: ['./rescheduling-appointment-form.component.scss']
+  styleUrls: ['./rescheduling-appointment-form.component.scss'],
 })
 export class ReschedulingAppointmentFormComponent implements OnInit {
-
   @Output() outputDates = new EventEmitter<RecommendedDatesDTO[]>();
   appointment: Appointment;
   rooms: IRoom[];
-  recommendedDto : RecommendedDTO;
+  recommendedDto: RecommendedDTO;
   examinationTypes: ExaminationType[];
   num: any;
   recommendedDates: Date[];
 
-  constructor(private appointmentService: ScheduleService, private datePipe: DatePipe, private route: ActivatedRoute, private router: Router, private toastrService: ToastrService) { }
+  constructor(
+    private appointmentService: ScheduleService,
+    private datePipe: DatePipe,
+    private route: ActivatedRoute,
+    private router: Router,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.appointment = this.route.snapshot.data["appointment"];
+    this.appointment = this.route.snapshot.data['appointment'];
     this.examinationTypes = Object.values(ExaminationType);
 
     this.recommendedDto = {
       patientId: this.appointment.patient.id,
       doctorId: 8,
-      date: null as any
-    }
+      date: null as any,
+    };
 
     this.num = this.appointment.examType;
     this.appointment.examType = this.examinationTypes[this.num] as any;
-    this.appointment.date = this.datePipe.transform(new Date(this.appointment.date), 'dd.MM.yyyy. HH:mm') as any;
+    this.appointment.date = this.datePipe.transform(
+      new Date(this.appointment.date),
+      'dd.MM.yyyy. HH:mm'
+    ) as any;
   }
 
-  onClickShowRecommended() : void {
-    if(this.recommendedDto.date == null) {
-      this.toastrService.warning("Please, specify a date!")
+  onClickShowRecommended(): void {
+    if (this.recommendedDto.date == null) {
+      this.toastrService.warning('Please, specify a date!');
       return;
     }
     this.getRecommendedAppointments();
   }
 
-  getRecommendedAppointments() : void {
+  getRecommendedAppointments(): void {
     let date = this.recommendedDto.date;
-    this.recommendedDto.date = new Date(date?.getFullYear()!, date?.getMonth()!, date?.getDate(), date?.getHours()! + 5);
+    this.recommendedDto.date = new Date(
+      date?.getFullYear()!,
+      date?.getMonth()!,
+      date?.getDate(),
+      date?.getHours()! + 5
+    );
     this.appointmentService.getAllRecommended(this.recommendedDto).subscribe(
       (response: RecommendedDatesDTO[]) => {
         this.outputDates.emit(response);
@@ -63,5 +76,4 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
       }
     );
   }
-
 }

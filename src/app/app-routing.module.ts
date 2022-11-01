@@ -23,13 +23,13 @@ const routes: Routes = [
     path: 'reschedule-appointment/:id',
     component: ReschedulingAppointmentComponent,
     resolve: {
-      appointment: AppointmentResolver
-    }
+      appointment: AppointmentResolver,
+    },
   },
   {
     path: 'feedback',
     component: FeedbackViewComponent,
-  }
+  },
 ];
 
 @NgModule({
