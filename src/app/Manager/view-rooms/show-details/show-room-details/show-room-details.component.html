@@ -1,0 +1,88 @@
+<form
+  class="details-form"
+  (submit)="
+    editRoom(purpose.value, start.value, end.value, number.value, $event)
+  "
+>
+  <div class="blocks">
+    <div class="details">
+      <mat-form-field>
+        <mat-label>Broj sobe</mat-label>
+        <input
+          required
+          class="inputText"
+          matInput
+          [disabled]="isDisabled"
+          value="{{ this.room.number }}"
+          #number
+        />
+      </mat-form-field>
+    </div>
+    <div class="details">
+      <mat-form-field>
+        <mat-label>Svrha sobe</mat-label>
+        <input
+          required
+          class="inputText"
+          matInput
+          [disabled]="isDisabled"
+          value="{{ this.room.purpose }}"
+          #purpose
+        />
+      </mat-form-field>
+    </div>
+    <div
+      [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
+      class="details"
+    >
+      <mat-form-field>
+        <mat-label>Početak radnog vremena</mat-label>
+        <input
+          required
+          class="inputText"
+          matInput
+          [disabled]="isDisabled"
+          value="{{ this.room.workingHours.start | date: 'hh:mm' }}"
+          #start
+        />
+      </mat-form-field>
+    </div>
+    <div
+      [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
+      class="details"
+    >
+      <mat-form-field>
+        <mat-label>Kraj radnog vremena</mat-label>
+        <input
+          required
+          class="inputText"
+          matInput
+          [disabled]="isDisabled"
+          value="{{ this.room.workingHours.end | date: 'hh:mm' }}"
+          #end
+        />
+      </mat-form-field>
+    </div>
+    <div class="button1">
+      <button
+        class="button-edit"
+        mat-button
+        class="button"
+        (click)="enableFields()"
+        type="button"
+      >
+        Edit
+      </button>
+    </div>
+    <div class="button2">
+      <input
+        (submit)="
+          editRoom(purpose.value, start.value, end.value, number.value, $event)
+        "
+        class="button-save"
+        type="submit"
+        value="Save"
+      />
+    </div>
+  </div>
+</form>

@@ -1,0 +1,47 @@
+<form class="details-form" (submit)="editBuilding(name.value, $event)">
+  <div class="blocks">
+    <div class="details">
+      <mat-form-field>
+        <mat-label>Naziv zgrade</mat-label>
+        <input
+          required
+          class="inputText"
+          matInput
+          [disabled]="isDisabled"
+          value="{{ room.floor.building.name }}"
+          #name
+        />
+      </mat-form-field>
+    </div>
+    <div class="details">
+      <mat-form-field>
+        <mat-label>Adresa zgrade</mat-label>
+        <input
+          class="inputText"
+          disabled="isDisabled"
+          matInput
+          value="{{ room.floor.building.address }}"
+        />
+      </mat-form-field>
+    </div>
+    <div class="button1">
+      <button
+        class="button-edit"
+        mat-button
+        class="button"
+        (click)="enableFields()"
+        type="button"
+      >
+        Edit
+      </button>
+    </div>
+    <div class="button2">
+      <input
+        (submit)="editBuilding(name.value, $event)"
+        class="button-save"
+        type="submit"
+        value="Save"
+      />
+    </div>
+  </div>
+</form>

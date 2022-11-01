@@ -24,7 +24,18 @@
       <canvas class="canvas" height="300px" width="300px"></canvas>
     </div>
   </div>
-  <div *ngIf="this.showDetails" class="form">
-    <app-show-details [room]="clickedRoom" [showBuildingDetails]="showBuildingDetails" [showFloorDetails]="showFloorDetails" [showRoomDetails]="showRoomDetails"></app-show-details>
+  <div ngSwitch="switchDetails">
+    <app-show-building-details
+      *ngIf="this.showBuildingDetails"
+      [room]="clickedRoom"
+    ></app-show-building-details>
+    <app-show-floor-details
+      *ngIf="this.showFloorDetails"
+      [room]="clickedRoom"
+    ></app-show-floor-details>
+    <app-show-room-details
+      *ngIf="this.showRoomDetails"
+      [room]="clickedRoom"
+    ></app-show-room-details>
   </div>
 </div>

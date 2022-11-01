@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  ChangeDetectorRef,
+  OnDestroy,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -17,7 +23,7 @@ import { TorusGeometry } from 'three';
   templateUrl: './view-rooms.component.html',
   styleUrls: ['./view-rooms.component.scss'],
 })
-export class ViewRoomsComponent implements OnInit {
+export class ViewRoomsComponent implements OnInit, OnDestroy {
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -37,6 +43,7 @@ export class ViewRoomsComponent implements OnInit {
   public showBuildingDetails = false;
   public showFloorDetails = false;
   public showRoomDetails: boolean = false;
+  public switchDetails: number; //0 - building; 1 - floor; 2 - room
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -90,25 +97,22 @@ export class ViewRoomsComponent implements OnInit {
   }
 
   selectFloor(evt: any) {
+    this.showBuildingDetails = false;
+    this.showFloorDetails = true;
+    this.showRoomDetails = false;
+    this.switchDetails = 1;
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
-    this.showRoomDetails = false;
-    this.showDetails = true;
+    //this.showDetails = true;
   }
 
   selectHospital(evt: any) {
+    this.showBuildingDetails = true;
+    this.showFloorDetails = false;
+    this.showRoomDetails = false;
+    this.switchDetails = 0;
     this.building = evt.value;
     this.getRooms(this.building, this.floor);
-    if(this.floor != -1)
-    {
-      this.showFloorDetails = true;
-    }
-    else
-    {
-      this.showFloorDetails = false;
-    }
-    this.showRoomDetails = false;
-    this.showDetails = true;
   }
 
   getRooms(building: string, floor: number) {
@@ -118,8 +122,7 @@ export class ViewRoomsComponent implements OnInit {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
         this.scene?.display(this.floor, this.building);
-        this.clickedRoom = this.rooms[0].room
-        this.showBuildingDetails = true
+        this.clickedRoom = this.rooms[0].room;
       });
     }
     if (building !== '' && floor !== -1) {
@@ -129,8 +132,7 @@ export class ViewRoomsComponent implements OnInit {
           this.rooms = data;
           this.scene?.setRooms(this.rooms);
           this.scene?.display(this.floor, this.building);
-          this.clickedRoom = this.rooms[0].room
-          this.showFloorDetails = true;
+          this.clickedRoom = this.rooms[0].room;
         });
     }
   }
@@ -172,9 +174,13 @@ export class ViewRoomsComponent implements OnInit {
           roomFound = true;
           this.showDetails = roomFound;
           this.cdRef.detectChanges();
+          this.showFloorDetails = false;
+          this.showBuildingDetails = false;
+          this.showRoomDetails = roomFound;
+          this.switchDetails = 2;
         }
       }
-      this.showRoomDetails = roomFound;
+    //this.showRoomDetails = roomFound;
   }
   isRoomClicked(room: GraphicRoom, intersected: any): boolean {
     if (this.doCoordinatesOverlap(room, intersected)) return true;

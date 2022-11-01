@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppointmentResolver } from './doctor/resolver/appointment-resolver';
 import { AppointmentsComponent } from './doctor/appointment/show-all/appointments/appointments.component';
 import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
+import { FeedbackViewComponent } from './Manager/feedback/feedback-view/feedback-view.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'display',
     component: ViewRoomsComponent,
+  },
+  {
+    path: 'feedback',
+    component: FeedbackViewComponent,
   },
 ];
 
