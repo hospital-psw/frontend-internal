@@ -28,10 +28,10 @@ export class RoomService {
   }
 
   editBuilding(building: IBuilding){
-    return this.http.put<IBuilding>(`gyyuy`, building)
+    return this.http.put<IBuilding>(`http://localhost:16177/api/buildings`, building)
   }
 
   editFloor(floor: IFloor){
-    return this.http.put<IBuilding>(`gyyuy`, floor)
+    return this.http.put<IBuilding>(`http://localhost:16177/api/floors`, floor)
   }
 }
