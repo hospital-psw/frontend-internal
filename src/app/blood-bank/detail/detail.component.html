@@ -37,7 +37,8 @@
       <div class="wraper__form">
         <mat-form-field appearance="fill" class="specialType">
           <mat-label>Select</mat-label>
-          <mat-select [(ngModel)]="selected"> <!-- (ngModelChange)="ff()" -->
+          <mat-select [(ngModel)]="selected">
+            <!-- (ngModelChange)="ff()" -->
             <mat-option
               *ngFor="let type of bloodTypes; let i = index"
               [value]="type"
