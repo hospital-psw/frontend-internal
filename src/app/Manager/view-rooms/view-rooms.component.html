@@ -25,8 +25,17 @@
     </div>
   </div>
   <div ngSwitch="switchDetails">
-    <app-show-building-details *ngIf="this.showBuildingDetails" [room]="clickedRoom"></app-show-building-details>
-    <app-show-floor-details *ngIf="this.showFloorDetails" [room]="clickedRoom"></app-show-floor-details>
-    <app-show-room-details *ngIf="this.showRoomDetails" [room]="clickedRoom"></app-show-room-details>
+    <app-show-building-details
+      *ngIf="this.showBuildingDetails"
+      [room]="clickedRoom"
+    ></app-show-building-details>
+    <app-show-floor-details
+      *ngIf="this.showFloorDetails"
+      [room]="clickedRoom"
+    ></app-show-floor-details>
+    <app-show-room-details
+      *ngIf="this.showRoomDetails"
+      [room]="clickedRoom"
+    ></app-show-room-details>
   </div>
 </div>

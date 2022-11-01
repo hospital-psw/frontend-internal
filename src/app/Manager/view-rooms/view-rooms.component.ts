@@ -45,7 +45,6 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   public showRoomDetails: boolean = false;
   public switchDetails: number; //0 - building; 1 - floor; 2 - room
 
-
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
     this.scene = new SceneBuilder();
@@ -105,7 +104,6 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
     //this.showDetails = true;
-
   }
 
   selectHospital(evt: any) {
@@ -124,7 +122,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
         this.scene?.display(this.floor, this.building);
-        this.clickedRoom = this.rooms[0].room
+        this.clickedRoom = this.rooms[0].room;
       });
     }
     if (building !== '' && floor !== -1) {
@@ -134,7 +132,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
           this.rooms = data;
           this.scene?.setRooms(this.rooms);
           this.scene?.display(this.floor, this.building);
-          this.clickedRoom = this.rooms[0].room
+          this.clickedRoom = this.rooms[0].room;
         });
     }
   }
@@ -182,7 +180,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
           this.switchDetails = 2;
         }
       }
-      //this.showRoomDetails = roomFound;
+    //this.showRoomDetails = roomFound;
   }
   isRoomClicked(room: GraphicRoom, intersected: any): boolean {
     if (this.doCoordinatesOverlap(room, intersected)) return true;

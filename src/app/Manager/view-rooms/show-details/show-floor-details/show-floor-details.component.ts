@@ -6,37 +6,39 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-show-floor-details',
   templateUrl: './show-floor-details.component.html',
-  styleUrls: ['./show-floor-details.component.scss']
+  styleUrls: ['./show-floor-details.component.scss'],
 })
 export class ShowFloorDetailsComponent implements OnInit {
-
-  constructor(private roomService: RoomService, private toastr: ToastrService) { }
+  constructor(
+    private roomService: RoomService,
+    private toastr: ToastrService
+  ) {}
 
   @Input() room: any;
   isDisabled: boolean = true;
-  
-  ngOnInit(): void {
-  }
 
-  enableFields(){
+  ngOnInit(): void {}
+
+  enableFields() {
     this.isDisabled = false;
   }
 
-  editFloor(newPurpose: string, e: Event){
-  
+  editFloor(newPurpose: string, e: Event) {
     e.preventDefault();
-    const updatedFloor: IFloor = {id: this.room.floor.id,
-                                number: this.room.floor.number,
-                                purpose: newPurpose,
-                                building: this.room.floor.building
-                                }
-    this.roomService.editFloor(updatedFloor).subscribe(
-      {next:(res) =>{
+    const updatedFloor: IFloor = {
+      id: this.room.floor.id,
+      number: this.room.floor.number,
+      purpose: newPurpose,
+      building: this.room.floor.building,
+    };
+    this.roomService.editFloor(updatedFloor).subscribe({
+      next: (res) => {
         this.showSuccess();
       },
-      error:(e) => {this.showError()}
-    }
-    );
+      error: (e) => {
+        this.showError();
+      },
+    });
   }
 
   showError() {

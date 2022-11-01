@@ -7,10 +7,9 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-show-room-details',
   templateUrl: './show-room-details.component.html',
-  styleUrls: ['./show-room-details.component.scss']
+  styleUrls: ['./show-room-details.component.scss'],
 })
 export class ShowRoomDetailsComponent implements OnInit {
-
   constructor(private roomService: RoomService, private toastr: ToastrService) {
     setInterval(() => {
       this.checkWorkingHours();
@@ -21,13 +20,10 @@ export class ShowRoomDetailsComponent implements OnInit {
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   checkWorkingHours(): void {
-    if(this.room.workingHours == null)
-    {
+    if (this.room.workingHours == null) {
       this.showWorkingHours = false;
     }
     if (this.room.workingHours.start != this.room.workingHours.end) {
@@ -37,55 +33,71 @@ export class ShowRoomDetailsComponent implements OnInit {
     }
   }
 
-  enableFields(){
+  enableFields() {
     this.isDisabled = false;
   }
 
-  editRoom(newPurpose: string, newStart: string, newEnd: string, newNumber:string, e: Event){
-    
+  editRoom(
+    newPurpose: string,
+    newStart: string,
+    newEnd: string,
+    newNumber: string,
+    e: Event
+  ) {
     e.preventDefault();
 
-    if(newStart.includes(":") && newEnd.includes(":") && newStart.length <= 5 && newEnd.length <= 5){
-      let splited = newStart.split(":", 10);
+    if (
+      newStart.includes(':') &&
+      newEnd.includes(':') &&
+      newStart.length <= 5 &&
+      newEnd.length <= 5
+    ) {
+      let splited = newStart.split(':', 10);
       let hourStart = parseInt(splited[0]);
-      let minuteStart = parseInt(splited[1])
-      const start1 = new Date(2022, 10, 10, hourStart, minuteStart)
+      let minuteStart = parseInt(splited[1]);
+      const start1 = new Date(2022, 10, 10, hourStart, minuteStart);
       //let converted = new Date(start1.getUTCFullYear(), start1.getUTCMonth(), start1.getUTCDate(), start1.getUTCHours(), start1.getUTCMinutes(), start1.getUTCSeconds())
-      console.log("novo start:" + start1);
+      console.log('novo start:' + start1);
       //let convertedStart = moment.utc(start1).local().format('YYYY-MM-DDTHH:mm:SS:ss');
-      let datum = new Date(start1.getTime() - (start1.getTimezoneOffset() * 60000))
-    
-      let splitedEnd = newEnd.split(":", 10);
-      let hourEnd = parseInt(splitedEnd[0])
-      let minuteEnd = parseInt(splitedEnd[1])
-      const end1 = new Date(2022, 10, 10, hourEnd, minuteEnd)
-      let datum2 = new Date(end1.getTime() - (end1.getTimezoneOffset() * 60000))
-      let num = parseInt(newNumber)
-  
-      const updatedWorkingHours: IWorkingHours = {id: this.room.workingHours.id,
-                                          start: datum,
-                                          end: datum2}
-                                          console.log("novo radno vreme", updatedWorkingHours)
-      const updatedRoom: IRoom = {id: this.room.id,
-                                  number: newNumber,
-                                  floor: this.room.floor,
-                                  purpose: newPurpose,
-                                  workingHours: updatedWorkingHours
-                                  }
-      this.roomService.editRoom(updatedRoom).subscribe(
-        {next:(res) =>{
-          this.showSuccess();
-         },
-        error:(e) => {this.showError()}
-      }
+      let datum = new Date(
+        start1.getTime() - start1.getTimezoneOffset() * 60000
       );
+
+      let splitedEnd = newEnd.split(':', 10);
+      let hourEnd = parseInt(splitedEnd[0]);
+      let minuteEnd = parseInt(splitedEnd[1]);
+      const end1 = new Date(2022, 10, 10, hourEnd, minuteEnd);
+      let datum2 = new Date(end1.getTime() - end1.getTimezoneOffset() * 60000);
+      let num = parseInt(newNumber);
+
+      const updatedWorkingHours: IWorkingHours = {
+        id: this.room.workingHours.id,
+        start: datum,
+        end: datum2,
+      };
+      console.log('novo radno vreme', updatedWorkingHours);
+      const updatedRoom: IRoom = {
+        id: this.room.id,
+        number: newNumber,
+        floor: this.room.floor,
+        purpose: newPurpose,
+        workingHours: updatedWorkingHours,
+      };
+      this.roomService.editRoom(updatedRoom).subscribe({
+        next: (res) => {
+          this.showSuccess();
+        },
+        error: (e) => {
+          this.showError();
+        },
+      });
+    }else{
+      this.showError();
     }
-    this.showError();
-
-    let format = newStart.includes(":")
-    console.log("format",format)
-
     
+
+    let format = newStart.includes(':');
+    console.log('format', format);
   }
 
   showError() {

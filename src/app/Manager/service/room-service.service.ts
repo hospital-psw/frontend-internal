@@ -23,15 +23,18 @@ export class RoomService {
     );
   }
 
-  editRoom(room: IRoom){
-    return this.http.put<IRoom>(`http://localhost:16177/api/rooms`, room)
+  editRoom(room: IRoom) {
+    return this.http.put<IRoom>(`http://localhost:16177/api/rooms`, room);
   }
 
-  editBuilding(building: IBuilding){
-    return this.http.put<IBuilding>(`http://localhost:16177/api/buildings`, building)
+  editBuilding(building: IBuilding) {
+    return this.http.put<IBuilding>(
+      `http://localhost:16177/api/buildings`,
+      building
+    );
   }
 
-  editFloor(floor: IFloor){
-    return this.http.put<IBuilding>(`http://localhost:16177/api/floors`, floor)
+  editFloor(floor: IFloor) {
+    return this.http.put<IBuilding>(`http://localhost:16177/api/floors`, floor);
   }
 }

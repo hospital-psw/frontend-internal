@@ -15,7 +15,13 @@ import { ShowFloorDetailsComponent } from './show-details/show-floor-details/sho
 import { ShowRoomDetailsComponent } from './show-details/show-room-details/show-room-details.component';
 
 @NgModule({
-  declarations: [ViewRoomsComponent, ShowDetailsComponent, ShowBuildingDetailsComponent, ShowFloorDetailsComponent, ShowRoomDetailsComponent],
+  declarations: [
+    ViewRoomsComponent,
+    ShowDetailsComponent,
+    ShowBuildingDetailsComponent,
+    ShowFloorDetailsComponent,
+    ShowRoomDetailsComponent,
+  ],
   imports: [
     CommonModule,
     MatSelectModule,

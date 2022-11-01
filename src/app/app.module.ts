@@ -41,12 +41,10 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
-    })
-    
+    }),
   ],
   bootstrap: [AppComponent],
-  exports: [
-  ],
+  exports: [],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
 export class AppModule {}

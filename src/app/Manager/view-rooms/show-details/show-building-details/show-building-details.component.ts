@@ -6,38 +6,41 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-show-building-details',
   templateUrl: './show-building-details.component.html',
-  styleUrls: ['./show-building-details.component.scss']
+  styleUrls: ['./show-building-details.component.scss'],
 })
 export class ShowBuildingDetailsComponent implements OnInit {
-
-  constructor(private roomService: RoomService, private toastr: ToastrService) { }
+  constructor(
+    private roomService: RoomService,
+    private toastr: ToastrService
+  ) {}
 
   @Input() room: any;
   isDisabled: boolean = true;
 
   ngOnInit(): void {
-    console.log('ispisuje')
-    console.log(this.room.floor.building)
+    console.log('ispisuje');
+    console.log(this.room.floor.building);
   }
 
-  enableFields(){
+  enableFields() {
     this.isDisabled = false;
   }
 
-  editBuilding(newName: string, e: Event){
-    
+  editBuilding(newName: string, e: Event) {
     e.preventDefault();
-    const updatedBuilding: IBuilding = {id: this.room.floor.building.id,
-                                        name: newName,
-                                        address:this.room.floor.address
-                                }
-    this.roomService.editBuilding(updatedBuilding).subscribe(
-      {next:(res) =>{
+    const updatedBuilding: IBuilding = {
+      id: this.room.floor.building.id,
+      name: newName,
+      address: this.room.floor.address,
+    };
+    this.roomService.editBuilding(updatedBuilding).subscribe({
+      next: (res) => {
         this.showSuccess();
       },
-      error:(e) => {this.showError()}
-    }
-    );
+      error: (e) => {
+        this.showError();
+      },
+    });
   }
 
   showError() {
