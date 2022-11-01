@@ -1,4 +1,6 @@
+import { IFloor } from './../../../Model/Floor';
 import { Component, OnInit, Input } from '@angular/core';
+import { RoomService } from '../../../service/room-service.service';
 
 @Component({
   selector: 'app-show-floor-details',
@@ -7,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ShowFloorDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private roomService: RoomService) { }
 
   @Input() room: any;
   isDisabled: boolean = true;
@@ -15,4 +17,17 @@ export class ShowFloorDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  enableFields(){
+    this.isDisabled = false;
+  }
+
+  editFloor(newPurpose: string){
+  
+    const updatedFloor: IFloor = {id: this.room.floor.id,
+                                number: this.room.floor.number,
+                                purpose: newPurpose,
+                                building: this.room.floor.building
+                                }
+    this.roomService.editFloor(updatedFloor).subscribe();
+  }
 }

@@ -1,4 +1,6 @@
+import { IBuilding } from './../../../Model/Building';
 import { Component, OnInit, Input } from '@angular/core';
+import { RoomService } from '../../../service/room-service.service';
 
 @Component({
   selector: 'app-show-building-details',
@@ -7,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ShowBuildingDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private roomService: RoomService) { }
 
   @Input() room: any;
   isDisabled: boolean = true;
@@ -15,6 +17,19 @@ export class ShowBuildingDetailsComponent implements OnInit {
   ngOnInit(): void {
     console.log('ispisuje')
     console.log(this.room.floor.building)
+  }
+
+  enableFields(){
+    this.isDisabled = false;
+  }
+
+  editBuilding(newName: string){
+    
+    const updatedBuilding: IBuilding = {id: this.room.floor.building.id,
+                                        name: newName,
+                                        address:this.room.floor.address
+                                }
+    this.roomService.editBuilding(updatedBuilding).subscribe();
   }
 
 }

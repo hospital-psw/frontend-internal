@@ -7,5 +7,5 @@ export interface IRoom {
   number: string;
   floor: IFloor;
   purpose: string;
-  workigHours: IWorkingHours;
+  workingHours: IWorkingHours;
 }

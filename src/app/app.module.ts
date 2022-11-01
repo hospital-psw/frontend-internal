@@ -16,6 +16,8 @@ import { PatientTableComponent } from './doctor/patients/patient-table/patient-t
 import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
 import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
+import { ToastrService } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,11 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+    })
+    
   ],
   bootstrap: [AppComponent],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
