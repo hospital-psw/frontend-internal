@@ -1,0 +1,8 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+  padding: 1rem 7rem;
+  height: 48rem;
+}
