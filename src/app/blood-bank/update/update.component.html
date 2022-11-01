@@ -46,7 +46,10 @@
       </div>
       <br />
 
-      <mat-form-field class="elem" appearance="fill">
+      <mat-form-field class="elem" appearance="fill"
+      #tooltip="matTooltip"
+      matTooltip="Endpoint should contain !BLOOD_TYPE flag that represents the spot where the blood type will be placed!"
+      matTooltipPosition="right">
         <mat-label>GET blood type availability endpoint</mat-label>
         <input matInput formControlName="getBloodTypeAvailability" />
       </mat-form-field>
@@ -65,7 +68,10 @@
       </div>
       <br />
 
-      <mat-form-field class="elem" appearance="fill">
+      <mat-form-field class="elem" appearance="fill"
+      #tooltip="matTooltip"
+      matTooltip="Endpoint should contain !BLOOD_TYPE and !AMOUNT flag that represents the spot where the blood type/amount will be placed!"
+      matTooltipPosition="right">
         <mat-label>GET blood type availability by amount endpoint</mat-label>
         <input matInput formControlName="getBloodTypeAndAmountAvailability" />
       </mat-form-field>

@@ -46,7 +46,10 @@
       </div>
       <br />
 
-      <mat-form-field appearance="fill" class="elem">
+      <mat-form-field appearance="fill" class="elem" 
+      #tooltip="matTooltip"
+      matTooltip="Endpoint should contain !BLOOD_TYPE flag that represents the spot where the blood type will be placed!"
+      matTooltipPosition="right">
         <mat-label>GET blood type availability endpoint</mat-label>
         <input matInput formControlName="getBloodTypeAvailability" />
       </mat-form-field>
@@ -65,7 +68,10 @@
       </div>
       <br />
 
-      <mat-form-field appearance="fill" class="elem">
+      <mat-form-field appearance="fill" class="elem" 
+      #tooltip="matTooltip"
+      matTooltip="Endpoint should contain !BLOOD_TYPE and !AMOUNT flag that represents the spot where the blood type/amount will be placed!"
+      matTooltipPosition="right">
         <mat-label>GET blood type availability by amount endpoint</mat-label>
         <input matInput formControlName="getBloodTypeAndAmountAvailability" />
       </mat-form-field>
@@ -92,7 +98,7 @@
       <div class="btnSubmit">
         <button
           mat-stroked-button
-          (click)="createBloodBank()"
+          (click)="registerBloodBank()"
           [disabled]="form.invalid"
         >
           Submit

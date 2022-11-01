@@ -56,10 +56,10 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public createBloodBank() {
+  public registerBloodBank() {
     this.bloodBank = new BloodBank(this.form.value);
     if (this.form.valid) {
-      this.bloodBankService.createBloodBank(this.bloodBank).subscribe((res) => {
+      this.bloodBankService.registerBloodBank(this.bloodBank).subscribe((res) => {
         this.router.navigate(['/bloodbank']);
       });
     }
