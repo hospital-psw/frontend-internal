@@ -37,6 +37,7 @@ $frontend-internal-theme: mat.define-light-theme(
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
+@import "../../node_modules/angular-calendar/css/angular-calendar.css";
 @include mat.all-component-themes($frontend-internal-theme);
 @import './helpers/mixins';
 @import './helpers/variables';
@@ -61,7 +62,8 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  overflow-y: hidden;
 }
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-y: hidden;}

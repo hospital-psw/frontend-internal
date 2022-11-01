@@ -1,7 +1,6 @@
 import { IWorkingHours } from './../../Model/WorkingHours';
 import { IRoom } from './../../Model/Room';
 import { Component, Input, OnInit } from '@angular/core';
-import { Room } from 'src/app/doctor/interface/Room';
 import { GraphicRoom } from '../model/GraphicRoom';
 import { RoomService } from '../../service/room-service.service';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';

@@ -1,0 +1,41 @@
+.card {
+  max-width: 55rem;
+  max-height: 60rem;
+  font-size: small;
+  font-weight: 400;
+
+  @media screen and (max-width: 900px) {
+    width: 35rem;
+  }
+}
+
+label {
+  display: block;
+}
+
+.form {
+  display: flex;
+  justify-content: space-around;
+
+  &__column {
+   margin: 4rem;
+
+   &__label {
+    margin-top: 2rem;
+   }
+
+   &__field {
+    margin-top: 1rem;
+   }
+  }
+
+  @media screen and (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}

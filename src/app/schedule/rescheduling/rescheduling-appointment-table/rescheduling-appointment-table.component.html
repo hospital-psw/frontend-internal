@@ -1,0 +1,7 @@
+<div class="card-container">
+  <app-rescheduling-appointment-card
+    *ngFor="let date of recommendedDates"
+    [cardInfo]="date"
+    [appointment]="appointment"
+  ></app-rescheduling-appointment-card>
+</div>
