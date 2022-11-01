@@ -1,12 +1,134 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  OnDestroy,
+  ChangeDetectorRef,
+  ViewEncapsulation,
+} from '@angular/core';
+import { CalendarView, CalendarEvent } from 'angular-calendar';
+import {
+  addDays,
+  addHours,
+  startOfDay,
+  addMinutes,
+  setDate,
+  setDay,
+  subDays,
+} from 'date-fns';
+import { map, Subject, Observable } from 'rxjs';
+import { EventColor } from 'calendar-utils';
+import { Appointment } from 'src/app/doctor/interface/Appointment';
+import { AppointmentService } from 'src/app/doctor/service/appointment.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ExaminationType } from 'src/app/doctor/enum/ExaminationType.enum';
+
+const colors: Record<string, EventColor> = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3',
+  },
+  blue: {
+    primary: '#0E4C92',
+    secondary: '#cbcbd226',
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA',
+  },
+};
 
 @Component({
   selector: 'app-appointments',
   templateUrl: './appointments.component.html',
   styleUrls: ['./appointments.component.scss'],
+  //changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppointmentsComponent implements OnInit {
-  constructor() {}
+  //================== CALENDAR RELATED PROPS ======================
 
-  ngOnInit(): void {}
+  view: CalendarView = CalendarView.Week;
+
+  viewDate: Date;
+  viewDateEnd: Date;
+
+  dayStartHour = 8;
+  dayEndHour = 12;
+  hourSegmentHeight = 80;
+
+  daysInWeek = 7;
+
+  //================================================================
+
+  appointments: CalendarEvent<{ appointment: Appointment }>[];
+  examinationTypes: ExaminationType[];
+
+  constructor(private appointmentService: AppointmentService) {}
+
+  ngOnInit(): void {
+    this.viewDate = new Date('2022-10-27');
+    this.viewDateEnd = addDays(this.viewDate, 6);
+    this.examinationTypes = Object.values(ExaminationType);
+    this.getAllAppointments();
+  }
+
+  getAllAppointments(): void {
+    this.appointmentService
+      .getAllAppointments()
+      .pipe(
+        map((results: Appointment[]) => {
+          return results.map((appointment: Appointment) => {
+            return {
+              title: this.createTitle(appointment),
+              start: new Date(appointment.date),
+              color: { ...colors['blue'] },
+              end: new Date(appointment.endDate),
+              meta: {
+                appointment,
+              },
+            };
+          });
+        })
+      )
+      .subscribe(
+        (response: CalendarEvent<{ appointment: Appointment }>[]) => {
+          this.appointments = response;
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.message);
+        }
+      );
+  }
+
+  createTitle(appointment: Appointment): string {
+    return (
+      this.examinationTypes[appointment.examType] +
+      '\n' +
+      appointment.patient.firstName +
+      ' ' +
+      appointment.patient.lastName +
+      '\n' +
+      appointment.room.floor.building.name +
+      ', Floor: ' +
+      appointment.room.floor.number +
+      ', Room: ' +
+      appointment.room.number
+    );
+  }
+
+  handleCurrent(): void {
+    this.viewDate = new Date();
+    this.viewDateEnd = addDays(this.viewDate, 6);
+  }
+
+  handlePrevious(): void {
+    this.viewDate = subDays(this.viewDate, 7);
+    this.viewDateEnd = addDays(this.viewDate, 6);
+  }
+
+  handleNext(): void {
+    this.viewDate = addDays(this.viewDate, 7);
+    this.viewDateEnd = addDays(this.viewDate, 6);
+  }
 }
