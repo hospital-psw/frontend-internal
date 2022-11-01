@@ -1,76 +1,52 @@
-<mat-card class="card">
-  <div class="title">
-    <h1>
-      {{ bloodBank.name }}
-    </h1>
-    <div class="button__group">
-      <button
-        class="btnEdit"
-        (click)="updateBloodBank()"
-        mat-stroked-button
-        color="lime"
-      >
-        Edit
-      </button>
-      <button
-        class="btnDelete"
-        (click)="deleteBloodBank()"
-        mat-stroked-button
-        color="warn"
-      >
-        Delete
-      </button>
-    </div>
-  </div>
-  <div class="wraper">
-    <mat-form-field appearance="fill" class="email">
-      <mat-label>Email</mat-label>
-      <input
-        matInput
-        placeholder="pat@example.com"
-        required
-        [(ngModel)]="bloodBank.email"
-      />
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="url" class="url">
-      <mat-label>Url</mat-label>
-      <input matInput required [(ngModel)]="bloodBank.apiUrl" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="key">
-      <mat-label>Api Key</mat-label>
-      <input
-        matInput
-        required
-        [(ngModel)]="bloodBank.apiKey"
-        [type]="hide ? 'password' : 'text'"
-      />
-      <button
-        mat-icon-button
-        matSuffix
-        (click)="hide = !hide"
-        [attr.aria-label]="'Hide password'"
-        [attr.aria-pressed]="hide"
-      >
-        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
-      </button>
-    </mat-form-field>
-  </div>
-  <div class="wraper">
-    <div class="wraper__form">
-      <mat-form-field appearance="fill" class="specialType">
-        <mat-label>Select</mat-label>
-        <mat-select [(ngModel)]="selected" (ngModelChange)="ff()">
-          <mat-option
-            *ngFor="let type of bloodTypes; let i = index"
-            [value]="type"
-            >{{ bloodTypes[i] }}</mat-option
-          >
-        </mat-select>
+<mat-card>
+  <div class="container">
+    <div class="wraper">
+      <mat-form-field appearance="fill" class="email">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          required
+          [(ngModel)]="bloodBank.email"
+        />
       </mat-form-field>
-      <button mat-raised-button color="primary" class="specButton">
-        Check
-      </button>
+      <br />
+      <mat-form-field appearance="fill" class="url" class="url">
+        <mat-label>Url</mat-label>
+        <input matInput required [(ngModel)]="bloodBank.apiUrl" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill" class="key">
+        <mat-label>Api Key</mat-label>
+        <input
+          matInput
+          required
+          [(ngModel)]="bloodBank.apiKey"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div class="wraper__form">
+        <mat-form-field appearance="fill" class="specialType">
+          <mat-label>Select</mat-label>
+          <mat-select [(ngModel)]="selected" (ngModelChange)="ff()">
+            <mat-option
+              *ngFor="let type of bloodTypes; let i = index"
+              [value]="type"
+              >{{ bloodTypes[i] }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary">Check</button>
+      </div>
     </div>
   </div>
 </mat-card>

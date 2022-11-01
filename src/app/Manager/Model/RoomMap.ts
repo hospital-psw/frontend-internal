@@ -1,7 +1,7 @@
-import { IRoom } from "./Room";
+import { IRoom } from './Room';
 
 export interface IRoomMap {
-  room: IRoom,
-  x: number,
-  z: number
+  room: IRoom;
+  x: number;
+  z: number;
 }

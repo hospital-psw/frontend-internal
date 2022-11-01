@@ -7,7 +7,7 @@ import { BloodBank } from '../model/blood-bank.model';
   providedIn: 'root',
 })
 export class BloodBankService {
-  apiHost: string = 'http://localhost:5000/';
+  apiHost: string = 'http://localhost:45488/';
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -39,10 +39,8 @@ export class BloodBankService {
   }
 
   updateBloodBank(bloodBank: any): Observable<any> {
-    return this.http.put<any>(
-      this.apiHost + 'api/BloodBank/' + bloodBank.id,
-      bloodBank,
-      { headers: this.headers }
-    );
+    return this.http.put<any>(this.apiHost + 'api/BloodBank/', bloodBank, {
+      headers: this.headers,
+    });
   }
 }
