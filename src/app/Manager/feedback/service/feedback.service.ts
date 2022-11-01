@@ -40,4 +40,7 @@ export class FeedbackService {
   MakeDenied(id: number): Observable<Feedback>{
     return this.http.put<Feedback>(this.apiHost + 'api/Feedback/make/denied/'+ id ,{headers: this.headers});
   }
+  MakePending(id: number): Observable<Feedback>{
+    return this.http.put<Feedback>(this.apiHost + 'api/Feedback/make/pending/'+ id ,{headers: this.headers});
+  }
 }

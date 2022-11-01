@@ -1,48 +1,62 @@
 
 .container {
   width: 82%;
-  //height: 75vh;
   padding: 0.6%;
-  border-radius: 3px;
+  //border-radius: 3px;
   border-style: solid;
   border-color: white;
   background-color: white;
   flex-direction: column;
   overflow :auto ;
-  max-height: 550px;
+  max-height: 525px;
 }
 
 
 .table-header{
-  padding: 1%;
-  background-color : rgba(210,210,230,0.3);
+  width: 58%;
+  padding: 2%;
+  position: -webkit-sticky;
+  position: fixed;
+  background-color : rgba(53, 232, 37, 0.192);
 }
-
+.table-content{
+  padding-top: 12%;
+}
 .table-title {
   text-align: left;
-  font-size: 2.5rem;
-  padding-left: 1%;
+  font-size: 25px;
   color: rgb(80, 80, 80);
 }
 
 .cell-center {
   text-align: left;
   padding: 1%;
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.cell-center1 {
-  text-align: left;
-  font-size: 18px;
-}
 .mat-column-creator {
   width:220px;
   text-align: left;
-  
+}
+
+.mat-column-message {
+  width:550px;
+  text-align: left;
+}
+
+.mat-column-status {
+  width: 100px;
+  text-align: center;
 }
 
 .mat-stroked-button{
-  width:85px;
+  width:100px;
   text-align: center;
 }
+
+.buttons{
+  width: 50px; 
+  float:left;
+}
+
 
