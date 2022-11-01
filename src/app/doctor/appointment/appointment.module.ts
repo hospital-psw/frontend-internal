@@ -11,9 +11,10 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { AppointmentsComponent } from './show-all/appointments/appointments.component';
+import { SchedulingComponent } from './scheduling/scheduling.component';
 
 @NgModule({
-  declarations: [AppointmentsComponent],
+  declarations: [AppointmentsComponent, SchedulingComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,

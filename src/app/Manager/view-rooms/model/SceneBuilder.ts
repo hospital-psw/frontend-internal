@@ -10,7 +10,8 @@ import { IRoomMap } from '../../Model/RoomMap';
 export class SceneBuilder {
   private scene: THREE.Scene;
   private graphicRooms: GraphicRoom[] = [];
-  constructor(private readonly rooms: IRoomMap[]) {
+  private rooms: IRoomMap[] = [];
+  constructor() {
     this.scene = new THREE.Scene();
 
     this.scene.background = new THREE.Color('transparent');
@@ -25,28 +26,37 @@ export class SceneBuilder {
     this.addLight(1, -1, -2);
   }
 
-  displayFloor(floor: number, building: string) {
+  display(floor: number, building: string) {
+    this.graphicRooms = [];
     this.resetScene();
-    if (floor === -1 || building === '') return;
+    if (floor === -1 && building === '') return;
     this.createHallway();
     for (let i = 0; i < this.rooms.length; i++) {
-      if (
-        this.rooms[i].room.floor.number == floor &&
-        this.rooms[i].room.building.name == building
-      ) {
-        const box = new THREE.BoxGeometry(1, 1, 1);
-        const color = new THREE.Color().setHSL(0 / 8, 1, 0.5);
-        var mesh = this.createRoom(
-          box,
-          color,
-          this.rooms[i].x,
-          1,
-          this.rooms[i].z,
-          this.rooms[i].room.number.toString()
-        );
-        this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]));
-      }
+      var mesh = this.createMesh(this.rooms[i], floor);
+      this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]));
     }
+  }
+
+  createMesh(room: IRoomMap, floor: number) {
+    const box = new THREE.BoxGeometry(room.width, 1, room.depth);
+    const color = new THREE.Color().setHSL(0 / 8, 1, 0.5);
+    if (floor === -1)
+      return this.createRoom(
+        box,
+        color,
+        room.x,
+        room.room.floor.number,
+        room.z,
+        room.room.number.toString()
+      );
+    return this.createRoom(
+      box,
+      color,
+      room.x,
+      1,
+      room.z,
+      room.room.number.toString()
+    );
   }
 
   createRoom(
@@ -111,6 +121,12 @@ export class SceneBuilder {
 
   getGraphicRooms() {
     return this.graphicRooms;
+  }
+
+  setRooms(rooms: IRoomMap[]) {
+    console.log('setujem', rooms);
+    this.rooms = rooms;
+    console.log('rezultat', this.rooms);
   }
 }
 

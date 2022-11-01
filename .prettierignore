@@ -7,3 +7,6 @@ tsconfig.spec.json
 .prettierc.json
 karma.conf.js
 angular.json
+*.json
+*.scss
+*.css
