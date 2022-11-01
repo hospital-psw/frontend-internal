@@ -59,9 +59,11 @@ export class CreateComponent implements OnInit {
   public registerBloodBank() {
     this.bloodBank = new BloodBank(this.form.value);
     if (this.form.valid) {
-      this.bloodBankService.registerBloodBank(this.bloodBank).subscribe((res) => {
-        this.router.navigate(['/bloodbank']);
-      });
+      this.bloodBankService
+        .registerBloodBank(this.bloodBank)
+        .subscribe((res) => {
+          this.router.navigate(['/bloodbank']);
+        });
     }
   }
 }

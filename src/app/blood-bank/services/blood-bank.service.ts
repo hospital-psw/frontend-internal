@@ -33,9 +33,13 @@ export class BloodBankService {
   }
 
   registerBloodBank(bloodBank: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/BloodBank/register', bloodBank, {
-      headers: this.headers,
-    });
+    return this.http.post<any>(
+      this.apiHost + 'api/BloodBank/register',
+      bloodBank,
+      {
+        headers: this.headers,
+      }
+    );
   }
 
   updateBloodBank(bloodBank: any): Observable<any> {
