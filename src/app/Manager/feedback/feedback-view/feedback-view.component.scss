@@ -9,6 +9,7 @@
   flex-direction: column;
   overflow :auto ;
   max-height: 525px;
+  z-index: 0!important;
 }
 
 
@@ -17,7 +18,8 @@
   padding: 2%;
   position: -webkit-sticky;
   position: fixed;
-  background-color : rgba(53, 232, 37, 0.192);
+  background-color : rgb(141, 239, 132);
+  z-index: 2 !important;
 }
 .table-content{
   padding-top: 12%;
@@ -57,6 +59,9 @@
 .buttons{
   width: 50px; 
   float:left;
+}
+.mat-stroked-button{
+  z-index: 1!important;
 }
 
 

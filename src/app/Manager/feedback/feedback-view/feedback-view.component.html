@@ -28,6 +28,9 @@
                             <button mat-stroked-button (click)="MakePending(element.feedbackId)" style="color:orange">Reconsider</button> 
                         </div>
                     </div>
+                    <div *ngIf="element.public!=true">
+                        <button mat-stroked-button disabled="true">Private</button>
+                    </div>
                 </td>
             </ng-container>
   
