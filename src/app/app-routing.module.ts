@@ -5,7 +5,7 @@ import { PatientTableComponent } from './schedule/patients/patient-table/patient
 import { AppointmentResolver } from './schedule/resolver/appointment-resolver';
 import { AppointmentsComponent } from './schedule/show-all/appointments/appointments.component';
 import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
-
+import { FeedbackViewComponent } from './Manager/feedback/feedback-view/feedback-view.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -26,6 +26,10 @@ const routes: Routes = [
       appointment: AppointmentResolver
     }
   },
+  {
+    path: 'feedback',
+    component: FeedbackViewComponent,
+  }
 ];
 
 @NgModule({

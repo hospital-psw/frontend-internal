@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { RecommendedDatesDTO } from './../../interface/RecommendedDatesDTO';
 import { RecommendedDTO } from './../../interface/RecommendedDTO';
 import { ReschedulingAppointmentDTO } from './../../interface/ReschedulingAppointmentDTO';
@@ -9,6 +10,7 @@ import { IRoom } from '../../../Manager/Model/Room';
 import { ScheduleService } from '../../service/schedule.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Output, EventEmitter } from '@angular/core';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-rescheduling-appointment-form',
   templateUrl: './rescheduling-appointment-form.component.html',
@@ -24,7 +26,7 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
   num: any;
   recommendedDates: Date[];
 
-  constructor(private appointmentService: ScheduleService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private appointmentService: ScheduleService, private datePipe: DatePipe, private route: ActivatedRoute, private router: Router, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
     this.appointment = this.route.snapshot.data["appointment"];
@@ -37,12 +39,13 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
     }
 
     this.num = this.appointment.examType;
-    this.appointment.examType = this.examinationTypes[this.num];
+    this.appointment.examType = this.examinationTypes[this.num] as any;
+    this.appointment.date = this.datePipe.transform(new Date(this.appointment.date), 'dd.MM.yyyy. HH:mm') as any;
   }
 
   onClickShowRecommended() : void {
     if(this.recommendedDto.date == null) {
-      alert("Please, choose date.");
+      this.toastrService.warning("Please, specify a date!")
       return;
     }
     this.getRecommendedAppointments();

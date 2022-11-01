@@ -1,6 +1,6 @@
 <form class="details-form">
   <div class="blocks">
-    <div class="details">
+    <div *ngIf="showBuildingDetails" class="details">
       <mat-form-field>
         <mat-label>Naziv zgrade</mat-label>
         <input
@@ -11,7 +11,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="details">
+    <div *ngIf="showBuildingDetails" class="details">
       <mat-form-field>
         <mat-label>Adresa zgrade</mat-label>
         <input
@@ -22,7 +22,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="details">
+    <div *ngIf="showFloorDetails" class="details">
       <mat-form-field>
         <mat-label>Broj sprata</mat-label>
         <input
@@ -33,7 +33,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="details">
+    <div *ngIf="showFloorDetails" class="details">
       <mat-form-field>
         <mat-label>Svrha sprata</mat-label>
         <input
@@ -44,7 +44,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="details">
+    <div *ngIf="showRoomDetails" class="details">
       <mat-form-field>
         <mat-label>Broj sobe</mat-label>
         <input
@@ -55,7 +55,7 @@
         />
       </mat-form-field>
     </div>
-    <div class="details">
+    <div *ngIf="showRoomDetails" class="details">
       <mat-form-field>
         <mat-label>Svrha sobe</mat-label>
         <input
@@ -66,7 +66,7 @@
         />
       </mat-form-field>
     </div>
-    <div *ngIf="showWorkingHours" class="details">
+    <div *ngIf="showWorkingHours && showRoomDetails" class="details">
       <mat-form-field>
         <mat-label>Početak radnog vremena</mat-label>
         <input
@@ -77,7 +77,7 @@
         />
       </mat-form-field>
     </div>
-    <div *ngIf="showWorkingHours" class="details">
+    <div *ngIf="showWorkingHours && showRoomDetails" class="details">
       <mat-form-field>
         <mat-label>Kraj radnog vremena</mat-label>
         <input

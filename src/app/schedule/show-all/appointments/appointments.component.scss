@@ -1,6 +1,62 @@
-.wrapper {
-    font-size: 8rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@import '../../../../styles/helpers/variables';
+
+.calendar-wrapper {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow-y: scroll;
+    height: 55rem;
 }
+
+.event__title {
+    white-space: pre-wrap;
+    font-size: 1.2rem;
+    word-wrap: break-word;
+    color: $button-color-primary;
+}
+
+.date-range {
+    font-size: 3rem;
+    color: $button-color-primary;
+}
+
+.calendar-header {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .button-group {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            &__button, &__button-app {
+                margin-right: 1rem;
+                padding: .7rem .7rem;
+                width: 9rem;
+                background-color: white;
+                border: 1px solid $button-color-primary;
+                font-weight: 600;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                border-radius: .5rem;
+                color: $button-color-primary;
+                transition: .2s;
+            }
+
+            &__button-app {
+                width: 11rem;
+            }
+
+            &__button:hover, &__button-app:hover {
+                transform: scale(1.07);
+                transition: .2s;
+                cursor: pointer;
+                background-color: $button-color-primary;
+                color: white;
+            }
+    }
+
+
+}
+
+
+

@@ -2,15 +2,15 @@
   <div class="container">
     <div class="form">
       <div class="form__column">
-        <label class="form__column__label" for="date">Date and time</label>
+        <label class="form__column__label" for="date">Choose new date</label>
         <mat-form-field appearance="fill" class="form__column__field">
-          <mat-label>Date and Time</mat-label>
+          <mat-label>Date</mat-label>
           <input
             id="date"
             matInput
             [matDatepicker]="picker"
             [(ngModel)]="recommendedDto.date"
-            name="dateAndTime"
+            name="date"
             required
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
@@ -53,6 +53,21 @@
       </div>
 
       <div class="form__column">
+        <label for="currentDateTime" class="form__column__label"
+          >Current date and time</label
+        >
+        <mat-form-field appearance="fill" class="form__column__field">
+          <mat-label>Duration</mat-label>
+          <input
+            id="currentDateTime"
+            matInput
+            [(ngModel)]="appointment.date"
+            name="currentDateTime"
+            readonly="true"
+            required
+          />
+        </mat-form-field>
+
         <label for="patient" class="form__column__label">Patient</label>
         <mat-form-field appearance="fill" class="form__column__field">
           <mat-label>Info</mat-label>

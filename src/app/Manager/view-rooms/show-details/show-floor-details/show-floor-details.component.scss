@@ -1,0 +1,44 @@
+.details{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #537895;
+  padding: 10px 0;
+  min-height: 100%;
+  .inputText{
+    color: white;
+  }
+}
+.blocks{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #537895;
+  border-radius: 10px;
+}
+
+.details-form {
+width: 100%;
+height: 100%;
+border-radius: 10px;
+}
+
+.details-full-width {
+width: 100%;
+}
+
+h2{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
+mat-label{
+  color: white;
+}
+
+

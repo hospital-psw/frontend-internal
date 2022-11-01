@@ -5,6 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChange
 import { Appointment } from '../../interface/Appointment';
 import { ReschedulingAppointmentDTO } from '../../interface/ReschedulingAppointmentDTO';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rescheduling-appointment-card',
@@ -19,7 +20,7 @@ export class ReschedulingAppointmentCardComponent implements OnInit, OnChanges {
 
   examinationTypes: ExaminationType[];
 
-  constructor(private scheduleService: ScheduleService) { }
+  constructor(private scheduleService: ScheduleService, private toastrService: ToastrService) { }
 
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -44,7 +45,7 @@ export class ReschedulingAppointmentCardComponent implements OnInit, OnChanges {
         //this.router.navigate(['']);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        this.toastrService.error(error.error)
       }
     );
   }

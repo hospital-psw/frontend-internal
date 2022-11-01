@@ -6,8 +6,9 @@ import { ExaminationType } from '../enum/ExaminationType.enum';
 export interface Appointment {
   id: number;
   date: Date;
+  endDate: Date;
   duration: number;
-  examType: ExaminationType;
+  examType: number;
   isDone: boolean;
   room: IRoom;
   patient: Patient;

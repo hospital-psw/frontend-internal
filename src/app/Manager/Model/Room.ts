@@ -1,11 +1,10 @@
-import { IBuilding } from './Building';
 import { IFloor } from './Floor';
 import { IWorkingHours } from './WorkingHours';
 
 export interface IRoom {
   id: number;
-  number: number;
+  number: string;
   floor: IFloor;
   purpose: string;
-  workigHours: IWorkingHours;
+  workingHours: IWorkingHours;
 }

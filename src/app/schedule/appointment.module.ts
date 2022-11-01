@@ -19,6 +19,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AppointmentsComponent } from './show-all/appointments/appointments.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
 import { ReschedulingAppointmentCardComponent } from './rescheduling/rescheduling-appointment-card/rescheduling-appointment-card.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,10 @@ import { ReschedulingAppointmentCardComponent } from './rescheduling/reschedulin
     MatTableModule,
     MatPaginatorModule,
     MatDividerModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   ],
   providers: [ScheduleService],
 })

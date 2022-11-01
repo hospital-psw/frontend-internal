@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DoctorMainComponent } from './doctor-main.component';
+import { FeedbackViewComponent } from './feedback-view.component';
 
-describe('DoctorMainComponent', () => {
-  let component: DoctorMainComponent;
-  let fixture: ComponentFixture<DoctorMainComponent>;
+describe('FeedbackViewComponent', () => {
+  let component: FeedbackViewComponent;
+  let fixture: ComponentFixture<FeedbackViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DoctorMainComponent],
+      declarations: [FeedbackViewComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DoctorMainComponent);
+    fixture = TestBed.createComponent(FeedbackViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
