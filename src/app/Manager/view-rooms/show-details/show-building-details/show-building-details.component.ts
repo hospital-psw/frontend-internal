@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IRoom } from 'src/app/Manager/Model/Room';
 
 @Component({
   selector: 'app-show-building-details',
@@ -13,8 +14,6 @@ export class ShowBuildingDetailsComponent implements OnInit {
   isDisabled: boolean = true;
 
   ngOnInit(): void {
-    console.log('ispisuje')
-    console.log(this.room.floor.building)
   }
 
 }

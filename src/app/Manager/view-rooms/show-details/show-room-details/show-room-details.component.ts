@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IRoom } from 'src/app/Manager/Model/Room';
 
 @Component({
   selector: 'app-show-room-details',
@@ -26,7 +27,7 @@ export class ShowRoomDetailsComponent implements OnInit {
     {
       this.showWorkingHours = false;
     }
-    if (this.room.workingHours.start != this.room.workingHours.end) {
+    if (this.room?.workingHours.start != this.room.workingHours.end) {
       this.showWorkingHours = true;
     } else {
       this.showWorkingHours = false;

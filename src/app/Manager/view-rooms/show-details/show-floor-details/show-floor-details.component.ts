@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IRoom } from 'src/app/Manager/Model/Room';
 
 @Component({
   selector: 'app-show-floor-details',
@@ -11,7 +12,7 @@ export class ShowFloorDetailsComponent implements OnInit {
 
   @Input() room: any;
   isDisabled: boolean = true;
-  
+
   ngOnInit(): void {
   }
 

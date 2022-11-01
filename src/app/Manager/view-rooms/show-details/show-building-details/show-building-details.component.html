@@ -7,7 +7,7 @@
             class="inputText"
             matInput
             disabled="isDisabled"
-            value="{{ room.floor.building.name }}"
+            value="{{ room?.floor?.building?.name }}"
           />
         </mat-form-field>
       </div>
@@ -18,10 +18,10 @@
             class="inputText"
             disabled="isDisabled"
             matInput
-            value="{{ room.floor.building.address }}"
+            value="{{ room?.floor?.building?.address }}"
           />
         </mat-form-field>
       </div>
     </div>
   </form>
-  
+
