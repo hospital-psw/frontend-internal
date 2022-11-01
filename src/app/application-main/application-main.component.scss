@@ -1,6 +1,6 @@
-@import './../../../styles/helpers/variables';
-@import './../../../styles/helpers/mixins';
-@import './../../../styles/helpers/animations';
+@import './../../styles/helpers/variables';
+@import './../../styles/helpers/mixins';
+@import './../../styles/helpers/animations';
 
 .wrapper {
     height: 100vh;
@@ -15,7 +15,7 @@
     color: #fff;
     background-size: cover;
     background-position: center center;
-    background-image: linear-gradient(to bottom, rgba($sidebar-color-primary, 1), rgba($sidebar-color-secondary, 0.3)), url('../../../assets/img/sidebar-5.jpg');
+    background-image: linear-gradient(to bottom, rgba($sidebar-color-primary, 1), rgba($sidebar-color-secondary, 0.3)), url('../../assets/img/sidebar-5.jpg');
     //animation: moveInRight 1s ease-out;
 }
 

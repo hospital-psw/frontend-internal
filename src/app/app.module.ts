@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './common/navigation-bar/navigation-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
-import { DoctorMainComponent } from './doctor/doctor-main/doctor-main.component';
+import { ApplicationMainComponent } from './application-main/application-main.component';
 import { PatientTableComponent } from './doctor/patients/patient-table/patient-table.component';
 import { ViewRoomsModule } from './Manager/view-rooms/view-rooms.module';
 import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
@@ -22,7 +22,7 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
     AppComponent,
     NavigationBarComponent,
     SidebarComponent,
-    DoctorMainComponent,
+    ApplicationMainComponent,
     PatientTableComponent,
   ],
   imports: [

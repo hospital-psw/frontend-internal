@@ -9,9 +9,9 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-doctor-main',
-  templateUrl: './doctor-main.component.html',
-  styleUrls: ['./doctor-main.component.scss'],
+  selector: 'app-application-main',
+  templateUrl: './application-main.component.html',
+  styleUrls: ['./application-main.component.scss'],
   animations: [
     trigger('openClose', [
       transition(':enter', [
@@ -35,7 +35,7 @@ import {
     ]),*/
   ],
 })
-export class DoctorMainComponent implements OnInit {
+export class ApplicationMainComponent implements OnInit {
   name: string;
   hamburger: boolean;
 
