@@ -37,8 +37,7 @@
       <div class="wraper__form">
         <mat-form-field appearance="fill" class="specialType">
           <mat-label>Select</mat-label>
-          <mat-select [(ngModel)]="selected">
-            <!-- (ngModelChange)="ff()" -->
+          <mat-select [(ngModel)]="selected" (ngModelChange)="hideResponse()">
             <mat-option
               *ngFor="let type of bloodTypes; let i = index"
               [value]="type"
@@ -46,7 +45,20 @@
             >
           </mat-select>
         </mat-form-field>
-        <button mat-raised-button color="primary">Check</button>
+        <button
+          mat-raised-button
+          (click)="checkBoodType(bloodBank.id)"
+          color="primary"
+        >
+          Check
+        </button>
+        <div *ngIf="showAnwser">
+          <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
+            >Bank <span *ngIf="showResponse">has</span>
+            <span *ngIf="!showResponse">doesn't have</span> that blood
+            type.</label
+          >
+        </div>
       </div>
     </div>
   </div>

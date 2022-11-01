@@ -32,7 +32,6 @@ export class DetailComponent implements OnInit {
     });
   }
   checkBoodType(id: number): void {
-    // alert(this.selected);
     this.bloodBankService.checkBoodType(id, this.selected).subscribe((res) => {
       this.showAnwser = true;
       this.showResponse = res;
