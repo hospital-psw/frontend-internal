@@ -18,6 +18,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
 import { AppointmentsComponent } from './show-all/appointments/appointments.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
+import { ReschedulingAppointmentCardComponent } from './rescheduling/rescheduling-appointment-card/rescheduling-appointment-card.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SchedulingComponent } from './scheduling/scheduling.component';
     ReschedulingAppointmentHeaderComponent,
     ReschedulingAppointmentTableComponent,
     AppointmentsComponent,
-    SchedulingComponent
+    SchedulingComponent,
+    ReschedulingAppointmentCardComponent,
   ],
   imports: [
     CommonModule,
@@ -40,10 +42,8 @@ import { SchedulingComponent } from './scheduling/scheduling.component';
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    MatDividerModule
+    MatDividerModule,
   ],
-  providers: [
-    ScheduleService,
-  ]
+  providers: [ScheduleService],
 })
 export class AppointmentModule {}

@@ -1,3 +1,4 @@
+import { RecommendedDatesDTO } from './../interface/RecommendedDatesDTO';
 import { RecommendedDTO } from '../interface/RecommendedDTO';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -38,7 +39,7 @@ export class ScheduleService {
     return this.http.get<Appointment[]>(`${this.apiServerUrl}/all`);
   }
 
-  public getAllRecommended(recommendedDto: RecommendedDTO): Observable<Date[]> {
-    return this.http.get<Date[]>(`${this.apiServerUrl}/recommended`);
+  public getAllRecommended(recommendedDto: RecommendedDTO): Observable<RecommendedDatesDTO[]> {
+    return this.http.post<RecommendedDatesDTO[]>(`${this.apiServerUrl}/recommend`, recommendedDto);
   }
 }

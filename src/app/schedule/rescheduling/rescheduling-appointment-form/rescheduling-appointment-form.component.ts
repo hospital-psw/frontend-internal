@@ -1,3 +1,4 @@
+import { RecommendedDatesDTO } from './../../interface/RecommendedDatesDTO';
 import { RecommendedDTO } from './../../interface/RecommendedDTO';
 import { ReschedulingAppointmentDTO } from './../../interface/ReschedulingAppointmentDTO';
 import { Appointment } from './../../interface/Appointment';
@@ -15,7 +16,7 @@ import { Output, EventEmitter } from '@angular/core';
 })
 export class ReschedulingAppointmentFormComponent implements OnInit {
 
-  @Output() outputDates = new EventEmitter<Date[]>();
+  @Output() outputDates = new EventEmitter<RecommendedDatesDTO[]>();
   appointment: Appointment;
   rooms: IRoom[];
   recommendedDto : RecommendedDTO;
@@ -31,6 +32,7 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
 
     this.recommendedDto = {
       patientId: this.appointment.patient.id,
+      doctorId: 8,
       date: null as any
     }
 
@@ -40,15 +42,17 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
 
   onClickShowRecommended() : void {
     if(this.recommendedDto.date == null) {
-      alert("Please, choose both dates.");
+      alert("Please, choose date.");
       return;
     }
     this.getRecommendedAppointments();
   }
 
   getRecommendedAppointments() : void {
+    let date = this.recommendedDto.date;
+    this.recommendedDto.date = new Date(date?.getFullYear()!, date?.getMonth()!, date?.getDate(), date?.getHours()! + 5);
     this.appointmentService.getAllRecommended(this.recommendedDto).subscribe(
-      (response: Date[]) => {
+      (response: RecommendedDatesDTO[]) => {
         this.outputDates.emit(response);
       },
       (error: HttpErrorResponse) => {

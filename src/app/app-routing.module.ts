@@ -19,6 +19,13 @@ const routes: Routes = [
     path: 'display',
     component: ViewRoomsComponent,
   },
+  {
+    path: 'reschedule-appointment/:id',
+    component: ReschedulingAppointmentComponent,
+    resolve: {
+      appointment: AppointmentResolver
+    }
+  },
 ];
 
 @NgModule({

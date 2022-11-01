@@ -1,22 +1,8 @@
-.card {
-  max-width: 60rem;
-  max-height: 60rem;
-  font-size: small;
-  font-weight: 400;
-
-  @media screen and (max-width: 900px) {
-    width: 35rem;
-  }
-}
-
-.cardSpace {
+.card-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  margin: 4rem;
-}
-
-.button {
-  display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  overflow-y: scroll;
+  padding: 1rem 7rem;
+  height: 48rem;
 }

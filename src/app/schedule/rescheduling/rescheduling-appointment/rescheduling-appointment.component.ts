@@ -1,3 +1,4 @@
+import { RecommendedDatesDTO } from './../../interface/RecommendedDatesDTO';
 import { ScheduleService } from './../../service/schedule.service';
 import { RecommendedDTO } from './../../interface/RecommendedDTO';
 import { ExaminationType } from '../../enum/ExaminationType.enum';
@@ -13,14 +14,14 @@ import { IRoom } from '../../../Manager/Model/Room';
 })
 export class ReschedulingAppointmentComponent implements OnInit {
 
-  recommendedDatesFromParent: Date[];
+  recommendedDatesFromParent: RecommendedDatesDTO[];
 
   constructor(private appointmentService: ScheduleService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  storeFromChildForm(recommendedDates: Date[]) {
+  storeFromChildForm(recommendedDates: RecommendedDatesDTO[]) {
     this.recommendedDatesFromParent = recommendedDates;
   }
 }
