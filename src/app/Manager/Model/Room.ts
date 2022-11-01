@@ -1,4 +1,3 @@
-import { IBuilding } from './Building';
 import { IFloor } from './Floor';
 import { IWorkingHours } from './WorkingHours';
 
