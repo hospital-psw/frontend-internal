@@ -9,7 +9,7 @@ import { AppointmentService } from './../service/appointment.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import { AppointmentsComponent } from './show-all/appointments/appointments.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
