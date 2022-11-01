@@ -4,23 +4,16 @@ import { FeedbackViewComponent } from './feedback-view/feedback-view.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {MatPaginatorModule} from '@angular/material/paginator';
-
-
-
-
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
-  declarations: [
-    FeedbackViewComponent
-  ],
+  declarations: [FeedbackViewComponent],
   imports: [
     CommonModule,
     MatTableModule,
     MatButtonModule,
     MatIconModule,
-    MatPaginatorModule
-  ]
+    MatPaginatorModule,
+  ],
 })
-export class FeedbackModule { }
+export class FeedbackModule {}

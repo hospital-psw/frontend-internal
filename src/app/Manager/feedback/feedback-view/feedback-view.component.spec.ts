@@ -8,9 +8,8 @@ describe('FeedbackViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeedbackViewComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedbackViewComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FeedbackViewComponent);
     component = fixture.componentInstance;

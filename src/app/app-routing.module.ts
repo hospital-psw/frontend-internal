@@ -22,9 +22,8 @@ const routes: Routes = [
   {
     path: 'feedback',
     component: FeedbackViewComponent,
-  }
-  
-]
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
