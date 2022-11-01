@@ -2,6 +2,7 @@ import { IFloor } from './../../../Model/Floor';
 import { Component, OnInit, Input } from '@angular/core';
 import { RoomService } from '../../../service/room-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { IRoom } from 'src/app/Manager/Model/Room';
 
 @Component({
   selector: 'app-show-floor-details',

@@ -26,7 +26,7 @@ export class ShowRoomDetailsComponent implements OnInit {
     if (this.room.workingHours == null) {
       this.showWorkingHours = false;
     }
-    if (this.room.workingHours.start != this.room.workingHours.end) {
+    if (this.room?.workingHours.start != this.room.workingHours.end) {
       this.showWorkingHours = true;
     } else {
       this.showWorkingHours = false;
