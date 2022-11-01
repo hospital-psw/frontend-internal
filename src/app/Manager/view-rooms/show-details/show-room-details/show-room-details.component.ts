@@ -4,10 +4,9 @@ import { IRoom } from 'src/app/Manager/Model/Room';
 @Component({
   selector: 'app-show-room-details',
   templateUrl: './show-room-details.component.html',
-  styleUrls: ['./show-room-details.component.scss']
+  styleUrls: ['./show-room-details.component.scss'],
 })
 export class ShowRoomDetailsComponent implements OnInit {
-
   constructor() {
     setInterval(() => {
       this.checkWorkingHours();
@@ -18,13 +17,10 @@ export class ShowRoomDetailsComponent implements OnInit {
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   checkWorkingHours(): void {
-    if(this.room.workingHours == null)
-    {
+    if (this.room.workingHours == null) {
       this.showWorkingHours = false;
     }
     if (this.room?.workingHours.start != this.room.workingHours.end) {
@@ -33,5 +29,4 @@ export class ShowRoomDetailsComponent implements OnInit {
       this.showWorkingHours = false;
     }
   }
-
 }
