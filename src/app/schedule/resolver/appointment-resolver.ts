@@ -13,7 +13,7 @@ export class AppointmentResolver implements Resolve<Appointment> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Appointment> {
     console.log('Called get Appointment in resolver...', route);
-    //let appointmentId = parseInt(route.paramMap.get("id"));
-    return this.appointmentService.getAppointment(4);
+    let appointmentId = parseInt(route.paramMap.get("id") as any);
+    return this.appointmentService.getAppointment(appointmentId);
   }
 }

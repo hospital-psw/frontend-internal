@@ -11,7 +11,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { ReschedulingAppointmentFormComponent } from './../schedule/rescheduling/rescheduling-appointment-form/rescheduling-appointment-form.component';
-import { ReschedulingAppointmentHeaderComponent } from './rescheduling/rescheduling-appointment-header/rescheduling-appointment-header.component';
 import { ReschedulingAppointmentTableComponent } from './rescheduling/rescheduling-appointment-table/rescheduling-appointment-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -26,7 +25,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
   declarations: [
     ReschedulingAppointmentComponent,
     ReschedulingAppointmentFormComponent,
-    ReschedulingAppointmentHeaderComponent,
     ReschedulingAppointmentTableComponent,
     AppointmentsComponent,
     SchedulingComponent,

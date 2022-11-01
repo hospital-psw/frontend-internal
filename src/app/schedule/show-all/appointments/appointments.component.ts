@@ -1,3 +1,4 @@
+import { Route, Router } from '@angular/router';
 import {
   Component,
   OnInit,
@@ -35,7 +36,7 @@ const colors: Record<string, EventColor> = {
   yellow: {
     primary: '#e3bc08',
     secondary: '#FDF1BA',
-  },
+  }
 };
 
 @Component({
@@ -64,9 +65,19 @@ export class AppointmentsComponent implements OnInit {
   appointments: CalendarEvent<{ appointment: Appointment }>[];
   examinationTypes: ExaminationType[];
 
-  constructor(private appointmentService: ScheduleService) {}
+  canClick: boolean = false;
+  selectedEvent : CalendarEvent<{ appointment: Appointment }> = {
+    title: null as any,
+    start: null as any,
+    color: { ...colors['blue'] },
+    end: null as any,
+    meta: null as any,
+  };
+
+  constructor(private appointmentService: ScheduleService, private router: Router) {}
 
   ngOnInit(): void {
+    this.canClick = false;
     this.viewDate = new Date('2022-10-27');
     this.viewDateEnd = addDays(this.viewDate, 6);
     this.examinationTypes = Object.values(ExaminationType);
@@ -130,5 +141,20 @@ export class AppointmentsComponent implements OnInit {
   handleNext(): void {
     this.viewDate = addDays(this.viewDate, 7);
     this.viewDateEnd = addDays(this.viewDate, 6);
+  }
+
+  onEventClick(event : any) : void {
+    this.canClick = true;
+    this.selectedEvent.color = colors['blue'];
+    this.selectedEvent = event.event;
+    this.selectedEvent.color = colors['red'];
+  }
+
+  rescheduleAppointment(event: any) : void {
+    this.router.navigate(['/reschedule-appointment', this.selectedEvent.meta?.appointment.id]);
+  }
+
+  cancelAppointment(event: any) : void {
+    console.log('kita')
   }
 }

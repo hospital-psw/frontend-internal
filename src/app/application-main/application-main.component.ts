@@ -22,17 +22,7 @@ import {
         style({ transform: 'translateX(0)', opacity: 1 }),
         animate('500ms', style({ transform: 'translateX(-100%)', opacity: 0 })),
       ]),
-    ]),
-    /*trigger('followHamburger', [
-      transition('open => closed', [
-        style({ transform: 'translateX(0)', width: '100%'}),
-        animate('0.5s', style({ transform: 'translateX(-26rem)', width: '100%' })),
-      ]),
-      transition('closed => open', [
-        style({ transform: 'translateX(-26rem)', width: '100%'}),
-        animate('0.5s', style({ transform: 'translateX(0rem)', width: '100%' })),
-      ]),
-    ]),*/
+    ])
   ],
 })
 export class ApplicationMainComponent implements OnInit {
@@ -46,6 +36,8 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Appointments';
       } else if (this.router.url == '/patients') {
         this.name = 'Patients';
+      } else if (this.router.url == '/reschedule-appointment/:id') {
+        this.name = 'Rescheduling appointment';
       }
     });
   }

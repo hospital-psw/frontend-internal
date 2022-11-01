@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ExaminationType } from './../../enum/ExaminationType.enum';
 import { ScheduleService } from './../../service/schedule.service';
 import { RecommendedDatesDTO } from './../../interface/RecommendedDatesDTO';
@@ -20,7 +21,7 @@ export class ReschedulingAppointmentCardComponent implements OnInit, OnChanges {
 
   examinationTypes: ExaminationType[];
 
-  constructor(private scheduleService: ScheduleService, private toastrService: ToastrService) { }
+  constructor(private scheduleService: ScheduleService, private toastrService: ToastrService, private router: Router) { }
 
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -41,8 +42,8 @@ export class ReschedulingAppointmentCardComponent implements OnInit, OnChanges {
   updateAppointment() : void {
     this.scheduleService.rescheduleAppointment(this.createReschedulingAppointment()).subscribe(
       (response: Appointment) => {
-        alert("Selected appointment is successfully rescheduled!");
-        //this.router.navigate(['']);
+        this.toastrService.success("Selected appointment is successfully rescheduled!");
+        this.router.navigate(['/appointments']);
       },
       (error: HttpErrorResponse) => {
         this.toastrService.error(error.error)
