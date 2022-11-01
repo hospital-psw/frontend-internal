@@ -1,16 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as THREE from "three";
+import * as THREE from 'three';
 import { Vector } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
-  styleUrls: ['./room.component.scss']
+  styleUrls: ['./room.component.scss'],
 })
 export class RoomComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   @Input() renderer: any;
   @Input() scene: any;
@@ -18,7 +17,7 @@ export class RoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.addLight(-1, 2, 4, this.scene);
-    this.addLight( 1, -1, -2, this.scene);
+    this.addLight(1, -1, -2, this.scene);
 
     const boxWidth = 1;
     const boxHeight = 1;
@@ -27,10 +26,16 @@ export class RoomComponent implements OnInit {
 
     const d = 0.8;
 
-    this.makeInstance(geometry, new THREE.Color().setHSL(0 / 8, 1, .5), -d, -d, -d, this.scene);
+    this.makeInstance(
+      geometry,
+      new THREE.Color().setHSL(0 / 8, 1, 0.5),
+      -d,
+      -d,
+      -d,
+      this.scene
+    );
 
-
-    const animate =  () => {
+    const animate = () => {
       requestAnimationFrame(animate);
 
       //cube.rotation.x += 0.01;
@@ -41,16 +46,22 @@ export class RoomComponent implements OnInit {
     animate();
   }
 
-
-  addLight(x: number, y: number, z:number, scene:THREE.Scene): void {
-    const color = 0xFFFFFF;
+  addLight(x: number, y: number, z: number, scene: THREE.Scene): void {
+    const color = 0xffffff;
     const intensity = 1;
     const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(x,y,z);
+    light.position.set(x, y, z);
     scene.add(light);
   }
 
-  makeInstance(geometry: THREE.BoxGeometry, color: THREE.Color, x:number, y:number, z:number, scene:THREE.Scene): THREE.Mesh{
+  makeInstance(
+    geometry: THREE.BoxGeometry,
+    color: THREE.Color,
+    x: number,
+    y: number,
+    z: number,
+    scene: THREE.Scene
+  ): THREE.Mesh {
     const material = new THREE.MeshPhongMaterial({
       color,
       opacity: 0.5,
@@ -63,5 +74,4 @@ export class RoomComponent implements OnInit {
     cube.position.set(x, y, z);
     return cube;
   }
-
 }

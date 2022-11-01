@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IRoom } from '../Model/Room';
-
+import { IBuilding } from '../Model/Building';
+import { IRoomMap } from '../Model/RoomMap';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoomService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) { }
+  getRooms(building: string, floor: string) {
+    return this.http.get<IRoomMap[]>(
+      `http://localhost:16177/api/map/getFloor/${building}/${floor}`
+    );
+  }
 
-  getRooms() {
-    return this.http.get<[]>('http://localhost:16177/api/map/all')
+  getBuilding(building: string) {
+    return this.http.get<IRoomMap[]>(
+      `http://localhost:16177/api/map/getBuilding/${building}`
+    );
   }
 }
