@@ -4,7 +4,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Room } from 'src/app/doctor/interface/Room';
 import { GraphicRoom } from '../model/GraphicRoom';
 import { RoomService } from '../../service/room-service.service';
-import * as moment from 'moment';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
