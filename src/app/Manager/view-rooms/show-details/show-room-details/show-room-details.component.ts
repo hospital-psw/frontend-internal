@@ -44,6 +44,9 @@ export class ShowRoomDetailsComponent implements OnInit {
   editRoom(newPurpose: string, newStart: string, newEnd: string, newNumber:string, e: Event){
     
     e.preventDefault();
+
+    
+
     let splited = newStart.split(":", 10);
     let hourStart = parseInt(splited[0]);
     let minuteStart = parseInt(splited[1])
