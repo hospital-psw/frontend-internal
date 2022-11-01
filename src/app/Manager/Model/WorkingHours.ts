@@ -1,4 +1,5 @@
 export interface IWorkingHours {
-  start: Date | null;
-  end: Date | null;
+  id: number;
+  start: Date;
+  end: Date;
 }
