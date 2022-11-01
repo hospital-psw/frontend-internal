@@ -91,10 +91,9 @@ export class ShowRoomDetailsComponent implements OnInit {
           this.showError();
         },
       });
-    }else{
+    } else {
       this.showError();
     }
-    
 
     let format = newStart.includes(':');
     console.log('format', format);
