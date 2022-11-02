@@ -5,8 +5,8 @@
         <mat-form-field appearance="fill">
           <mat-label>Choose hospital</mat-label>
           <mat-select (selectionChange)="selectHospital($event)">
-            <mat-option value="Hospital1">Hospital 1</mat-option>
-            <mat-option value="Hospital2">Hospital 2</mat-option>
+            <mat-option value="4">{{buildings[0]?.name}}</mat-option>
+            <mat-option value="5">{{buildings[1]?.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill">

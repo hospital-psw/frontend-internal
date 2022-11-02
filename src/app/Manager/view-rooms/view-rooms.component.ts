@@ -17,6 +17,7 @@ import SceneBuilder from './model/SceneBuilder';
 import { Observable } from 'rxjs';
 import { ApplicationRef } from '@angular/core';
 import { TorusGeometry } from 'three';
+import { IBuilding } from '../Model/Building';
 
 @Component({
   selector: 'app-view-rooms',
@@ -33,12 +34,13 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   private scene?: SceneBuilder;
   private camera?: CameraBuilder;
   private floor: number = -1;
-  private building: string = '';
+  private building: number = -1;
   public clickedRoom?: IRoom;
   private renderer?: THREE.WebGLRenderer;
   private sub?: Subscription;
 
   rooms: IRoomMap[] = [];
+  buildings: IBuilding[] = []
   public showDetails: boolean = false;
   public showBuildingDetails = false;
   public showFloorDetails = false;
@@ -48,7 +50,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
     this.scene = new SceneBuilder();
-
+    this.roomService.getBuildings().subscribe(data => this.buildings = data)
     window.addEventListener('mousedown', (e) => {
       this.handleIntersectClick(e);
     });
@@ -115,8 +117,8 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.getRooms(this.building, this.floor);
   }
 
-  getRooms(building: string, floor: number) {
-    if (building !== '' && floor === -1) {
+  getRooms(building: number, floor: number) {
+    if (building !== -1 && floor === -1) {
       console.log('udario');
       this.roomService.getBuilding(building).subscribe((data) => {
         this.rooms = data;
@@ -125,7 +127,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
         this.clickedRoom = this.rooms[0].room;
       });
     }
-    if (building !== '' && floor !== -1) {
+    if (building !== -1 && floor !== -1) {
       this.roomService
         .getRooms(building, floor.toString())
         .subscribe((data) => {
