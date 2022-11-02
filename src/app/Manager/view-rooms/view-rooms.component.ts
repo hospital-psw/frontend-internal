@@ -236,4 +236,12 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
 
     return cube;
   }
+
+  updateView(){
+    this.roomService.getBuilding(this.building).subscribe(data => {
+      this.rooms = data
+      this.scene?.setRoomsAfterEdit(this.rooms)
+    })
+  }
 }
+

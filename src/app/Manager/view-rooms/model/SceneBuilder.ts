@@ -127,9 +127,13 @@ export class SceneBuilder {
   }
 
   setRooms(rooms: IRoomMap[]) {
-    console.log('setujem', rooms);
     this.rooms = rooms;
-    console.log('rezultat', this.rooms);
+  }
+
+  setRoomsAfterEdit(rooms: IRoomMap[]){
+    this.rooms = rooms;
+    this.resetScene()
+    this.display(-1, rooms[0].room.floor.building.id)
   }
 }
 

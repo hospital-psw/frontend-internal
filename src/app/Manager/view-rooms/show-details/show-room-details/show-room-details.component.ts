@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IWorkingHours } from 'src/app/Manager/Model/WorkingHours';
 import { RoomService } from '../../../service/room-service.service';
@@ -17,6 +17,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   }
 
   @Input() room: any;
+  @Output() notify = new EventEmitter<any>()
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
@@ -85,6 +86,7 @@ export class ShowRoomDetailsComponent implements OnInit {
       };
       this.roomService.editRoom(updatedRoom).subscribe({
         next: (res) => {
+          this.notify.emit()
           this.showSuccess();
         },
         error: (e) => {

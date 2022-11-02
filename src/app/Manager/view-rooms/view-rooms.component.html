@@ -34,6 +34,7 @@
       [room]="clickedRoom"
     ></app-show-floor-details>
     <app-show-room-details
+      (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
     ></app-show-room-details>
