@@ -18,8 +18,7 @@ export class ShowBuildingDetailsComponent implements OnInit {
   @Input() room: any;
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   enableFields() {
     this.isDisabled = false;

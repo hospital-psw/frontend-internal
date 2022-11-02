@@ -40,7 +40,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   private sub?: Subscription;
 
   rooms: IRoomMap[] = [];
-  buildings: IBuilding[] = []
+  buildings: IBuilding[] = [];
   public showDetails: boolean = false;
   public showBuildingDetails = false;
   public showFloorDetails = false;
@@ -50,7 +50,9 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
     this.scene = new SceneBuilder();
-    this.roomService.getBuildings().subscribe(data => this.buildings = data)
+    this.roomService
+      .getBuildings()
+      .subscribe((data) => (this.buildings = data));
     window.addEventListener('mousedown', (e) => {
       this.handleIntersectClick(e);
     });

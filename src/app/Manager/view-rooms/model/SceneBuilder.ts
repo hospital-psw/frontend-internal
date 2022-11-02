@@ -40,8 +40,8 @@ export class SceneBuilder {
     const box = new THREE.BoxGeometry(room.width, 1, room.depth);
     var color = new THREE.Color().setHSL(0 / 8, 1, 0.5);
 
-    if(room.room.purpose == "hodnik")
-      color = new THREE.Color().setHSL(2 / 8, 0.5, 0.7)
+    if (room.room.purpose == 'hodnik')
+      color = new THREE.Color().setHSL(2 / 8, 0.5, 0.7);
 
     if (floor === -1)
       return this.createRoom(

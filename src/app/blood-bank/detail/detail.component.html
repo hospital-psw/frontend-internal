@@ -47,13 +47,6 @@
             >
           </mat-select>
         </mat-form-field>
-
-        <br />
-        <mat-form-field appearance="fill" class="amount">
-          <mat-label>Blood Amount</mat-label>
-          <input matInput required [(ngModel)]="bloodBank.amount" />
-        </mat-form-field>
-        <br />
         <button
           mat-raised-button
           (click)="checkBoodType(bloodBank.id)"
@@ -68,6 +61,13 @@
             type.</label
           >
         </div>
+
+        <br />
+        <mat-form-field appearance="fill" class="amount">
+          <mat-label>Blood Amount</mat-label>
+          <input matInput required [(ngModel)]="bloodBank.amount" />
+        </mat-form-field>
+        <br />
         <button
           mat-raised-button
           (click)="checkBoodTypeAmount(bloodBank.id, bloodBank.amount)"
@@ -75,11 +75,11 @@
         >
           Check Amount
         </button>
-        <div *ngIf="showAnwser">
-          <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
-            >Bank <span *ngIf="showResponse">has</span>
-            <span *ngIf="!showResponse">doesn't have</span> that amount of blood
-            type.</label
+        <div *ngIf="showAnwser1">
+          <label [ngClass]="showResponse1 ? 'response__pos' : 'response__neg'"
+            >Bank <span *ngIf="showResponse1">has</span>
+            <span *ngIf="!showResponse1">doesn't have</span> that amount of
+            blood type.</label
           >
         </div>
       </div>

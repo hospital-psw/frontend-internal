@@ -23,8 +23,10 @@ export class RoomService {
     );
   }
 
-  getBuildings(){
-    return this.http.get<IBuilding[]>(`http://localhost:16177/api/map/getBuildings`)
+  getBuildings() {
+    return this.http.get<IBuilding[]>(
+      `http://localhost:16177/api/map/getBuildings`
+    );
   }
 
   editRoom(room: IRoom) {

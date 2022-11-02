@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { BloodBank } from '../model/blood-bank.model';
 
@@ -7,12 +8,12 @@ import { BloodBank } from '../model/blood-bank.model';
   providedIn: 'root',
 })
 export class BloodBankService {
-  apiHost: string = 'http://localhost:45488/';
+  apiHost: string = 'http://localhost:5000/';
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   getBloodBanks(): Observable<BloodBank[]> {
     return this.http.get<BloodBank[]>(this.apiHost + 'api/BloodBank/all', {
@@ -54,6 +55,9 @@ export class BloodBankService {
     );
   }
 
+  errorHandling(err: any) {
+    this.toastr.warning(err.statusText, 'Error: ' + err.status);
+  }
   checkBoodTypeAmount(
     id: number,
     bloodType: string,
