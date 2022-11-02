@@ -1,8 +1,13 @@
+@import '../../../../styles/helpers/variables';
+
 .card {
   max-width: 55rem;
   max-height: 60rem;
   font-size: small;
   font-weight: 400;
+  border: 2px solid $button-color-primary;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  caret-color: transparent;
 
   @media screen and (max-width: 900px) {
     width: 35rem;
@@ -18,15 +23,17 @@ label {
   justify-content: space-around;
 
   &__column {
-   margin: 4rem;
+    margin: 4rem;
 
-   &__label {
-    margin-top: 2rem;
-   }
+    &__label {
+      margin-top: 2rem;
+    }
 
-   &__field {
-    margin-top: 1rem;
-   }
+    &__field {
+      margin-top: 1rem;
+      width: 20rem;
+      height: 10rem;
+    }
   }
 
   @media screen and (max-width: 900px) {
@@ -35,7 +42,27 @@ label {
   }
 }
 
-.button {
+.buttonContainer {
   display: flex;
   justify-content: center;
+}
+
+.button {
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  border: 2px solid $button-color-primary;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: 0.1s;
+
+  color: $button-color-primary;
+  background-color: white;
+
+  &:hover {
+    transform: scale(1.03);
+    transition: 0.1s;
+    cursor: pointer;
+    background-color: $button-color-primary;
+    color: white;
+  }
 }
