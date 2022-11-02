@@ -105,10 +105,10 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.switchDetails = 1;
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
-    //this.showDetails = true;
   }
 
   selectHospital(evt: any) {
+    this.floor = -1
     this.showBuildingDetails = true;
     this.showFloorDetails = false;
     this.showRoomDetails = false;
@@ -119,7 +119,6 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
 
   getRooms(building: number, floor: number) {
     if (building !== -1 && floor === -1) {
-      console.log('udario');
       this.roomService.getBuilding(building).subscribe((data) => {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
@@ -241,6 +240,12 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.roomService.getBuilding(this.building).subscribe(data => {
       this.rooms = data
       this.scene?.setRoomsAfterEdit(this.rooms)
+    })
+  }
+
+  updateBuildingInfo(){
+    this.roomService.getBuildings().subscribe(data => {
+      this.buildings = data
     })
   }
 }

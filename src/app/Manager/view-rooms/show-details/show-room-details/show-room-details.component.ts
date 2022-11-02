@@ -76,7 +76,6 @@ export class ShowRoomDetailsComponent implements OnInit {
         start: datum,
         end: datum2,
       };
-      console.log('novo radno vreme', updatedWorkingHours);
       const updatedRoom: IRoom = {
         id: this.room.id,
         number: newNumber,
@@ -96,9 +95,6 @@ export class ShowRoomDetailsComponent implements OnInit {
     } else {
       this.showError();
     }
-
-    let format = newStart.includes(':');
-    console.log('format', format);
   }
 
   showError() {

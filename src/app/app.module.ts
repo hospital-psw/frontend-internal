@@ -18,7 +18,6 @@ import { FeedbackModule } from './../app/Manager/feedback/feedback.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
 
