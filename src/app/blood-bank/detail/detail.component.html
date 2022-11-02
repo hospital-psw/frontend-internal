@@ -1,0 +1,88 @@
+<mat-card>
+  <div class="container">
+    <div class="wraper">
+      <mat-form-field appearance="fill" class="email">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          required
+          [(ngModel)]="bloodBank.email"
+        />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill" class="url" class="url">
+        <mat-label>Url</mat-label>
+        <input matInput required [(ngModel)]="bloodBank.apiUrl" />
+      </mat-form-field>
+      <br />
+      <mat-form-field appearance="fill" class="key">
+        <mat-label>Api Key</mat-label>
+        <input
+          matInput
+          required
+          [(ngModel)]="bloodBank.apiKey"
+          [type]="hide ? 'password' : 'text'"
+        />
+
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <div class="wraper__form">
+        <mat-form-field appearance="fill" class="specialType">
+          <mat-label>Select</mat-label>
+          <mat-select [(ngModel)]="selected" (ngModelChange)="hideResponse()">
+            <mat-option
+              *ngFor="let type of bloodTypes; let i = index"
+              [value]="type"
+              >{{ bloodTypes[i] }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          (click)="checkBoodType(bloodBank.id)"
+          color="primary"
+        >
+          Check
+        </button>
+        <div *ngIf="showAnwser">
+          <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
+            >Bank <span *ngIf="showResponse">has</span>
+            <span *ngIf="!showResponse">doesn't have</span> that blood
+            type.</label
+          >
+        </div>
+
+        <br />
+        <mat-form-field appearance="fill" class="amount">
+          <mat-label>Blood Amount</mat-label>
+          <input matInput required [(ngModel)]="bloodBank.amount" />
+        </mat-form-field>
+        <br />
+        <button
+          mat-raised-button
+          (click)="checkBoodTypeAmount(bloodBank.id, bloodBank.amount)"
+          color="primary"
+        >
+          Check Amount
+        </button>
+        <div *ngIf="showAnwser1">
+          <label [ngClass]="showResponse1 ? 'response__pos' : 'response__neg'"
+            >Bank <span *ngIf="showResponse1">has</span>
+            <span *ngIf="!showResponse1">doesn't have</span> that amount of
+            blood type.</label
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

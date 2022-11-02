@@ -1,0 +1,59 @@
+@import '../../../styles/helpers/variables';
+
+.navbar {
+  margin-bottom: 0;
+  background-color: rgba(255, 255, 255, 96);
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  padding: 1.98rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__header {
+    color: #777;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+  }
+
+  &__button {
+    color: $button-color-primary;
+    background-color: white;
+    border-radius: 5rem;
+    border: 2px solid $button-color-primary;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding: 0.7rem 1.5rem;
+    font-weight: 600;
+  }
+
+  &__button:hover {
+    cursor: pointer;
+
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    padding: .65rem;
+    text-transform: uppercase;
+    color: #777;
+    transition-duration: .2s;
+
+    &-icon {
+      height: 2.75rem;
+      width: 2.75rem;
+      border-radius: 50%;
+      margin-right: 2rem;
+      fill: #777;
+    }
+  }
+
+  &__profile:hover {
+    opacity: 1;
+    background: lightgray;
+    cursor: pointer;
+    border-radius: 4px;
+    transform: scale(1.05);
+    transition-duration: .2s;
+  }
+}

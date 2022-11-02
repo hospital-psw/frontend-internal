@@ -1,0 +1,115 @@
+<mat-card>
+  <div class="container">
+    <div [formGroup]="form">
+      <mat-form-field appearance="fill" class="elem">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+        <mat-error *ngIf="name?.errors?.['required']">
+          Name is required!
+        </mat-error>
+      </div>
+      <br />
+
+      <mat-form-field appearance="fill" class="elem">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          type="email"
+          id="email"
+          formControlName="email"
+          required
+          email
+        />
+      </mat-form-field>
+      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+        <mat-error *ngIf="email?.errors?.['required']">
+          Email is required!
+        </mat-error>
+        <mat-error
+          *ngIf="email?.errors?.['email'] || email?.errors?.['pattern']"
+        >
+          Email must be of correct format!
+        </mat-error>
+      </div>
+      <br />
+
+      <mat-form-field appearance="fill" class="elem">
+        <mat-label>API URL</mat-label>
+        <input matInput formControlName="apiUrl" />
+      </mat-form-field>
+      <div *ngIf="apiUrl?.invalid && (apiUrl?.dirty || apiUrl?.touched)">
+        <mat-error *ngIf="apiUrl?.errors?.['required']">
+          API URL is required!
+        </mat-error>
+      </div>
+      <br />
+
+      <mat-form-field
+        appearance="fill"
+        class="elem"
+        #tooltip="matTooltip"
+        matTooltip="Endpoint should contain !BLOOD_TYPE flag that represents the spot where the blood type will be placed!"
+        matTooltipPosition="right"
+      >
+        <mat-label>GET blood type availability endpoint</mat-label>
+        <input matInput formControlName="getBloodTypeAvailability" />
+      </mat-form-field>
+      <div
+        *ngIf="
+          getBloodTypeAvailability?.invalid &&
+          (getBloodTypeAvailability?.dirty || getBloodTypeAvailability?.touched)
+        "
+      >
+        <mat-error *ngIf="getBloodTypeAvailability?.errors?.['required']">
+          This field is required!
+        </mat-error>
+        <mat-error *ngIf="getBloodTypeAvailability?.errors?.['pattern']">
+          This endpoint must contain word "!BLOOD_TYPE"!
+        </mat-error>
+      </div>
+      <br />
+
+      <mat-form-field
+        appearance="fill"
+        class="elem"
+        #tooltip="matTooltip"
+        matTooltip="Endpoint should contain !BLOOD_TYPE and !AMOUNT flag that represents the spot where the blood type/amount will be placed!"
+        matTooltipPosition="right"
+      >
+        <mat-label>GET blood type availability by amount endpoint</mat-label>
+        <input matInput formControlName="getBloodTypeAndAmountAvailability" />
+      </mat-form-field>
+      <div
+        *ngIf="
+          getBloodTypeAndAmountAvailability?.invalid &&
+          (getBloodTypeAndAmountAvailability?.dirty ||
+            getBloodTypeAndAmountAvailability?.touched)
+        "
+      >
+        <mat-error
+          *ngIf="getBloodTypeAndAmountAvailability?.errors?.['required']"
+        >
+          This field is required!
+        </mat-error>
+        <mat-error
+          *ngIf="getBloodTypeAndAmountAvailability?.errors?.['pattern']"
+        >
+          This endpoint must contain words "!BLOOD_TYPE" and "!AMOUNT" in any
+          order!
+        </mat-error>
+      </div>
+      <br />
+      <div class="btnSubmit">
+        <button
+          mat-stroked-button
+          (click)="registerBloodBank()"
+          [disabled]="form.invalid"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-card>
