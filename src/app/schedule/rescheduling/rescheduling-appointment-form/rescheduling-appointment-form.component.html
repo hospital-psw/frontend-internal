@@ -1,0 +1,113 @@
+<mat-card class="card">
+  <div class="container">
+    <div class="form">
+      <div class="form__column">
+        <label class="form__column__label" for="date">Choose new date</label>
+        <mat-form-field appearance="fill" class="form__column__field">
+          <mat-label>Date</mat-label>
+          <input
+            id="date"
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="recommendedDto.date"
+            name="date"
+            required
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <label for="duration" class="form__column__label">Duration</label>
+        <mat-form-field appearance="fill" class="form__column__field">
+          <mat-label>Duration</mat-label>
+          <input
+            id="duration"
+            matInput
+            [(ngModel)]="appointment.duration"
+            name="duration"
+            readonly="true"
+            required
+          />
+        </mat-form-field>
+
+        <label for="room" class="form__column__label">Room</label>
+        <mat-form-field class="form__column__field" appearance="fill">
+          <mat-label>Room</mat-label>
+          <mat-select
+            id="room"
+            name="room"
+            disabled="true"
+            [(ngModel)]="appointment.room"
+            required
+          >
+            <mat-option>All</mat-option>
+            <mat-option *ngFor="let r of rooms" [value]="r"
+              >Number: {{ r.number }} Floor: {{ r.floor }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="form__column">
+        <label for="currentDateTime" class="form__column__label"
+          >Current date and time</label
+        >
+        <mat-form-field appearance="fill" class="form__column__field">
+          <mat-label>Duration</mat-label>
+          <input
+            id="currentDateTime"
+            matInput
+            [(ngModel)]="appointment.date"
+            name="currentDateTime"
+            readonly="true"
+            required
+          />
+        </mat-form-field>
+
+        <label for="patient" class="form__column__label">Patient</label>
+        <mat-form-field appearance="fill" class="form__column__field">
+          <mat-label>Info</mat-label>
+          <input
+            id="patient"
+            matInput
+            [value]="
+              appointment.patient.firstName + ' ' + appointment.patient.lastName
+            "
+            name="patient"
+            readonly="true"
+            required
+          />
+        </mat-form-field>
+
+        <label for="examType" class="form__column__label"
+          >Examination type option</label
+        >
+        <mat-form-field appearance="fill" class="form__column__field">
+          <mat-label>Examination type option</mat-label>
+          <mat-select
+            id="examType"
+            name="examType"
+            disabled="true"
+            [(ngModel)]="appointment.examType"
+            required
+          >
+            <mat-option>All</mat-option>
+            <mat-option *ngFor="let et of examinationTypes" [value]="et">{{
+              et | titlecase
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="buttonContainer">
+      <button class="button" (click)="onClickShowRecommended()">
+        Show available appointments
+      </button>
+    </div>
+  </div>
+</mat-card>
