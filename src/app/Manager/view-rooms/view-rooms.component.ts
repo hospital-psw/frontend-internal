@@ -4,6 +4,7 @@ import {
   Output,
   ChangeDetectorRef,
   OnDestroy,
+  AfterContentChecked,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
@@ -24,7 +25,9 @@ import { IBuilding } from '../Model/Building';
   templateUrl: './view-rooms.component.html',
   styleUrls: ['./view-rooms.component.scss'],
 })
-export class ViewRoomsComponent implements OnInit, OnDestroy {
+export class ViewRoomsComponent
+  implements OnInit, OnDestroy, AfterContentChecked
+{
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -40,7 +43,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   private sub?: Subscription;
 
   rooms: IRoomMap[] = [];
-  buildings: IBuilding[] = []
+  buildings: IBuilding[] = [];
   public showDetails: boolean = false;
   public showBuildingDetails = false;
   public showFloorDetails = false;
@@ -50,7 +53,9 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
     this.scene = new SceneBuilder();
-    this.roomService.getBuildings().subscribe(data => this.buildings = data)
+    this.roomService
+      .getBuildings()
+      .subscribe((data) => (this.buildings = data));
     window.addEventListener('mousedown', (e) => {
       this.handleIntersectClick(e);
     });
@@ -98,8 +103,8 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
-  ngAfterContentChecked(){
-    this.cdRef.detectChanges()
+  ngAfterContentChecked() {
+    this.cdRef.detectChanges();
   }
 
   selectFloor(evt: any) {
@@ -112,7 +117,7 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   }
 
   selectHospital(evt: any) {
-    this.floor = -1
+    this.floor = -1;
     this.showBuildingDetails = true;
     this.showFloorDetails = false;
     this.showRoomDetails = false;
@@ -240,17 +245,16 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     return cube;
   }
 
-  updateView(){
-    this.roomService.getBuilding(this.building).subscribe(data => {
-      this.rooms = data
-      this.scene?.setRoomsAfterEdit(this.rooms)
-    })
+  updateView() {
+    this.roomService.getBuilding(this.building).subscribe((data) => {
+      this.rooms = data;
+      this.scene?.setRoomsAfterEdit(this.rooms);
+    });
   }
 
-  updateBuildingInfo(){
-    this.roomService.getBuildings().subscribe(data => {
-      this.buildings = data
-    })
+  updateBuildingInfo() {
+    this.roomService.getBuildings().subscribe((data) => {
+      this.buildings = data;
+    });
   }
 }
-

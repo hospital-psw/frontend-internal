@@ -16,11 +16,10 @@ export class ShowBuildingDetailsComponent implements OnInit {
   ) {}
 
   @Input() room: any;
-  @Output() notify = new EventEmitter<any>()
+  @Output() notify = new EventEmitter<any>();
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   enableFields() {
     this.isDisabled = false;
@@ -35,7 +34,7 @@ export class ShowBuildingDetailsComponent implements OnInit {
     };
     this.roomService.editBuilding(updatedBuilding).subscribe({
       next: (res) => {
-        this.notify.emit()
+        this.notify.emit();
         this.showSuccess();
       },
       error: (e) => {

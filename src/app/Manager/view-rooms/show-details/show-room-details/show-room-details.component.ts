@@ -17,7 +17,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   }
 
   @Input() room: any;
-  @Output() notify = new EventEmitter<any>()
+  @Output() notify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
@@ -85,7 +85,7 @@ export class ShowRoomDetailsComponent implements OnInit {
       };
       this.roomService.editRoom(updatedRoom).subscribe({
         next: (res) => {
-          this.notify.emit()
+          this.notify.emit();
           this.showSuccess();
         },
         error: (e) => {
