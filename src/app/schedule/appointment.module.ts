@@ -20,6 +20,10 @@ import { SchedulingComponent } from './scheduling/scheduling.component';
 import { ReschedulingAppointmentCardComponent } from './rescheduling/rescheduling-appointment-card/rescheduling-appointment-card.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { SchedulingAppointmentFormComponent } from './scheduling/scheduling-appointment-form/scheduling-appointment-form/scheduling-appointment-form.component';
+import { PatientService } from './service/patient.service';
+import { SchedulingAppointmentTableComponent } from './scheduling/scheduling-appointment-table/scheduling-appointment-table/scheduling-appointment-table.component';
+import { SchedulingAppointmentCardComponent } from './scheduling/scheduling-appointment-card/scheduling-appointment-card/scheduling-appointment-card.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     AppointmentsComponent,
     SchedulingComponent,
     ReschedulingAppointmentCardComponent,
+    SchedulingAppointmentFormComponent,
+    SchedulingAppointmentTableComponent,
+    SchedulingAppointmentCardComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +55,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       useFactory: adapterFactory,
     }),
   ],
-  providers: [ScheduleService],
+  providers: [ScheduleService, PatientService],
 })
 export class AppointmentModule {}

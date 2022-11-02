@@ -1,0 +1,71 @@
+@import '../../../../../styles/helpers/variables';
+
+.card {
+    background-color: #fff;
+    background-image: url('./../../../../../assets/img/vector-blue.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    padding: 2rem 4rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: .3s;
+    margin-bottom: 2rem;
+  
+    &__content {
+  
+       color: #777;
+  
+        &-header {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #0E4C92;
+        }
+  
+        &-building {
+            font-size: 1.7rem;
+            margin-bottom: .5rem;
+        }
+  
+        &-room {
+            font-size: 1.7rem;
+        }
+  
+        margin-bottom: 1rem;
+    }
+  
+    &__button {
+        display: flex;
+        justify-content: center;
+  
+        .schedule-button {
+            padding: .7rem 1rem;
+            border: 0.1rem solid #0E4C92;
+            color: #0E4c92;
+            background-color: white;
+            text-transform: uppercase;
+            transition: 0.5s;
+            box-shadow: 0 1rem 2rem rgba(#000, .2);
+            font-weight: 600;
+            border-radius: 5px;
+  
+            &:hover, &:active {
+                padding: .7rem 1rem;
+                color: white;
+                background-color: #0E4C92;
+                border: none;
+                transition: 0.5s;
+            }
+  
+            &:active {
+                transform: scale(0.85);
+            }
+        }
+    }
+  
+    &:hover {
+        transform: scale(1.05);
+        transition: .3s;
+    }
+  }
+  

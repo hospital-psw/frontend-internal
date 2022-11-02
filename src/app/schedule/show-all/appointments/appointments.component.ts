@@ -117,6 +117,10 @@ export class AppointmentsComponent implements OnInit {
       );
   }
 
+  scheduleView() {
+    this.router.navigate(['appointments/scheduling']);
+  }
+
   createTitle(appointment: Appointment): string {
     return (
       this.examinationTypes[appointment.examType] +
