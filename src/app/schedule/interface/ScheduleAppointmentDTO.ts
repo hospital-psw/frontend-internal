@@ -4,6 +4,6 @@ import { IRoom } from '../../Manager/Model/Room';
 export interface ScheduleAppointmentDTO {
   date: Date;
   examType: number;
-  patientId:number;
-  doctorId:number;
+  patientId: number;
+  doctorId: number;
 }

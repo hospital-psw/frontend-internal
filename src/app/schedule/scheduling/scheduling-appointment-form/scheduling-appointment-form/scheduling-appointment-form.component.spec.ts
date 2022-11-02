@@ -8,9 +8,8 @@ describe('SchedulingAppointmentFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SchedulingAppointmentFormComponent ]
-    })
-    .compileComponents();
+      declarations: [SchedulingAppointmentFormComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SchedulingAppointmentFormComponent);
     component = fixture.componentInstance;

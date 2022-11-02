@@ -32,10 +32,9 @@ const routes: Routes = [
     component: FeedbackViewComponent,
   },
   {
-    path:'appointments/scheduling',
-    component: SchedulingComponent
-
-  }
+    path: 'appointments/scheduling',
+    component: SchedulingComponent,
+  },
 ];
 
 @NgModule({

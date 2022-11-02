@@ -8,22 +8,19 @@ import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
   styleUrls: ['./scheduling.component.scss'],
 })
 export class SchedulingComponent implements OnInit {
-  
-  redirectAppointment:ScheduleAppointmentDTO
+  redirectAppointment: ScheduleAppointmentDTO;
   recommendedDates: RecommendedDatesDTO[];
-  
-  
+
   constructor() {}
 
   ngOnInit(): void {}
 
- acceptData(data:ScheduleAppointmentDTO){
-  
-  this.redirectAppointment = data;
-  console.log(data)
- }
+  acceptData(data: ScheduleAppointmentDTO) {
+    this.redirectAppointment = data;
+    console.log(data);
+  }
 
- acceptDates(value: RecommendedDatesDTO[]){
+  acceptDates(value: RecommendedDatesDTO[]) {
     this.recommendedDates = value;
- }
+  }
 }

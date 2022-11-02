@@ -6,24 +6,18 @@ import { ScheduleAppointmentDTO } from 'src/app/schedule/interface/ScheduleAppoi
 @Component({
   selector: 'app-scheduling-appointment-table',
   templateUrl: './scheduling-appointment-table.component.html',
-  styleUrls: ['./scheduling-appointment-table.component.scss']
+  styleUrls: ['./scheduling-appointment-table.component.scss'],
 })
 export class SchedulingAppointmentTableComponent implements OnInit {
-
-  @Input() appointmentData:ScheduleAppointmentDTO 
+  @Input() appointmentData: ScheduleAppointmentDTO;
   @Input() recommendedDates: RecommendedDatesDTO[] = null as any;
 
-  date:Date
-  appointment:Appointment
+  date: Date;
+  appointment: Appointment;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-    
-  }
-
-  test(){
-    
-  }
+  test() {}
 }
