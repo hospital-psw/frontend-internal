@@ -77,7 +77,7 @@ export class AppointmentsComponent implements OnInit {
   constructor(
     private appointmentService: ScheduleService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.canClick = false;

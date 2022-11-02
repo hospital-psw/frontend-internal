@@ -2,7 +2,8 @@
   <app-rescheduling-appointment-form
     (outputDates)="storeFromChildForm($event)"
   ></app-rescheduling-appointment-form>
-  <app-rescheduling-appointment-table class="recommended"
+  <app-rescheduling-appointment-table
+    class="recommended"
     [recommendedDates]="recommendedDatesFromParent"
   ></app-rescheduling-appointment-table>
 </div>
