@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   transition,
   animate,
@@ -29,14 +29,14 @@ export class ApplicationMainComponent implements OnInit {
   name: string;
   hamburger: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe(() => {
       console.log(this.router.url);
       if (this.router.url == '/appointments') {
         this.name = 'Appointments';
       } else if (this.router.url == '/patients') {
         this.name = 'Patients';
-      } else if (this.router.url == '/reschedule-appointment/:id') {
+      } else if (this.router.url.includes('/reschedule-appointment')) {
         this.name = 'Rescheduling appointment';
       }
     });
