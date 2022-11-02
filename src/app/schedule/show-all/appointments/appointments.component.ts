@@ -164,10 +164,10 @@ export class AppointmentsComponent implements OnInit {
 
   cancelAppointment(event: any): void {
     console.log('...');
-    this.appointmentService.deleteAppointment(
-      this.selectedEvent.meta?.appointment.id as number
-    ).subscribe((data) => {
-      this.toaster.success("Successfuly canceled appointment")
-    })
+    this.appointmentService
+      .deleteAppointment(this.selectedEvent.meta?.appointment.id as number)
+      .subscribe((data) => {
+        this.toaster.success('Successfuly canceled appointment');
+      });
   }
 }
