@@ -38,6 +38,15 @@ export class DetailComponent implements OnInit {
     });
   }
 
+  checkBoodTypeAmount(id: number, amount: number): void {
+    this.bloodBankService
+      .checkBoodTypeAmount(id, this.selected, amount)
+      .subscribe((res) => {
+        this.showAnwser = true;
+        this.showResponse = res;
+      });
+  }
+
   hideResponse(): void {
     this.showAnwser = false;
   }
