@@ -1,0 +1,17 @@
+<p>scheduling-appointment-card works!</p>
+<div class="card">
+  <div class="card__content">
+    <div class="card__content-header">
+      {{ cardInfo.date | date: "dd.MM.yyyy HH:mm" }}
+    </div>
+    <div class="card__content-building">{{ cardInfo.building }}</div>
+    <div class="card__content-room">
+      Room: {{ cardInfo.room }}, Floor: {{ cardInfo.floor }}
+    </div>
+  </div>
+  <div class="card__button">
+    <button class="schedule-button" (click)="createAppointment()">
+      Schedule
+    </button>
+  </div>
+</div>

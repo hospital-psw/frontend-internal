@@ -1,1 +1,7 @@
-<p>scheduling works!</p>
+<div class="parentForm">
+    <app-scheduling-appointment-form (scheduleInfoEvent) = "acceptData($event)" (outputDates)="acceptDates($event)"></app-scheduling-appointment-form>
+    <app-scheduling-appointment-table  [appointmentData]="redirectAppointment" [recommendedDates]="recommendedDates"
+    class="recommended"
+    ></app-scheduling-appointment-table>
+</div>
+

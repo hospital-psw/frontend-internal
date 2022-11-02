@@ -19,7 +19,7 @@ export class ScheduleService {
   public scheduleAppointment(
     appointment: ScheduleAppointmentDTO
   ): Observable<Appointment> {
-    return this.http.post<Appointment>(`${this.apiServerUrl}`, appointment);
+    return this.http.post<Appointment>(`${this.apiServerUrl}/create`, appointment);
   }
 
   public rescheduleAppointment(
