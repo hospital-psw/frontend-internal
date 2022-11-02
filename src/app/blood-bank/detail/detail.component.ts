@@ -32,7 +32,7 @@ export class DetailComponent implements OnInit {
           this.bloodBank = res;
         },
         (err) => {
-          this.toastr.warning('An error occurred, please try again later.');
+          this.bloodBankService.errorHandling(err);
         }
       );
     });
@@ -41,10 +41,10 @@ export class DetailComponent implements OnInit {
     this.bloodBankService.checkBoodType(id, this.selected).subscribe(
       (res) => {
         this.showAnwser = true;
-        this.showResponse = res;
+        this.showResponse = res.Content;
       },
       (err) => {
-        this.toastr.warning('An error occurred, please try again later.');
+        this.bloodBankService.errorHandling(err);
       }
     );
   }

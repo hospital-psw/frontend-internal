@@ -38,7 +38,7 @@ export class AllComponent implements OnInit {
         this.dataSource.data = this.bloodBanks;
       },
       (err) => {
-        this.toastr.warning('An error occurred, please try again later.');
+        this.bloodBankService.errorHandling(err);
       }
     );
   }
