@@ -17,6 +17,8 @@ export class DetailComponent implements OnInit {
   selected: any = '';
   showResponse = false;
   showAnwser = false;
+  showResponse1 = false;
+  showAnwser1 = false;
 
   constructor(
     private bloodBankService: BloodBankService,
@@ -41,12 +43,24 @@ export class DetailComponent implements OnInit {
     this.bloodBankService.checkBoodType(id, this.selected).subscribe(
       (res) => {
         this.showAnwser = true;
-        this.showResponse = res.Content;
+        this.showResponse = res;
       },
       (err) => {
         this.bloodBankService.errorHandling(err);
       }
     );
+  }
+
+  checkBoodTypeAmount(id: number, amount: number): void {
+    this.bloodBankService
+      .checkBoodTypeAmount(id, this.selected, amount)
+      .subscribe(
+        (res) => {
+          this.showAnwser1 = true;
+          this.showResponse1 = res;
+        },
+        (err) => this.bloodBankService.errorHandling(err)
+      );
   }
 
   hideResponse(): void {

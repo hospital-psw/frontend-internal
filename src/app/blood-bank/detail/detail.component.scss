@@ -1,107 +1,19 @@
 .card {
   width: 80%;
-  margin: 3rem auto;
-  font-size: 62.5%;
+  //margin: 3rem auto;
+  //font-size: 62.5%;
+  
 }
-.title {
+.container {
+  font-size: 1.2rem;
   display: flex;
   justify-content: center;
-  button {
-    margin-top: 2rem;
-  }
 }
 
-.btnDelete:hover {
-  background-color: #ff5252;
-  color: white;
-}
-.btnDelete {
-  padding: 0;
-}
-.btnEdit:hover {
-  background-color: black;
-  color: white;
-}
-.card h1 {
-  //   text-align: center;
-  color: black;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  text-align: center;
-  font-size: 3rem;
-  margin: 2rem;
-}
-
-.specialType {
-  width: 13rem;
-  font-size: 1.2rem;
-}
-.specButton {
-  width: 1rem;
-  height: 4.5rem;
-  font-size: 1rem;
-}
-.specButton:hover {
-  background-color: white;
-  color: blue;
-}
-.email,
-.url,
-.key {
-  width: 20rem;
-  font-size: 1.2rem;
-}
-
-.wrap__answer {
-  display: flex;
-  flex-direction: column;
-}
-
-.response__pos {
-  font-size: 1.2rem;
+.response__pos{
   color: green;
 }
 
-.response__neg {
-  font-size: 1.2rem;
+.response__neg{
   color: red;
-}
-
-.wraper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  margin-bottom: 2rem;
-
-  &__form {
-    display: flex;
-  }
-}
-
-@media (max-width: 1100px) {
-  .title {
-    display: flex;
-    flex-direction: column;
-    .button__group {
-      text-align: center;
-      height: 5rem;
-    }
-    .button_ h1 {
-      margin: 1rem;
-    }
-    button {
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-  }
-  .wraper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0;
-    .email,
-    .url,
-    .key {
-      margin-bottom: 1rem;
-    }
-  }
 }

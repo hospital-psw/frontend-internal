@@ -4,6 +4,7 @@ export class BloodBank {
   public email: string = '';
   public apiUrl: string = '';
   public apiKey: string = '';
+  public amount: number = 0;
   public getBloodTypeAvailability: string = '';
   public getBloodTypeAndAmountAvailability: string = '';
 
@@ -14,6 +15,7 @@ export class BloodBank {
       this.email = obj.email;
       this.apiUrl = obj.apiUrl;
       this.apiKey = obj.apiKey;
+      this.amount = obj.amount;
       this.getBloodTypeAvailability = obj.getBloodTypeAvailability;
       this.getBloodTypeAndAmountAvailability =
         obj.getBloodTypeAndAmountAvailability;

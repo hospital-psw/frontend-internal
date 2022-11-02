@@ -11,15 +11,21 @@ import { IFloor } from '../Model/Floor';
 export class RoomService {
   constructor(private http: HttpClient) {}
 
-  getRooms(building: string, floor: string) {
+  getRooms(buildingId: number, floor: string) {
     return this.http.get<IRoomMap[]>(
-      `http://localhost:16177/api/map/getFloor/${building}/${floor}`
+      `http://localhost:16177/api/map/getRooms/${buildingId}/${floor}`
     );
   }
 
-  getBuilding(building: string) {
+  getBuilding(buildingId: number) {
     return this.http.get<IRoomMap[]>(
-      `http://localhost:16177/api/map/getBuilding/${building}`
+      `http://localhost:16177/api/map/getRooms/${buildingId}`
+    );
+  }
+
+  getBuildings() {
+    return this.http.get<IBuilding[]>(
+      `http://localhost:16177/api/map/getBuildings`
     );
   }
 

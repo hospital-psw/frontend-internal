@@ -33,18 +33,20 @@ export class BloodBankService {
     });
   }
 
-  createBloodBank(bloodBank: any): Observable<any> {
-    return this.http.post<any>(this.apiHost + 'api/BloodBank', bloodBank, {
-      headers: this.headers,
-    });
+  registerBloodBank(bloodBank: any): Observable<any> {
+    return this.http.post<any>(
+      this.apiHost + 'api/BloodBank/register',
+      bloodBank,
+      {
+        headers: this.headers,
+      }
+    );
   }
 
   updateBloodBank(bloodBank: any): Observable<any> {
-    return this.http.put<any>(
-      this.apiHost + 'api/BloodBank/' + bloodBank.id,
-      bloodBank,
-      { headers: this.headers }
-    );
+    return this.http.put<any>(this.apiHost + 'api/BloodBank/', bloodBank, {
+      headers: this.headers,
+    });
   }
 
   checkBoodType(id: number, bloodType: string): Observable<any> {
@@ -55,5 +57,20 @@ export class BloodBankService {
 
   errorHandling(err: any) {
     this.toastr.warning(err.statusText, 'Error: ' + err.status);
+  }
+  checkBoodTypeAmount(
+    id: number,
+    bloodType: string,
+    amount: number
+  ): Observable<any> {
+    return this.http.get<any>(
+      this.apiHost +
+        'api/BloodBank/checkAmount/' +
+        id +
+        '/' +
+        bloodType +
+        '/' +
+        amount
+    );
   }
 }

@@ -26,11 +26,10 @@ export class SceneBuilder {
     this.addLight(1, -1, -2);
   }
 
-  display(floor: number, building: string) {
+  display(floor: number, building: number) {
     this.graphicRooms = [];
     this.resetScene();
-    if (floor === -1 && building === '') return;
-    this.createHallway();
+    if (floor === -1 && building === -1) return;
     for (let i = 0; i < this.rooms.length; i++) {
       var mesh = this.createMesh(this.rooms[i], floor);
       this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]));
@@ -39,7 +38,11 @@ export class SceneBuilder {
 
   createMesh(room: IRoomMap, floor: number) {
     const box = new THREE.BoxGeometry(room.width, 1, room.depth);
-    const color = new THREE.Color().setHSL(0 / 8, 1, 0.5);
+    var color = new THREE.Color().setHSL(0 / 8, 1, 0.5);
+
+    if (room.room.purpose == 'hodnik')
+      color = new THREE.Color().setHSL(2 / 8, 0.5, 0.7);
+
     if (floor === -1)
       return this.createRoom(
         box,

@@ -18,10 +18,7 @@ export class ShowBuildingDetailsComponent implements OnInit {
   @Input() room: any;
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-    console.log('ispisuje');
-    console.log(this.room.floor.building);
-  }
+  ngOnInit(): void {}
 
   enableFields() {
     this.isDisabled = false;
@@ -32,7 +29,7 @@ export class ShowBuildingDetailsComponent implements OnInit {
     const updatedBuilding: IBuilding = {
       id: this.room.floor.building.id,
       name: newName,
-      address: this.room.floor.address,
+      address: this.room.floor.building.address,
     };
     this.roomService.editBuilding(updatedBuilding).subscribe({
       next: (res) => {
