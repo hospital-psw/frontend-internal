@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BloodBank } from '../model/blood-bank.model';
 import { BloodType } from '../model/blood-type.model';
 import { BloodBankService } from '../services/blood-bank.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detail',
@@ -20,23 +21,32 @@ export class DetailComponent implements OnInit {
   constructor(
     private bloodBankService: BloodBankService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.bloodBankService.getBloodBank(params['id']).subscribe((res) => {
-        this.bloodBank = res;
-        console.log(this.bloodBank);
-      });
+      this.bloodBankService.getBloodBank(params['id']).subscribe(
+        (res) => {
+          this.bloodBank = res;
+        },
+        (err) => {
+          this.toastr.warning('An error occurred, please try again later.');
+        }
+      );
     });
   }
   checkBoodType(id: number): void {
-    // alert(this.selected);
-    this.bloodBankService.checkBoodType(id, this.selected).subscribe((res) => {
-      this.showAnwser = true;
-      this.showResponse = res;
-    });
+    this.bloodBankService.checkBoodType(id, this.selected).subscribe(
+      (res) => {
+        this.showAnwser = true;
+        this.showResponse = res;
+      },
+      (err) => {
+        this.toastr.warning('An error occurred, please try again later.');
+      }
+    );
   }
 
   hideResponse(): void {
