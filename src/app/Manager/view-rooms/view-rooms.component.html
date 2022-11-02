@@ -26,6 +26,7 @@
   </div>
   <div ngSwitch="switchDetails">
     <app-show-building-details
+      (notify)="updateBuildingInfo()"
       *ngIf="this.showBuildingDetails"
       [room]="clickedRoom"
     ></app-show-building-details>
@@ -34,6 +35,7 @@
       [room]="clickedRoom"
     ></app-show-floor-details>
     <app-show-room-details
+      (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
     ></app-show-room-details>

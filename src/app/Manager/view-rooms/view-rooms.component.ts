@@ -4,6 +4,7 @@ import {
   Output,
   ChangeDetectorRef,
   OnDestroy,
+  AfterContentChecked,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
@@ -24,7 +25,9 @@ import { IBuilding } from '../Model/Building';
   templateUrl: './view-rooms.component.html',
   styleUrls: ['./view-rooms.component.scss'],
 })
-export class ViewRoomsComponent implements OnInit, OnDestroy {
+export class ViewRoomsComponent
+  implements OnInit, OnDestroy, AfterContentChecked
+{
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -100,6 +103,10 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
+  ngAfterContentChecked() {
+    this.cdRef.detectChanges();
+  }
+
   selectFloor(evt: any) {
     this.showBuildingDetails = false;
     this.showFloorDetails = true;
@@ -107,10 +114,10 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.switchDetails = 1;
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
-    //this.showDetails = true;
   }
 
   selectHospital(evt: any) {
+    this.floor = -1;
     this.showBuildingDetails = true;
     this.showFloorDetails = false;
     this.showRoomDetails = false;
@@ -121,7 +128,6 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
 
   getRooms(building: number, floor: number) {
     if (building !== -1 && floor === -1) {
-      console.log('udario');
       this.roomService.getBuilding(building).subscribe((data) => {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
@@ -237,5 +243,18 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     cube.position.set(x, y, z);
 
     return cube;
+  }
+
+  updateView() {
+    this.roomService.getBuilding(this.building).subscribe((data) => {
+      this.rooms = data;
+      this.scene?.setRoomsAfterEdit(this.rooms);
+    });
+  }
+
+  updateBuildingInfo() {
+    this.roomService.getBuildings().subscribe((data) => {
+      this.buildings = data;
+    });
   }
 }
