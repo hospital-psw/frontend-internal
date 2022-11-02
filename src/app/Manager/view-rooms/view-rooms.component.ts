@@ -98,6 +98,10 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
+  ngAfterContentChecked(){
+    this.cdRef.detectChanges()
+  }
+
   selectFloor(evt: any) {
     this.showBuildingDetails = false;
     this.showFloorDetails = true;
