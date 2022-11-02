@@ -54,9 +54,19 @@ export class BloodBankService {
     );
   }
 
-  checkBoodTypeAmount(id: number, bloodType: string, amount: number): Observable<any> {
+  checkBoodTypeAmount(
+    id: number,
+    bloodType: string,
+    amount: number
+  ): Observable<any> {
     return this.http.get<any>(
-      this.apiHost + 'api/BloodBank/checkAmount/' + id + '/' + bloodType + '/' + amount
+      this.apiHost +
+        'api/BloodBank/checkAmount/' +
+        id +
+        '/' +
+        bloodType +
+        '/' +
+        amount
     );
   }
 }
