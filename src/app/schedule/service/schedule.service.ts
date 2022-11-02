@@ -33,7 +33,7 @@ export class ScheduleService {
   }
 
   public deleteAppointment(appointmentId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiServerUrl}/${appointmentId}`);
+    return this.http.delete<void>(`${this.apiServerUrl}/cancel/${appointmentId}`);
   }
 
   public getAllAppointments(): Observable<Appointment[]> {
