@@ -43,7 +43,9 @@ mat-label{
 
 .button1{
   display:flex;
-  gap: 90px
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
 }
 
 .button-30 {
@@ -58,7 +60,7 @@ mat-label{
   cursor: pointer;
   display: inline-flex;
   font-family: "JetBrains Mono",monospace;
-  height: 25px;
+  height: 30px;
   justify-content: center;
   line-height: 1;
   list-style: none;
