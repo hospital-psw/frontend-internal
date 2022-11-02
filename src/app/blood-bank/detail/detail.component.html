@@ -24,6 +24,7 @@
           [(ngModel)]="bloodBank.apiKey"
           [type]="hide ? 'password' : 'text'"
         />
+
         <button
           mat-icon-button
           matSuffix
@@ -34,6 +35,7 @@
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
+
       <div class="wraper__form">
         <mat-form-field appearance="fill" class="specialType">
           <mat-label>Select</mat-label>
@@ -45,6 +47,13 @@
             >
           </mat-select>
         </mat-form-field>
+
+        <br />
+        <mat-form-field appearance="fill" class="amount">
+          <mat-label>Blood Amount</mat-label>
+          <input matInput required [(ngModel)]="bloodBank.amount" />
+        </mat-form-field>
+        <br />
         <button
           mat-raised-button
           (click)="checkBoodType(bloodBank.id)"
@@ -56,6 +65,20 @@
           <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
             >Bank <span *ngIf="showResponse">has</span>
             <span *ngIf="!showResponse">doesn't have</span> that blood
+            type.</label
+          >
+        </div>
+        <button
+          mat-raised-button
+          (click)="checkBoodTypeAmount(bloodBank.id, bloodBank.amount)"
+          color="primary"
+        >
+          Check Amount
+        </button>
+        <div *ngIf="showAnwser">
+          <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
+            >Bank <span *ngIf="showResponse">has</span>
+            <span *ngIf="!showResponse">doesn't have</span> that amount of blood
             type.</label
           >
         </div>
