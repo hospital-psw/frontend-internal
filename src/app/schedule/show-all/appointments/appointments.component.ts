@@ -33,9 +33,9 @@ const colors: Record<string, EventColor> = {
     primary: '#0E4C92',
     secondary: '#cbcbd226',
   },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
+  green: {
+    primary: '#0b6623',
+    secondary: '#e8fde7',
   },
 };
 
@@ -150,7 +150,7 @@ export class AppointmentsComponent implements OnInit {
     this.canClick = true;
     this.selectedEvent.color = colors['blue'];
     this.selectedEvent = event.event;
-    this.selectedEvent.color = colors['red'];
+    this.selectedEvent.color = colors['green'];
   }
 
   rescheduleAppointment(event: any): void {
@@ -161,6 +161,6 @@ export class AppointmentsComponent implements OnInit {
   }
 
   cancelAppointment(event: any): void {
-    console.log('kita');
+    console.log('...');
   }
 }
