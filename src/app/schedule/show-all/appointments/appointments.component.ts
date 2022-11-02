@@ -23,6 +23,7 @@ import { Appointment } from './../../interface/Appointment';
 import { ScheduleService } from './../../service/schedule.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ExaminationType } from './../../enum/ExaminationType.enum';
+import { ToastrService } from 'ngx-toastr';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -76,7 +77,8 @@ export class AppointmentsComponent implements OnInit {
 
   constructor(
     private appointmentService: ScheduleService,
-    private router: Router
+    private router: Router,
+    private toaster: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -162,5 +164,10 @@ export class AppointmentsComponent implements OnInit {
 
   cancelAppointment(event: any): void {
     console.log('...');
+    this.appointmentService
+      .deleteAppointment(this.selectedEvent.meta?.appointment.id as number)
+      .subscribe((data) => {
+        this.toaster.success('Successfuly canceled appointment');
+      });
   }
 }
