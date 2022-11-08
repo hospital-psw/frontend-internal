@@ -11,8 +11,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBar } from '@angular/material/snack-bar';
+<<<<<<< HEAD
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
+=======
+import { MatExpansionModule } from '@angular/material/expansion'
+import {MatDialogModule} from '@angular/material/dialog'
+>>>>>>> 74a2ecb (Implemented UI for showing requests and modal dialog for request rejection)
 
 @NgModule({
   declarations: [],
@@ -30,7 +35,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatChipsModule,
     MatChipsModule,
     MatExpansionModule,
+<<<<<<< HEAD
     MatDialogModule,
+=======
+    MatDialogModule
+>>>>>>> 74a2ecb (Implemented UI for showing requests and modal dialog for request rejection)
   ],
   exports: [
     CommonModule,
@@ -44,7 +53,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatChipsModule,
     MatExpansionModule,
+<<<<<<< HEAD
     MatDialogModule,
+=======
+    MatDialogModule
+>>>>>>> 74a2ecb (Implemented UI for showing requests and modal dialog for request rejection)
   ],
 })
 export class MaterialModule {}
