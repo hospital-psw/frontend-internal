@@ -1,12 +1,11 @@
-import { Doctor } from '../../schedule/interface/Doctor';
+import { IUser } from "./User";
 
 export interface IVacationRequest {
-  id: number;
-  doctor: Doctor;
-  from: Date;
-  to: Date;
-  status: string;
-  comment: string;
-  urgent: boolean;
-  managerComment: string;
+    doctor : IUser;
+    from : Date;
+    to : Date;
+    status: string;
+    comment: string;
+    urgent: boolean;
+    managerComment: string;
 }
