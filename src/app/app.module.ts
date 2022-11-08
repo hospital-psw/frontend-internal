@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
+import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { NewsfeedModule } from './newsfeed/newsfeed.module';
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
+    VacationRequestsModule
   ],
   bootstrap: [AppComponent],
   exports: [],

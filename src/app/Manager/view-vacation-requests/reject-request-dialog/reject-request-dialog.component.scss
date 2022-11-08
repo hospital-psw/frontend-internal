@@ -1,0 +1,36 @@
+.button1{
+    background-color: red;
+    color: white;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+}
+
+.button2{
+    position: absolute;
+    top: 65%;
+    left: 45%;
+}
+
+.content {
+    height: 300px;
+    width: 300px;
+}
+
+.textBox{
+    width: 290px;
+    height: 173px;
+}
+
+.title {
+    text-align: center;
+}
+
+.close.mat-button {
+    position: absolute;
+    top: 48;
+    left: 59%;
+    padding: 5px;
+    line-height: 14px;
+    min-width: auto;
+  }

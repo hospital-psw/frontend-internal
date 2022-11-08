@@ -8,6 +8,7 @@ import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
 import { FeedbackViewComponent } from './Manager/feedback/feedback-view/feedback-view.component';
 import { SchedulingComponent } from './schedule/scheduling/scheduling.component';
 import { FeedComponent } from './newsfeed/feed/feed.component';
+import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -40,6 +41,10 @@ const routes: Routes = [
     path: 'newsfeed',
     component: FeedComponent,
   },
+  {
+    path: 'vacation-requests',
+    component: VacationRequestsComponent,
+  }
 ];
 
 @NgModule({
