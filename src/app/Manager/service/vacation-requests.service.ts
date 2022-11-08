@@ -10,10 +10,6 @@ import { Observable } from 'rxjs';
 export class VacationRequestsService {
   constructor(private http: HttpClient) {}
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 84dd73f (small update)
   getVacationRequests(): Observable<IVacationRequest[]> {
     return this.http.get<IVacationRequest[]>(
       `http://localhost:16177/api/VacationRequests/getAllPending`
@@ -32,5 +28,5 @@ export class VacationRequestsService {
       `http://localhost:16177/api/VacationRequests/handle`,
       { Id: id, Status: 2, ManagerComment: managerComment }
     );
-  }
+    }
 }
