@@ -20,6 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { ToastrModule } from 'ngx-toastr';
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
+    VacationRequestsModule
   ],
   bootstrap: [AppComponent],
   exports: [],
