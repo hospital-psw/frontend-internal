@@ -10,6 +10,9 @@
             <button mat-icon-button class="button1" (click)="onAccept()">Accept</button>
             <button mat-icon-button class="button2" (click)="onReject()">Reject</button>
         </mat-panel-description>
+        <mat-panel-description *ngIf="request.urgent == true">
+          URGENT
+        </mat-panel-description>
       </mat-expansion-panel-header>
       <p>Comment: {{request.comment}}</p>
     </mat-expansion-panel>
