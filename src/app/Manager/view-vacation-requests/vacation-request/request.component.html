@@ -32,6 +32,9 @@
         </mat-panel-description>
         <mat-panel-description *ngIf="request.urgent === false">
         </mat-panel-description>
+        <mat-panel-description *ngIf="request.urgent == true">
+          URGENT
+        </mat-panel-description>
       </mat-expansion-panel-header>
       <p>Comment: {{ request.comment }}</p>
     </mat-expansion-panel>
