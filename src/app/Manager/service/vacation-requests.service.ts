@@ -15,7 +15,7 @@ export class VacationRequestsService {
     /*return this.http.get<IVacationRequest[]>(
       `http://localhost:16177/api/map/getVacationRequests`
     );*/
-    this.vacationRequests.push({doctor: {id: 1, firstName: "Ana", lastName: "Vulin", "email": "lala"}, from: new Date(), to: new Date(), urgent: false, status: "pending", "comment": "aaaaaa", "managerComment": ""});
+    this.vacationRequests.push({doctor: {id: 1, firstName: "Ana", lastName: "Vulin", "email": "lala"}, from: new Date(), to: new Date(), urgent: true, status: "pending", "comment": "aaaaaa", "managerComment": ""});
     return this.vacationRequests;
   }
 }
