@@ -11,8 +11,8 @@ export class ShowEquipmentComponent implements OnInit {
 
   constructor() { }
 
-  displayedColumns: string[] = ['typeOofEquipment', 'quantity', 'button'];
-  public equipment: IEquipment[]
+  displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
+  public equipment: IEquipment[] = []
   ngOnInit(): void {
   }
 
