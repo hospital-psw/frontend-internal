@@ -20,6 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,9 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
