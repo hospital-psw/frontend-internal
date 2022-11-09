@@ -1,0 +1,67 @@
+<mat-stepper orientation="horizontal" [linear]="true">
+  <mat-step [stepControl]="quantityForm">
+    <form [formGroup]="quantityForm">
+      <!-- <app-first-step-form [quantity]="quantity"></app-first-step-form> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Equipment quantity</mat-label>
+        <input formControlName="quantity" matInput type="number" required>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="destinationRoomForm">
+    <form [formGroup]="destinationRoomForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Destination room</mat-label>
+        <mat-select  formControlName="room">
+          <mat-option value="nesto">
+            Nesto
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="periodForm">
+    <form [formGroup]="periodForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Start date</mat-label>
+        <input formControlName="startDate" matInput type="date">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>End date</mat-label>
+        <input formControlName="endDate" matInput type="date">
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <form [formGroup]="durationForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Relocation duration in hours</mat-label>
+        <input formControlName="duration" matInput type="number">
+      </mat-form-field>
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-stepper>

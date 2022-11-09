@@ -312,7 +312,7 @@ export class ViewRoomsComponent
       let minuteEnd = parseInt(splitedEnd[1]);
       const end1 = new Date(2022, 10, 10, hourEnd, minuteEnd);
       let datum2 = new Date(end1.getTime() - end1.getTimezoneOffset() * 60000);
-      
+
       const searchCriteria : ISearchCriteriaDto = {
         buildingId: this.building,
         floorNumber: this.floor,
@@ -326,7 +326,7 @@ export class ViewRoomsComponent
         this.searchedRooms = data;
         console.log("view:", this.searchedRooms);
       });
-      
+
     }
   }
 }
