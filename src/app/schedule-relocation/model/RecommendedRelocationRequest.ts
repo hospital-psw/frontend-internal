@@ -1,11 +1,12 @@
 import { IEquipment } from "src/app/Manager/Model/Equipment";
 import { IRoom } from "src/app/Manager/Model/Room";
 
-export interface IRelocationRequest{
+export interface IRecommendedRelocationRequest{
   fromRoom: IRoom,
   toRoom: IRoom,
-  startTime: Date,
+  startDate: Date,
+  endDate: Date,
   duration: number,
-  equipment: IEquipment
+  equipment: IEquipment,
   quantity: number
 }
