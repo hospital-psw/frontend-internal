@@ -2,6 +2,6 @@ import { IRoom } from './Room';
 
 export interface IEquipment{
   room: IRoom,
-  equipmentType: string,
+  equipmentType: number,
   quantity: number
 }
