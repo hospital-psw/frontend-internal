@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { isThisSecond } from 'date-fns';
@@ -5,6 +6,10 @@ import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
 import { RoomService } from 'src/app/Manager/service/room-service.service';
+=======
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+>>>>>>> a1aa5ed (form with stepper created)
 
 @Component({
   selector: 'app-stepper',
