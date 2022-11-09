@@ -32,7 +32,7 @@ export class SceneBuilder {
     if (floor === -1 && building === -1) return;
     for (let i = 0; i < this.rooms.length; i++) {
       var mesh = this.createMesh(this.rooms[i], floor);
-      this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]));
+      this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]))
     }
   }
 
