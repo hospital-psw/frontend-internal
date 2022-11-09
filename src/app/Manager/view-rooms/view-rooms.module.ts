@@ -27,6 +27,7 @@ import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.modul
     ShowRoomDetailsComponent,
     ShowSearchedRoomsComponent,
     ShowEquipmentComponent,
+    ShowRoomDetailsComponent
   ],
   imports: [
     CommonModule,
