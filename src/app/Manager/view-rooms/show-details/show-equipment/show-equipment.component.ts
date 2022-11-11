@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { RoomService } from '../../../service/room-service.service';
-
+import { EquipmentTypeEnum } from 'src/app/Manager/Model/Enum/EquipmentType';
 
 @Component({
   selector: 'app-show-equipment',
@@ -21,4 +21,7 @@ export class ShowEquipmentComponent implements OnInit {
     this.roomService.getEquipment(this.room.id).subscribe(data=>{this.equipment = data;})
   }
 
+  convertEnum(type: number): string{
+    return EquipmentTypeEnum[type];
+  }
 }

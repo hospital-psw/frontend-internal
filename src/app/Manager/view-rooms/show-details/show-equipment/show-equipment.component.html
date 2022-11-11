@@ -1,12 +1,12 @@
 <table mat-table [dataSource]="equipment" class="mat-elevation-z8">
     <ng-container matColumnDef="typeOfEquipment">
       <th mat-header-cell *matHeaderCellDef> Type of equipment </th>
-      <td mat-cell *matCellDef="let element"> </td>
+      <td mat-cell *matCellDef="let element">{{convertEnum(element.equipmentType)}}</td>
     </ng-container>
   
     <ng-container matColumnDef="quantity">
       <th mat-header-cell *matHeaderCellDef> Quantity </th>
-      <td mat-cell *matCellDef="let element"> </td>
+      <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
     </ng-container>
   
     <ng-container matColumnDef="button">
