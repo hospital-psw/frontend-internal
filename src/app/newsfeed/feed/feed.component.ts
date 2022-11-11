@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
+import { FeedbackService } from 'src/app/Manager/feedback/service/feedback.service';
 import { News } from '../model/news';
 import { NewsStatus } from '../model/news-status';
+import { NewsfeedService } from '../service/newsfeed.service';
 
 const DATA: News[] = [
   {
@@ -42,7 +45,7 @@ export class FeedComponent implements OnInit {
   private displayedDataStatus: string;
   public displayedColumns = ['title', 'text', 'status', 'image', 'action'];
 
-  constructor() {}
+  constructor(private newsfeedService: NewsfeedService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getAll();
@@ -51,21 +54,55 @@ export class FeedComponent implements OnInit {
 
   getAll() {
     this.displayedDataStatus = 'ALL';
-    // this.service.all()
+    this.newsfeedService.getAll().subscribe(
+      (res) => {
+        this.allNews = res;
+      }
+    )
   }
 
   getPublished() {
     this.displayedDataStatus = 'PUBLISHED';
-    // this.service.all()
+    this.newsfeedService.getPublished().subscribe(
+      (res) => {
+        this.allNews = res;
+      }
+    )
   }
 
   getArchived() {
     this.displayedDataStatus = 'ARCHIVED';
-    // this.service.all()
+    this.newsfeedService.getArchived().subscribe(
+      (res) => {
+        this.allNews = res;
+      }
+    )
   }
 
   getPending() {
     this.displayedDataStatus = 'PENDING';
-    // this.service.all()
+    this.newsfeedService.getPending().subscribe(
+      (res) => {
+        this.allNews = res;
+      }
+    )
+  }
+
+  archive(id: number) {
+    this.newsfeedService.archive(id).subscribe(
+      (res) => {
+        this.toastr.warning('Successfully archived news!');
+        this.getAll();
+      }
+    )
+  }
+
+  publish(id: number) {
+    this.newsfeedService.publish(id).subscribe(
+      (res) => {
+        this.toastr.success('Successfully published news!');
+        this.getAll();
+      }
+    )
   }
 }
