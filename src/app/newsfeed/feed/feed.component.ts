@@ -13,7 +13,7 @@ const DATA: News[] = [
     title: 'Donacija krvi na stadionu Rajko Mitic!',
     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin orci erat, sodales ut nisi quis, lobortis mattis mi. Donec dictum non velit sed efficitur. Morbi pulvinar neque arcu, a laoreet odio dictum et. Donec mauris libero, blandit condimentum fringilla sit amet, gravida in ex. Mauris viverra vel dolor sed consectetur. Suspendisse vitae ante bibendum, ultrices mauris at, luctus nibh. Nunc vulputate massa ac nunc gravida blandit. Vivamus laoreet nec tortor id euismod. Vestibulum mollis, turpis vitae maximus blandit, massa purus vehicula ex, in volutpat quam diam non arcu. Duis scelerisque libero quis gravida viverra. Suspendisse et interdum tortor. Sed tortor diam, fringilla vitae sem et, cursus fringilla metus.',
     image: 'aaa',
-    dateCreated: new Date()
+    dateCreated: new Date(),
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const DATA: News[] = [
     title: 'Donacija krvi na stadionu JNA!',
     text: 'Lorem ipsum....',
     image: 'bbb',
-    dateCreated: new Date()
+    dateCreated: new Date(),
   },
   {
     id: 3,
@@ -29,7 +29,7 @@ const DATA: News[] = [
     title: 'Donacija krvi na stadionu Karadjordje!',
     text: 'Lorem ipsum....',
     image: 'ccc',
-    dateCreated: new Date()
+    dateCreated: new Date(),
   },
 ];
 
@@ -45,7 +45,10 @@ export class FeedComponent implements OnInit {
   private displayedDataStatus: string;
   public displayedColumns = ['title', 'text', 'status', 'image', 'action'];
 
-  constructor(private newsfeedService: NewsfeedService, private toastr: ToastrService) {}
+  constructor(
+    private newsfeedService: NewsfeedService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getAll();
@@ -54,55 +57,43 @@ export class FeedComponent implements OnInit {
 
   getAll() {
     this.displayedDataStatus = 'ALL';
-    this.newsfeedService.getAll().subscribe(
-      (res) => {
-        this.allNews = res;
-      }
-    )
+    this.newsfeedService.getAll().subscribe((res) => {
+      this.allNews = res;
+    });
   }
 
   getPublished() {
     this.displayedDataStatus = 'PUBLISHED';
-    this.newsfeedService.getPublished().subscribe(
-      (res) => {
-        this.allNews = res;
-      }
-    )
+    this.newsfeedService.getPublished().subscribe((res) => {
+      this.allNews = res;
+    });
   }
 
   getArchived() {
     this.displayedDataStatus = 'ARCHIVED';
-    this.newsfeedService.getArchived().subscribe(
-      (res) => {
-        this.allNews = res;
-      }
-    )
+    this.newsfeedService.getArchived().subscribe((res) => {
+      this.allNews = res;
+    });
   }
 
   getPending() {
     this.displayedDataStatus = 'PENDING';
-    this.newsfeedService.getPending().subscribe(
-      (res) => {
-        this.allNews = res;
-      }
-    )
+    this.newsfeedService.getPending().subscribe((res) => {
+      this.allNews = res;
+    });
   }
 
   archive(id: number) {
-    this.newsfeedService.archive(id).subscribe(
-      (res) => {
-        this.toastr.warning('Successfully archived news!');
-        this.getAll();
-      }
-    )
+    this.newsfeedService.archive(id).subscribe((res) => {
+      this.toastr.warning('Successfully archived news!');
+      this.getAll();
+    });
   }
 
   publish(id: number) {
-    this.newsfeedService.publish(id).subscribe(
-      (res) => {
-        this.toastr.success('Successfully published news!');
-        this.getAll();
-      }
-    )
+    this.newsfeedService.publish(id).subscribe((res) => {
+      this.toastr.success('Successfully published news!');
+      this.getAll();
+    });
   }
 }
