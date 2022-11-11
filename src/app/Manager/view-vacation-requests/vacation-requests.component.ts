@@ -13,7 +13,8 @@ export class VacationRequestsComponent {
   vacationRequests : IVacationRequest[] = []
 
   ngOnInit(): void {
-    this.vacationRequests = this.vacationRequestsService.getVacationRequests();
+    
+    this.vacationRequestsService.getVacationRequests().subscribe((data) => this.vacationRequests = data);
   }
 
 }

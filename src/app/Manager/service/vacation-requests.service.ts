@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IVacationRequest } from '../Model/VacationRequest';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,14 +9,9 @@ import { IVacationRequest } from '../Model/VacationRequest';
 export class VacationRequestsService {
   constructor(private http: HttpClient) {}
 
-
-  vacationRequests : IVacationRequest[] = [];
-
-  getVacationRequests() : IVacationRequest[] {
-    /*return this.http.get<IVacationRequest[]>(
-      `http://localhost:16177/api/map/getVacationRequests`
-    );*/
-    this.vacationRequests.push({doctor: {id: 1, firstName: "Ana", lastName: "Vulin", "email": "lala"}, from: new Date(), to: new Date(), urgent: true, status: "pending", "comment": "aaaaaa", "managerComment": ""});
-    return this.vacationRequests;
+  getVacationRequests() : Observable<IVacationRequest[]> {
+    return this.http.get<IVacationRequest[]>(
+      `http://localhost:16177/api/VacationRequests/getAllPending`
+    );
   }
 }
