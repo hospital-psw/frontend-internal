@@ -5,45 +5,28 @@
   <button mat-stroked-button color="accent">Pending review</button>
 </mat-card>
 
-<mat-card>
-  <mat-table [dataSource]="dataSource">
-    <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef class="cell-center">Title</th>
-      <td mat-cell *matCellDef="let news">
-        {{ news.title }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="text">
-      <th mat-header-cell *matHeaderCellDef class="cell-center">Text</th>
-      <td mat-cell *matCellDef="let news">
+<div class="news__container">
+  <mat-card *ngFor="let news of allNews">
+    <mat-card-header>
+      <mat-card-title>{{ news.title }}</mat-card-title>
+      <mat-card-subtitle>Date published: {{ news.dateCreated | date: "dd.MM.yyyy"}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-chip-list>
+      <mat-chip color="accent" selected *ngIf="news.status===allStatusTypes.PENDING">Pending</mat-chip>
+      <mat-chip color="success" selected *ngIf="news.status===allStatusTypes.PUBLISHED">Published</mat-chip>
+      <mat-chip color="warn" selected *ngIf="news.status===allStatusTypes.ARCHIVED">Archived</mat-chip>
+    </mat-chip-list>
+    <br>
+    <img mat-card-lg-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+    <mat-card-content>
+      <p>
         {{ news.text }}
-      </td>
-    </ng-container>
+      </p>
+    </mat-card-content>
+    <mat-card-actions *ngIf="news.status===allStatusTypes.PENDING">
+      <button mat-stroked-button color="success">Publish</button>
+      <button mat-stroked-button color="warn">Archive</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
 
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef class="cell-center">Status</th>
-      <td mat-cell *matCellDef="let news">
-        {{ news.status}}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef class="cell-center">Image</th>
-      <td mat-cell *matCellDef="let news">
-        {{ news.image }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="action">
-      <th mat-header-cell *matHeaderCellDef class="cell-center"></th>
-      <td mat-cell *matCellDef="let news">
-        <button mat-stroked-button color="success">Publish</button>
-        <button mat-stroked-button color="warn">Archive</button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </mat-table>
-</mat-card>

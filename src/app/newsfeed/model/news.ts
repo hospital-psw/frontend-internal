@@ -6,6 +6,7 @@ export class News {
   public text: string = '';
   public image: string = '';
   public status: NewsStatus;
+  public dateCreated: Date;
 
   public constructor(obj?: any) {
     if (obj) {
