@@ -4,6 +4,7 @@ import { IRoom } from '../Model/Room';
 import { IBuilding } from '../Model/Building';
 import { IRoomMap } from '../Model/RoomMap';
 import { IFloor } from '../Model/Floor';
+import { IEquipment } from '../Model/Equipment';
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +43,11 @@ export class RoomService {
 
   editFloor(floor: IFloor) {
     return this.http.put<IBuilding>(`http://localhost:16177/api/floors`, floor);
+  }
+
+  getEquipment(roomId:number){
+    return this.http.get<IEquipment[]>(
+      `http://localhost:16177/api/Equipment/${roomId}`
+    )
   }
 }

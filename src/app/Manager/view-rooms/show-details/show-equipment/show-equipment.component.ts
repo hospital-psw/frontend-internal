@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
+import { IRoom } from 'src/app/Manager/Model/Room';
+import { RoomService } from '../../../service/room-service.service';
 
 
 @Component({
@@ -9,11 +11,14 @@ import { IEquipment } from 'src/app/Manager/Model/Equipment';
 })
 export class ShowEquipmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private roomService: RoomService) { }
 
+  @Input() room: IRoom;
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
   public equipment: IEquipment[] = []
   ngOnInit(): void {
+    console.log(this.room.id)
+    this.roomService.getEquipment(this.room.id).subscribe(data=>{this.equipment = data;})
   }
 
 }
