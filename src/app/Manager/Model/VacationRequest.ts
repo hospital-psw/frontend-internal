@@ -1,7 +1,7 @@
-import { IUser } from "./User";
+import { Doctor } from "../../schedule/interface/Doctor"
 
 export interface IVacationRequest {
-    doctor : IUser;
+    doctor : Doctor;
     from : Date;
     to : Date;
     status: string;
