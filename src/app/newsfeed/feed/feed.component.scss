@@ -1,0 +1,42 @@
+mat-table {
+    table-layout: fixed;
+    width: 100%;
+    display: table;
+  }
+  .table-header {
+    display: inline;
+  }
+  
+  p {
+    font-size: 1.5rem;
+  }
+.filter__bar {
+    margin-bottom: 1em;
+
+}
+.filter__bar > button {
+  margin-right: 0.5em;
+}
+
+
+/* Success styling - CONSIDER ADDING THIS TO GLOBAL SCSS*/
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+    color: #155724;
+}
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #155724;
+}
+
+.mat-icon-button.mat-success {
+  color:#155724;
+}

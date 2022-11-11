@@ -9,7 +9,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -30,6 +29,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatButtonModule,
     MatCardModule,
     MatIconModule,
     MatTooltipModule,
