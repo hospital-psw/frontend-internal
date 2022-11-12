@@ -11,8 +11,7 @@ import { EquipmentTypeEnum } from 'src/app/Manager/Model/Enum/EquipmentType';
 })
 export class ShowEquipmentComponent implements OnInit {
   constructor(private roomService: RoomService) {
-    setInterval(() => {
-    }, 100);
+    setInterval(() => {}, 100);
   }
 
   @Input() room: IRoom;
