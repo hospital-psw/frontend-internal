@@ -26,24 +26,36 @@ export class SceneBuilder {
     this.addLight(1, -1, -2);
   }
 
-  display(floor: number, building: number) {
+  display(floor: number, building: number, markedRoomId: number) {
     this.graphicRooms = [];
     this.resetScene();
     if (floor === -1 && building === -1) return;
     for (let i = 0; i < this.rooms.length; i++) {
-      var mesh = this.createMesh(this.rooms[i], floor);
+      var mesh = this.createMesh(this.rooms[i], floor, markedRoomId);
       this.graphicRooms.push(new GraphicRoom(mesh, this.rooms[i]));
     }
   }
 
-  createMesh(room: IRoomMap, floor: number) {
+  createMesh(room: IRoomMap, floor: number, markedRoomId: number) {
     const box = new THREE.BoxGeometry(room.width, 1, room.depth);
     var color = new THREE.Color().setHSL(0 / 8, 1, 0.5);
+    var markedColor = new THREE.Color().setHSL(1 / 8, 1, 0.5);
 
     if (room.room.purpose == 'hodnik')
       color = new THREE.Color().setHSL(2 / 8, 0.5, 0.7);
 
-    if (floor === -1)
+    if (floor === -1) {
+      if (room.room.id === markedRoomId) {
+        return this.createRoom(
+          box,
+          markedColor,
+          room.x,
+          room.room.floor.number,
+          room.z,
+          room.room.number.toString()
+        );
+      }
+
       return this.createRoom(
         box,
         color,
@@ -52,6 +64,18 @@ export class SceneBuilder {
         room.z,
         room.room.number.toString()
       );
+    }
+
+    if (room.room.id === markedRoomId) {
+      return this.createRoom(
+        box,
+        markedColor,
+        room.x,
+        1,
+        room.z,
+        room.room.number.toString()
+      );
+    }
     return this.createRoom(
       box,
       color,
@@ -133,7 +157,7 @@ export class SceneBuilder {
   setRoomsAfterEdit(rooms: IRoomMap[]) {
     this.rooms = rooms;
     this.resetScene();
-    this.display(-1, rooms[0].room.floor.building.id);
+    this.display(-1, rooms[0].room.floor.building.id, 14); // promeniti
   }
 }
 

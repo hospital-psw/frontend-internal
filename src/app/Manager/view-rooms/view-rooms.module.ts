@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ShowBuildingDetailsComponent } from './show-details/show-building-details/show-building-details.component';
 import { ShowFloorDetailsComponent } from './show-details/show-floor-details/show-floor-details.component';
 import { ShowRoomDetailsComponent } from './show-details/show-room-details/show-room-details.component';
+import { ShowSearchedRoomsComponent } from './show-searched-rooms/show-searched-rooms/show-searched-rooms.component';
 import { ShowEquipmentComponent } from './show-details/show-equipment/show-equipment.component';
 import { MatTableModule } from '@angular/material/table';
 
@@ -21,6 +22,7 @@ import { MatTableModule } from '@angular/material/table';
     ShowBuildingDetailsComponent,
     ShowFloorDetailsComponent,
     ShowRoomDetailsComponent,
+    ShowSearchedRoomsComponent,
     ShowEquipmentComponent,
   ],
   imports: [
