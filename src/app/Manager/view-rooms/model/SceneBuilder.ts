@@ -44,8 +44,8 @@ export class SceneBuilder {
     if (room.room.purpose == 'hodnik')
       color = new THREE.Color().setHSL(2 / 8, 0.5, 0.7);
 
-    if (floor === -1){
-      if(room.room.id === markedRoomId){
+    if (floor === -1) {
+      if (room.room.id === markedRoomId) {
         return this.createRoom(
           box,
           markedColor,
@@ -66,17 +66,16 @@ export class SceneBuilder {
       );
     }
 
-      
-      if(room.room.id === markedRoomId){
-        return this.createRoom(
-          box,
-          markedColor,
-          room.x,
-          1,
-          room.z,
-          room.room.number.toString()
-        );
-      }
+    if (room.room.id === markedRoomId) {
+      return this.createRoom(
+        box,
+        markedColor,
+        room.x,
+        1,
+        room.z,
+        room.room.number.toString()
+      );
+    }
     return this.createRoom(
       box,
       color,

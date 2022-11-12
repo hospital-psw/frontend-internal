@@ -49,7 +49,22 @@ export class ViewRoomsComponent
   public showFloorDetails = false;
   public showRoomDetails: boolean = false;
   public switchDetails: number; //0 - building; 1 - floor; 2 - room
-  public clicked: IRoom = {id: -1, number: '101', floor: {id: 1, number: 1, purpose: 'hirurgija', building:{id: 4, name: 'Hospital1', address: 'Janka cmelika 27 Novi Sad'}}, purpose: 'operaciona sala', workingHours: {id: 1, start: new Date(), end: new Date()}};
+  public clicked: IRoom = {
+    id: -1,
+    number: '101',
+    floor: {
+      id: 1,
+      number: 1,
+      purpose: 'hirurgija',
+      building: {
+        id: 4,
+        name: 'Hospital1',
+        address: 'Janka cmelika 27 Novi Sad',
+      },
+    },
+    purpose: 'operaciona sala',
+    workingHours: { id: 1, start: new Date(), end: new Date() },
+  };
   public searchedRooms: IRoom[] = [];
 
   ngOnInit(): void {
