@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { Output, EventEmitter } from '@angular/core';
 
@@ -17,11 +17,12 @@ const ELEMENT_DATA: IRoom[] = [
 export class ShowSearchedRoomsComponent implements OnInit {
 
   public dataSource = ELEMENT_DATA;
-  displayedColumns: string[] = ['number', 'purpose'];
-  clickedRows = new Set<IRoom>();
+  displayedColumns: string[] = ['number', 'floor', 'building', 'purpose'];
+  clickedRows = new Set<IRoom>(); //ne treba mi?
 
   constructor() { }
 
+  @Input() searchedRooms: any
   @Output() newItemEvent = new EventEmitter<IRoom>();
 
   sendRoomId(value: IRoom) {

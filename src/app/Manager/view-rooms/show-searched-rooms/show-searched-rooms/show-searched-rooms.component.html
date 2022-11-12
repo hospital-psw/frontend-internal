@@ -5,18 +5,18 @@
     <td mat-cell *matCellDef="let element" class="cell-center">{{element.number}}</td>
   </ng-container>
 
-  <!-- Floor Column 
+
   <ng-container matColumnDef="floor">
-    <th mat-header-cell *matHeaderCellDef>Sprat</th>
-    <td mat-cell *matCellDef="let element">{{element.floor.number}}</td>
+    <th mat-header-cell *matHeaderCellDef class="cell-center">Sprat</th>
+    <td mat-cell *matCellDef="let element" class="cell-center">{{element.floor.number}}</td>
   </ng-container>
 
   
   <ng-container matColumnDef="building">
-    <th mat-header-cell *matHeaderCellDef>Zgrada</th>
-    <td mat-cell *matCellDef="let element">{{element.floor.building.name}}</td>
+    <th mat-header-cell *matHeaderCellDef class="cell-center">Zgrada</th>
+    <td mat-cell *matCellDef="let element" class="cell-center">{{element.floor.building.name}}</td>
   </ng-container>
--->
+
   <!-- Purpose Column -->
   <ng-container matColumnDef="purpose">
     <th mat-header-cell *matHeaderCellDef class="cell-center">Svrha</th>
