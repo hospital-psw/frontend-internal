@@ -119,7 +119,7 @@ export class ViewRoomsComponent
   }
 
   selectHospital(evt: any) {
-    this.floor = -1;
+    //this.floor = -1;
     this.showBuildingDetails = true;
     this.showFloorDetails = false;
     this.showRoomDetails = false;
