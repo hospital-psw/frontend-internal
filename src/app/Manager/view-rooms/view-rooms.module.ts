@@ -13,6 +13,7 @@ import { ShowBuildingDetailsComponent } from './show-details/show-building-detai
 import { ShowFloorDetailsComponent } from './show-details/show-floor-details/show-floor-details.component';
 import { ShowRoomDetailsComponent } from './show-details/show-room-details/show-room-details.component';
 import { ShowSearchedRoomsComponent } from './show-searched-rooms/show-searched-rooms/show-searched-rooms.component';
+import { ShowEquipmentComponent } from './show-details/show-equipment/show-equipment.component';
 import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MatTableModule } from '@angular/material/table';
     ShowFloorDetailsComponent,
     ShowRoomDetailsComponent,
     ShowSearchedRoomsComponent,
+    ShowEquipmentComponent,
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,7 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatOptionModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
   ],
   exports: [ViewRoomsComponent],
 })

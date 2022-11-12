@@ -41,6 +41,9 @@
     ></app-show-room-details>
   </div>
   <div>
-    <app-show-searched-rooms (newItemEvent)="sendRoomId($event)" [searchedRooms]="searchedRooms"></app-show-searched-rooms>
+    <app-show-searched-rooms
+      (newItemEvent)="sendRoomId($event)"
+      [searchedRooms]="searchedRooms"
+    ></app-show-searched-rooms>
   </div>
 </div>
