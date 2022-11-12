@@ -1,3 +1,4 @@
+import { MedicalTreatmentModule } from './medical-treatment/medical-treatment.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppointmentModule } from './schedule/appointment.module';
@@ -45,6 +46,7 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
+    MedicalTreatmentModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
@@ -54,4 +56,4 @@ import { ToastrModule } from 'ngx-toastr';
   exports: [],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
-export class AppModule {}
+export class AppModule { }
