@@ -1,6 +1,6 @@
 export enum EquipmentTypeEnum {
-    Bed,
-    Scissors,
-    Needle,
-    Bandage
-  }
+  Bed,
+  Scissors,
+  Needle,
+  Bandage,
+}

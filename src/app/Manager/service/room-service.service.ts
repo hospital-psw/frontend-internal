@@ -45,9 +45,9 @@ export class RoomService {
     return this.http.put<IBuilding>(`http://localhost:16177/api/floors`, floor);
   }
 
-  getEquipment(roomId:number){
+  getEquipment(roomId: number) {
     return this.http.get<IEquipment[]>(
       `http://localhost:16177/api/Equipment/${roomId}`
-    )
+    );
   }
 }

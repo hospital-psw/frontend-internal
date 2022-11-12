@@ -7,21 +7,22 @@ import { EquipmentTypeEnum } from 'src/app/Manager/Model/Enum/EquipmentType';
 @Component({
   selector: 'app-show-equipment',
   templateUrl: './show-equipment.component.html',
-  styleUrls: ['./show-equipment.component.scss']
+  styleUrls: ['./show-equipment.component.scss'],
 })
 export class ShowEquipmentComponent implements OnInit {
-
-  constructor(private roomService: RoomService) { }
+  constructor(private roomService: RoomService) {}
 
   @Input() room: IRoom;
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
-  public equipment: IEquipment[] = []
+  public equipment: IEquipment[] = [];
   ngOnInit(): void {
-    console.log(this.room.id)
-    this.roomService.getEquipment(this.room.id).subscribe(data=>{this.equipment = data;})
+    console.log(this.room.id);
+    this.roomService.getEquipment(this.room.id).subscribe((data) => {
+      this.equipment = data;
+    });
   }
 
-  convertEnum(type: number): string{
+  convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
   }
 }
