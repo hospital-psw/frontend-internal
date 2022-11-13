@@ -83,9 +83,7 @@ export class RequestComponent implements OnInit {
   onReject(id: number, managerComment: string){
     let context = this
     this.clickButton = true;
-    let dialogRef = this.dialog.open(RejectRequestDialogComponent, {
-      data: {closed: false}
-    });
+    let dialogRef = this.dialog.open(RejectRequestDialogComponent, { disableClose: true });
     dialogRef.afterClosed().subscribe(result =>{
       if(result==='canceled') return
       this.vacationRequestService.declineVacationRequest(id, managerComment).subscribe(res => {
