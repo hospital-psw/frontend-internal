@@ -54,7 +54,7 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
-    VacationRequestsModule
+    VacationRequestsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

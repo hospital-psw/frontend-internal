@@ -1,5 +1,8 @@
 <div class="wrapper">
-    <div class="users-wrapper">
-      <app-request *ngFor="let vacationRequest of vacationRequests" [request]="vacationRequest" (notify)="refresh()"></app-request>
-    </div>
+  <div class="users-wrapper">
+    <app-request
+      *ngFor="let vacationRequest of vacationRequests"
+      [request]="vacationRequest"
+    ></app-request>
+  </div>
 </div>
