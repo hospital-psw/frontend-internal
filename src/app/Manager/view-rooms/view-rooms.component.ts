@@ -51,7 +51,8 @@ export class ViewRoomsComponent
   public showBuildingDetails = false;
   public showFloorDetails = false;
   public showRoomDetails: boolean = false;
-  public switchDetails: number; //0 - building; 1 - floor; 2 - room
+  public showSearchedRooms: boolean = false;
+  public switchDetails: number; //0 - building; 1 - floor; 2 - room; 3 - searched rooms
   public clicked: IRoom = {
     id: -1,
     number: '101',
@@ -131,6 +132,7 @@ export class ViewRoomsComponent
     this.showBuildingDetails = false;
     this.showFloorDetails = true;
     this.showRoomDetails = false;
+    this.showSearchedRooms = false;
     this.switchDetails = 1;
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
@@ -141,6 +143,7 @@ export class ViewRoomsComponent
     this.showBuildingDetails = true;
     this.showFloorDetails = false;
     this.showRoomDetails = false;
+    this.showSearchedRooms = false;
     this.switchDetails = 0;
     this.building = evt.value;
     this.getRooms(this.building, this.floor);
@@ -207,6 +210,7 @@ export class ViewRoomsComponent
           this.showFloorDetails = false;
           this.showBuildingDetails = false;
           this.showRoomDetails = roomFound;
+          this.showSearchedRooms = false;
           this.switchDetails = 2;
         }
       }
@@ -285,6 +289,10 @@ export class ViewRoomsComponent
   }
 
   searchRooms(roomNumberSearch: string, roomPurposeSearch: string, workingHoursStart: string, workingHoursEnd: string) {
+      this.showSearchedRooms = true;
+      this.showBuildingDetails = false;
+      this.showFloorDetails = false;
+      this.showRoomDetails = false;
     if (
       workingHoursStart.includes(':') &&
       workingHoursEnd.includes(':') &&
@@ -317,6 +325,7 @@ export class ViewRoomsComponent
       this.roomService.searchRooms(searchCriteria).subscribe((data) => {
         this.searchedRooms = data;
       });
+      
     }
   }
 }
