@@ -9,9 +9,8 @@ import { VacationRequestsService } from '../../service/vacation-requests.service
 })
 export class RejectRequestDialogComponent implements OnInit {
 
-  constructor() {}
+  constructor(private vacationRequestService: VacationRequestsService) {}
 
   ngOnInit(): void {
   }
-
 }
