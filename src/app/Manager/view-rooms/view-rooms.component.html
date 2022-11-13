@@ -2,14 +2,14 @@
   <div class="info">
     <div class="display-rooms-wrapper">
       <div class="input-wrapper">
-        <mat-form-field appearance="fill">
+        <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose hospital</mat-label>
           <mat-select (selectionChange)="selectHospital($event)">
             <mat-option value="4">{{ buildings[0]?.name }}</mat-option>
             <mat-option value="5">{{ buildings[1]?.name }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose floor</mat-label>
           <mat-select (selectionChange)="selectFloor($event)">
             <mat-option value="0">0</mat-option>
@@ -18,35 +18,67 @@
             <mat-option value="3">3</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Room number</mat-label>
+        <mat-form-field class="search">
+          <mat-label>Number</mat-label>
           <input
             matInput
             #number
           />
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Room purpose</mat-label>
+        <mat-form-field class="search">
+          <mat-label>Purpose</mat-label>
           <input
             matInput
             #purpose
           />
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Working hours start</mat-label>
+        <mat-form-field class="search">
+          <mat-label>Start</mat-label>
           <input
             matInput
             #start
           />
         </mat-form-field>
-        <mat-form-field>
-          <mat-label>Working hours end</mat-label>
+        <mat-form-field class="search">
+          <mat-label>End</mat-label>
           <input
             matInput
             #end
           />
         </mat-form-field>
-        <button class="button-30" (click)="searchRooms(number.value, purpose.value, start.value, end.value)" type="button">
+        <mat-form-field class="search">
+          <mat-label>Beds</mat-label>
+          <input
+            type="number"
+            matInput
+            #beds
+          />
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Scissors</mat-label>
+          <input
+            type="number"
+            matInput
+            #scissors
+          />
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Needles</mat-label>
+          <input
+            type="number"
+            matInput
+            #needles
+          />
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Bandages</mat-label>
+          <input
+            type="number"
+            matInput
+            #bandages
+          />
+        </mat-form-field>
+        <button mat-stroked-button color="primary" class="button" (click)="searchRooms(number.value, purpose.value, start.value, end.value)" type="button">
           Search
         </button>
       </div>
