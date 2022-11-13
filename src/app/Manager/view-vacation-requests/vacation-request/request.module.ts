@@ -5,17 +5,10 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { RequestComponent } from './request.component';
 import { RejectRequestDialogComponent } from '../reject-request-dialog/reject-request-dialog.component';
 
-
 @NgModule({
-  declarations: [
-    RequestComponent,
-    RejectRequestDialogComponent
-  ],
+  declarations: [RequestComponent, RejectRequestDialogComponent],
   entryComponents: [RejectRequestDialogComponent],
-  imports: [
-    CommonModule,
-    MaterialModule
-  ], 
+  imports: [CommonModule, MaterialModule],
   exports: [RequestComponent],
 })
-export class RequestModule { }
+export class RequestModule {}
