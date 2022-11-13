@@ -324,6 +324,7 @@ export class ViewRoomsComponent
 
       this.roomService.searchRooms(searchCriteria).subscribe((data) => {
         this.searchedRooms = data;
+        console.log("view:", this.searchedRooms);
       });
       
     }
