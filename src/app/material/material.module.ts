@@ -29,7 +29,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatOptionModule,
     MatChipsModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [
     CommonModule,
