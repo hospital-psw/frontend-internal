@@ -19,6 +19,9 @@ import { Observable } from 'rxjs';
 import { ApplicationRef } from '@angular/core';
 import { TorusGeometry } from 'three';
 import { IBuilding } from '../Model/Building';
+import { ISearchCriteriaDto } from '../Model/Dto/SearchCriteriaDto';
+
+
 
 @Component({
   selector: 'app-view-rooms',
@@ -279,5 +282,41 @@ export class ViewRoomsComponent
     this.clicked = room;
     this.floor = -1;
     this.getRooms(room.floor.building.id, this.floor);
+  }
+
+  searchRooms(roomNumberSearch: string, roomPurposeSearch: string, workingHoursStart: string, workingHoursEnd: string) {
+    if (
+      workingHoursStart.includes(':') &&
+      workingHoursEnd.includes(':') &&
+      workingHoursStart.length <= 5 &&
+      workingHoursEnd.length <= 5
+    ) {
+      let splited = workingHoursStart.split(':', 10);
+      let hourStart = parseInt(splited[0]);
+      let minuteStart = parseInt(splited[1]);
+      const start1 = new Date(2022, 10, 10, hourStart, minuteStart);
+      let datum = new Date(
+        start1.getTime() - start1.getTimezoneOffset() * 60000
+      );
+
+      let splitedEnd = workingHoursEnd.split(':', 10);
+      let hourEnd = parseInt(splitedEnd[0]);
+      let minuteEnd = parseInt(splitedEnd[1]);
+      const end1 = new Date(2022, 10, 10, hourEnd, minuteEnd);
+      let datum2 = new Date(end1.getTime() - end1.getTimezoneOffset() * 60000);
+      
+      const searchCriteria : ISearchCriteriaDto = {
+        buildingId: this.building,
+        floorNumber: this.floor,
+        roomNumber: roomNumberSearch,
+        roomPurpose: roomPurposeSearch,
+        workingHoursStart: datum,
+        workingHoursEnd: datum2
+      };
+
+      this.roomService.searchRooms(searchCriteria).subscribe((data) => {
+        this.searchedRooms = data;
+      });
+    }
   }
 }
