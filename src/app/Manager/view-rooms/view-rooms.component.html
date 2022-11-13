@@ -78,7 +78,7 @@
             #bandages
           />
         </mat-form-field>
-        <button mat-stroked-button color="primary" class="button" (click)="searchRooms(number.value, purpose.value, start.value, end.value)" type="button">
+        <button mat-stroked-button color="primary" class="" (click)="searchRooms(number.value, purpose.value, start.value, end.value)" type="button">
           Search
         </button>
       </div>
@@ -102,11 +102,13 @@
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
     ></app-show-room-details>
-  </div>
-  <div>
     <app-show-searched-rooms
       (newItemEvent)="sendRoomId($event)"
+      *ngIf="this.showSearchedRooms"
       [searchedRooms]="searchedRooms"
     ></app-show-searched-rooms>
+  </div>
+  <div>
+    
   </div>
 </div>
