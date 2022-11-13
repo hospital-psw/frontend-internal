@@ -39,8 +39,7 @@ const DATA: News[] = [
   styleUrls: ['./feed.component.scss'],
 })
 export class FeedComponent implements OnInit {
-  public dataSource = new MatTableDataSource<News>();
-  public allNews = DATA;
+  public allNews: News[];
   public allStatusTypes = NewsStatus;
   private displayedDataStatus: string;
   public displayedColumns = ['title', 'text', 'status', 'image', 'action'];
@@ -52,7 +51,6 @@ export class FeedComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.dataSource = new MatTableDataSource<News>(DATA);
   }
 
   getAll() {
