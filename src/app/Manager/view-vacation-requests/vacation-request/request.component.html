@@ -7,8 +7,8 @@
         </mat-panel-title>
         <mat-panel-description>
           {{request.from | date: 'dd/MM/yyyy'}}-{{request.to | date: 'dd/MM/yyyy'}}
-            <button mat-icon-button class="button1" (click)="onAccept()">Accept</button>
-            <button mat-icon-button class="button2" (click)="onReject()">Reject</button>
+            <button mat-icon-button class="button1" (click)="onAccept(request.id)">Accept</button>
+            <button mat-icon-button class="button2" (click)="onReject(request.id, request.managerComment)">Reject</button>
         </mat-panel-description>
         <mat-panel-description *ngIf="request.urgent == true">
           URGENT
