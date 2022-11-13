@@ -6,7 +6,6 @@
           {{ request.doctor.firstName }} {{ request.doctor.lastName }}
         </mat-panel-title>
         <mat-panel-description>
-<<<<<<< HEAD
           {{ request.from | date: "dd/MM/yyyy" }}-{{
             request.to | date: "dd/MM/yyyy"
           }}
@@ -24,21 +23,14 @@
           >
             Reject
           </button>
+          {{request.from | date: 'dd/MM/yyyy'}}-{{request.to | date: 'dd/MM/yyyy'}}
+            <button mat-icon-button class="button1" (click)="onAccept(request.id)">Accept</button>
+            <button mat-icon-button class="button2" (click)="onReject(request.id, request.managerComment)">Reject</button>
         </mat-panel-description>
         <mat-panel-description *ngIf="request.urgent === true">
           URGENT
         </mat-panel-description>
         <mat-panel-description *ngIf="request.urgent === false">
-=======
-          {{request.from | date: 'dd/MM/yyyy'}}-{{request.to | date: 'dd/MM/yyyy'}}
-            <button mat-icon-button class="button1" (click)="onAccept(request.id)">Accept</button>
-            <button mat-icon-button class="button2" (click)="onReject(request.id, request.managerComment)">Reject</button>
->>>>>>> 73cb404 (handle vacation request functionality implemented)
-        </mat-panel-description>
-        <mat-panel-description *ngIf="request.urgent == true">
-          URGENT
-        </mat-panel-description>
-        <mat-panel-description *ngIf="request.urgent == false">
         </mat-panel-description>
       </mat-expansion-panel-header>
       <p>Comment: {{ request.comment }}</p>

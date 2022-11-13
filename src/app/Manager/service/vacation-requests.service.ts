@@ -10,7 +10,10 @@ import { Observable } from 'rxjs';
 export class VacationRequestsService {
   constructor(private http: HttpClient) {}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 84dd73f (small update)
   getVacationRequests(): Observable<IVacationRequest[]> {
     return this.http.get<IVacationRequest[]>(
       `http://localhost:16177/api/VacationRequests/getAllPending`
