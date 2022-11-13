@@ -288,7 +288,7 @@ export class ViewRoomsComponent
     this.getRooms(room.floor.building.id, this.floor);
   }
 
-  searchRooms(roomNumberSearch: string, roomPurposeSearch: string, workingHoursStart: string, workingHoursEnd: string) {
+  searchRooms(roomNumberSearch: string, roomPurposeSearch: string, workingHoursStart: string, workingHoursEnd: string, beds: string, scissors:string, needles: string, bandages: string) {
       this.showSearchedRooms = true;
       this.showBuildingDetails = false;
       this.showFloorDetails = false;
@@ -319,7 +319,11 @@ export class ViewRoomsComponent
         roomNumber: roomNumberSearch,
         roomPurpose: roomPurposeSearch,
         workingHoursStart: datum,
-        workingHoursEnd: datum2
+        workingHoursEnd: datum2,
+        beds: Number(beds),
+        scissors: Number(scissors),
+        needles: Number(needles),
+        bandages: Number(bandages)
       };
 
       this.roomService.searchRooms(searchCriteria).subscribe((data) => {

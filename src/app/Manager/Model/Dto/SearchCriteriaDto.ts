@@ -5,4 +5,8 @@ export interface ISearchCriteriaDto {
     roomPurpose: string,
     workingHoursStart: Date,
     workingHoursEnd: Date
+    beds: number,
+    scissors: number,
+    needles: number,
+    bandages: number
   }
