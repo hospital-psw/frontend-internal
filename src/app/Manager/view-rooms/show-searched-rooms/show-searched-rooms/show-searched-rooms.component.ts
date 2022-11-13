@@ -59,18 +59,26 @@ const ELEMENT_DATA: IRoom[] = [
   styleUrls: ['./show-searched-rooms.component.scss'],
 })
 export class ShowSearchedRoomsComponent implements OnInit {
-  public dataSource = ELEMENT_DATA;
-  displayedColumns: string[] = ['number', 'floor', 'building', 'purpose'];
-  clickedRows = new Set<IRoom>(); //ne treba mi?
-
   constructor() {}
 
-  @Input() searchedRooms: any;
+  @Input() searchedRooms: IRoom[];
   @Output() newItemEvent = new EventEmitter<IRoom>();
+
+  public dataSource :IRoom[] = [];
+  displayedColumns: string[] = ['number', 'floor', 'building', 'purpose'];
+  clickedRows = new Set<IRoom>(); //ne treba mi?
 
   sendRoomId(value: IRoom) {
     this.newItemEvent.emit(value);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataSource = this.searchedRooms;
+    console.log(this.dataSource);
+  }
+
+  ngOnChange(): void {
+    this.dataSource = this.searchedRooms;
+    console.log(this.dataSource);
+  }
 }
