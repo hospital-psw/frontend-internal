@@ -20,13 +20,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
     SidebarComponent,
-    ApplicationMainComponent,
+    ApplicationMainComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +40,7 @@ import { ToastrModule } from 'ngx-toastr';
     ViewRoomsModule,
     MatTableModule,
     FeedbackModule,
+    BloodRequestModule,
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,

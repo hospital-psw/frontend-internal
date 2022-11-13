@@ -1,0 +1,68 @@
+
+.container {
+    width: 82%;
+    padding: 0.6%;
+    //border-radius: 3px;
+    border-style: solid;
+    border-color: white;
+    background-color: white;
+    flex-direction: column;
+    overflow :auto ;
+    max-height: 525px;
+    z-index: 0!important;
+  }
+  
+  
+  .table-header{
+    width: 58%;
+    padding: 2%;
+    position: -webkit-sticky;
+    position: fixed;
+    background-color : rgb(103, 120, 140);
+    z-index: 2 !important;
+  }
+  .table-content{
+    padding-top: 12%;
+  }
+  .table-title {
+    text-align: left;
+    font-size: 25px;
+    color: rgb(80, 80, 80);
+  }
+  
+  .cell-center {
+    text-align: left;
+    padding: 1%;
+    font-size: 16px;
+  }
+  
+  .mat-column-doctor {
+    width:220px;
+    text-align: left;
+  }
+  
+  .mat-column-bloodType {
+    width:550px;
+    text-align: left;
+  }
+  
+  .mat-column-amount {
+    width: 100px;
+    text-align: center;
+  }
+  
+  .mat-stroked-button{
+    width:100px;
+    text-align: center;
+  }
+  
+  .buttons{
+    width: 50px; 
+    float:left;
+  }
+  .mat-stroked-button{
+    z-index: 1!important;
+  }
+  
+  
+  
