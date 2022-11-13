@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path: 'vacation-requests',
     component: VacationRequestsComponent,
-  }
+  },
 ];
 
 @NgModule({

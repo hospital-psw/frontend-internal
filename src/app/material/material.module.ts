@@ -10,8 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatExpansionModule } from '@angular/material/expansion'
-import {MatDialogModule} from '@angular/material/dialog'
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [],
@@ -27,7 +27,7 @@ import {MatDialogModule} from '@angular/material/dialog'
     MatSelectModule,
     MatOptionModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [
     CommonModule,
@@ -39,7 +39,7 @@ import {MatDialogModule} from '@angular/material/dialog'
     MatTooltipModule,
     MatFormFieldModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
   ],
 })
 export class MaterialModule {}
