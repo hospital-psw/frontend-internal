@@ -49,6 +49,23 @@ export class ViewRoomsComponent
   public showFloorDetails = false;
   public showRoomDetails: boolean = false;
   public switchDetails: number; //0 - building; 1 - floor; 2 - room
+  public clicked: IRoom = {
+    id: -1,
+    number: '101',
+    floor: {
+      id: 1,
+      number: 1,
+      purpose: 'hirurgija',
+      building: {
+        id: 4,
+        name: 'Hospital1',
+        address: 'Janka cmelika 27 Novi Sad',
+      },
+    },
+    purpose: 'operaciona sala',
+    workingHours: { id: 1, start: new Date(), end: new Date() },
+  };
+  public searchedRooms: IRoom[] = [];
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -117,7 +134,7 @@ export class ViewRoomsComponent
   }
 
   selectHospital(evt: any) {
-    this.floor = -1;
+    //this.floor = -1;
     this.showBuildingDetails = true;
     this.showFloorDetails = false;
     this.showRoomDetails = false;
@@ -131,7 +148,7 @@ export class ViewRoomsComponent
       this.roomService.getBuilding(building).subscribe((data) => {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
-        this.scene?.display(this.floor, this.building);
+        this.scene?.display(this.floor, this.building, this.clicked.id);
         this.clickedRoom = this.rooms[0].room;
       });
     }
@@ -141,7 +158,7 @@ export class ViewRoomsComponent
         .subscribe((data) => {
           this.rooms = data;
           this.scene?.setRooms(this.rooms);
-          this.scene?.display(this.floor, this.building);
+          this.scene?.display(this.floor, this.building, this.clicked.id);
           this.clickedRoom = this.rooms[0].room;
         });
     }
@@ -256,5 +273,11 @@ export class ViewRoomsComponent
     this.roomService.getBuildings().subscribe((data) => {
       this.buildings = data;
     });
+  }
+
+  sendRoomId(room: IRoom) {
+    this.clicked = room;
+    this.floor = -1;
+    this.getRooms(room.floor.building.id, this.floor);
   }
 }
