@@ -69,6 +69,8 @@ export class ViewRoomsComponent
     purpose: 'operaciona sala',
     workingHours: { id: 1, start: new Date(), end: new Date() },
   };
+
+  selectedEquipment: string="-1";
   public searchedRooms: IRoom[] = [];
 
   ngOnInit(): void {
@@ -288,7 +290,7 @@ export class ViewRoomsComponent
     this.getRooms(room.floor.building.id, this.floor);
   }
 
-  searchRooms(roomNumberSearch: string, roomPurposeSearch: string, workingHoursStart: string, workingHoursEnd: string, beds: string, scissors:string, needles: string, bandages: string) {
+  searchRooms(roomNumberSearch: string, roomPurposeSearch: string, workingHoursStart: string, workingHoursEnd: string, quantity:string) {
       this.showSearchedRooms = true;
       this.showBuildingDetails = false;
       this.showFloorDetails = false;
@@ -320,10 +322,8 @@ export class ViewRoomsComponent
         roomPurpose: roomPurposeSearch,
         workingHoursStart: datum,
         workingHoursEnd: datum2,
-        beds: Number(beds),
-        scissors: Number(scissors),
-        needles: Number(needles),
-        bandages: Number(bandages)
+        equipmentType: Number(this.selectedEquipment),
+        quantity: Number(quantity)
       };
 
       this.roomService.searchRooms(searchCriteria).subscribe((data) => {
@@ -331,5 +331,8 @@ export class ViewRoomsComponent
       });
       
     }
+  }
+  selectEquipment(evt: any): void {
+    this.selectedEquipment = evt.value;
   }
 }
