@@ -4,6 +4,7 @@ import { BloodBank } from '../model/blood-bank.model';
 import { BloodType } from '../model/blood-type.model';
 import { BloodBankService } from '../services/blood-bank.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-detail',
@@ -19,6 +20,7 @@ export class DetailComponent implements OnInit {
   showAnwser = false;
   showResponse1 = false;
   showAnwser1 = false;
+  showConf = false;
 
   constructor(
     private bloodBankService: BloodBankService,
@@ -26,6 +28,11 @@ export class DetailComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService
   ) {}
+
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
@@ -77,5 +84,13 @@ export class DetailComponent implements OnInit {
       .subscribe((res) => {
         this.router.navigate(['/bloodbank']);
       });
+  }
+
+  public showConfiguration() {
+    if (this.showConf) {
+      this.showConf = false;
+    } else {
+      this.showConf = true;
+    }
   }
 }
