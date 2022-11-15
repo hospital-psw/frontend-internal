@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BloodBank } from '../model/blood-bank.model';
 import { BloodBankService } from '../services/blood-bank.service';
-//import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-all',
@@ -54,12 +53,10 @@ export class AllComponent implements OnInit {
   }
 
   public deleteBloodBank(id: number) {
-    //this.snackBar.open('Deleting blood bank, please wait!');
     this.bloodBankService.deleteBloodBank(id).subscribe((res) => {
       this.bloodBankService.getBloodBanks().subscribe((res) => {
         this.bloodBanks = res;
         this.dataSource.data = this.bloodBanks;
-        //this.snackBar.open('Blood bank deleted!', 'Dismiss');
       });
     });
   }

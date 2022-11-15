@@ -7,6 +7,7 @@ import { AppointmentsComponent } from './schedule/show-all/appointments/appointm
 import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
 import { FeedbackViewComponent } from './Manager/feedback/feedback-view/feedback-view.component';
 import { SchedulingComponent } from './schedule/scheduling/scheduling.component';
+import { FeedComponent } from './newsfeed/feed/feed.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'appointments/scheduling',
     component: SchedulingComponent,
+  },
+  {
+    path: 'newsfeed',
+    component: FeedComponent,
   },
 ];
 
