@@ -98,6 +98,7 @@
       [room]="clickedRoom"
     ></app-show-floor-details>
     <app-show-room-details
+      (relocateNotify)="relocate($event)"
       (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
@@ -111,5 +112,5 @@
   <div>
 
   </div>
-  <app-stepper></app-stepper>
+  <app-stepper *ngIf="doRelocate" [equipment]="element"></app-stepper>
 </div>

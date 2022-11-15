@@ -20,6 +20,7 @@ import { ApplicationRef } from '@angular/core';
 import { TorusGeometry } from 'three';
 import { IBuilding } from '../Model/Building';
 import { ISearchCriteriaDto } from '../Model/Dto/SearchCriteriaDto';
+import { IEquipment } from '../Model/Equipment';
 
 
 
@@ -45,6 +46,8 @@ export class ViewRoomsComponent
   private renderer?: THREE.WebGLRenderer;
   private sub?: Subscription;
 
+  element: IEquipment
+  doRelocate: boolean = false
   rooms: IRoomMap[] = [];
   buildings: IBuilding[] = [];
   public showDetails: boolean = false;
@@ -270,6 +273,7 @@ export class ViewRoomsComponent
   }
 
   updateView() {
+    console.log('okinuo edit')
     this.roomService.getBuilding(this.building).subscribe((data) => {
       this.rooms = data;
       this.scene?.setRoomsAfterEdit(this.rooms);
@@ -312,7 +316,7 @@ export class ViewRoomsComponent
       let minuteEnd = parseInt(splitedEnd[1]);
       const end1 = new Date(2022, 10, 10, hourEnd, minuteEnd);
       let datum2 = new Date(end1.getTime() - end1.getTimezoneOffset() * 60000);
-      
+
       const searchCriteria : ISearchCriteriaDto = {
         buildingId: this.building,
         floorNumber: this.floor,
@@ -326,7 +330,13 @@ export class ViewRoomsComponent
         this.searchedRooms = data;
         console.log("view:", this.searchedRooms);
       });
-      
+
     }
+  }
+
+  relocate(element:IEquipment){
+    console.log('okinuo relocate')
+    this.doRelocate = true
+    this.element = element
   }
 }
