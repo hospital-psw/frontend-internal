@@ -5,6 +5,8 @@ import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
 import { RoomService } from 'src/app/Manager/service/room-service.service';
+import { RelocationService } from '../services/relocation.service';
+import { IRecommendedRelocationRequest } from '../model/RecommendedRelocationRequest';
 
 @Component({
   selector: 'app-stepper',
@@ -18,7 +20,7 @@ export class StepperComponent implements OnInit {
   });
 
   destinationRoomForm = new FormGroup({
-    room: new FormControl({})
+    room: new FormControl()
   })
 
   periodForm = new FormGroup({
@@ -30,9 +32,11 @@ export class StepperComponent implements OnInit {
     duration: new FormControl()
   })
 
+  dateTimes : Date[] = []
+
   @Input() equipment: IEquipment;
   destinationRooms: IRoomMap[] = []
-  constructor(private roomService: RoomService) { }
+  constructor(private roomService: RoomService, private relocationService: RelocationService) { }
 
   ngOnInit(): void {
     console.log(this.equipment.quantity)
@@ -50,6 +54,14 @@ export class StepperComponent implements OnInit {
     this.destinationRooms = this.destinationRooms.filter(destRoom => destRoom.room.purpose !== 'hodnik'
     && destRoom.room.id !== this.equipment.room.id);
     console.log(this.destinationRooms);
+  }
+
+  recommend(){ 
+    const startTime = new Date(this.periodForm.controls['startDate'].value)
+    const endTime = new Date(this.periodForm.controls['endDate'].value);
+    this.relocationService.recommendDateTimes({fromRoom : this.equipment.room.id, toRoom : this.destinationRoomForm.controls.room.value, fromTime : startTime , toTime : endTime, duration : this.durationForm.controls.duration.value}).subscribe((data) => {
+      console.log(data);
+    });
   }
 
 }
