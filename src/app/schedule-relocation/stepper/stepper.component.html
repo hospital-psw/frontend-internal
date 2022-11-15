@@ -4,7 +4,7 @@
       <!-- <app-first-step-form [quantity]="quantity"></app-first-step-form> -->
       <mat-form-field appearance="fill">
         <mat-label>Equipment quantity</mat-label>
-        <input formControlName="quantity" matInput type="number" required>
+        <input formControlName="quantity" matInput type="number" required max="{{equipment.quantity}}" min="0">
       </mat-form-field>
 
       <div>
@@ -17,8 +17,8 @@
       <mat-form-field appearance="fill">
         <mat-label>Destination room</mat-label>
         <mat-select  formControlName="room">
-          <mat-option value="nesto">
-            Nesto
+          <mat-option value="{{destRoom.room.id}}" *ngFor="let destRoom of destinationRooms">
+            {{destRoom.room.number}}
           </mat-option>
         </mat-select>
       </mat-form-field>

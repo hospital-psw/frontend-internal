@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { RoomService } from '../../../service/room-service.service';
@@ -15,12 +15,13 @@ export class ShowEquipmentComponent implements OnInit {
   }
 
   @Input() room: IRoom;
+  @Output() notifyRelocation = new EventEmitter();
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
   public equipment: IEquipment[] = [];
   ngOnInit(): void {
     this.roomService.getEquipment(this.room.id).subscribe((data) => {
       this.equipment = data;
-      console.log(this.room.id);
+      console.log('ja sam data ', data);
     });
   }
 
@@ -31,7 +32,10 @@ export class ShowEquipmentComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     this.roomService.getEquipment(this.room.id).subscribe((data) => {
       this.equipment = data;
-      console.log(this.room.id);
     });
+  }
+
+  relocateEquipment(element: IEquipment){
+    this.notifyRelocation.emit(element)
   }
 }
