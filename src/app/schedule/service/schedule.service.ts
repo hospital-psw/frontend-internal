@@ -14,7 +14,7 @@ import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
 export class ScheduleService {
   private apiServerUrl = environment.apiAppointmentUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public scheduleAppointment(
     appointment: ScheduleAppointmentDTO

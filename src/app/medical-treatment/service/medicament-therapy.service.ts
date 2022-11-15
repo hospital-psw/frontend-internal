@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class MedicamentTherapyService {
   private apiServerUrl = environment.apiMedicamentTherapy;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public createMedicamentTherapy(
     medicamentTherapy: CreateMedicamentTherapy

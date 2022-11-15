@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
 export class BloodunitTherapyService {
   private apiServerUrl = environment.apiBloodUnitTherapy;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public createBloodUnitTherapy(
     bloodUnitTherapy: CreateBloodUnitTherapy

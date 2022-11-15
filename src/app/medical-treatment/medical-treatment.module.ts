@@ -4,12 +4,7 @@ import { CreateTreatmentBaseComponent } from './create-medical-treatment/create-
 import { CreateTreatmentFormComponent } from './create-medical-treatment/create-treatment-form/create-treatment-form.component';
 
 @NgModule({
-  declarations: [
-
-  
-    CreateTreatmentBaseComponent,
-         CreateTreatmentFormComponent
-  ],
+  declarations: [CreateTreatmentBaseComponent, CreateTreatmentFormComponent],
   imports: [CommonModule],
 })
-export class MedicalTreatmentModule { }
+export class MedicalTreatmentModule {}
