@@ -1,3 +1,4 @@
+import { MedicalTreatmentModule } from './medical-treatment/medical-treatment.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppointmentModule } from './schedule/appointment.module';
@@ -46,6 +47,7 @@ import { NewsfeedModule } from './newsfeed/newsfeed.module';
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
+    MedicalTreatmentModule,
     NewsfeedModule,
     ToastrModule.forRoot({
       timeOut: 3000,
