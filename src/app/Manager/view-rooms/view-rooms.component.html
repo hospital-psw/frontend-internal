@@ -109,5 +109,5 @@
       [searchedRooms]="searchedRooms"
     ></app-show-searched-rooms>
   </div>
-  <app-stepper *ngIf="doRelocate" [equipment]="element"></app-stepper>
+  <app-stepper *ngIf="doRelocate" (close)="closeStepper()" [equipment]="element"></app-stepper>
 </div>

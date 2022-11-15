@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { isThisSecond } from 'date-fns';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
@@ -32,6 +31,7 @@ export class StepperComponent implements OnInit {
 
   @Input() equipment: IEquipment;
   destinationRooms: IRoomMap[] = []
+  @Output() close = new EventEmitter()
   constructor(private roomService: RoomService) { }
 
   ngOnInit(): void {
@@ -50,6 +50,14 @@ export class StepperComponent implements OnInit {
     this.destinationRooms = this.destinationRooms.filter(destRoom => destRoom.room.purpose !== 'hodnik'
     && destRoom.room.id !== this.equipment.room.id);
     console.log(this.destinationRooms);
+  }
+
+  getAvailableRelocationPeriods(){
+
+  }
+
+  closeStepper(){
+    this.close.emit()
   }
 
 }

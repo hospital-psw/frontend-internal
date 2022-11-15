@@ -339,4 +339,8 @@ export class ViewRoomsComponent
     this.doRelocate = true
     this.element = element
   }
+
+  closeStepper(){
+    this.doRelocate = false
+  }
 }
