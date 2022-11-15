@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
-    MatStepperModule
+    MatStepperModule,
+    MatListModule
   ],
   exports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
-    MatStepperModule
+    MatStepperModule,
+    MatListModule
   ],
 })
 export class MaterialModule { }
