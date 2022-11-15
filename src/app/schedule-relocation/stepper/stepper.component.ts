@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { isThisSecond } from 'date-fns';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
@@ -37,6 +36,7 @@ export class StepperComponent implements OnInit {
   @Input() equipment: IEquipment;
   destinationRooms: IRoomMap[] = []
   constructor(private roomService: RoomService, private relocationService: RelocationService) { }
+  @Output() close = new EventEmitter()
 
   ngOnInit(): void {
     console.log(this.equipment.quantity)
@@ -62,6 +62,10 @@ export class StepperComponent implements OnInit {
     this.relocationService.recommendDateTimes({fromRoom : this.equipment.room.id, toRoom : this.destinationRoomForm.controls.room.value, fromTime : startTime , toTime : endTime, duration : this.durationForm.controls.duration.value}).subscribe((data) => {
       console.log(data);
     });
+  }
+
+  closeStepper(){
+    this.close.emit()
   }
 
 }
