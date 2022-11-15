@@ -1,11 +1,11 @@
 import { BloodType } from "src/app/blood-bank/model/blood-type.model";
 
 export interface BloodRequest{
-    requestId: number;
-    doctor: string;
-    message: string;
+    id: number;
+    doctor: object;
+    date: Date;
     bloodType: BloodType;
     amount: number;
-    status: number;
+    reason: string;
   }
   

@@ -28,7 +28,7 @@ export class FeedbackService {
   }
   getDenied(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/AllDeniedFeedback',
+      this.apiHost + 'api/Feedback/get/all/denied',
       { headers: this.headers }
     );
   }
@@ -52,7 +52,7 @@ export class FeedbackService {
   }
   getFeedback(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/managerfeedback',
+      this.apiHost + 'api/Feedback/get/manager/feedback',
       { headers: this.headers }
     );
   }

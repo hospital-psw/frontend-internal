@@ -42,12 +42,17 @@
   }
   
   .mat-column-bloodType {
-    width:550px;
+    width: 220px;;
     text-align: left;
   }
   
   .mat-column-amount {
     width: 100px;
+    text-align: center;
+  }
+
+  .mat-column-date {
+    width: 220;
     text-align: center;
   }
   
