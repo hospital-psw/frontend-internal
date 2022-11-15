@@ -2,7 +2,7 @@
   <div class="users-wrapper">
     <app-request
       *ngFor="let vacationRequest of vacationRequests"
-      [request]="vacationRequest"
+      [request]="vacationRequest" (notify)="refresh()"
     ></app-request>
   </div>
 </div>
