@@ -21,4 +21,10 @@
       cursor: pointer;
     }
   }
+
 }
+
+mat-selection-list {
+    max-height: 200px;
+    overflow: auto;
+  }

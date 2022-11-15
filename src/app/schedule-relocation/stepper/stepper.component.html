@@ -74,6 +74,33 @@
           </div>
         </form>
       </mat-step>
+      <mat-step>
+        <form [formGroup]="durationForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Relocation duration in hours</mat-label>
+            <input formControlName="duration" matInput type="number" min="0">
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext (click)="recommend()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <form [formGroup]="startTimeForm">
+            <mat-selection-list [multiple]="false" formControlName="startTime">
+              <mat-list-option
+              value="{{dateTime}}"
+              *ngFor="let dateTime of dateTimes">
+                {{dateTime | date: "dd.MM.yyyy HH:mm"}}
+              </mat-list-option>
+            </mat-selection-list>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext (click)="closeStepper()">Schedule</button>
+          </div>
+        </form>
+      </mat-step>
     </mat-stepper>
 
   </div>

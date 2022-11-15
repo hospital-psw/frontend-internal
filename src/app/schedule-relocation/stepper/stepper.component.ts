@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
 import { RoomService } from 'src/app/Manager/service/room-service.service';
 import { RelocationService } from '../services/relocation.service';
-import { IRecommendedRelocationRequest } from '../model/RecommendedRelocationRequest';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-stepper',
@@ -15,7 +15,7 @@ import { IRecommendedRelocationRequest } from '../model/RecommendedRelocationReq
 export class StepperComponent implements OnInit {
 
   quantityForm = new FormGroup({
-    quantity: new FormControl('')
+    quantity: new FormControl()
   });
 
   destinationRoomForm = new FormGroup({
@@ -31,12 +31,16 @@ export class StepperComponent implements OnInit {
     duration: new FormControl()
   })
 
+  startTimeForm = new FormGroup({
+    startTime : new FormControl([])
+  })
+
   dateTimes : Date[] = []
 
   @Input() equipment: IEquipment;
   destinationRooms: IRoomMap[] = []
-  constructor(private roomService: RoomService, private relocationService: RelocationService) { }
   @Output() close = new EventEmitter()
+  constructor(private roomService: RoomService, private relocationService: RelocationService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     console.log(this.equipment.quantity)
@@ -57,15 +61,34 @@ export class StepperComponent implements OnInit {
   }
 
   recommend(){
-    const startTime = new Date(this.periodForm.controls['startDate'].value)
-    const endTime = new Date(this.periodForm.controls['endDate'].value);
-    this.relocationService.recommendDateTimes({fromRoom : this.equipment.room.id, toRoom : this.destinationRoomForm.controls.room.value, fromTime : startTime , toTime : endTime, duration : this.durationForm.controls.duration.value}).subscribe((data) => {
+    const startTime1 = new Date(this.periodForm.controls['startDate'].value)
+    const endTime1 = new Date(this.periodForm.controls['endDate'].value);
+    this.relocationService.recommendDateTimes({fromRoom : this.equipment.room.id, toRoom : this.destinationRoomForm.controls.room.value, fromTime : startTime1 , toTime : endTime1, duration : this.durationForm.controls.duration.value}).subscribe((data) => {
+      this.dateTimes = data;
       console.log(data);
     });
   }
 
   closeStepper(){
+    this.relocationService.createRelocationRequest({fromRoomId : this.equipment.room.id, toRoomId : this.destinationRoomForm.controls.room.value, equipmentId : this.equipment.id, startTime : this.startTimeForm.controls.startTime.value?.at(0), duration : this.durationForm.controls.duration.value, quantity : this.quantityForm.controls.quantity.value}).subscribe({
+      next: (res) => {
+        this.showSuccess();
+      },
+      error: (e) => {
+        this.showError();
+      },
+    })
     this.close.emit()
   }
+
+
+  showError() {
+  this.toastr.error('Bad request, please enter valid data.', 'Warning');
+  }
+
+  showSuccess() {
+  this.toastr.success('Successfully scheduled relocation.', 'Success');
+  }
+
 
 }
