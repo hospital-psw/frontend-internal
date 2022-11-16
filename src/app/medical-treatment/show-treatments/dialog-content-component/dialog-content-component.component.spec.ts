@@ -8,9 +8,8 @@ describe('DialogContentComponentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogContentComponentComponent ]
-    })
-    .compileComponents();
+      declarations: [DialogContentComponentComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DialogContentComponentComponent);
     component = fixture.componentInstance;

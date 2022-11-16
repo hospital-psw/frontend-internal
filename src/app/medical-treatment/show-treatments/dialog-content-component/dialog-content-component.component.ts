@@ -14,7 +14,7 @@ import { CreateDialogComponentComponent } from '../create-dialog-component/creat
 @Component({
   selector: 'app-dialog-content-component',
   templateUrl: './dialog-content-component.component.html',
-  styleUrls: ['./dialog-content-component.component.scss']
+  styleUrls: ['./dialog-content-component.component.scss'],
 })
 export class DialogContentComponentComponent implements OnInit {
   rooms: IRoom[];
@@ -27,7 +27,7 @@ export class DialogContentComponentComponent implements OnInit {
     private toastService: ToastrService,
     private medicalTreatmentService: MedicalTreatmentService,
     private dialogRef: MatDialogRef<CreateDialogComponentComponent>
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getAvailableRooms();

@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-component-button-bar',
   templateUrl: './component-button-bar.component.html',
-  styleUrls: ['./component-button-bar.component.scss']
+  styleUrls: ['./component-button-bar.component.scss'],
 })
 export class ComponentButtonBarComponent implements OnInit {
   @Output() activeTreatments = new EventEmitter<MedicalTreatment[]>();
@@ -20,9 +20,9 @@ export class ComponentButtonBarComponent implements OnInit {
     private dialog: MatDialog,
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   createTreatment(): void {
     const dialogRef = this.dialog

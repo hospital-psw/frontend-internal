@@ -4,15 +4,15 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-base-component',
   templateUrl: './base-component.component.html',
-  styleUrls: ['./base-component.component.scss']
+  styleUrls: ['./base-component.component.scss'],
 })
 export class BaseComponentComponent implements OnInit {
   activeTreatments: MedicalTreatment[];
   inactiveTreatments: MedicalTreatment[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   storeActiveTreatments(activeTreatments: MedicalTreatment[]) {
     this.activeTreatments = activeTreatments;

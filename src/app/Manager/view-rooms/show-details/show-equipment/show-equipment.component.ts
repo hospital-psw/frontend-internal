@@ -28,7 +28,8 @@ export class ShowEquipmentComponent implements OnInit {
     return EquipmentTypeEnum[type];
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
+  ngOnChanges() {
     this.roomService.getEquipment(this.room.id).subscribe((data) => {
       this.equipment = data;
       console.log(this.room.id);

@@ -33,7 +33,7 @@ import { DialogContentComponentComponent } from './show-treatments/dialog-conten
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
-    FormsModule
+    FormsModule,
   ],
 })
-export class MedicalTreatmentModule { }
+export class MedicalTreatmentModule {}

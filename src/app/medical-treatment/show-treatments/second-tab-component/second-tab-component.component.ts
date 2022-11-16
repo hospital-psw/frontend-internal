@@ -18,10 +18,9 @@ import { MedicalTreatmentService } from '../../service/medical-treatment.service
 @Component({
   selector: 'app-second-tab-component',
   templateUrl: './second-tab-component.component.html',
-  styleUrls: ['./second-tab-component.component.scss']
+  styleUrls: ['./second-tab-component.component.scss'],
 })
 export class SecondTabComponentComponent implements OnInit, OnChanges {
-
   displayedColumns: string[] = [
     'room',
     'floor',
@@ -40,7 +39,7 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   constructor(
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService
-  ) { }
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<MedicalTreatment>(

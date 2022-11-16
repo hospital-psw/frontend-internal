@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-first-tab-component',
   templateUrl: './first-tab-component.component.html',
-  styleUrls: ['./first-tab-component.component.scss']
+  styleUrls: ['./first-tab-component.component.scss'],
 })
 export class FirstTabComponentComponent implements OnInit, OnChanges {
   displayedColumns: string[] = [
@@ -41,7 +41,7 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<MedicalTreatment>(
