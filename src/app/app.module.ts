@@ -23,6 +23,7 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
 import { FormsModule } from '@angular/forms';
+import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { FormsModule } from '@angular/forms';
       positionClass: 'toast-top-right',
     }),
     FormsModule,
+    VacationRequestsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

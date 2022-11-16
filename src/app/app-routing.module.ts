@@ -11,6 +11,7 @@ import { SchedulingComponent } from './schedule/scheduling/scheduling.component'
 import { FeedComponent } from './newsfeed/feed/feed.component';
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
+import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -54,6 +55,10 @@ const routes: Routes = [
   {
     path: 'show-treatments',
     component: BaseComponentComponent,
+  },
+  {
+    path: 'vacation-requests',
+    component: VacationRequestsComponent,
   },
 ];
 
