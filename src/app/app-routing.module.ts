@@ -8,6 +8,8 @@ import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
 import { FeedbackViewComponent } from './Manager/feedback/feedback-view/feedback-view.component';
 import { SchedulingComponent } from './schedule/scheduling/scheduling.component';
 import { FeedComponent } from './newsfeed/feed/feed.component';
+import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
+import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -40,6 +42,14 @@ const routes: Routes = [
     path: 'newsfeed',
     component: FeedComponent,
   },
+  {
+    path: 'treatment/:id',
+    component: TreatmentViewComponent,
+    title: 'Stationary treatment',
+    resolve: {
+      treatment: TreatmentResolver
+    }
+  }
 ];
 
 @NgModule({
