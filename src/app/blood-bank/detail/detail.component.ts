@@ -39,6 +39,12 @@ export class DetailComponent implements OnInit {
       this.bloodBankService.getBloodBank(params['id']).subscribe(
         (res) => {
           this.bloodBank = res;
+          if (String(this.bloodBank.reportTo) === '0001-01-01T00:00:00') {
+            this.bloodBank.reportTo = new Date();
+          }
+          if (String(this.bloodBank.reportFrom) === '0001-01-01T00:00:00') {
+            this.bloodBank.reportFrom = new Date();
+          }
         },
         (err) => {
           this.bloodBankService.errorHandling(err);
@@ -92,5 +98,19 @@ export class DetailComponent implements OnInit {
     } else {
       this.showConf = true;
     }
+  }
+
+  public saveConfiguration() {
+    this.bloodBankService
+      .saveConfiguration(
+        this.bloodBank.id,
+        this.bloodBank.frequently,
+        this.bloodBank.reportTo,
+        this.bloodBank.reportFrom
+      )
+      .subscribe((a) => {
+        this.showConf = false;
+        this.bloodBankService.success('Saved configuration successfully.');
+      });
   }
 }

@@ -7,6 +7,9 @@ export class BloodBank {
   public amount: number = 0;
   public getBloodTypeAvailability: string = '';
   public getBloodTypeAndAmountAvailability: string = '';
+  public frequently: number = 0;
+  public reportTo: Date;
+  public reportFrom: Date;
 
   public constructor(obj?: any) {
     if (obj) {
@@ -19,6 +22,9 @@ export class BloodBank {
       this.getBloodTypeAvailability = obj.getBloodTypeAvailability;
       this.getBloodTypeAndAmountAvailability =
         obj.getBloodTypeAndAmountAvailability;
+      this.frequently = obj.frequently;
+      this.reportFrom = obj.reportFrom;
+      this.reportTo = obj.reportTo;
     }
   }
 }
