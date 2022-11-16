@@ -1,0 +1,68 @@
+<div class="container" style="float: left">
+  <div class="table-header">
+    <h1 style="color: white">{{ STATUS }} BLOOD REQUESTS</h1>
+  </div>
+  <div class="table-content">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="doctor">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">Doctor</th>
+        <td mat-cell *matCellDef="let element" class="cell-center">
+          {{ element.doctor.firstName }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="bloodType">
+        <th mat-header-cell class="cell-center" *matHeaderCellDef>
+          Blood Type
+        </th>
+        <td mat-cell *matCellDef="let element" class="cell-center">
+          {{ element.bloodType }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell class="cell-center" *matHeaderCellDef>
+          Blood Amount
+        </th>
+        <td mat-cell *matCellDef="let element" class="cell-center">
+          {{ element.amount }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell class="cell-center" *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let element" class="cell-center">
+          {{ element.date | date: "longDate" }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">Status</th>
+        <td mat-cell *matCellDef="let element" class="cell-center">
+          <div *ngIf="element.status === 2">
+            <button
+              mat-stroked-button
+              (click)="makeDeclined(element.id)"
+              style="color: rgb(255, 0, 0)"
+            >
+              Decline
+            </button>
+            <button
+              mat-stroked-button
+              (click)="makeAccepted(element.id)"
+              style="color: green"
+            >
+              Accept
+            </button>
+          </div>
+          <div *ngIf="element.status === 1">
+            <div style="color: red">DECLINED</div>
+          </div>
+          <div *ngIf="element.status === 0">
+            <div style="color: green">ACCEPTED</div>
+          </div>
+        </td>
+      </ng-container>
+    </table>
+  </div>
+</div>
