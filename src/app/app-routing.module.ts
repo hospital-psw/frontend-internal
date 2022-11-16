@@ -1,3 +1,4 @@
+import { BaseComponentComponent } from './medical-treatment/show-treatments/base-component/base-component.component';
 import { ReschedulingAppointmentComponent } from './schedule/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -49,6 +50,10 @@ const routes: Routes = [
     resolve: {
       treatment: TreatmentResolver,
     },
+  },
+  {
+    path: 'show-treatments',
+    component: BaseComponentComponent,
   },
 ];
 
