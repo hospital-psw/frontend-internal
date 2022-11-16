@@ -55,8 +55,29 @@ export class BloodBankService {
     );
   }
 
+  saveConfiguration(
+    id: number,
+    frequently: number,
+    reportTo: Date,
+    reportFrom: Date
+  ) {
+    return this.http.patch<any>(
+      this.apiHost + 'api/BloodBank/saveConfiguration',
+      {
+        id,
+        frequently,
+        reportTo,
+        reportFrom,
+      }
+    );
+  }
+
   errorHandling(err: any) {
     this.toastr.warning(err.statusText, 'Error: ' + err.status);
+  }
+
+  success(message: any) {
+    this.toastr.success(message);
   }
   checkBoodTypeAmount(
     id: number,
