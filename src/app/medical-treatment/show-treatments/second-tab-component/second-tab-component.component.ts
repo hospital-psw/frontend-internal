@@ -40,8 +40,8 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   constructor(
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<MedicalTreatment>(
