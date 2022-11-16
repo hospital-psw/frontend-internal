@@ -39,4 +39,4 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
   ],
 })
-export class MedicalTreatmentModule { }
+export class MedicalTreatmentModule {}

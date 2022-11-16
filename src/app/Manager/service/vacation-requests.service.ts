@@ -27,5 +27,5 @@ export class VacationRequestsService {
       `http://localhost:16177/api/VacationRequests/handle`,
       { Id: id, Status: 2, ManagerComment: managerComment }
     );
-    }
+  }
 }

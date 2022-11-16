@@ -56,7 +56,7 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
       positionClass: 'toast-top-right',
     }),
     FormsModule,
-    VacationRequestsModule
+    VacationRequestsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],
