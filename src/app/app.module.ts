@@ -1,3 +1,4 @@
+import { MedicalTreatmentModule } from './medical-treatment/medical-treatment.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppointmentModule } from './schedule/appointment.module';
@@ -21,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,11 +48,13 @@ import { NewsfeedModule } from './newsfeed/newsfeed.module';
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
+    MedicalTreatmentModule,
     NewsfeedModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
+    FormsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],
