@@ -11,6 +11,8 @@ import { MatOptionModule } from '@angular/material/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailComponent } from './detail/detail.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 const routes: Routes = [
   { path: 'bloodbank', component: AllComponent },
@@ -36,6 +38,8 @@ const routes: Routes = [
     MatTableModule,
     MatOptionModule,
     MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
   ],
   exports: [RouterModule],
 })

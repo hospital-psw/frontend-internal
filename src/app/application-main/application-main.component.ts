@@ -38,6 +38,18 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Patients';
       } else if (this.router.url.includes('/reschedule-appointment')) {
         this.name = 'Rescheduling appointment';
+      } else if (this.router.url.includes('/newsfeed')) {
+        this.name = 'Newsfeed';
+      } else if (this.router.url.includes('/bloodbank')) {
+        this.name = 'Blood banks';
+      } else if (this.router.url.includes('/feedback')) {
+        this.name = 'Feedbacks';
+      } else if (this.router.url.includes('/display')) {
+        this.name = 'Manager';
+      } else if (this.router.url == '/show-treatments') {
+        this.name = 'Medical treatments';
+      } else if (this.router.url.includes('/treatment')) {
+        this.name = 'Stationary Treatment';
       }
     });
   }

@@ -1,3 +1,4 @@
+import { BaseComponentComponent } from './medical-treatment/show-treatments/base-component/base-component.component';
 import { ReschedulingAppointmentComponent } from './schedule/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -9,6 +10,11 @@ import { FeedbackViewComponent } from './Manager/feedback/feedback-view/feedback
 import { BloodRequestModule } from './Manager/blood-request/blood-request.module';
 import { SchedulingComponent } from './schedule/scheduling/scheduling.component';
 import { BloodRequestViewComponent } from './Manager/blood-request/blood-request-view/blood-request-view.component';
+import { FeedComponent } from './newsfeed/feed/feed.component';
+import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
+import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
+import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
+
 const routes: Routes = [
   {
     path: 'appointments',
@@ -40,6 +46,26 @@ const routes: Routes = [
   {
     path: 'blood-request',
     component: BloodRequestViewComponent,
+  },
+  {
+    path: 'newsfeed',
+    component: FeedComponent,
+  },
+  {
+    path: 'treatment/:id',
+    component: TreatmentViewComponent,
+    title: 'Stationary treatment',
+    resolve: {
+      treatment: TreatmentResolver,
+    },
+  },
+  {
+    path: 'show-treatments',
+    component: BaseComponentComponent,
+  },
+  {
+    path: 'vacation-requests',
+    component: VacationRequestsComponent,
   },
 ];
 

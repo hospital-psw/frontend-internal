@@ -1,0 +1,12 @@
+<div class="card">
+  <app-component-button-bar
+    (activeTreatments)="storeActiveTreatments($event)"
+    (inactiveTreatments)="storeInactiveTreatments($event)"
+    class="card__bar"
+  ></app-component-button-bar>
+  <app-component-tabs
+    [activeTreatments]="activeTreatments"
+    [inactiveTreatments]="inactiveTreatments"
+    class="card__tabs"
+  ></app-component-tabs>
+</div>

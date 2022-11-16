@@ -1,0 +1,72 @@
+<mat-card class="filter__bar">
+  <button mat-stroked-button color="primary" (click)="getAll()">All</button>
+  <button mat-stroked-button color="success" (click)="getPublished()">
+    Published
+  </button>
+  <button mat-stroked-button color="warn" (click)="getArchived()">
+    Archived
+  </button>
+  <button mat-stroked-button color="accent" (click)="getPending()">
+    Pending review
+  </button>
+</mat-card>
+
+<div class="news__container">
+  <mat-card *ngFor="let news of allNews">
+    <mat-card-header>
+      <mat-card-title>{{ news.title }}</mat-card-title>
+      <mat-card-subtitle
+        >Date published:
+        {{ news.dateCreated | date: "dd.MM.yyyy" }}</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-chip-list>
+      <mat-chip
+        color="accent"
+        selected
+        *ngIf="news.status === allStatusTypes.PENDING"
+        >Pending</mat-chip
+      >
+      <mat-chip
+        color="success"
+        selected
+        *ngIf="news.status === allStatusTypes.PUBLISHED"
+        >Published</mat-chip
+      >
+      <mat-chip
+        color="warn"
+        selected
+        *ngIf="news.status === allStatusTypes.ARCHIVED"
+        >Archived</mat-chip
+      >
+    </mat-chip-list>
+    <br />
+    <img
+      mat-card-lg-image
+      src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    />
+    <mat-card-content>
+      <p>
+        {{ news.text }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-stroked-button
+        color="success"
+        (click)="publish(news.id)"
+        *ngIf="news.status !== allStatusTypes.PUBLISHED"
+      >
+        Publish
+      </button>
+      <button
+        mat-stroked-button
+        color="warn"
+        (click)="archive(news.id)"
+        *ngIf="news.status !== allStatusTypes.ARCHIVED"
+      >
+        Archive
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
