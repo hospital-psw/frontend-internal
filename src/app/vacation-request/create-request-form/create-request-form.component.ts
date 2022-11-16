@@ -24,7 +24,8 @@ export class CreateRequestFormComponent implements OnInit {
   from: Date = new Date();
   to: Date = new Date();
   doctorId = 8;
-  newVacationRequest: NewVacationRequestDTO
+  newVacationRequest: NewVacationRequestDTO;
+  vacationRequestStatus: VacationRequestStatus[];
 
   
 
@@ -32,6 +33,7 @@ export class CreateRequestFormComponent implements OnInit {
               private toaster: ToastrService) { }
 
   ngOnInit(): void {
+    this.vacationRequestStatus = Object.values(VacationRequestStatus);
   }
 
   onChange(){
@@ -50,7 +52,7 @@ export class CreateRequestFormComponent implements OnInit {
     this.newVacationRequest = {
       from: this.from,
       to: this.to,
-      status: VacationRequestStatus.WAITING,
+      status: this.vacationRequestStatus.indexOf(VacationRequestStatus.WAITING) as any,
       urgent: this.urgentCheck,
       comment: this.comment,
       doctorId: this.doctorId
