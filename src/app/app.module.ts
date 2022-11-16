@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
 import { FormsModule } from '@angular/forms';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
@@ -43,6 +44,7 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
     ViewRoomsModule,
     MatTableModule,
     FeedbackModule,
+    BloodRequestModule,
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,

@@ -7,11 +7,14 @@ import { AppointmentResolver } from './schedule/resolver/appointment-resolver';
 import { AppointmentsComponent } from './schedule/show-all/appointments/appointments.component';
 import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
 import { FeedbackViewComponent } from './Manager/feedback/feedback-view/feedback-view.component';
+import { BloodRequestModule } from './Manager/blood-request/blood-request.module';
 import { SchedulingComponent } from './schedule/scheduling/scheduling.component';
+import { BloodRequestViewComponent } from './Manager/blood-request/blood-request-view/blood-request-view.component';
 import { FeedComponent } from './newsfeed/feed/feed.component';
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
+
 const routes: Routes = [
   {
     path: 'appointments',
@@ -39,6 +42,10 @@ const routes: Routes = [
   {
     path: 'appointments/scheduling',
     component: SchedulingComponent,
+  },
+  {
+    path: 'blood-request',
+    component: BloodRequestViewComponent,
   },
   {
     path: 'newsfeed',
