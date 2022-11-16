@@ -14,6 +14,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { CreateDialogComponentComponent } from './show-treatments/create-dialog-component/create-dialog-component.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogContentComponentComponent } from './show-treatments/dialog-content-component/dialog-content-component.component';
+import { CreateTreatmentBaseComponent } from './create-medical-treatment/base-create-treatment/create-treatment-base.component';
+import { CreateTreatmentFormComponent } from './create-medical-treatment/create-treatment-form/create-treatment-form.component';
+import { TreatmentViewComponent } from './treatment/treatment-view/treatment-view.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,9 @@ import { DialogContentComponentComponent } from './show-treatments/dialog-conten
     SecondTabComponentComponent,
     CreateDialogComponentComponent,
     DialogContentComponentComponent,
+    CreateTreatmentBaseComponent,
+    CreateTreatmentFormComponent,
+    TreatmentViewComponent,
   ],
   imports: [
     CommonModule,

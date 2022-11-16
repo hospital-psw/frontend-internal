@@ -48,6 +48,8 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Manager';
       } else if (this.router.url == '/show-treatments') {
         this.name = 'Medical treatments';
+      } else if (this.router.url.includes('/treatment')) {
+        this.name = 'Stationary Treatment';
       }
     });
   }
