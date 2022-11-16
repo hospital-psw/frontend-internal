@@ -23,6 +23,7 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
+import { VacationRequestModule } from './vacation-request/vacation-request.module';
 import { FormsModule } from '@angular/forms';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 
@@ -53,6 +54,8 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
     BloodBankModule,
     MedicalTreatmentModule,
     NewsfeedModule,
+    FormsModule,
+    VacationRequestModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',

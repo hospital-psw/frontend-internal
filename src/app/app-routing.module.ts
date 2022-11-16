@@ -11,6 +11,7 @@ import { BloodRequestModule } from './Manager/blood-request/blood-request.module
 import { SchedulingComponent } from './schedule/scheduling/scheduling.component';
 import { BloodRequestViewComponent } from './Manager/blood-request/blood-request-view/blood-request-view.component';
 import { FeedComponent } from './newsfeed/feed/feed.component';
+import { VacationRequestComponent } from './vacation-request/vacation-request/vacation-request.component';
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'newsfeed',
     component: FeedComponent,
+  },
+  {
+    path: 'vacation-requests',
+    component: VacationRequestComponent
   },
   {
     path: 'treatment/:id',
