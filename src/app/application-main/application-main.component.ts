@@ -46,6 +46,8 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Feedbacks';
       } else if (this.router.url.includes('/display')) {
         this.name = 'Manager';
+      } else if (this.router.url.includes('/vacation-requests')){
+        this.name = 'Create vacation request'
       }
     });
   }

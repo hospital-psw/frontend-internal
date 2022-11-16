@@ -1,0 +1,23 @@
+.form {
+    display: flex;
+    justify-content: space-around;
+  
+    &__column {
+      margin: 4rem;
+  
+      &__label {
+        margin-top: 2rem;
+      }
+  
+      &__field {
+        margin-top: 1rem;
+        width: 20rem;
+        height: 10rem;
+      }
+    }
+  
+    @media screen and (max-width: 900px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
