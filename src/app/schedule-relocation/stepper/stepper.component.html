@@ -2,7 +2,7 @@
   <div class="stepper-wrapper">
     <mat-icon class="close-icon" (click)="closeStepper()">close</mat-icon>
 
-    <mat-stepper orientation="horizontal" [linear]="true" class="stepper">
+    <mat-stepper orientation="horizontal" [linear]="!(quantityForm.valid && destinationRoomForm.valid && periodForm.valid && durationForm.valid)" class="stepper" #stepper>
 
       <mat-step [stepControl]="quantityForm">
         <form [formGroup]="quantityForm">
@@ -50,12 +50,7 @@
 
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext (click)="recommend()">Next</button>
+              <button mat-button matStepperNext >Next</button>
             </div>
           </form>
 
@@ -68,18 +63,6 @@
             <input formControlName="duration" matInput type="number">
           </mat-form-field>
 
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <form [formGroup]="durationForm">
-          <mat-form-field appearance="fill">
-            <mat-label>Relocation duration in hours</mat-label>
-            <input formControlName="duration" matInput type="number" min="0">
-          </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext (click)="recommend()">Next</button>
@@ -97,7 +80,7 @@
             </mat-selection-list>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext (click)="closeStepper()">Schedule</button>
+            <button mat-button matStepperNext (click)="finishRelocation()">Schedule</button>
           </div>
         </form>
       </mat-step>

@@ -112,5 +112,5 @@
   <div>
 
   </div>
-  <app-stepper *ngIf="doRelocate" [equipment]="element"></app-stepper>
+  <app-stepper *ngIf="doRelocate" [equipment]="element" (close)="closeStepper()"></app-stepper>
 </div>
