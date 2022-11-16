@@ -47,7 +47,7 @@ export class ApplicationMainComponent implements OnInit {
       } else if (this.router.url.includes('/display')) {
         this.name = 'Manager';
       } else if (this.router.url.includes('/treatment')) {
-        this.name = 'Stationary Treatment'
+        this.name = 'Stationary Treatment';
       }
     });
   }

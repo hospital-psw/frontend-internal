@@ -54,7 +54,7 @@ import { FormsModule } from '@angular/forms';
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
-    FormsModule
+    FormsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

@@ -47,9 +47,9 @@ const routes: Routes = [
     component: TreatmentViewComponent,
     title: 'Stationary treatment',
     resolve: {
-      treatment: TreatmentResolver
-    }
-  }
+      treatment: TreatmentResolver,
+    },
+  },
 ];
 
 @NgModule({

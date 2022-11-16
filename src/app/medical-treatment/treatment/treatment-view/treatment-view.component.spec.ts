@@ -8,9 +8,8 @@ describe('TreatmentViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TreatmentViewComponent ]
-    })
-    .compileComponents();
+      declarations: [TreatmentViewComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TreatmentViewComponent);
     component = fixture.componentInstance;

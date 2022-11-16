@@ -7,8 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [CreateTreatmentBaseComponent, CreateTreatmentFormComponent, TreatmentViewComponent],
+  declarations: [
+    CreateTreatmentBaseComponent,
+    CreateTreatmentFormComponent,
+    TreatmentViewComponent,
+  ],
   imports: [CommonModule, FormsModule],
-
 })
-export class MedicalTreatmentModule { }
+export class MedicalTreatmentModule {}
