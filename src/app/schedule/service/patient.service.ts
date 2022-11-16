@@ -10,9 +10,13 @@ import { Patient } from '../interface/Patient';
 export class PatientService {
   private apiServerUrl = environment.apiPatientUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getAllPatients(): Observable<Patient[]> {
+  public getAllPatients(): Observable<Patient[]> {
     return this.http.get<Patient[]>(`${this.apiServerUrl}/all`);
+  }
+
+  public getNonHospitalized(): Observable<Patient[]> {
+    return this.http.get<Patient[]>(`${this.apiServerUrl}/non-hospitalized`);
   }
 }

@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IRoom } from '../Model/Room';
@@ -10,7 +12,9 @@ import { IEquipment } from '../Model/Equipment';
   providedIn: 'root',
 })
 export class RoomService {
-  constructor(private http: HttpClient) {}
+  private apiServerUrl = environment.apiRooms;
+
+  constructor(private http: HttpClient) { }
 
   getRooms(buildingId: number, floor: string) {
     return this.http.get<IRoomMap[]>(
@@ -49,5 +53,9 @@ export class RoomService {
     return this.http.get<IEquipment[]>(
       `http://localhost:16177/api/Equipment/${roomId}`
     );
+  }
+
+  public getAvailableRooms(): Observable<IRoom[]> {
+    return this.http.get<IRoom[]>(`${this.apiServerUrl}/available`);
   }
 }

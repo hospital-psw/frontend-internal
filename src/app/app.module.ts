@@ -58,4 +58,4 @@ import { NewsfeedModule } from './newsfeed/newsfeed.module';
   exports: [],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
-export class AppModule {}
+export class AppModule { }

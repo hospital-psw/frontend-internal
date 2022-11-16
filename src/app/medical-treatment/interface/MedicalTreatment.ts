@@ -15,4 +15,5 @@ export interface MedicalTreatment {
   end: Date;
   active: boolean;
   report: string;
+  admittanceReason: string;
 }
