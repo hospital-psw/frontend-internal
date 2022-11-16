@@ -15,7 +15,7 @@ const ELEMENT_DATA: BloodRequest[] = [
 @Component({
   selector: 'app-blood-request-view',
   templateUrl: './blood-request-view.component.html',
-  styleUrls: ['./blood-request-view.component.scss']
+  styleUrls: ['./blood-request-view.component.scss'],
 })
 export class BloodRequestViewComponent implements OnInit {
   STATUS: string;
@@ -24,7 +24,7 @@ export class BloodRequestViewComponent implements OnInit {
   //public dataSource = ELEMENT_DATA;
   public displayedColumns = ['doctor', 'bloodType', 'amount', 'date', 'status'];
   public bloodRequests: BloodRequest[] = [];
-  constructor(private bservice: BloodRequestService, private router: Router) { }
+  constructor(private bservice: BloodRequestService, private router: Router) {}
 
   ngOnInit(): void {
     this.STATUS = 'PENDING';
@@ -36,11 +36,11 @@ export class BloodRequestViewComponent implements OnInit {
 
   public MakeAccepted(id: number) {
     this.bservice.MakeAccepted(id).subscribe((res) => {
-        this.STATUS = 'ACCEPTED';
-        this.bservice.getAccepted().subscribe((res) => {
-          this.bloodRequests = res;
-          this.dataSource.data = this.bloodRequests;
-        });
+      this.STATUS = 'ACCEPTED';
+      this.bservice.getAccepted().subscribe((res) => {
+        this.bloodRequests = res;
+        this.dataSource.data = this.bloodRequests;
+      });
     });
   }
 
@@ -53,5 +53,4 @@ export class BloodRequestViewComponent implements OnInit {
       });
     });
   }
-
 }

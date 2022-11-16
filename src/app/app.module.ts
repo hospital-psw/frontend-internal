@@ -27,7 +27,7 @@ import { BloodRequestModule } from './../app/Manager/blood-request/blood-request
     AppComponent,
     NavigationBarComponent,
     SidebarComponent,
-    ApplicationMainComponent
+    ApplicationMainComponent,
   ],
   imports: [
     BrowserModule,
