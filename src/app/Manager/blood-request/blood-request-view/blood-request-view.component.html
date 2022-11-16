@@ -42,14 +42,14 @@
           <div *ngIf="element.status === 2">
             <button
               mat-stroked-button
-              (click)="MakeDeclined(element.id)"
+              (click)="makeDeclined(element.id)"
               style="color: rgb(255, 0, 0)"
             >
               Decline
             </button>
             <button
               mat-stroked-button
-              (click)="MakeAccepted(element.id)"
+              (click)="makeAccepted(element.id)"
               style="color: green"
             >
               Accept
@@ -66,5 +66,3 @@
     </table>
   </div>
 </div>
-
-<p>blood-request-view works!</p>
