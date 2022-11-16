@@ -60,9 +60,8 @@
         <form [formGroup]="durationForm">
           <mat-form-field appearance="fill">
             <mat-label>Relocation duration in hours</mat-label>
-            <input formControlName="duration" matInput type="number">
+            <input formControlName="duration" matInput type="number" min="0">
           </mat-form-field>
-
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext (click)="recommend()">Next</button>
