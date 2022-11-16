@@ -41,7 +41,7 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<MedicalTreatment>(
@@ -74,6 +74,6 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
   }
 
   onTableRowClick(medicalTreatment: MedicalTreatment): void {
-    // this.router.navigate;
+    this.router.navigate(['/treatment/', medicalTreatment.id]);
   }
 }

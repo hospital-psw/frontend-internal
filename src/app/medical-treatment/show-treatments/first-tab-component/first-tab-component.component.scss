@@ -1,3 +1,5 @@
+@import './../../../../styles/helpers/variables';
+
 .space {
   height: 100%;
   width: 100%;
@@ -13,4 +15,10 @@
     max-height: 38rem;
     overflow-y: scroll;
   }
+}
+
+.mat-row:hover {
+  background-color: rgba(203, 203, 210, .45);
+  cursor: pointer;
+  caret-color: transparent;
 }
