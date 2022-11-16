@@ -38,7 +38,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
       mat-row
-      *matRowDef="let row; columns: displayedColumns; sticky: true"
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="onTableRowClick(row)"
     ></tr>
   </table>
 
@@ -47,8 +48,10 @@
     showFirstLastButtons
     #activeTreatmentPaginator
     [pageSize]="pageSize"
+    [length]="length"
     [pageIndex]="pageNumber"
     aria-label="Select page of active medical treatments"
+    (page)="onPaginateChange($event)"
   >
   </mat-paginator>
 </div>

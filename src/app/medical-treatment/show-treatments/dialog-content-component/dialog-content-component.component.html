@@ -3,7 +3,7 @@
   <div class="content__elements">
     <mat-form-field appearance="fill">
       <mat-label>Patients</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="newMedicalTreatment.patientId">
         <mat-option *ngFor="let p of patients" [value]="p.id"
           >{{ p.firstName | titlecase }}
           {{ p.lastName | titlecase }}</mat-option
@@ -13,7 +13,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Available rooms</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="newMedicalTreatment.roomId">
         <mat-option *ngFor="let r of rooms" [value]="r.id"
           >Building: {{ r.floor.building.name }} Number: {{ r.number }}
         </mat-option>
@@ -23,10 +23,16 @@
     <textarea
       class="text"
       placeholder="Please enter admittance reason."
+      [(ngModel)]="newMedicalTreatment.admittanceReason"
     ></textarea>
   </div>
   <div class="content__actions">
     <div class="content__actions__button" (click)="closeDialog()">Back</div>
-    <div class="content__actions__button margin-left">Create</div>
+    <div
+      class="content__actions__button margin-left"
+      (click)="createTreatment()"
+    >
+      Create
+    </div>
   </div>
 </div>

@@ -1,6 +1,10 @@
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MedicalTreatmentService } from './../../service/medical-treatment.service';
+import { MedicalTreatment } from './../../interface/MedicalTreatment';
 import { CreateDialogComponentComponent } from './../create-dialog-component/create-dialog-component.component';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -9,16 +13,46 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./component-button-bar.component.scss']
 })
 export class ComponentButtonBarComponent implements OnInit {
-  constructor(private dialog: MatDialog) { }
+  @Output() activeTreatments = new EventEmitter<MedicalTreatment[]>();
+  @Output() inactiveTreatments = new EventEmitter<MedicalTreatment[]>();
+
+  constructor(
+    private dialog: MatDialog,
+    private medicalTreatmentService: MedicalTreatmentService,
+    private toastService: ToastrService
+  ) { }
 
   ngOnInit(): void { }
 
   createTreatment(): void {
-    const dialogRef = this.dialog.open(CreateDialogComponentComponent);
-
-    // dialogRef.afterClosed().subscribe({
-
-    // })
+    const dialogRef = this.dialog
+      .open(CreateDialogComponentComponent)
+      .afterClosed()
+      .subscribe((res) => {
+        this.getActiveTreatment();
+        this.getInactiveTreatment();
+      });
   }
 
+  getActiveTreatment(): void {
+    this.medicalTreatmentService.getActive().subscribe(
+      (response: MedicalTreatment[]) => {
+        this.activeTreatments.emit(response);
+      },
+      (error: HttpErrorResponse) => {
+        this.toastService.error(error.message);
+      }
+    );
+  }
+
+  getInactiveTreatment(): void {
+    this.medicalTreatmentService.getInactive().subscribe(
+      (response: MedicalTreatment[]) => {
+        this.inactiveTreatments.emit(response);
+      },
+      (error: HttpErrorResponse) => {
+        this.toastService.error(error.message);
+      }
+    );
+  }
 }

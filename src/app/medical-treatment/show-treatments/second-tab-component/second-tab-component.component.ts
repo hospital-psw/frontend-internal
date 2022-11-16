@@ -1,5 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
@@ -11,7 +20,7 @@ import { MedicalTreatmentService } from '../../service/medical-treatment.service
   templateUrl: './second-tab-component.component.html',
   styleUrls: ['./second-tab-component.component.scss']
 })
-export class SecondTabComponentComponent implements OnInit {
+export class SecondTabComponentComponent implements OnInit, OnChanges {
 
   displayedColumns: string[] = [
     'room',
@@ -23,6 +32,8 @@ export class SecondTabComponentComponent implements OnInit {
   dataSource = new MatTableDataSource<MedicalTreatment>();
   pageSize: number = 10;
   pageNumber: number = 0;
+  length: number;
+  @Input() inactiveTreatments: MedicalTreatment[];
 
   @ViewChild('activeTreatmentPaginator') paginator: MatPaginator;
 
@@ -31,15 +42,22 @@ export class SecondTabComponentComponent implements OnInit {
     private toastService: ToastrService
   ) { }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    this.dataSource = new MatTableDataSource<MedicalTreatment>(
+      this.inactiveTreatments
+    );
+  }
+
   ngOnInit(): void {
     this.getInactiveTreatment();
-    this.dataSource.paginator = this.paginator;
   }
 
   getInactiveTreatment(): void {
     this.medicalTreatmentService.getInactive().subscribe(
       (response: MedicalTreatment[]) => {
         this.dataSource = new MatTableDataSource<MedicalTreatment>(response);
+        this.dataSource.paginator = this.paginator;
+        this.length = response.length;
       },
       (error: HttpErrorResponse) => {
         this.toastService.error(error.message);
@@ -47,5 +65,14 @@ export class SecondTabComponentComponent implements OnInit {
     );
   }
 
+  onPaginateChange(event: any): void {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex;
+    this.length = event.length;
+    console.log(this.pageSize, this.pageNumber);
+  }
 
+  onTableRowClick(medicalTreatment: MedicalTreatment): void {
+    // this.router.navigate;
+  }
 }

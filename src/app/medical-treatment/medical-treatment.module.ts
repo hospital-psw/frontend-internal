@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { NgModule } from '@angular/core';
@@ -31,7 +32,8 @@ import { DialogContentComponentComponent } from './show-treatments/dialog-conten
     MatTableModule,
     MatDialogModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    FormsModule
   ],
 })
 export class MedicalTreatmentModule { }

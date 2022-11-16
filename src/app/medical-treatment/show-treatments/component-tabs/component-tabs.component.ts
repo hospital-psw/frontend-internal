@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MedicalTreatment } from './../../interface/MedicalTreatment';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-component-tabs',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./component-tabs.component.scss']
 })
 export class ComponentTabsComponent implements OnInit {
+  @Input() activeTreatments: MedicalTreatment[];
+  @Input() inactiveTreatments: MedicalTreatment[];
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void { }
 }
