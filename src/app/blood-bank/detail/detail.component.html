@@ -1,4 +1,10 @@
 <mat-card>
+  <div class="header">
+    <h1>{{ bloodBank.name }}</h1>
+    <p class="configuration" (click)="showConfiguration()">
+      Show configuration
+    </p>
+  </div>
   <div class="container">
     <div class="wraper">
       <mat-form-field appearance="fill" class="email">
@@ -11,7 +17,7 @@
         />
       </mat-form-field>
       <br />
-      <mat-form-field appearance="fill" class="url" class="url">
+      <mat-form-field appearance="fill" class="url">
         <mat-label>Url</mat-label>
         <input matInput required [(ngModel)]="bloodBank.apiUrl" />
       </mat-form-field>
@@ -37,52 +43,90 @@
       </mat-form-field>
 
       <div class="wraper__form">
-        <mat-form-field appearance="fill" class="specialType">
-          <mat-label>Select</mat-label>
-          <mat-select [(ngModel)]="selected" (ngModelChange)="hideResponse()">
-            <mat-option
-              *ngFor="let type of bloodTypes; let i = index"
-              [value]="type"
-              >{{ bloodTypes[i] }}</mat-option
+        <div class="row">
+          <mat-form-field appearance="fill" class="specialType">
+            <mat-label>Select</mat-label>
+            <mat-select [(ngModel)]="selected" (ngModelChange)="hideResponse()">
+              <mat-option
+                *ngFor="let type of bloodTypes; let i = index"
+                [value]="type"
+                >{{ bloodTypes[i] }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <button
+            class="checkBlood"
+            mat-raised-button
+            (click)="checkBoodType(bloodBank.id)"
+            color="primary"
+          >
+            Check
+          </button>
+          <div *ngIf="showAnwser">
+            <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
+              >Bank <span *ngIf="showResponse">has</span>
+              <span *ngIf="!showResponse">doesn't have</span> that blood
+              type.</label
             >
-          </mat-select>
-        </mat-form-field>
-        <button
-          mat-raised-button
-          (click)="checkBoodType(bloodBank.id)"
-          color="primary"
-        >
-          Check
-        </button>
-        <div *ngIf="showAnwser">
-          <label [ngClass]="showResponse ? 'response__pos' : 'response__neg'"
-            >Bank <span *ngIf="showResponse">has</span>
-            <span *ngIf="!showResponse">doesn't have</span> that blood
-            type.</label
-          >
+          </div>
         </div>
-
-        <br />
-        <mat-form-field appearance="fill" class="amount">
-          <mat-label>Blood Amount</mat-label>
-          <input matInput required [(ngModel)]="bloodBank.amount" />
-        </mat-form-field>
-        <br />
-        <button
-          mat-raised-button
-          (click)="checkBoodTypeAmount(bloodBank.id, bloodBank.amount)"
-          color="primary"
-        >
-          Check Amount
-        </button>
-        <div *ngIf="showAnwser1">
-          <label [ngClass]="showResponse1 ? 'response__pos' : 'response__neg'"
-            >Bank <span *ngIf="showResponse1">has</span>
-            <span *ngIf="!showResponse1">doesn't have</span> that amount of
-            blood type.</label
+        <!-- <br /> -->
+        <div class="row">
+          <mat-form-field appearance="fill" class="amount">
+            <mat-label>Blood Amount</mat-label>
+            <input matInput required [(ngModel)]="bloodBank.amount" />
+          </mat-form-field>
+          <!-- <br /> -->
+          <button
+            class="checkBlood"
+            mat-raised-button
+            (click)="checkBoodTypeAmount(bloodBank.id, bloodBank.amount)"
+            color="primary"
           >
+            Check
+          </button>
+          <div *ngIf="showAnwser1">
+            <label [ngClass]="showResponse1 ? 'response__pos' : 'response__neg'"
+              >Bank <span *ngIf="showResponse1">has</span>
+              <span *ngIf="!showResponse1">doesn't have</span> that amount of
+              blood type.</label
+            >
+          </div>
         </div>
       </div>
     </div>
+    <fieldset class="conf-area" *ngIf="showConf">
+      <legend>Report configuration</legend>
+      <div>
+        <div class="row">
+          <mat-form-field appearance="fill" class="email">
+            <mat-label>Frequently</mat-label>
+            <input matInput required />
+            <!--TODO binduj-->
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field appearance="fill">
+            <mat-label>Enter a date range *</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" />
+              <input matEndDate placeholder="End date" />
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+        <div class="saveBtn">
+          <button mat-raised-button color="primary">
+            <!--TODO binduj na klik-->
+            Save
+          </button>
+        </div>
+      </div>
+    </fieldset>
   </div>
 </mat-card>
