@@ -21,6 +21,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -28,8 +32,11 @@ import { ToastrModule } from 'ngx-toastr';
     NavigationBarComponent,
     SidebarComponent,
     ApplicationMainComponent,
+    BloodAcquisitionComponent,
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     AppointmentModule,

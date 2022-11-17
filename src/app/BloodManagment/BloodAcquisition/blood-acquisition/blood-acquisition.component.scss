@@ -1,0 +1,47 @@
+.grid-container{
+    display: grid;
+    border: solid black;
+    column-gap: 10px;
+    row-gap: 20px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    text-align: center;
+    margin-left: 15%;
+    max-width: 800px;
+    height: 300px;
+    margin-top: 5%;
+}
+.single{
+    display: grid;
+    grid-template-rows: auto auto ;
+    padding: 10px;
+    width: 200px;
+}
+.reason{
+    grid-column-start: 2;
+    grid-column-end: 2;
+    display: grid;
+    grid-template-columns:auto;
+    row-gap: 10px;
+    padding: 10px;
+    width: 200px;
+
+}
+input{
+    max-width: 150px;
+    height: 30px;
+    margin: auto;
+    text-align: center;
+}
+
+button{
+
+    width: 150px;
+    text-align: center;
+    height: 35px;
+    margin: auto;
+    
+
+}
+
+
