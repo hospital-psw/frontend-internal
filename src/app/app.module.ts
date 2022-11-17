@@ -1,3 +1,4 @@
+import { MedicalTreatmentModule } from './medical-treatment/medical-treatment.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppointmentModule } from './schedule/appointment.module';
@@ -18,13 +19,17 @@ import { FeedbackModule } from './../app/Manager/feedback/feedback.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ShowDetailsComponent } from './Manager/view-rooms/show-details/show-details.component';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
+import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
+import { NewsfeedModule } from './newsfeed/newsfeed.module';
+import { VacationRequestModule } from './vacation-request/vacation-request.module';
+import { FormsModule } from '@angular/forms';
+import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 
 @NgModule({
   declarations: [
@@ -47,16 +52,23 @@ import { MatNativeDateModule } from '@angular/material/core';
     ViewRoomsModule,
     MatTableModule,
     FeedbackModule,
+    BloodRequestModule,
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
+    MedicalTreatmentModule,
+    NewsfeedModule,
+    FormsModule,
+    VacationRequestModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
+    FormsModule,
+    VacationRequestsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

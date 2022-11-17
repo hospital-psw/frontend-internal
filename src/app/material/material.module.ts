@@ -9,6 +9,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [],
@@ -23,16 +28,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatDialogModule,
   ],
   exports: [
     CommonModule,
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatButtonModule,
     MatCardModule,
     MatIconModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatDialogModule,
   ],
 })
 export class MaterialModule {}

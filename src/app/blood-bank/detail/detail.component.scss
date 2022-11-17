@@ -1,107 +1,67 @@
-.card {
-  width: 80%;
-  margin: 3rem auto;
-  font-size: 62.5%;
-}
-.title {
+
+.header{
+  border-bottom: 1px solid #3f51b5;
   display: flex;
-  justify-content: center;
-  button {
-    margin-top: 2rem;
-  }
+  justify-content: space-between;
+  align-items: baseline;
 }
-
-.btnDelete:hover {
-  background-color: #ff5252;
-  color: white;
+h1{
+  display: inline;
 }
-.btnDelete {
-  padding: 0;
-}
-.btnEdit:hover {
-  background-color: black;
-  color: white;
-}
-.card h1 {
-  //   text-align: center;
-  color: black;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  text-align: center;
-  font-size: 3rem;
-  margin: 2rem;
-}
-
-.specialType {
-  width: 13rem;
+.container {
+  margin-top:2rem;
   font-size: 1.2rem;
-}
-.specButton {
-  width: 1rem;
-  height: 4.5rem;
-  font-size: 1rem;
-}
-.specButton:hover {
-  background-color: white;
-  color: blue;
-}
-.email,
-.url,
-.key {
-  width: 20rem;
-  font-size: 1.2rem;
-}
-
-.wrap__answer {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
 }
 
-.response__pos {
-  font-size: 1.2rem;
+.response__pos{
   color: green;
 }
 
-.response__neg {
-  font-size: 1.2rem;
+.response__neg{
   color: red;
 }
 
-.wraper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-
-  margin-bottom: 2rem;
-
-  &__form {
-    display: flex;
-  }
+.email,.key,.url{
+  width: 25rem;
 }
 
-@media (max-width: 1100px) {
-  .title {
-    display: flex;
-    flex-direction: column;
-    .button__group {
-      text-align: center;
-      height: 5rem;
-    }
-    .button_ h1 {
-      margin: 1rem;
-    }
-    button {
-      margin-top: 0;
-      margin-bottom: 1rem;
-    }
-  }
-  .wraper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0;
-    .email,
-    .url,
-    .key {
-      margin-bottom: 1rem;
-    }
-  }
+.specialType,.amount{
+  width: 18rem;
+}
+.checkBlood{
+  width: 7rem;
+  height: 4.4rem;
+}
+
+.row{
+  display: flex;
+  align-items: stretch;
+}
+
+a{
+  display: inline;
+  text-align: center;
+}
+
+.configuration{
+  color: #3f51b5;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.conf-area{
+  border-radius: 5px;
+  border: 1px solid rgb(186, 184, 184);
+}
+
+legend{
+  color: #3f51b5;
+}
+
+.saveBtn{
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
 }

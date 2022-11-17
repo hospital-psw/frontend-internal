@@ -4,6 +4,7 @@ import {
   Output,
   ChangeDetectorRef,
   OnDestroy,
+  AfterContentChecked,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
@@ -17,13 +18,16 @@ import SceneBuilder from './model/SceneBuilder';
 import { Observable } from 'rxjs';
 import { ApplicationRef } from '@angular/core';
 import { TorusGeometry } from 'three';
+import { IBuilding } from '../Model/Building';
 
 @Component({
   selector: 'app-view-rooms',
   templateUrl: './view-rooms.component.html',
   styleUrls: ['./view-rooms.component.scss'],
 })
-export class ViewRoomsComponent implements OnInit, OnDestroy {
+export class ViewRoomsComponent
+  implements OnInit, OnDestroy, AfterContentChecked
+{
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -33,22 +37,42 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
   private scene?: SceneBuilder;
   private camera?: CameraBuilder;
   private floor: number = -1;
-  private building: string = '';
+  private building: number = -1;
   public clickedRoom?: IRoom;
   private renderer?: THREE.WebGLRenderer;
   private sub?: Subscription;
 
   rooms: IRoomMap[] = [];
+  buildings: IBuilding[] = [];
   public showDetails: boolean = false;
   public showBuildingDetails = false;
   public showFloorDetails = false;
   public showRoomDetails: boolean = false;
   public switchDetails: number; //0 - building; 1 - floor; 2 - room
+  public clicked: IRoom = {
+    id: -1,
+    number: '101',
+    floor: {
+      id: 1,
+      number: 1,
+      purpose: 'hirurgija',
+      building: {
+        id: 4,
+        name: 'Hospital1',
+        address: 'Janka cmelika 27 Novi Sad',
+      },
+    },
+    purpose: 'operaciona sala',
+    workingHours: { id: 1, start: new Date(), end: new Date() },
+  };
+  public searchedRooms: IRoom[] = [];
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
     this.scene = new SceneBuilder();
-
+    this.roomService
+      .getBuildings()
+      .subscribe((data) => (this.buildings = data));
     window.addEventListener('mousedown', (e) => {
       this.handleIntersectClick(e);
     });
@@ -96,6 +120,10 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.sub?.unsubscribe();
   }
 
+  ngAfterContentChecked() {
+    this.cdRef.detectChanges();
+  }
+
   selectFloor(evt: any) {
     this.showBuildingDetails = false;
     this.showFloorDetails = true;
@@ -103,10 +131,10 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.switchDetails = 1;
     this.floor = evt.value;
     this.getRooms(this.building, this.floor);
-    //this.showDetails = true;
   }
 
   selectHospital(evt: any) {
+    //this.floor = -1;
     this.showBuildingDetails = true;
     this.showFloorDetails = false;
     this.showRoomDetails = false;
@@ -115,23 +143,22 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     this.getRooms(this.building, this.floor);
   }
 
-  getRooms(building: string, floor: number) {
-    if (building !== '' && floor === -1) {
-      console.log('udario');
+  getRooms(building: number, floor: number) {
+    if (building !== -1 && floor === -1) {
       this.roomService.getBuilding(building).subscribe((data) => {
         this.rooms = data;
         this.scene?.setRooms(this.rooms);
-        this.scene?.display(this.floor, this.building);
+        this.scene?.display(this.floor, this.building, this.clicked.id);
         this.clickedRoom = this.rooms[0].room;
       });
     }
-    if (building !== '' && floor !== -1) {
+    if (building !== -1 && floor !== -1) {
       this.roomService
         .getRooms(building, floor.toString())
         .subscribe((data) => {
           this.rooms = data;
           this.scene?.setRooms(this.rooms);
-          this.scene?.display(this.floor, this.building);
+          this.scene?.display(this.floor, this.building, this.clicked.id);
           this.clickedRoom = this.rooms[0].room;
         });
     }
@@ -233,5 +260,24 @@ export class ViewRoomsComponent implements OnInit, OnDestroy {
     cube.position.set(x, y, z);
 
     return cube;
+  }
+
+  updateView() {
+    this.roomService.getBuilding(this.building).subscribe((data) => {
+      this.rooms = data;
+      this.scene?.setRoomsAfterEdit(this.rooms);
+    });
+  }
+
+  updateBuildingInfo() {
+    this.roomService.getBuildings().subscribe((data) => {
+      this.buildings = data;
+    });
+  }
+
+  sendRoomId(room: IRoom) {
+    this.clicked = room;
+    this.floor = -1;
+    this.getRooms(room.floor.building.id, this.floor);
   }
 }

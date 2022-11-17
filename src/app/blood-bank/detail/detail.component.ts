@@ -3,6 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BloodBank } from '../model/blood-bank.model';
 import { BloodType } from '../model/blood-type.model';
 import { BloodBankService } from '../services/blood-bank.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-detail',
@@ -16,27 +18,62 @@ export class DetailComponent implements OnInit {
   selected: any = '';
   showResponse = false;
   showAnwser = false;
+  showResponse1 = false;
+  showAnwser1 = false;
+  showConf = false;
 
   constructor(
     private bloodBankService: BloodBankService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
+
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      this.bloodBankService.getBloodBank(params['id']).subscribe((res) => {
-        this.bloodBank = res;
-        console.log(this.bloodBank);
-      });
+      this.bloodBankService.getBloodBank(params['id']).subscribe(
+        (res) => {
+          this.bloodBank = res;
+          if (String(this.bloodBank.reportTo) === '0001-01-01T00:00:00') {
+            this.bloodBank.reportTo = new Date();
+          }
+          if (String(this.bloodBank.reportFrom) === '0001-01-01T00:00:00') {
+            this.bloodBank.reportFrom = new Date();
+          }
+        },
+        (err) => {
+          this.bloodBankService.errorHandling(err);
+        }
+      );
     });
   }
   checkBoodType(id: number): void {
-    // alert(this.selected);
-    this.bloodBankService.checkBoodType(id, this.selected).subscribe((res) => {
-      this.showAnwser = true;
-      this.showResponse = res;
-    });
+    this.bloodBankService.checkBoodType(id, this.selected).subscribe(
+      (res) => {
+        this.showAnwser = true;
+        this.showResponse = res;
+      },
+      (err) => {
+        this.bloodBankService.errorHandling(err);
+      }
+    );
+  }
+
+  checkBoodTypeAmount(id: number, amount: number): void {
+    this.bloodBankService
+      .checkBoodTypeAmount(id, this.selected, amount)
+      .subscribe(
+        (res) => {
+          this.showAnwser1 = true;
+          this.showResponse1 = res;
+        },
+        (err) => this.bloodBankService.errorHandling(err)
+      );
   }
 
   hideResponse(): void {
@@ -52,6 +89,28 @@ export class DetailComponent implements OnInit {
       .deleteBloodBank(this.bloodBank.id)
       .subscribe((res) => {
         this.router.navigate(['/bloodbank']);
+      });
+  }
+
+  public showConfiguration() {
+    if (this.showConf) {
+      this.showConf = false;
+    } else {
+      this.showConf = true;
+    }
+  }
+
+  public saveConfiguration() {
+    this.bloodBankService
+      .saveConfiguration(
+        this.bloodBank.id,
+        this.bloodBank.frequently,
+        this.bloodBank.reportTo,
+        this.bloodBank.reportFrom
+      )
+      .subscribe((a) => {
+        this.showConf = false;
+        this.bloodBankService.success('Saved configuration successfully.');
       });
   }
 }

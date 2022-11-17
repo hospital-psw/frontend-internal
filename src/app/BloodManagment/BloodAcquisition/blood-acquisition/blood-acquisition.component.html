@@ -3,7 +3,19 @@
     
     <div class="single">
         <label>Date</label>
-        
+        <input
+            id="date"
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="createAcquisitionDTO.date"
+            name="date"
+            required
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         <input type="text">
     </div>
 

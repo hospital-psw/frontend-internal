@@ -1,5 +1,5 @@
 import { IBuilding } from './../../../Model/Building';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { RoomService } from '../../../service/room-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { IRoom } from 'src/app/Manager/Model/Room';
@@ -16,12 +16,10 @@ export class ShowBuildingDetailsComponent implements OnInit {
   ) {}
 
   @Input() room: any;
+  @Output() notify = new EventEmitter<any>();
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-    console.log('ispisuje');
-    console.log(this.room.floor.building);
-  }
+  ngOnInit(): void {}
 
   enableFields() {
     this.isDisabled = false;
@@ -32,10 +30,11 @@ export class ShowBuildingDetailsComponent implements OnInit {
     const updatedBuilding: IBuilding = {
       id: this.room.floor.building.id,
       name: newName,
-      address: this.room.floor.address,
+      address: this.room.floor.building.address,
     };
     this.roomService.editBuilding(updatedBuilding).subscribe({
       next: (res) => {
+        this.notify.emit();
         this.showSuccess();
       },
       error: (e) => {

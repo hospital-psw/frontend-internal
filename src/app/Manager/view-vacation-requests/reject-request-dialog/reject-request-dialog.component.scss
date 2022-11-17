@@ -1,0 +1,33 @@
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 350px;
+    width: 350px;
+
+
+    .button1{
+      background-color: red;
+      color: white;
+    }
+
+    .textBox{
+      width: 290px;
+      height: 170px;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .close.mat-button {
+      position: absolute;
+      top: 0;
+      left: 90%;
+      padding: 2px;
+      line-height: 14px;
+      min-width: auto;
+    }
+}

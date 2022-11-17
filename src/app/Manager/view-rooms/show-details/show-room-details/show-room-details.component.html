@@ -7,7 +7,7 @@
   <div class="blocks">
     <div class="details">
       <mat-form-field>
-        <mat-label>Broj sobe</mat-label>
+        <mat-label>Room number</mat-label>
         <input
           required
           class="inputText"
@@ -20,7 +20,7 @@
     </div>
     <div class="details">
       <mat-form-field>
-        <mat-label>Svrha sobe</mat-label>
+        <mat-label>Room purpose</mat-label>
         <input
           required
           class="inputText"
@@ -36,7 +36,7 @@
       class="details"
     >
       <mat-form-field>
-        <mat-label>Početak radnog vremena</mat-label>
+        <mat-label>Working hours start</mat-label>
         <input
           required
           class="inputText"
@@ -52,7 +52,7 @@
       class="details"
     >
       <mat-form-field>
-        <mat-label>Kraj radnog vremena</mat-label>
+        <mat-label>Working hours end</mat-label>
         <input
           required
           class="inputText"
@@ -64,25 +64,19 @@
       </mat-form-field>
     </div>
     <div class="button1">
-      <button
-        class="button-edit"
-        mat-button
-        class="button"
-        (click)="enableFields()"
-        type="button"
-      >
+      <button class="button-30" (click)="enableFields()" type="button">
         Edit
       </button>
-    </div>
-    <div class="button2">
+
       <input
         (submit)="
           editRoom(purpose.value, start.value, end.value, number.value, $event)
         "
-        class="button-save"
+        class="button-30"
         type="submit"
         value="Save"
       />
     </div>
   </div>
+  <app-show-equipment [room]="room"></app-show-equipment>
 </form>
