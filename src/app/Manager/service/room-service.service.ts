@@ -56,8 +56,11 @@ export class RoomService {
     );
   }
 
-  searchRooms(searchCriteriaDto: ISearchCriteriaDto){
-    return this.http.post<IRoom[]>(`http://localhost:16177/api/rooms`, searchCriteriaDto);
+  searchRooms(searchCriteriaDto: ISearchCriteriaDto) {
+    return this.http.post<IRoom[]>(
+      `http://localhost:16177/api/rooms`,
+      searchCriteriaDto
+    );
   }
 
   public getAvailableRooms(): Observable<IRoom[]> {

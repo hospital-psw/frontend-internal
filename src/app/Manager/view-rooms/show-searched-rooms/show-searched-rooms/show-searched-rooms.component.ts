@@ -64,7 +64,7 @@ export class ShowSearchedRoomsComponent implements OnInit {
   @Input() searchedRooms: IRoom[];
   @Output() newItemEvent = new EventEmitter<IRoom>();
 
-  public dataSource :IRoom[] = [];
+  public dataSource: IRoom[] = [];
   displayedColumns: string[] = ['number', 'floor', 'building', 'purpose'];
   clickedRows = new Set<IRoom>(); //ne treba mi?
 

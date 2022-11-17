@@ -20,31 +20,19 @@
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Number</mat-label>
-          <input
-            matInput
-            #number
-          />
+          <input matInput #number />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Purpose</mat-label>
-          <input
-            matInput
-            #purpose
-          />
+          <input matInput #purpose />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Start</mat-label>
-          <input
-            matInput
-            #start
-          />
+          <input matInput #start />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>End</mat-label>
-          <input
-            matInput
-            #end
-          />
+          <input matInput #end />
         </mat-form-field>
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose equipment</mat-label>
@@ -57,12 +45,7 @@
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Quantity</mat-label>
-          <input
-            type="number"
-            matInput
-            ngModel
-            #quantity
-          />
+          <input type="number" matInput ngModel #quantity />
         </mat-form-field>
         <!--
         <mat-form-field class="search">
@@ -106,7 +89,21 @@
           />
         </mat-form-field>
         -->
-        <button mat-stroked-button color="primary" class="" (click)="searchRooms(number.value, purpose.value, start.value, end.value, quantity.value)" type="button">
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          (click)="
+            searchRooms(
+              number.value,
+              purpose.value,
+              start.value,
+              end.value,
+              quantity.value
+            )
+          "
+          type="button"
+        >
           Search
         </button>
       </div>
@@ -136,7 +133,5 @@
       [searchedRooms]="searchedRooms"
     ></app-show-searched-rooms>
   </div>
-  <div>
-    
-  </div>
+  <div></div>
 </div>

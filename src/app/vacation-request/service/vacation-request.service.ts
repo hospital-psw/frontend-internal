@@ -6,18 +6,19 @@ import { Observable } from 'rxjs';
 import { VacationRequest } from '../model/interface/vacation-request';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VacationRequestService {
   private apiServerUrl = environment.apiVacationRequestUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public createVacationRequest(
     vacationRequest: NewVacationRequestDTO
-    ): Observable<VacationRequest>{
-      return this.http.post<VacationRequest>(
-        `${this.apiServerUrl}`, vacationRequest
-      )
+  ): Observable<VacationRequest> {
+    return this.http.post<VacationRequest>(
+      `${this.apiServerUrl}`,
+      vacationRequest
+    );
   }
 }

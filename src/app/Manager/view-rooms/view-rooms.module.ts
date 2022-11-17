@@ -15,7 +15,7 @@ import { ShowRoomDetailsComponent } from './show-details/show-room-details/show-
 import { ShowSearchedRoomsComponent } from './show-searched-rooms/show-searched-rooms/show-searched-rooms.component';
 import { ShowEquipmentComponent } from './show-details/show-equipment/show-equipment.component';
 import { MatTableModule } from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -33,7 +33,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatOptionModule,
     MatInputModule,
     MatTableModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   exports: [ViewRoomsComponent],
 })

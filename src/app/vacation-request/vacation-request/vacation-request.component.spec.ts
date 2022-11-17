@@ -8,9 +8,8 @@ describe('VacationRequestComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VacationRequestComponent ]
-    })
-    .compileComponents();
+      declarations: [VacationRequestComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(VacationRequestComponent);
     component = fixture.componentInstance;
