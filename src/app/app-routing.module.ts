@@ -54,7 +54,7 @@ const routes: Routes = [
   },
   {
     path: 'vacation-requests',
-    component: VacationRequestComponent
+    component: VacationRequestComponent,
   },
   {
     path: 'treatment/:id',
