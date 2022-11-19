@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import {
   Component,
@@ -38,7 +39,8 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
 
   constructor(
     private medicalTreatmentService: MedicalTreatmentService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -72,6 +74,6 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   }
 
   onTableRowClick(medicalTreatment: MedicalTreatment): void {
-    // this.router.navigate;
+    this.router.navigate(['/treatment/', medicalTreatment.id]);
   }
 }

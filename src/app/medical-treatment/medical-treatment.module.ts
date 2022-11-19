@@ -41,4 +41,4 @@ import { TherapiesComponent } from './therapies/therapies.component';
     FormsModule,
   ],
 })
-export class MedicalTreatmentModule { }
+export class MedicalTreatmentModule {}
