@@ -67,6 +67,7 @@
         </form>
       </mat-step>
       <mat-step>
+        <mat-spinner *ngIf="showSpinner"></mat-spinner>
         <form [formGroup]="startTimeForm">
             <mat-selection-list [multiple]="false" formControlName="startTime"> 
               <mat-list-option

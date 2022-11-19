@@ -11,6 +11,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatListModule} from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner' 
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatListModule} from '@angular/material/list';
     MatSelectModule,
     MatOptionModule,
     MatStepperModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -41,7 +43,8 @@ import {MatListModule} from '@angular/material/list';
     MatSelectModule,
     MatOptionModule,
     MatStepperModule,
-    MatListModule
+    MatListModule, 
+    MatProgressSpinnerModule
   ],
 })
 export class MaterialModule { }
