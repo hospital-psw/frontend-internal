@@ -2,7 +2,7 @@
   <div class="stepper-wrapper">
     <mat-icon class="close-icon" (click)="closeStepper()">close</mat-icon>
 
-    <mat-stepper orientation="horizontal" [linear]="true" class="stepper">
+    <mat-stepper orientation="horizontal" [linear]="!(quantityForm.valid && destinationRoomForm.valid && periodForm.valid && durationForm.valid)" class="stepper" #stepper>
 
       <mat-step [stepControl]="quantityForm">
         <form [formGroup]="quantityForm">
@@ -37,23 +37,25 @@
       </mat-step>
 
       <mat-step [stepControl]="periodForm">
-        <form [formGroup]="periodForm">
-          <mat-form-field appearance="fill">
-            <mat-label>Start date</mat-label>
-            <input formControlName="startDate" matInput type="date">
-          </mat-form-field>
+          <form [formGroup]="periodForm">
+            <mat-form-field appearance="fill">
+              <mat-label>Start date</mat-label>
+              <input formControlName="startDate" matInput type="date">
+            </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>End date</mat-label>
-            <input formControlName="endDate" matInput type="date">
-          </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>End date</mat-label>
+              <input formControlName="endDate" matInput type="date">
+            </mat-form-field>
 
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext >Next</button>
+            </div>
+          </form>
+
       </mat-step>
+
       <mat-step>
         <form [formGroup]="durationForm">
           <mat-form-field appearance="fill">
@@ -69,7 +71,7 @@
       <mat-step>
         <mat-spinner *ngIf="showSpinner"></mat-spinner>
         <form [formGroup]="startTimeForm">
-            <mat-selection-list [multiple]="false" formControlName="startTime"> 
+            <mat-selection-list [multiple]="false" formControlName="startTime">
               <mat-list-option
               value="{{dateTime}}"
               *ngFor="let dateTime of dateTimes">
@@ -78,12 +80,12 @@
             </mat-selection-list>
           <div>
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext (click)="closeStepper()">Schedule</button>
+            <button mat-button matStepperNext (click)="finishRelocation()">Schedule</button>
           </div>
         </form>
       </mat-step>
     </mat-stepper>
+
   </div>
 
 </div>
-

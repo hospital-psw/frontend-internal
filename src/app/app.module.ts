@@ -1,3 +1,4 @@
+import { MedicalTreatmentModule } from './medical-treatment/medical-treatment.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppointmentModule } from './schedule/appointment.module';
@@ -20,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { NewsfeedModule } from './newsfeed/newsfeed.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 
@@ -47,6 +49,8 @@ import { MaterialModule } from './material/material.module';
     BrowserAnimationsModule,
     ViewRoomsModule,
     BloodBankModule,
+    MedicalTreatmentModule,
+    NewsfeedModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,

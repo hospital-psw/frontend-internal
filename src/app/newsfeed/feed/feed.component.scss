@@ -1,0 +1,30 @@
+mat-table {
+    table-layout: fixed;
+    width: 100%;
+    display: table;
+  }
+  .table-header {
+    display: inline;
+  }
+  
+  p {
+    font-size: 1.5rem;
+  }
+.filter__bar {
+    margin-bottom: 1rem;
+
+}
+.filter__bar > button {
+  margin-right: 0.5rem;
+}
+.news__container{
+  overflow-y: scroll;
+  height: 70vh;
+}
+.news__container > mat-card {
+  margin-bottom: 1.5rem;
+}
+
+mat-card-subtitle {
+  font-style: italic;
+}

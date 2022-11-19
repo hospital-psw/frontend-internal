@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatListModule} from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner' 
@@ -27,6 +28,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     MatFormFieldModule,
     MatSelectModule,
     MatOptionModule,
+    MatChipsModule,
     MatStepperModule,
     MatListModule,
     MatProgressSpinnerModule
@@ -36,10 +38,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatButtonModule,
     MatCardModule,
     MatIconModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatChipsModule,
     MatSelectModule,
     MatOptionModule,
     MatStepperModule,
