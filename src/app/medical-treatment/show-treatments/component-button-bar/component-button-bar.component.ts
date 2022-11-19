@@ -15,14 +15,18 @@ import { MatDialog } from '@angular/material/dialog';
 export class ComponentButtonBarComponent implements OnInit {
   @Output() activeTreatments = new EventEmitter<MedicalTreatment[]>();
   @Output() inactiveTreatments = new EventEmitter<MedicalTreatment[]>();
+  @Input() pageSizeFirst: number;
+  @Input() pageNumberFirst: number;
+  @Input() pageSizeSecond: number;
+  @Input() pageNumberSecond: number;
 
   constructor(
     private dialog: MatDialog,
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   createTreatment(): void {
     const dialogRef = this.dialog
@@ -35,24 +39,28 @@ export class ComponentButtonBarComponent implements OnInit {
   }
 
   getActiveTreatment(): void {
-    this.medicalTreatmentService.getActive().subscribe(
-      (response: MedicalTreatment[]) => {
-        this.activeTreatments.emit(response);
-      },
-      (error: HttpErrorResponse) => {
-        this.toastService.error(error.message);
-      }
-    );
+    this.medicalTreatmentService
+      .getActive(this.pageSizeFirst, this.pageNumberFirst)
+      .subscribe(
+        (response: MedicalTreatment[]) => {
+          this.activeTreatments.emit(response);
+        },
+        (error: HttpErrorResponse) => {
+          this.toastService.error(error.message);
+        }
+      );
   }
 
   getInactiveTreatment(): void {
-    this.medicalTreatmentService.getInactive().subscribe(
-      (response: MedicalTreatment[]) => {
-        this.inactiveTreatments.emit(response);
-      },
-      (error: HttpErrorResponse) => {
-        this.toastService.error(error.message);
-      }
-    );
+    this.medicalTreatmentService
+      .getInactive(this.pageSizeSecond, this.pageNumberSecond)
+      .subscribe(
+        (response: MedicalTreatment[]) => {
+          this.inactiveTreatments.emit(response);
+        },
+        (error: HttpErrorResponse) => {
+          this.toastService.error(error.message);
+        }
+      );
   }
 }

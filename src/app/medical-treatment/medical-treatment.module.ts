@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogContentComponentComponent } from './show-treatments/dialog-content-component/dialog-content-component.component';
 import { TreatmentViewComponent } from './treatment/treatment-view/treatment-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     MatOptionModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
 })
-export class MedicalTreatmentModule {}
+export class MedicalTreatmentModule { }

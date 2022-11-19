@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 export class MedicalTreatmentService {
   private apiServerUrl = environment.apiMedicalTreatment;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public createMedicalTreatment(
     medicalTreatment: CreateMedicalTreatment
@@ -40,11 +40,21 @@ export class MedicalTreatmentService {
     return this.http.get<MedicalTreatment[]>(`${this.apiServerUrl}/all`);
   }
 
-  public getActive(): Observable<MedicalTreatment[]> {
-    return this.http.get<MedicalTreatment[]>(`${this.apiServerUrl}/active`);
+  public getActive(
+    pageSize: number,
+    pageNumber: number
+  ): Observable<MedicalTreatment[]> {
+    return this.http.get<MedicalTreatment[]>(
+      `${this.apiServerUrl}/active/${pageSize}/${pageNumber}`
+    );
   }
 
-  public getInactive(): Observable<MedicalTreatment[]> {
-    return this.http.get<MedicalTreatment[]>(`${this.apiServerUrl}/inactive`);
+  public getInactive(
+    pageSize: number,
+    pageNumber: number
+  ): Observable<MedicalTreatment[]> {
+    return this.http.get<MedicalTreatment[]>(
+      `${this.apiServerUrl}/inactive/${pageSize}/${pageNumber}`
+    );
   }
 }

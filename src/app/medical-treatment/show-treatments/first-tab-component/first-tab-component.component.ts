@@ -15,6 +15,8 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-first-tab-component',
@@ -30,9 +32,20 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
     'arrival',
   ];
   dataSource = new MatTableDataSource<MedicalTreatment>();
-  pageSize: number = 10;
-  pageNumber: number = 0;
+  //dataSize = pageSize
+  pageSize: number = 5;
+  pageNumber: number = 1;
   length: number;
+  //number of data getting from backend (dataSize~pageSize in emitting)
+  dataSize: number = 60;
+  dataLoaded = false;
+  paginatorColor: ThemePalette = 'primary';
+  @Output() pageSizeOutput = new EventEmitter<number>();
+  @Output() pageNumberOutput = new EventEmitter<number>();
+
+  color: ThemePalette = 'primary';
+  value = 60;
+  mode: ProgressSpinnerMode = 'indeterminate';
   @Input() activeTreatments: MedicalTreatment[];
 
   @ViewChild('activeTreatmentPaginator') paginator: MatPaginator;
@@ -41,7 +54,7 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<MedicalTreatment>(
@@ -51,25 +64,34 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getActiveTreatment();
+    this.pageSizeOutput.emit(this.dataSize);
+    this.pageNumberOutput.emit(this.pageNumber);
   }
 
   getActiveTreatment(): void {
-    this.medicalTreatmentService.getActive().subscribe(
-      (response: MedicalTreatment[]) => {
-        this.dataSource = new MatTableDataSource<MedicalTreatment>(response);
-        this.dataSource.paginator = this.paginator;
-        this.length = response.length;
-      },
-      (error: HttpErrorResponse) => {
-        this.toastService.error(error.message);
-      }
-    );
+    this.medicalTreatmentService
+      .getActive(this.dataSize, this.pageNumber)
+      .subscribe(
+        (response: MedicalTreatment[]) => {
+          this.dataSource = new MatTableDataSource<MedicalTreatment>(response);
+          this.dataLoaded = true;
+          this.dataSource.paginator = this.paginator;
+          //pageSize data 0 not acceptable on backend, but required on front
+          this.pageNumber = 0;
+          this.length = response.length;
+        },
+        (error: HttpErrorResponse) => {
+          this.toastService.error(error.message);
+        }
+      );
   }
 
   onPaginateChange(event: any): void {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex;
     this.length = event.lenght;
+    this.pageSizeOutput.emit(this.pageSize);
+    this.pageNumberOutput.emit(this.pageNumber);
     console.log(this.pageSize, this.pageNumber);
   }
 

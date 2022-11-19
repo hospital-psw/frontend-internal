@@ -43,6 +43,13 @@
         (click)="onTableRowClick(row)"
       ></tr>
     </table>
+    <!-- <mat-progress-spinner
+      [mode]="mode"
+      [value]="value"
+      [color]="color"
+      [diameter]="50"
+    >
+    </mat-progress-spinner> -->
   </div>
 
   <mat-paginator
@@ -54,6 +61,7 @@
     [length]="length"
     aria-label="Select page of active medical treatments"
     (page)="onPaginateChange($event)"
+    [color]="paginatorColor"
   >
   </mat-paginator>
 </div>

@@ -2,11 +2,15 @@
   <mat-tab label="Active medical treatments" class="space__tab">
     <app-first-tab-component
       [activeTreatments]="activeTreatments"
+      (pageSizeOutput)="storePageSizeFirst($event)"
+      (pageNumberOutput)="storePageNumberFirst($event)"
     ></app-first-tab-component>
   </mat-tab>
   <mat-tab label="Finished medical treatments" class="space__tab">
     <app-second-tab-component
       [inactiveTreatments]="inactiveTreatments"
+      (pageSizeOutput)="storePageSizeSecond($event)"
+      (pageNumberOutput)="storePageNumberSecond($event)"
     ></app-second-tab-component>
   </mat-tab>
 </mat-tab-group>
