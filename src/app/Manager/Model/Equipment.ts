@@ -5,4 +5,5 @@ export interface IEquipment {
   equipmentType: number;
   quantity: number;
   room: IRoom;
+  reservedQuantity: number;
 }

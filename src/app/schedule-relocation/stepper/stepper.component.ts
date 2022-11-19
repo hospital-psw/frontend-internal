@@ -44,7 +44,6 @@ export class StepperComponent implements OnInit {
   constructor(private roomService: RoomService, private relocationService: RelocationService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    console.log(this.equipment.quantity)
     this.getPossibleDestinationRooms()
   }
 
