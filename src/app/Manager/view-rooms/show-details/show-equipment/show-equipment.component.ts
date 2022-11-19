@@ -21,6 +21,7 @@ export class ShowEquipmentComponent implements OnInit {
     this.roomService.getEquipment(this.room.id).subscribe((data) => {
       this.equipment = data;
       console.log(this.room.id);
+      console.log(data);
     });
   }
 
@@ -33,6 +34,7 @@ export class ShowEquipmentComponent implements OnInit {
     this.roomService.getEquipment(this.room.id).subscribe((data) => {
       this.equipment = data;
       console.log(this.room.id);
+      console.log(data);
     });
   }
 }

@@ -1,5 +1,5 @@
 export enum VacationRequestStatus {
-    WAITING = 'WAITING',
-    APPROVED = 'APPROVED',
-    REJECTED = 'REJECTED'
+  WAITING = 'WAITING',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED',
 }

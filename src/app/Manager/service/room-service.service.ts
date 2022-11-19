@@ -1,3 +1,4 @@
+import { ISearchCriteriaDto } from './../Model/Dto/SearchCriteriaDto';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
@@ -52,6 +53,13 @@ export class RoomService {
   getEquipment(roomId: number) {
     return this.http.get<IEquipment[]>(
       `http://localhost:16177/api/Equipment/${roomId}`
+    );
+  }
+
+  searchRooms(searchCriteriaDto: ISearchCriteriaDto) {
+    return this.http.post<IRoom[]>(
+      `http://localhost:16177/api/rooms`,
+      searchCriteriaDto
     );
   }
 

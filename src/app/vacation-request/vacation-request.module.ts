@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { VacationRequestService } from './service/vacation-request.service';
 import { CreateRequestFormComponent } from './create-request-form/create-request-form.component';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDateRangeInput, MatDateRangePicker } from '@angular/material/datepicker';
+import {
+  MatDateRangeInput,
+  MatDateRangePicker,
+} from '@angular/material/datepicker';
 import { MatLabel } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,15 +20,8 @@ import { VacationRequestComponent } from './vacation-request/vacation-request.co
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-
-
-
-
 @NgModule({
-  declarations: [
-    CreateRequestFormComponent,
-    VacationRequestComponent
-  ],
+  declarations: [CreateRequestFormComponent, VacationRequestComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -35,10 +31,8 @@ import { MatInputModule } from '@angular/material/input';
     MatPseudoCheckboxModule,
     FormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
   ],
-  providers: [
-    VacationRequestService
-  ]
+  providers: [VacationRequestService],
 })
-export class VacationRequestModule { }
+export class VacationRequestModule {}
