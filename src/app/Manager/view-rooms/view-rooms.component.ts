@@ -374,10 +374,11 @@ export class ViewRoomsComponent
   }
 
   refreshEquipment(){
-    if(this.clickedRoom)
+    if(this.clickedRoom) {
       this.roomService.getEquipment(this.clickedRoom.id).subscribe((data) => {
         this.equipments = data;
       });
+    }
   }
 
   closeStepper(){

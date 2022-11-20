@@ -66,7 +66,7 @@ export class StepperComponent implements OnInit {
     this.showSpinner = true;
     const startTime1 = new Date(this.periodForm.controls['startDate'].value)
     const endTime1 = new Date(this.periodForm.controls['endDate'].value);
-    this.relocationService.recommendDateTimes({fromRoom : this.equipment.room.id, toRoom : this.destinationRoomForm.controls.room.value, fromTime : startTime1 , toTime : endTime1, duration : this.durationForm.controls.duration.value}).subscribe((data) => {
+    this.relocationService.recommendDateTimes({fromRoomId : this.equipment.room.id, toRoomId : this.destinationRoomForm.controls.room.value, fromTime : startTime1 , toTime : endTime1, duration : this.durationForm.controls.duration.value}).subscribe((data) => {
       this.showSpinner = false;
       this.dateTimes = data;
       console.log(data);
