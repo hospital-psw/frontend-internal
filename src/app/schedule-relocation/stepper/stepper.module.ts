@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { StepperComponent } from './stepper.component';
 import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FirstStepFormModule } from '../first-step-form/first-step-form.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +12,6 @@ import { FirstStepFormModule } from '../first-step-form/first-step-form.module';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    FirstStepFormModule,
     MaterialModule
   ],
   exports: [StepperComponent]

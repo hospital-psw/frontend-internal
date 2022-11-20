@@ -369,9 +369,15 @@ export class ViewRoomsComponent
   }
 
   relocate(element:IEquipment){
-    console.log('okinuo relocate')
     this.doRelocate = true
     this.element = element
+  }
+
+  refreshEquipment(){
+    if(this.clickedRoom)
+      this.roomService.getEquipment(this.clickedRoom.id).subscribe((data) => {
+        this.equipments = data;
+      });
   }
 
   closeStepper(){

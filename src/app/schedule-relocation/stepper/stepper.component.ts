@@ -41,6 +41,7 @@ export class StepperComponent implements OnInit {
   @Input() equipment: IEquipment;
   destinationRooms: IRoomMap[] = []
   @Output() close = new EventEmitter()
+  @Output() refreshEquipment = new EventEmitter()
   constructor(private roomService: RoomService, private relocationService: RelocationService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -60,7 +61,7 @@ export class StepperComponent implements OnInit {
     console.log(this.destinationRooms);
   }
 
-  recommend(){ 
+  recommend(){
     this.dateTimes = []
     this.showSpinner = true;
     const startTime1 = new Date(this.periodForm.controls['startDate'].value)
@@ -80,6 +81,7 @@ export class StepperComponent implements OnInit {
     this.relocationService.createRelocationRequest({fromRoomId : this.equipment.room.id, toRoomId : this.destinationRoomForm.controls.room.value, equipmentId : this.equipment.id, startTime : this.startTimeForm.controls.startTime.value?.at(0), duration : this.durationForm.controls.duration.value, quantity : this.quantityForm.controls.quantity.value}).subscribe({
       next: (res) => {
         this.showSuccess();
+        this.refreshEquipment.emit()
       },
       error: (e) => {
         this.showError();
