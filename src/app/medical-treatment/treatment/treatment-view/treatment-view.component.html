@@ -108,7 +108,7 @@
           {{ bloodTherapy.about }}
         </div>
       </div>
-      <div class="treatment__therapies-new">Add new treatment</div>
+      <button class="treatment__therapies-new" (click)="openDialog()" *ngIf="medicalTreatment.active">Add new treatment</button>
     </div>
   </div>
 </div>

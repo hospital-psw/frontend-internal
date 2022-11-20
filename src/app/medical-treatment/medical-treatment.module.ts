@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -16,7 +17,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogContentComponentComponent } from './show-treatments/dialog-content-component/dialog-content-component.component';
 import { TreatmentViewComponent } from './treatment/treatment-view/treatment-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TherapiesComponent } from './therapies/therapies.component';
+import { NewTherapyDialogComponent } from './therapies/new-therapy-dialog/new-therapy-dialog.component';
+import { MedicamentTherapyComponent } from './therapies/medicament-therapy/medicament-therapy.component';
+import { BloodUnitTherapyComponent } from './therapies/blood-unit-therapy/blood-unit-therapy.component';
+import { TherapyTabsComponent } from './therapies/therapy-tabs/therapy-tabs.component';
+import { MatInput } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,10 @@ import { TherapiesComponent } from './therapies/therapies.component';
     CreateDialogComponentComponent,
     DialogContentComponentComponent,
     TreatmentViewComponent,
-    TherapiesComponent,
+    NewTherapyDialogComponent,
+    MedicamentTherapyComponent,
+    BloodUnitTherapyComponent,
+    TherapyTabsComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +46,7 @@ import { TherapiesComponent } from './therapies/therapies.component';
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
+    MatInputModule,
     FormsModule,
   ],
 })

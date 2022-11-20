@@ -7,4 +7,5 @@ export interface Patient {
   email: string;
   role: Role;
   guest: boolean;
+  bloodType: number;
 }
