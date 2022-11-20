@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogContentComponentComponent } from './show-treatments/dialog-content-component/dialog-content-component.component';
 import { TreatmentViewComponent } from './treatment/treatment-view/treatment-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NewTherapyDialogComponent } from './therapies/new-therapy-dialog/new-therapy-dialog.component';
 import { MedicamentTherapyComponent } from './therapies/medicament-therapy/medicament-therapy.component';
 import { BloodUnitTherapyComponent } from './therapies/blood-unit-therapy/blood-unit-therapy.component';
@@ -48,6 +49,7 @@ import { MatInput } from '@angular/material/input';
     MatOptionModule,
     MatInputModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MedicalTreatmentModule {}
