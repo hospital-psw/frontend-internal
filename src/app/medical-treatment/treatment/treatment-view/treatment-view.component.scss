@@ -200,13 +200,27 @@
 
             &-new {
                 margin-top: 3rem;
-                width: 45% !important;
-                height: 4rem;
-                background-color: brown;
-                display: flex;
-                justify-content: center;
-                align-items: center !important;
-                box-sizing: border-box;
+                width: 30% !important;
+                padding: 1rem;
+                background-color: #fff;
+                border: 2px solid $button-color-primary;
+                border-radius: 10px;
+                color: $button-color-primary;
+                transition: .5s;
+                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+                &:hover {
+                    transform: scale(1.05);
+                    transition: .5s;
+                    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+                    cursor: pointer;
+                }
+
+                &:active {
+                    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+                    transform: scale(0.9);
+                    transition: .3s;
+                }
             }
 
         }
