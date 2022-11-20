@@ -41,4 +41,4 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule,
   ],
 })
-export class MedicalTreatmentModule { }
+export class MedicalTreatmentModule {}

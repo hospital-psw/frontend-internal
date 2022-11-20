@@ -14,9 +14,9 @@ export class BaseComponentComponent implements OnInit {
   @Input() pageSizeSecond: number;
   @Input() pageNumberSecond: number;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   storeActiveTreatments(activeTreatments: MedicalTreatment[]) {
     this.activeTreatments = activeTreatments;

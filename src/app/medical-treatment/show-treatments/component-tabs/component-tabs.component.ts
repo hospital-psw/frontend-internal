@@ -1,5 +1,12 @@
 import { MedicalTreatment } from './../../interface/MedicalTreatment';
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 
 @Component({
   selector: 'app-component-tabs',
@@ -8,7 +15,6 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } fro
   encapsulation: ViewEncapsulation.None,
 })
 export class ComponentTabsComponent implements OnInit {
-
   @Input() activeTreatments: MedicalTreatment[];
   @Input() inactiveTreatments: MedicalTreatment[];
   @Output() pageSizeFirst = new EventEmitter<number>();
@@ -16,9 +22,9 @@ export class ComponentTabsComponent implements OnInit {
   @Output() pageSizeSecond = new EventEmitter<number>();
   @Output() pageNumberSecond = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   storePageNumberSecond(pageNumber: number) {
     this.pageNumberSecond.emit(pageNumber);

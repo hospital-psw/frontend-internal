@@ -24,9 +24,9 @@ export class ComponentButtonBarComponent implements OnInit {
     private dialog: MatDialog,
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   createTreatment(): void {
     const dialogRef = this.dialog

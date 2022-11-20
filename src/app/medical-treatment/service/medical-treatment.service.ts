@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 export class MedicalTreatmentService {
   private apiServerUrl = environment.apiMedicalTreatment;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public createMedicalTreatment(
     medicalTreatment: CreateMedicalTreatment
