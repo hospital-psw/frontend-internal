@@ -5,14 +5,14 @@ import { Medicament } from '../interface/Medicament';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MedicineService {
   private apiServerUrl = environment.apiMedicine;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getMedicines() : Observable<Medicament[]>{
-    return this.http.get<Medicament[]>(`${this.apiServerUrl}`)
+  public getMedicines(): Observable<Medicament[]> {
+    return this.http.get<Medicament[]>(`${this.apiServerUrl}`);
   }
 }

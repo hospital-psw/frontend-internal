@@ -1,6 +1,6 @@
 export interface NewMedicamentTherapy {
-    medicamentId: number,
-    amount: number, 
-    about: string, 
-    medicalTreatmentId: number
+  medicamentId: number;
+  amount: number;
+  about: string;
+  medicalTreatmentId: number;
 }

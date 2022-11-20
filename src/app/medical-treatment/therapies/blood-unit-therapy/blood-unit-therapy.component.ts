@@ -1,5 +1,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { ToastrService } from 'ngx-toastr';
@@ -15,63 +21,68 @@ import { NewTherapyDialogComponent } from '../new-therapy-dialog/new-therapy-dia
 @Component({
   selector: 'app-blood-unit-therapy',
   templateUrl: './blood-unit-therapy.component.html',
-  styleUrls: ['./blood-unit-therapy.component.scss']
+  styleUrls: ['./blood-unit-therapy.component.scss'],
 })
 export class BloodUnitTherapyComponent implements OnInit, OnChanges {
-
   @Input() patient: Patient;
   @Input() treatmentId: number;
   bloodUnit: BloodUnit;
   newBloodUnitTherapy: NewBloodUnitTherapy;
   bloodTypes = Object.values(BloodType);
-  bloodTypeString : string;
+  bloodTypeString: string;
   amount: number;
   description: string;
 
-  constructor(private toastService: ToastrService,
-              private dialogRef: MatDialogRef<NewTherapyDialogComponent>,
-              private bloodUnitTherapyService: BloodunitTherapyService,
-              private bloodUnitService: BloodUnitService) { }
+  constructor(
+    private toastService: ToastrService,
+    private dialogRef: MatDialogRef<NewTherapyDialogComponent>,
+    private bloodUnitTherapyService: BloodunitTherapyService,
+    private bloodUnitService: BloodUnitService
+  ) {}
 
   ngOnInit(): void {
     this.getBloodUnitForPatient();
-    console.log('BUTC', this.treatmentId)
+    console.log('BUTC', this.treatmentId);
     this.newBloodUnitTherapy = {
       medicalTreatmentId: this.treatmentId,
       bloodUnitId: -1,
       amount: -1,
-      about: ""
-    }
+      about: '',
+    };
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getBloodUnitForPatient();
   }
 
-  getBloodUnitForPatient() : void {
-    this.bloodUnitService.getByBloodType(this.patient.bloodType).subscribe((response : BloodUnit) => {
-      this.bloodUnit = response;
-      this.bloodTypeString = this.bloodTypes[parseInt(this.bloodUnit.bloodType)];
-    },
+  getBloodUnitForPatient(): void {
+    this.bloodUnitService.getByBloodType(this.patient.bloodType).subscribe(
+      (response: BloodUnit) => {
+        this.bloodUnit = response;
+        this.bloodTypeString =
+          this.bloodTypes[parseInt(this.bloodUnit.bloodType)];
+      },
       (error: HttpErrorResponse) => {
         this.toastService.error(error.message);
-      })
+      }
+    );
   }
 
-  addTherapy() : void {
+  addTherapy(): void {
     this.newBloodUnitTherapy.medicalTreatmentId = this.treatmentId;
     this.newBloodUnitTherapy.bloodUnitId = this.bloodUnit.id;
     this.newBloodUnitTherapy.about = this.description;
     this.newBloodUnitTherapy.amount = this.amount;
-    console.log(this.newBloodUnitTherapy)
-    this.bloodUnitTherapyService.createBloodUnitTherapy(this.newBloodUnitTherapy).subscribe((response: BloodUnitTherapy) => {
-      this.toastService.success('Therapy succesfully created')
-      this.dialogRef.close();
-    })
+    console.log(this.newBloodUnitTherapy);
+    this.bloodUnitTherapyService
+      .createBloodUnitTherapy(this.newBloodUnitTherapy)
+      .subscribe((response: BloodUnitTherapy) => {
+        this.toastService.success('Therapy succesfully created');
+        this.dialogRef.close();
+      });
   }
 
-  closeDialog() : void {
+  closeDialog(): void {
     this.dialogRef.close();
   }
-
 }

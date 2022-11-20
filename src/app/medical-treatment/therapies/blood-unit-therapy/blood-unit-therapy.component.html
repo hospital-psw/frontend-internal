@@ -1,15 +1,23 @@
 <div class="blood-unit">
-    <mat-form-field appearance="fill" class="blood-unit__form-field">
-        <mat-label>Blood unit</mat-label>
-        <input matInput disabled [value]="bloodTypeString">
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="blood-unit__form-field">
-        <mat-label>Amount</mat-label>
-        <input matInput type="number" placeholder="0" [(ngModel)]="amount">
-    </mat-form-field>
-    <textarea class="blood-unit__text-area" placeholder="Please enter description." [(ngModel)]="description"></textarea>
-    <div class="blood-unit__actions">
-        <button class="blood-unit__actions-button" (click)="closeDialog()">Back</button>
-        <button class="blood-unit__actions-button" (click)="addTherapy()">Submit</button>
-    </div>
+  <mat-form-field appearance="fill" class="blood-unit__form-field">
+    <mat-label>Blood unit</mat-label>
+    <input matInput disabled [value]="bloodTypeString" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="blood-unit__form-field">
+    <mat-label>Amount</mat-label>
+    <input matInput type="number" placeholder="0" [(ngModel)]="amount" />
+  </mat-form-field>
+  <textarea
+    class="blood-unit__text-area"
+    placeholder="Please enter description."
+    [(ngModel)]="description"
+  ></textarea>
+  <div class="blood-unit__actions">
+    <button class="blood-unit__actions-button" (click)="closeDialog()">
+      Back
+    </button>
+    <button class="blood-unit__actions-button" (click)="addTherapy()">
+      Submit
+    </button>
+  </div>
 </div>

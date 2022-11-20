@@ -1,18 +1,32 @@
 <div class="blood-unit">
-    <mat-form-field appearance="fill" class="blood-unit__form-field">
-        <mat-label>Medicaments</mat-label>
-        <mat-select [(ngModel)]="newMedicamentTherapy.medicamentId">
-            <mat-option *ngFor="let m of medicines" [value]="m.id">{{ m.name | titlecase }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill" class="blood-unit__form-field">
-        <mat-label>Amount</mat-label>
-        <input matInput type="number" placeholder="0" [(ngModel)]="newMedicamentTherapy.amount">
-    </mat-form-field>
-    <textarea class="blood-unit__text-area" placeholder="Please enter description."
-        [(ngModel)]="newMedicamentTherapy.about"></textarea>
-    <div class="blood-unit__actions">
-        <button class="blood-unit__actions-button" (click)="closeDialog()">Back</button>
-        <button class="blood-unit__actions-button" (click)="addTherapy()">Submit</button>
-    </div>
+  <mat-form-field appearance="fill" class="blood-unit__form-field">
+    <mat-label>Medicaments</mat-label>
+    <mat-select [(ngModel)]="newMedicamentTherapy.medicamentId">
+      <mat-option *ngFor="let m of medicines" [value]="m.id">{{
+        m.name | titlecase
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="blood-unit__form-field">
+    <mat-label>Amount</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="0"
+      [(ngModel)]="newMedicamentTherapy.amount"
+    />
+  </mat-form-field>
+  <textarea
+    class="blood-unit__text-area"
+    placeholder="Please enter description."
+    [(ngModel)]="newMedicamentTherapy.about"
+  ></textarea>
+  <div class="blood-unit__actions">
+    <button class="blood-unit__actions-button" (click)="closeDialog()">
+      Back
+    </button>
+    <button class="blood-unit__actions-button" (click)="addTherapy()">
+      Submit
+    </button>
+  </div>
 </div>

@@ -108,16 +108,22 @@ export class TreatmentViewComponent implements OnInit {
     return this.medicalTreatment.room.floor.number + 'th';
   }
 
-  openDialog() : void {
-    console.log('Okinula se metoda open dialog')
-    const dialogRef = this.dialog.open(NewTherapyDialogComponent, { data: { patient: this.medicalTreatment.patient, treatmentId: this.medicalTreatment.id}})
-                                 .afterClosed()
-                                 .subscribe((res) => {
-                                    this.medicalTreatmentService.getTreatment(this.medicalTreatment.id)
-                                                                .subscribe((res) => {
-                                                                  this.medicalTreatment = res;
-                                                                })
-                                  });
+  openDialog(): void {
+    console.log('Okinula se metoda open dialog');
+    const dialogRef = this.dialog
+      .open(NewTherapyDialogComponent, {
+        data: {
+          patient: this.medicalTreatment.patient,
+          treatmentId: this.medicalTreatment.id,
+        },
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.medicalTreatmentService
+          .getTreatment(this.medicalTreatment.id)
+          .subscribe((res) => {
+            this.medicalTreatment = res;
+          });
+      });
   }
-
 }
