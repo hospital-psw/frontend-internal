@@ -23,8 +23,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   checkWorkingHours(): void {
     if (this.room.workingHours == null) {

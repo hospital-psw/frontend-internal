@@ -213,9 +213,11 @@ export class ViewRoomsComponent
           roomFound = true;
           this.showDetails = roomFound;
           //get details for room
-          this.roomService.getEquipment(this.clickedRoom.id).subscribe((data) => {
-            this.equipments = data;
-          });
+          this.roomService
+            .getEquipment(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.equipments = data;
+            });
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;

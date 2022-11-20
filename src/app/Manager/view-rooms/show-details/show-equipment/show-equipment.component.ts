@@ -16,8 +16,7 @@ export class ShowEquipmentComponent implements OnInit {
 
   @Input() equipment: IEquipment[];
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
