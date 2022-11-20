@@ -126,6 +126,7 @@
       (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
+      [equipment]="equipments"
     ></app-show-room-details>
     <app-show-searched-rooms
       (newItemEvent)="sendRoomId($event)"

@@ -14,27 +14,11 @@ export class ShowEquipmentComponent implements OnInit {
     setInterval(() => {}, 100);
   }
 
-  @Input() room: IRoom;
+  @Input() equipment: IEquipment[];
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
-  public equipment: IEquipment[] = [];
-  ngOnInit(): void {
-    this.roomService.getEquipment(this.room.id).subscribe((data) => {
-      this.equipment = data;
-      console.log(this.room.id);
-      console.log(data);
-    });
-  }
+  ngOnInit(): void {}
 
   convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
-  }
-
-  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  ngOnChanges() {
-    this.roomService.getEquipment(this.room.id).subscribe((data) => {
-      this.equipment = data;
-      console.log(this.room.id);
-      console.log(data);
-    });
   }
 }
