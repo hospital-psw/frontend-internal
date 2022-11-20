@@ -1,6 +1,7 @@
 import { FormsModule } from '@angular/forms';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -17,6 +18,11 @@ import { DialogContentComponentComponent } from './show-treatments/dialog-conten
 import { TreatmentViewComponent } from './treatment/treatment-view/treatment-view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NewTherapyDialogComponent } from './therapies/new-therapy-dialog/new-therapy-dialog.component';
+import { MedicamentTherapyComponent } from './therapies/medicament-therapy/medicament-therapy.component';
+import { BloodUnitTherapyComponent } from './therapies/blood-unit-therapy/blood-unit-therapy.component';
+import { TherapyTabsComponent } from './therapies/therapy-tabs/therapy-tabs.component';
+import { MatInput } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -28,6 +34,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CreateDialogComponentComponent,
     DialogContentComponentComponent,
     TreatmentViewComponent,
+    NewTherapyDialogComponent,
+    MedicamentTherapyComponent,
+    BloodUnitTherapyComponent,
+    TherapyTabsComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +47,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatDialogModule,
     MatSelectModule,
     MatOptionModule,
+    MatInputModule,
     FormsModule,
     MatProgressSpinnerModule,
   ],
