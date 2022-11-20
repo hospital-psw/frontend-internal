@@ -21,6 +21,7 @@ import { TorusGeometry } from 'three';
 import { IBuilding } from '../Model/Building';
 import { ISearchCriteriaDto } from '../Model/Dto/SearchCriteriaDto';
 import { ToastrService } from 'ngx-toastr';
+import { IEquipment } from '../Model/Equipment';
 
 @Component({
   selector: 'app-view-rooms',
@@ -46,6 +47,7 @@ export class ViewRoomsComponent
   private sub?: Subscription;
 
   rooms: IRoomMap[] = [];
+  equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
   public showDetails: boolean = false;
   public showBuildingDetails = false;
@@ -210,6 +212,10 @@ export class ViewRoomsComponent
           this.clickedRoom = room.getRoomData().room;
           roomFound = true;
           this.showDetails = roomFound;
+          //get details for room
+          this.roomService.getEquipment(this.clickedRoom.id).subscribe((data) => {
+            this.equipments = data;
+          });
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;

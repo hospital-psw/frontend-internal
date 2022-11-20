@@ -3,6 +3,7 @@ import { IRoom } from 'src/app/Manager/Model/Room';
 import { IWorkingHours } from 'src/app/Manager/Model/WorkingHours';
 import { RoomService } from '../../../service/room-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { IEquipment } from 'src/app/Manager/Model/Equipment';
 
 @Component({
   selector: 'app-show-room-details',
@@ -17,11 +18,13 @@ export class ShowRoomDetailsComponent implements OnInit {
   }
 
   @Input() room: any;
+  @Input() equipment: IEquipment[];
   @Output() notify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   checkWorkingHours(): void {
     if (this.room.workingHours == null) {
