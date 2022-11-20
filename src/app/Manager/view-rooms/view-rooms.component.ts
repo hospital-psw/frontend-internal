@@ -373,12 +373,11 @@ export class ViewRoomsComponent
     this.element = element
   }
 
-  refreshEquipment(){
-    if(this.clickedRoom) {
-      this.roomService.getEquipment(this.clickedRoom.id).subscribe((data) => {
-        this.equipments = data;
-      });
-    }
+  refreshEquipment(event : any){
+    this.equipments.forEach(element => {
+      if (element.id == event.equipmentId) element.reservedQuantity += event.reservedQuantity;
+    });
+  
   }
 
   closeStepper(){

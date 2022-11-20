@@ -81,12 +81,12 @@ export class StepperComponent implements OnInit {
     this.relocationService.createRelocationRequest({fromRoomId : this.equipment.room.id, toRoomId : this.destinationRoomForm.controls.room.value, equipmentId : this.equipment.id, startTime : this.startTimeForm.controls.startTime.value?.at(0), duration : this.durationForm.controls.duration.value, quantity : this.quantityForm.controls.quantity.value}).subscribe({
       next: (res) => {
         this.showSuccess();
-        this.refreshEquipment.emit()
       },
       error: (e) => {
         this.showError();
       },
     })
+    this.refreshEquipment.emit({reservedQuantity : this.quantityForm.controls.quantity.value, equipmentId : this.equipment.id})
     this.closeStepper()
   }
 
