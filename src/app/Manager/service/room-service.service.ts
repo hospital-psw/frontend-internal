@@ -1,4 +1,6 @@
 import { ISearchCriteriaDto } from './../Model/Dto/SearchCriteriaDto';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IRoom } from '../Model/Room';
@@ -11,6 +13,8 @@ import { IEquipment } from '../Model/Equipment';
   providedIn: 'root',
 })
 export class RoomService {
+  private apiServerUrl = environment.apiRooms;
+
   constructor(private http: HttpClient) {}
 
   getRooms(buildingId: number, floor: string) {
@@ -52,7 +56,14 @@ export class RoomService {
     );
   }
 
-  searchRooms(searchCriteriaDto: ISearchCriteriaDto){
-    return this.http.post<IRoom[]>(`http://localhost:16177/api/rooms`, searchCriteriaDto);
+  searchRooms(searchCriteriaDto: ISearchCriteriaDto) {
+    return this.http.post<IRoom[]>(
+      `http://localhost:16177/api/rooms`,
+      searchCriteriaDto
+    );
+  }
+
+  public getAvailableRooms(): Observable<IRoom[]> {
+    return this.http.get<IRoom[]>(`${this.apiServerUrl}/available`);
   }
 }

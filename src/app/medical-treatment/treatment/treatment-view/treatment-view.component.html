@@ -1,0 +1,120 @@
+<div class="treatment-wrapper">
+  <div class="finish">
+    <button
+      class="finish-button"
+      [hidden]="!medicalTreatment.active"
+      (click)="releasePatient()"
+    >
+      Finish treatment
+    </button>
+  </div>
+  <div class="treatment">
+    <div class="treatment__info">
+      <div class="treatment__info-patient">
+        <div class="treatment__info-patient-col">
+          <div class="treatment__info-patient-col__name">
+            <span class="label">Patient Name: </span>
+            <span class="value"
+              >{{ medicalTreatment.patient.firstName }}
+              {{ medicalTreatment.patient.lastName }}</span
+            >
+          </div>
+          <div class="treatment__info-patient-col__room">
+            <span class="label">Status: </span>
+            <span class="value">{{ getStatus() }}</span>
+          </div>
+          <div class="treatment__info-patient-col__name">
+            <span class="label">Admittance date: </span>
+            <span class="value">{{
+              medicalTreatment.start | date: "dd.MM.yyyy."
+            }}</span>
+          </div>
+        </div>
+        <div class="treatment__info-patient-col">
+          <div class="treatment__info-patient-col__room">
+            <span class="label">Hospital: </span>
+            <span class="value">{{
+              medicalTreatment.room.floor.building.name
+            }}</span>
+          </div>
+          <div class="treatment__info-patient-col__room">
+            <span class="label">Room: </span>
+            <span class="value"
+              >{{ medicalTreatment.room.number }},
+              {{ getFloorString() }} floor</span
+            >
+          </div>
+          <div
+            class="treatment__info-patient-col__room"
+            *ngIf="!medicalTreatment.active"
+          >
+            <span class="label">Release date: </span>
+            <span class="value">{{
+              medicalTreatment.end | date: "dd.MM.yyyy."
+            }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="treatment__info-reason">
+        <span class="treatment__info-reason__header">Admittance Reason:</span>
+        <span class="treatment__info-reason__text">{{
+          medicalTreatment.admittanceReason
+        }}</span>
+      </div>
+      <div class="treatment__info-report">
+        <span class="treatment__info-report__header">Report: </span>
+        <textarea
+          name="description"
+          class="treatment__info-report__text"
+          cols="30"
+          rows="5"
+          placeholder="Please enter anamnesis and epicrisis..."
+          [(ngModel)]="patientRelease.description"
+          [disabled]="!medicalTreatment.active"
+        ></textarea>
+      </div>
+    </div>
+    <div class="treatment__therapies">
+      <span class="no-treatments" *ngIf="isTextVisible()">
+        There are no given therapies for this treatment
+      </span>
+      <div
+        class="treatment__therapies-medicament"
+        *ngFor="let medicamentTherapy of medicalTreatment.medicamentTherapies"
+      >
+        <div class="treatment__therapies-medicament-header">
+          <span class="therapy-header"
+            >{{ medicamentTherapy.medicament.name }} -
+            {{ medicamentTherapy.amount }} units</span
+          >
+          <span>{{ getDateString(medicamentTherapy) }}</span>
+        </div>
+        <div class="treatment__therapies-medicament-about">
+          {{ medicamentTherapy.about }}
+        </div>
+      </div>
+      <div
+        class="treatment__therapies-blood"
+        *ngFor="let bloodTherapy of medicalTreatment.bloodUnitTherapies"
+      >
+        <div class="treatment__therapies-blood-header">
+          <span class="therapy-header"
+            >{{ getBloodType(bloodTherapy) }} :
+            {{ bloodTherapy.amount }} units</span
+          >
+          <span>Given at {{ bloodTherapy.start | date: "dd.MM.yyyy" }}</span>
+        </div>
+        <div class="treatment__therapies-blood-about">
+          {{ bloodTherapy.about }}
+        </div>
+      </div>
+      <button
+        class="treatment__therapies-new"
+        (click)="openDialog()"
+        *ngIf="medicalTreatment.active"
+      >
+        Add new treatment
+      </button>
+    </div>
+  </div>
+</div>

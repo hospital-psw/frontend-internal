@@ -20,65 +20,90 @@
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Number</mat-label>
-          <input
-            matInput
-            #number
-          />
+          <input matInput #number />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Purpose</mat-label>
-          <input
-            matInput
-            #purpose
-          />
+          <input matInput #purpose />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Start</mat-label>
-          <input
-            matInput
-            #start
-          />
+          <input matInput #start />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>End</mat-label>
-          <input
-            matInput
-            #end
-          />
+          <input matInput #end />
         </mat-form-field>
+        <mat-form-field class="search-hospital" appearance="fill">
+          <mat-label>Choose equipment</mat-label>
+          <mat-select (selectionChange)="selectEquipment($event)">
+            <mat-option value="0">Beds</mat-option>
+            <mat-option value="1">Scissors</mat-option>
+            <mat-option value="2">Needles</mat-option>
+            <mat-option value="3">Bandages</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Quantity</mat-label>
+          <input type="number" matInput ngModel #quantity />
+        </mat-form-field>
+        <!--
         <mat-form-field class="search">
           <mat-label>Beds</mat-label>
           <input
+            type="text"
             type="number"
             matInput
+            ngModel
             #beds
           />
+          <span class="validity"></span>
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Scissors</mat-label>
           <input
             type="number"
             matInput
+            ngModel
             #scissors
           />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Needles</mat-label>
           <input
+            type="text"
             type="number"
             matInput
+            ngModel
             #needles
           />
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Bandages</mat-label>
           <input
+            type="text"
             type="number"
             matInput
+            ngModel
             #bandages
           />
         </mat-form-field>
-        <button mat-stroked-button color="primary" class="" (click)="searchRooms(number.value, purpose.value, start.value, end.value)" type="button">
+        -->
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          (click)="
+            searchRooms(
+              number.value,
+              purpose.value,
+              start.value,
+              end.value,
+              quantity.value
+            )
+          "
+          type="button"
+        >
           Search
         </button>
       </div>
@@ -102,6 +127,7 @@
       (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
+      [equipment]="equipments"
     ></app-show-room-details>
     <app-show-searched-rooms
       (newItemEvent)="sendRoomId($event)"

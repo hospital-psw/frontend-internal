@@ -18,6 +18,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   }
 
   @Input() room: any;
+  @Input() equipment: IEquipment[];
   @Output() notify = new EventEmitter<any>();
   @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;

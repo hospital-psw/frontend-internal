@@ -78,8 +78,7 @@
         />
       </div>
     </div>
-
   </form>
-  <app-show-equipment [room]="room" (notifyRelocation)="relocate($event)"></app-show-equipment>
+  <app-show-equipment (notifyRelocation)="relocate($event)" [equipment]="equipment"></app-show-equipment>
 </div>
 

@@ -39,4 +39,22 @@ export class MedicalTreatmentService {
   public getAll(): Observable<MedicalTreatment[]> {
     return this.http.get<MedicalTreatment[]>(`${this.apiServerUrl}/all`);
   }
+
+  public getActive(
+    pageSize: number,
+    pageNumber: number
+  ): Observable<MedicalTreatment[]> {
+    return this.http.get<MedicalTreatment[]>(
+      `${this.apiServerUrl}/active/${pageSize}/${pageNumber}`
+    );
+  }
+
+  public getInactive(
+    pageSize: number,
+    pageNumber: number
+  ): Observable<MedicalTreatment[]> {
+    return this.http.get<MedicalTreatment[]>(
+      `${this.apiServerUrl}/inactive/${pageSize}/${pageNumber}`
+    );
+  }
 }

@@ -4,6 +4,7 @@ import { CreateMedicamentTherapy } from './../../schedule/interface/CreateMedica
 import { HttpClient } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
+import { NewMedicamentTherapy } from '../interface/NewMedicamentTherapy';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class MedicamentTherapyService {
   constructor(private http: HttpClient) {}
 
   public createMedicamentTherapy(
-    medicamentTherapy: CreateMedicamentTherapy
+    medicamentTherapy: NewMedicamentTherapy
   ): Observable<MedicamentTherapy> {
     return this.http.post<MedicamentTherapy>(
       `${this.apiServerUrl}`,

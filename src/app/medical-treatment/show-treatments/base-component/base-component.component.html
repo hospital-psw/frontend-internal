@@ -1,0 +1,20 @@
+<div class="card">
+  <app-component-button-bar
+    (activeTreatments)="storeActiveTreatments($event)"
+    (inactiveTreatments)="storeInactiveTreatments($event)"
+    [pageSizeFirst]="pageSizeFirst"
+    [pageNumberFirst]="pageNumberFirst"
+    [pageSizeSecond]="pageSizeSecond"
+    [pageNumberSecond]="pageNumberSecond"
+    class="card__bar"
+  ></app-component-button-bar>
+  <app-component-tabs
+    [activeTreatments]="activeTreatments"
+    [inactiveTreatments]="inactiveTreatments"
+    (pageSizeFirst)="storePageSizeFirst($event)"
+    (pageNumberFirst)="storePageNumberFirst($event)"
+    (pageSizeSecond)="storePageSizeSecond($event)"
+    (pageNumberSecond)="storePageNumberSecond($event)"
+    class="card__tabs"
+  ></app-component-tabs>
+</div>

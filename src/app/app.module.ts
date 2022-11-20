@@ -21,9 +21,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
+import { VacationRequestModule } from './vacation-request/vacation-request.module';
+import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,7 @@ import { MaterialModule } from './material/material.module';
     ViewRoomsModule,
     MatTableModule,
     FeedbackModule,
+    BloodRequestModule,
     MatButtonModule,
     MatIconModule,
     MatPaginatorModule,
@@ -54,10 +58,13 @@ import { MaterialModule } from './material/material.module';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    VacationRequestModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
+    FormsModule,
+    VacationRequestsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

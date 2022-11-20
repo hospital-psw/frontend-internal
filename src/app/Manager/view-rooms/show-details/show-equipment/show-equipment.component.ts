@@ -14,26 +14,15 @@ export class ShowEquipmentComponent implements OnInit {
     setInterval(() => {}, 100);
   }
 
-  @Input() room: IRoom;
   @Output() notifyRelocation = new EventEmitter();
+  @Input() equipment: IEquipment[];
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
-  public equipment: IEquipment[] = [];
-  ngOnInit(): void {
-    this.roomService.getEquipment(this.room.id).subscribe((data) => {
-      this.equipment = data;
-      console.log('ja sam data ', data);
-    });
-  }
+  ngOnInit(): void {}
 
   convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    this.roomService.getEquipment(this.room.id).subscribe((data) => {
-      this.equipment = data;
-    });
-  }
 
   relocateEquipment(element: IEquipment){
     this.notifyRelocation.emit(element)
