@@ -1,6 +1,6 @@
 .grid-container{
     display: grid;
-    border: solid black;
+    border: solid #4c5d72;
     column-gap: 10px;
     row-gap: 20px;
     grid-template-columns: auto auto auto;
@@ -10,38 +10,71 @@
     max-width: 800px;
     height: 300px;
     margin-top: 5%;
+    align-items: center;
+    background-color: white;
+    font-weight: bold;
+    
 }
 .single{
-    display: grid;
-    grid-template-rows: auto auto ;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     padding: 10px;
     width: 200px;
+    background-color: #eef0f5;
+    border-radius: 10px;
 }
 .reason{
     grid-column-start: 2;
     grid-column-end: 2;
-    display: grid;
-    grid-template-columns:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     row-gap: 10px;
     padding: 10px;
     width: 200px;
+   
 
 }
-input{
+.input1{
     max-width: 150px;
     height: 30px;
     margin: auto;
     text-align: center;
 }
 
-button{
+.buttonConf{
 
     width: 150px;
     text-align: center;
     height: 35px;
-    margin: auto;
-    
+    margin-top: 25px;
+    border-radius: 10px;
+    border: 2px solid #eef0f5;
+    font-weight: bold;
 
+}
+
+.buttonConf:hover{
+    background-color: #4c5d72;
+}
+
+.reasonField{
+    width: 300px;
+    height: 60px;
+    resize: none;
+    border-radius: 10px;
+    background-color: #eef0f5;
+}
+.bloodSelect{
+    text-align: center;    
+    height: 30px;
+}
+.dateField{
+    height: 30px;
+    text-align: center;
+    
 }
 
 

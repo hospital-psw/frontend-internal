@@ -45,6 +45,10 @@ const routes: Routes = [
     path: 'appointments/scheduling',
     component: SchedulingComponent,
   },
+  {
+    path: 'bloodRequest/create',
+    component: BloodAcquisitionComponent,
+  }
 ];
 
 @NgModule({

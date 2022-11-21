@@ -24,12 +24,15 @@ import { ToastrModule } from 'ngx-toastr';
 import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatFormField } from '@angular/material/form-field';
 import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
 import { VacationRequestModule } from './vacation-request/vacation-request.module';
 import { FormsModule } from '@angular/forms';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
+import { MatInputModule } from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -63,12 +66,15 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
     NewsfeedModule,
     FormsModule,
     VacationRequestModule,
+    MatInputModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
     FormsModule,
     VacationRequestsModule,
+    MatSelectModule,
+    MatSliderModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

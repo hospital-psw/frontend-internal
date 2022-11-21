@@ -24,6 +24,7 @@ import { SchedulingAppointmentFormComponent } from './scheduling/scheduling-appo
 import { PatientService } from './service/patient.service';
 import { SchedulingAppointmentTableComponent } from './scheduling/scheduling-appointment-table/scheduling-appointment-table/scheduling-appointment-table.component';
 import { SchedulingAppointmentCardComponent } from './scheduling/scheduling-appointment-card/scheduling-appointment-card/scheduling-appointment-card.component';
+import { BloodAcquisitionComponent } from '../BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { SchedulingAppointmentCardComponent } from './scheduling/scheduling-appo
     SchedulingAppointmentFormComponent,
     SchedulingAppointmentTableComponent,
     SchedulingAppointmentCardComponent,
+
   ],
   imports: [
     CommonModule,
