@@ -90,16 +90,15 @@ export class TreatmentViewComponent implements OnInit {
       });
   }
 
-  downloadPdf() : void {
-    this.medicalTreatmentService.getPdf(this.medicalTreatment.id)
-        .subscribe((response : any) => {
-          let fileName = 'treatment.pdf'
-          let blob: Blob = response.body as Blob;
-          let url = window.URL.createObjectURL(blob);
-          window.open(url);
-        })
-
-   
+  downloadPdf(): void {
+    this.medicalTreatmentService
+      .getPdf(this.medicalTreatment.id)
+      .subscribe((response: any) => {
+        let fileName = 'treatment.pdf';
+        let blob: Blob = response.body as Blob;
+        let url = window.URL.createObjectURL(blob);
+        window.open(url);
+      });
   }
 
   getStatus() {

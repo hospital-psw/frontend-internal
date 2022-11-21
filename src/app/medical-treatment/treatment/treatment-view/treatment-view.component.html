@@ -7,7 +7,11 @@
     >
       Finish treatment
     </button>
-    <button class="finish-button" [hidden]="medicalTreatment.active" (click)="downloadPdf()">
+    <button
+      class="finish-button"
+      [hidden]="medicalTreatment.active"
+      (click)="downloadPdf()"
+    >
       Download pdf
     </button>
   </div>
