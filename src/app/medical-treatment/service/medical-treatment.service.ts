@@ -57,4 +57,11 @@ export class MedicalTreatmentService {
       `${this.apiServerUrl}/inactive/${pageSize}/${pageNumber}`
     );
   }
+
+  public getPdf(treatmentId: number): any {
+    return this.http.get(`${this.apiServerUrl}/pdf/` + treatmentId, {
+      observe: 'response',
+      responseType: 'blob',
+    });
+  }
 }
