@@ -15,6 +15,7 @@ import { VacationRequestComponent } from './vacation-request/vacation-request/va
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
+import { AllComponent } from './vacation-request/all/all.component';
 
 const routes: Routes = [
   {
