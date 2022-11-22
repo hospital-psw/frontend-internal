@@ -30,7 +30,7 @@ export class ShowAllVacationRequestsComponent implements OnInit {
     private vacationRequestService: VacationRequestService,
     private router: Router,
     private toaster: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.refreshData();
