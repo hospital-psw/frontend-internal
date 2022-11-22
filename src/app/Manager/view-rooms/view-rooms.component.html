@@ -47,7 +47,6 @@
           <mat-label>Quantity</mat-label>
           <input type="number" matInput ngModel #quantity />
         </mat-form-field>
-
         <button
           mat-stroked-button
           color="primary"
@@ -82,6 +81,7 @@
       [room]="clickedRoom"
     ></app-show-floor-details>
     <app-show-room-details
+      (relocateNotify)="relocate($event)"
       (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
@@ -93,5 +93,10 @@
       [searchedRooms]="searchedRooms"
     ></app-show-searched-rooms>
   </div>
-  <div></div>
+  <app-stepper
+    *ngIf="doRelocate"
+    [equipment]="element"
+    (close)="closeStepper()"
+    (refreshEquipment)="refreshEquipment($event)"
+  ></app-stepper>
 </div>

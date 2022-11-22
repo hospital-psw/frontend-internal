@@ -69,7 +69,7 @@ const routes: Routes = [
     component: BaseComponentComponent,
   },
   {
-    path: 'vacation-requests',
+    path: 'vacation-requests-display',
     component: VacationRequestsComponent,
   },
 ];

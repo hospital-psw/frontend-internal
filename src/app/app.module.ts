@@ -23,8 +23,9 @@ import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
 import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
 import { VacationRequestModule } from './vacation-request/vacation-request.module';
-import { FormsModule } from '@angular/forms';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 
 @NgModule({
@@ -55,6 +56,8 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
     MedicalTreatmentModule,
     NewsfeedModule,
     FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
     VacationRequestModule,
     ToastrModule.forRoot({
       timeOut: 3000,
