@@ -32,4 +32,10 @@ export class VacationRequestService {
       }
     )
   }
+
+  public deleteVacationRequest(vacationRequestId: number): Observable<void>{
+    return this.http.delete<void>(
+      `${this.apiServerUrl}/delete/${vacationRequestId}`
+    )
+  }
 }

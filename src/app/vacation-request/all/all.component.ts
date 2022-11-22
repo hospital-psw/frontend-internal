@@ -4,6 +4,7 @@ import { VacationRequest } from '../model/interface/vacation-request';
 import { VacationRequestService } from '../service/vacation-request.service';
 import { ToastrService } from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
+import { VacationRequestStatus } from '../model/enum/vacation-request-status';
 
 @Component({
   selector: 'app-all',
@@ -21,6 +22,9 @@ export class AllComponent implements OnInit {
     'manager comment'
   ]
   public vacationRequests: VacationRequest[] = []
+  public disableDeleteButton: boolean = true;
+  vacationRequestStatus: VacationRequestStatus[];
+  public selected: VacationRequest;
   constructor(
     private vacationRequestService: VacationRequestService,
     private router: Router,
@@ -34,10 +38,44 @@ export class AllComponent implements OnInit {
         this.dataSource.data = this.vacationRequests 
       }
     )
+    this.vacationRequestStatus = Object.values(VacationRequestStatus);
   }
 
   public createVacationRequest(){
     this.router.navigate(['/vacation-requests/create'])
+  }
+
+  public setSelectedItem(vacationRequest: VacationRequest){
+    console.log(vacationRequest)
+    this.selected = {
+      id: vacationRequest.id,
+      from: vacationRequest.from,
+      to: vacationRequest.to,
+      status: vacationRequest.status,
+      urgent: vacationRequest.urgent,
+      comment: vacationRequest.comment,
+      managerComent:vacationRequest.managerComent,
+      doctor:vacationRequest.doctor
+    }
+    if(vacationRequest.status !== this.vacationRequestStatus.indexOf(
+      VacationRequestStatus.WAITING
+    ) as any){
+      this.disableDeleteButton = true;
+      console.log("Disable button je true")
+    } else {
+      this.disableDeleteButton = false;
+      console.log("Disable button je false")
+    }
+  }
+
+  public deleteSelected(): void{
+    if(this.selected.status === this.vacationRequestStatus.indexOf(
+      VacationRequestStatus.WAITING
+    ) as any){
+      this.vacationRequestService.deleteVacationRequest(this.selected.id).subscribe((data) => {
+        this.toaster.success("You successfuly deleted this request!")
+      })
+    }
   }
 
 }
