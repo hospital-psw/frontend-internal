@@ -54,7 +54,7 @@ const routes: Routes = [
     component: FeedComponent,
   },
   {
-    path: 'vacation-requests',
+    path: 'vacation-requests/doctor',
     component: VacationRequestComponent,
   },
   {

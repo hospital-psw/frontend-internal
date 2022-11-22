@@ -42,11 +42,10 @@ export class AllComponent implements OnInit {
   }
 
   public createVacationRequest(){
-    this.router.navigate(['/vacation-requests/create'])
+    this.router.navigate(['/vacation-requests/doctor/create'])
   }
 
   public setSelectedItem(vacationRequest: VacationRequest){
-    console.log(vacationRequest)
     this.selected = {
       id: vacationRequest.id,
       from: vacationRequest.from,
@@ -61,10 +60,8 @@ export class AllComponent implements OnInit {
       VacationRequestStatus.WAITING
     ) as any){
       this.disableDeleteButton = true;
-      console.log("Disable button je true")
     } else {
       this.disableDeleteButton = false;
-      console.log("Disable button je false")
     }
   }
 
@@ -74,8 +71,19 @@ export class AllComponent implements OnInit {
     ) as any){
       this.vacationRequestService.deleteVacationRequest(this.selected.id).subscribe((data) => {
         this.toaster.success("You successfuly deleted this request!")
+        this.refresh()
       })
     }
+  }
+
+  public refresh(){
+    this.vacationRequestService.getAllVacationRequests(8).subscribe(
+      (res) => {
+        this.vacationRequests = res;
+        this.dataSource.data = this.vacationRequests 
+      }
+    )
+    this.vacationRequestStatus = Object.values(VacationRequestStatus);
   }
 
 }

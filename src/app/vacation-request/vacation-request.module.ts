@@ -26,8 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes =[
-  {path: 'vacation-requests', component: AllComponent},
-  {path: 'vacation-requests/create', component: CreateRequestFormComponent}
+  {path: 'vacation-requests/doctor', component: AllComponent},
+  {path: 'vacation-requests/doctor/create', component: CreateRequestFormComponent}
 ]
 
 @NgModule({
