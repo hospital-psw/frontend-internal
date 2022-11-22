@@ -9,7 +9,7 @@ import { VacationRequestStatus } from '../model/enum/vacation-request-status';
 @Component({
   selector: 'app-all',
   templateUrl: './all.component.html',
-  styleUrls: ['./all.component.scss']
+  styleUrls: ['./all.component.scss'],
 })
 export class AllComponent implements OnInit {
   public dataSource = new MatTableDataSource<VacationRequest>();
@@ -19,9 +19,9 @@ export class AllComponent implements OnInit {
     'status',
     'urgency',
     'comment',
-    'manager comment'
-  ]
-  public vacationRequests: VacationRequest[] = []
+    'manager comment',
+  ];
+  public vacationRequests: VacationRequest[] = [];
   public disableDeleteButton: boolean = true;
   vacationRequestStatus: VacationRequestStatus[];
   public selected: VacationRequest;
@@ -29,23 +29,21 @@ export class AllComponent implements OnInit {
     private vacationRequestService: VacationRequestService,
     private router: Router,
     private toaster: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.vacationRequestService.getAllVacationRequests(8).subscribe(
-      (res) => {
-        this.vacationRequests = res;
-        this.dataSource.data = this.vacationRequests 
-      }
-    )
+    this.vacationRequestService.getAllVacationRequests(8).subscribe((res) => {
+      this.vacationRequests = res;
+      this.dataSource.data = this.vacationRequests;
+    });
     this.vacationRequestStatus = Object.values(VacationRequestStatus);
   }
 
-  public createVacationRequest(){
-    this.router.navigate(['/vacation-requests/doctor/create'])
+  public createVacationRequest() {
+    this.router.navigate(['/vacation-requests/doctor/create']);
   }
 
-  public setSelectedItem(vacationRequest: VacationRequest){
+  public setSelectedItem(vacationRequest: VacationRequest) {
     this.selected = {
       id: vacationRequest.id,
       from: vacationRequest.from,
@@ -53,37 +51,38 @@ export class AllComponent implements OnInit {
       status: vacationRequest.status,
       urgent: vacationRequest.urgent,
       comment: vacationRequest.comment,
-      managerComent:vacationRequest.managerComent,
-      doctor:vacationRequest.doctor
-    }
-    if(vacationRequest.status !== this.vacationRequestStatus.indexOf(
-      VacationRequestStatus.WAITING
-    ) as any){
+      managerComent: vacationRequest.managerComent,
+      doctor: vacationRequest.doctor,
+    };
+    if (
+      vacationRequest.status !==
+      (this.vacationRequestStatus.indexOf(VacationRequestStatus.WAITING) as any)
+    ) {
       this.disableDeleteButton = true;
     } else {
       this.disableDeleteButton = false;
     }
   }
 
-  public deleteSelected(): void{
-    if(this.selected.status === this.vacationRequestStatus.indexOf(
-      VacationRequestStatus.WAITING
-    ) as any){
-      this.vacationRequestService.deleteVacationRequest(this.selected.id).subscribe((data) => {
-        this.toaster.success("You successfuly deleted this request!")
-        this.refresh()
-      })
+  public deleteSelected(): void {
+    if (
+      this.selected.status ===
+      (this.vacationRequestStatus.indexOf(VacationRequestStatus.WAITING) as any)
+    ) {
+      this.vacationRequestService
+        .deleteVacationRequest(this.selected.id)
+        .subscribe((data) => {
+          this.toaster.success('You successfuly deleted this request!');
+          this.refresh();
+        });
     }
   }
 
-  public refresh(){
-    this.vacationRequestService.getAllVacationRequests(8).subscribe(
-      (res) => {
-        this.vacationRequests = res;
-        this.dataSource.data = this.vacationRequests 
-      }
-    )
+  public refresh() {
+    this.vacationRequestService.getAllVacationRequests(8).subscribe((res) => {
+      this.vacationRequests = res;
+      this.dataSource.data = this.vacationRequests;
+    });
     this.vacationRequestStatus = Object.values(VacationRequestStatus);
   }
-
 }

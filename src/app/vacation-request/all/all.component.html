@@ -1,78 +1,101 @@
-
 <mat-card>
-    <div class = "container">
-        <div class = "table-header">
-            <p>Vacation requests</p>
-            <div class="button-row">
-            <button
-                mat-raised-button
-                color="primary"
-                (click) = "createVacationRequest()"
-            >
-            <mat-icon>add</mat-icon>
-            </button>
-            <button 
-                mat-raised-button
-                color="warn"
-                [disabled]="disableDeleteButton"
-                (click)="deleteSelected()"
-            >
-                <mat-icon>clear</mat-icon>
-            </button> 
-            </div>  
-        </div>
-        <table mat-table [dataSource]="dataSource">
-            <ng-container matColumnDef="from">
-                <th mat-header-cell *matHeaderCellDef class="cell-center">From</th>
-                <td 
-                    mat-cell
-                    *matCellDef="let vacationRequest"
-                    class="clickable cell-center"
-                >{{vacationRequest.from | date: "dd.MM.YYYY"}}</td>
-            </ng-container>
-            <ng-container matColumnDef="to">
-                <th mat-header-cell *matHeaderCellDef class="cell-center">To</th>
-                <td 
-                    mat-cell
-                    *matCellDef="let vacationRequest"
-                    class="clickable cell-center"
-                >{{vacationRequest.to | date: "dd.MM.YYYY"}}</td>
-            </ng-container>
-            <ng-container matColumnDef="status">
-                <th mat-header-cell *matHeaderCellDef class="cell-center">Status</th>
-                <td 
-                    mat-cell
-                    *matCellDef="let vacationRequest"
-                    class="clickable cell-center"
-                >{{vacationRequest.status === 0 ? "Waiting" :(vacationRequest.status === 1 ? "Approved" : "Rejected")}}</td>
-            </ng-container>
-            <ng-container matColumnDef="urgency">
-                <th mat-header-cell *matHeaderCellDef class="cell-center">Urgency</th>
-                <td 
-                    mat-cell
-                    *matCellDef="let vacationRequest"
-                    class="clickable cell-center"
-                >{{vacationRequest.urgency === true ? "Yes": "No"}}</td>
-            </ng-container>
-            <ng-container matColumnDef="comment">
-                <th mat-header-cell *matHeaderCellDef class="cell-center">Comment</th>
-                <td 
-                    mat-cell
-                    *matCellDef="let vacationRequest"
-                    class="clickable cell-center"
-                >{{vacationRequest.comment}}</td>
-            </ng-container>
-            <ng-container matColumnDef="manager comment">
-                <th mat-header-cell *matHeaderCellDef class="cell-center">Manager comment</th>
-                <td 
-                    mat-cell
-                    *matCellDef="let vacationRequest"
-                    class="clickable cell-center"
-                >{{vacationRequest.managerComent}}</td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns" (click) = "setSelectedItem(row)"></tr>
-        </table>
+  <div class="container">
+    <div class="table-header">
+      <p>Vacation requests</p>
+      <div class="button-row">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="createVacationRequest()"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          [disabled]="disableDeleteButton"
+          (click)="deleteSelected()"
+        >
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
     </div>
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="from">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">From</th>
+        <td
+          mat-cell
+          *matCellDef="let vacationRequest"
+          class="clickable cell-center"
+        >
+          {{ vacationRequest.from | date: "dd.MM.YYYY" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="to">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">To</th>
+        <td
+          mat-cell
+          *matCellDef="let vacationRequest"
+          class="clickable cell-center"
+        >
+          {{ vacationRequest.to | date: "dd.MM.YYYY" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">Status</th>
+        <td
+          mat-cell
+          *matCellDef="let vacationRequest"
+          class="clickable cell-center"
+        >
+          {{
+            vacationRequest.status === 0
+              ? "Waiting"
+              : vacationRequest.status === 1
+              ? "Approved"
+              : "Rejected"
+          }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="urgency">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">Urgency</th>
+        <td
+          mat-cell
+          *matCellDef="let vacationRequest"
+          class="clickable cell-center"
+        >
+          {{ vacationRequest.urgency === true ? "Yes" : "No" }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">Comment</th>
+        <td
+          mat-cell
+          *matCellDef="let vacationRequest"
+          class="clickable cell-center"
+        >
+          {{ vacationRequest.comment }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="manager comment">
+        <th mat-header-cell *matHeaderCellDef class="cell-center">
+          Manager comment
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let vacationRequest"
+          class="clickable cell-center"
+        >
+          {{ vacationRequest.managerComent }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="setSelectedItem(row)"
+      ></tr>
+    </table>
+  </div>
 </mat-card>

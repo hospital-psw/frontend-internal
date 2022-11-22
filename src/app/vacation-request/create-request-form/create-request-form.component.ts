@@ -64,9 +64,9 @@ export class CreateRequestFormComponent implements OnInit {
     this.vacationRequestService
       .createVacationRequest(this.newVacationRequest)
       .subscribe(
-        (data) => {        
-          this.toaster.success('Successfully created request!'); 
-          this.router.navigate(['/vacation-requests/doctor']) 
+        (data) => {
+          this.toaster.success('Successfully created request!');
+          this.router.navigate(['/vacation-requests/doctor']);
         },
         (error: HttpErrorResponse) => {
           this.toaster.error(error.error);

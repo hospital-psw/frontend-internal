@@ -25,13 +25,20 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes =[
-  {path: 'vacation-requests/doctor', component: AllComponent},
-  {path: 'vacation-requests/doctor/create', component: CreateRequestFormComponent}
-]
+const routes: Routes = [
+  { path: 'vacation-requests/doctor', component: AllComponent },
+  {
+    path: 'vacation-requests/doctor/create',
+    component: CreateRequestFormComponent,
+  },
+];
 
 @NgModule({
-  declarations: [CreateRequestFormComponent, VacationRequestComponent, AllComponent],
+  declarations: [
+    CreateRequestFormComponent,
+    VacationRequestComponent,
+    AllComponent,
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -45,7 +52,7 @@ const routes: Routes =[
     MatTableModule,
     MatCardModule,
     MatIconModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   providers: [VacationRequestService],
 })

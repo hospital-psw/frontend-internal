@@ -25,17 +25,20 @@ export class VacationRequestService {
     );
   }
 
-  public getAllVacationRequests(doctorId: number): Observable<VacationRequest[]>{
+  public getAllVacationRequests(
+    doctorId: number
+  ): Observable<VacationRequest[]> {
     return this.http.get<VacationRequest[]>(
-      `${this.apiServerUrl}/${doctorId}`,{
-        headers: this.headers
+      `${this.apiServerUrl}/${doctorId}`,
+      {
+        headers: this.headers,
       }
-    )
+    );
   }
 
-  public deleteVacationRequest(vacationRequestId: number): Observable<void>{
+  public deleteVacationRequest(vacationRequestId: number): Observable<void> {
     return this.http.delete<void>(
       `${this.apiServerUrl}/delete/${vacationRequestId}`
-    )
+    );
   }
 }

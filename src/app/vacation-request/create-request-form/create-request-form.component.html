@@ -1,44 +1,61 @@
 <mat-card>
-<div class="container">
-  <div class="form">
-    <div class="form__column">
-      <label class="form__column__label">Choose when you want vacation</label>
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>From - To</mat-label>
-          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-            <input
-              matStartDate
-              formControlName="from"
-              placeholder="From"
-              required
-            />
-            <input matEndDate formControlName="to" placeholder="To" required />
-          </mat-date-range-input>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
-      </div>
-      <br />
-      <label class="form__column__label">Is it urgent?</label>
-      
-      <input type="checkbox" (change)="onChange()" />
-      <div>
-        <label class="form__column__label">Reason why you want vacation</label>
-      </div>
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>Reason</mat-label>
-          <textarea matInput matTextAreaAutoSize [(ngModel)]="comment"></textarea>
-        </mat-form-field>
-      </div>
+  <div class="container">
+    <div class="form">
+      <div class="form__column">
+        <label class="form__column__label">Choose when you want vacation</label>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>From - To</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input
+                matStartDate
+                formControlName="from"
+                placeholder="From"
+                required
+              />
+              <input
+                matEndDate
+                formControlName="to"
+                placeholder="To"
+                required
+              />
+            </mat-date-range-input>
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+        <br />
+        <label class="form__column__label">Is it urgent?</label>
 
-      <button 
-        mat-raised-button
-        color="primary"
-        (click)="createVacationRequest()">Create Vacation Request</button>
+        <input type="checkbox" (change)="onChange()" />
+        <div>
+          <label class="form__column__label"
+            >Reason why you want vacation</label
+          >
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Reason</mat-label>
+            <textarea
+              matInput
+              matTextAreaAutoSize
+              [(ngModel)]="comment"
+            ></textarea>
+          </mat-form-field>
+        </div>
+
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="createVacationRequest()"
+        >
+          Create Vacation Request
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </mat-card>
