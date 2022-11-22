@@ -14,8 +14,8 @@ import { ShowFloorDetailsComponent } from './show-details/show-floor-details/sho
 import { ShowRoomDetailsComponent } from './show-details/show-room-details/show-room-details.component';
 import { ShowSearchedRoomsComponent } from './show-searched-rooms/show-searched-rooms/show-searched-rooms.component';
 import { ShowEquipmentComponent } from './show-details/show-equipment/show-equipment.component';
-import {MatButtonModule} from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table'
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 import { StepperComponent } from 'src/app/schedule-relocation/stepper/stepper.component';
 import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.module';
 
@@ -27,7 +27,7 @@ import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.modul
     ShowRoomDetailsComponent,
     ShowSearchedRoomsComponent,
     ShowEquipmentComponent,
-    ShowRoomDetailsComponent
+    ShowRoomDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -37,7 +37,7 @@ import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.modul
     MatInputModule,
     MatTableModule,
     MatButtonModule,
-    StepperModule
+    StepperModule,
   ],
   exports: [ViewRoomsComponent],
 })

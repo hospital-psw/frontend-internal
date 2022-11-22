@@ -108,7 +108,7 @@ export class ShowRoomDetailsComponent implements OnInit {
     this.toastr.success('Successfully eddited room.', 'Success');
   }
 
-  relocate(element: IEquipment){
-    this.relocateNotify.emit(element)
+  relocate(element: IEquipment) {
+    this.relocateNotify.emit(element);
   }
 }

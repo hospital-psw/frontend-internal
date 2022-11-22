@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { RoomService } from '../../../service/room-service.service';
@@ -23,8 +30,7 @@ export class ShowEquipmentComponent implements OnInit {
     return EquipmentTypeEnum[type];
   }
 
-
-  relocateEquipment(element: IEquipment){
-    this.notifyRelocation.emit(element)
+  relocateEquipment(element: IEquipment) {
+    this.notifyRelocation.emit(element);
   }
 }

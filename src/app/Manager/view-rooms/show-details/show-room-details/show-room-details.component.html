@@ -70,7 +70,13 @@
 
         <input
           (submit)="
-            editRoom(purpose.value, start.value, end.value, number.value, $event)
+            editRoom(
+              purpose.value,
+              start.value,
+              end.value,
+              number.value,
+              $event
+            )
           "
           class="button-30"
           type="submit"
@@ -79,6 +85,8 @@
       </div>
     </div>
   </form>
-  <app-show-equipment (notifyRelocation)="relocate($event)" [equipment]="equipment"></app-show-equipment>
+  <app-show-equipment
+    (notifyRelocation)="relocate($event)"
+    [equipment]="equipment"
+  ></app-show-equipment>
 </div>
-

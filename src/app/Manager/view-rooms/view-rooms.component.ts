@@ -46,8 +46,8 @@ export class ViewRoomsComponent
   private renderer?: THREE.WebGLRenderer;
   private sub?: Subscription;
 
-  element: IEquipment
-  doRelocate: boolean = false
+  element: IEquipment;
+  doRelocate: boolean = false;
   rooms: IRoomMap[] = [];
   equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
@@ -284,7 +284,7 @@ export class ViewRoomsComponent
   }
 
   updateView() {
-    console.log('okinuo edit')
+    console.log('okinuo edit');
     this.roomService.getBuilding(this.building).subscribe((data) => {
       this.rooms = data;
       this.scene?.setRoomsAfterEdit(this.rooms);
@@ -368,19 +368,19 @@ export class ViewRoomsComponent
     this.selectedEquipment = evt.value;
   }
 
-  relocate(element:IEquipment){
-    this.doRelocate = true
-    this.element = element
+  relocate(element: IEquipment) {
+    this.doRelocate = true;
+    this.element = element;
   }
 
-  refreshEquipment(event : any){
-    this.equipments.forEach(element => {
-      if (element.id == event.equipmentId) element.reservedQuantity += event.reservedQuantity;
+  refreshEquipment(event: any) {
+    this.equipments.forEach((element) => {
+      if (element.id == event.equipmentId)
+        element.reservedQuantity += event.reservedQuantity;
     });
-  
   }
 
-  closeStepper(){
-    this.doRelocate = false
+  closeStepper() {
+    this.doRelocate = false;
   }
 }

@@ -5,15 +5,8 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    StepperComponent,
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MaterialModule
-  ],
-  exports: [StepperComponent]
+  declarations: [StepperComponent],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MaterialModule],
+  exports: [StepperComponent],
 })
-export class StepperModule { }
+export class StepperModule {}
