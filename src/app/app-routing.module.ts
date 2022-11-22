@@ -15,6 +15,7 @@ import { VacationRequestComponent } from './vacation-request/vacation-request/va
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
+import { ShowAllVacationRequestsComponent } from './vacation-request/show-all-vacation-requests/show-all-vacation-requests.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,7 @@ const routes: Routes = [
     component: FeedComponent,
   },
   {
-    path: 'vacation-requests',
+    path: 'vacation-requests/doctor',
     component: VacationRequestComponent,
   },
   {

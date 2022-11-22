@@ -1,0 +1,30 @@
+table.mat-table {
+    table-layout: fixed;
+    width: 100%;
+    display: table;
+  }
+  .table-header {
+    display: inline;
+  }
+  
+  p {
+    font-size: 1.5rem;
+  }
+
+  .button-row {
+    display: table-cell;
+    max-width: 600px;
+  }
+  .button-row .mat-mdc-button-base {
+    margin: 8px 8px 8px 0;
+  }
+
+  section {
+    display: table;
+  }
+
+  .mat-row:hover {
+    background-color: rgb(237, 241, 244);
+    cursor: pointer;
+    caret-color: transparent;
+  }
