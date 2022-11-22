@@ -11,7 +11,7 @@ import { VacationRequest } from '../model/interface/vacation-request';
 export class VacationRequestService {
   private apiServerUrl = environment.apiVacationRequestUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public createVacationRequest(
     vacationRequest: NewVacationRequestDTO
@@ -26,7 +26,7 @@ export class VacationRequestService {
     doctorId: number
   ): Observable<VacationRequest[]> {
     return this.http.get<VacationRequest[]>(
-      `${this.apiServerUrl}/${doctorId}`
+      `${this.apiServerUrl}/waiting/${doctorId}`
     );
   }
 

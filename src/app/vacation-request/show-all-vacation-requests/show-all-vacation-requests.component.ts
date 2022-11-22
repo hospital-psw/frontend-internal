@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { VacationRequest } from '../model/interface/vacation-request';
@@ -29,14 +30,10 @@ export class ShowAllVacationRequestsComponent implements OnInit {
     private vacationRequestService: VacationRequestService,
     private router: Router,
     private toaster: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.vacationRequestService.getAllVacationRequests(8).subscribe((res) => {
-      this.vacationRequests = res;
-      this.dataSource.data = this.vacationRequests;
-    });
-    this.vacationRequestStatus = Object.values(VacationRequestStatus);
+    this.refreshData();
   }
 
   public createVacationRequest() {
@@ -69,7 +66,20 @@ export class ShowAllVacationRequestsComponent implements OnInit {
       .deleteVacationRequest(this.selected.id)
       .subscribe((data) => {
         this.toaster.success('You successfuly deleted this request!');
-        this.ngOnInit()
+        this.refreshData();
       });
+  }
+
+  public refreshData(): void {
+    this.vacationRequestService.getAllVacationRequests(8).subscribe(
+      (res) => {
+        this.vacationRequests = res;
+        this.dataSource.data = this.vacationRequests;
+      },
+      (error: HttpErrorResponse) => {
+        this.toaster.error(error.message);
+      }
+    );
+    this.vacationRequestStatus = Object.values(VacationRequestStatus);
   }
 }

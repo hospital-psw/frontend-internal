@@ -26,7 +26,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'vacation-requests/doctor', component: ShowAllVacationRequestsComponent },
+  {
+    path: 'vacation-requests/doctor',
+    component: ShowAllVacationRequestsComponent,
+  },
   {
     path: 'vacation-requests/doctor/create',
     component: CreateRequestFormComponent,
