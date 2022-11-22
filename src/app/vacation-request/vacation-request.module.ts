@@ -20,13 +20,13 @@ import { VacationRequestComponent } from './vacation-request/vacation-request.co
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { AllComponent } from './all/all.component';
+import { ShowAllVacationRequestsComponent } from './show-all-vacation-requests/show-all-vacation-requests.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'vacation-requests/doctor', component: AllComponent },
+  { path: 'vacation-requests/doctor', component: ShowAllVacationRequestsComponent },
   {
     path: 'vacation-requests/doctor/create',
     component: CreateRequestFormComponent,
@@ -37,7 +37,7 @@ const routes: Routes = [
   declarations: [
     CreateRequestFormComponent,
     VacationRequestComponent,
-    AllComponent,
+    ShowAllVacationRequestsComponent,
   ],
   imports: [
     CommonModule,

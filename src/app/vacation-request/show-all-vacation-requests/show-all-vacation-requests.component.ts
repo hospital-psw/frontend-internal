@@ -7,11 +7,11 @@ import { Route, Router } from '@angular/router';
 import { VacationRequestStatus } from '../model/enum/vacation-request-status';
 
 @Component({
-  selector: 'app-all',
-  templateUrl: './all.component.html',
-  styleUrls: ['./all.component.scss'],
+  selector: 'app-show-all-vacation-requests',
+  templateUrl: './show-all-vacation-requests.component.html',
+  styleUrls: ['./show-all-vacation-requests.component.scss'],
 })
-export class AllComponent implements OnInit {
+export class ShowAllVacationRequestsComponent implements OnInit {
   public dataSource = new MatTableDataSource<VacationRequest>();
   public displayedColumns = [
     'from',
@@ -65,24 +65,11 @@ export class AllComponent implements OnInit {
   }
 
   public deleteSelected(): void {
-    if (
-      this.selected.status ===
-      (this.vacationRequestStatus.indexOf(VacationRequestStatus.WAITING) as any)
-    ) {
-      this.vacationRequestService
-        .deleteVacationRequest(this.selected.id)
-        .subscribe((data) => {
-          this.toaster.success('You successfuly deleted this request!');
-          this.refresh();
-        });
-    }
-  }
-
-  public refresh() {
-    this.vacationRequestService.getAllVacationRequests(8).subscribe((res) => {
-      this.vacationRequests = res;
-      this.dataSource.data = this.vacationRequests;
-    });
-    this.vacationRequestStatus = Object.values(VacationRequestStatus);
+    this.vacationRequestService
+      .deleteVacationRequest(this.selected.id)
+      .subscribe((data) => {
+        this.toaster.success('You successfuly deleted this request!');
+        this.ngOnInit()
+      });
   }
 }
