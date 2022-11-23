@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BloodRequest } from '../interface/blood-request';
+import { BloodRequest } from '../../Model/BloodRequest';
+import { formatRFC3339WithOptions } from 'date-fns/fp';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,15 @@ export class BloodRequestService {
     });
   }
 
+  getBloodRequestId(id: number): Observable<BloodRequest> {
+    return this.http.get<BloodRequest>(
+      this.apiHost + 'api/BloodAcquisition/' + id,
+      {
+        headers: this.headers,
+      }
+    );
+  }
+
   getAccepted(): Observable<BloodRequest[]> {
     return this.http.get<BloodRequest[]>(
       this.apiHost + 'api/BloodAcquisition/get/all/accepted',
@@ -34,6 +44,13 @@ export class BloodRequestService {
     );
   }
 
+  getReconsidering(): Observable<BloodRequest[]> {
+    return this.http.get<BloodRequest[]>(
+      this.apiHost + 'api/BloodAcquisition/get/all/reconsidering',
+      { headers: this.headers }
+    );
+  }
+
   MakeAccepted(id: number): Observable<BloodRequest> {
     return this.http.put<BloodRequest>(this.apiHost + 'accept/' + id, {
       headers: this.headers,
@@ -42,6 +59,20 @@ export class BloodRequestService {
 
   MakeDeclined(id: number): Observable<BloodRequest> {
     return this.http.put<BloodRequest>(this.apiHost + 'decline/' + id, {
+      headers: this.headers,
+    });
+  }
+
+  reconsiderRequest(id: number, managerComment: string) {
+    return this.http.patch<BloodRequest>(this.apiHost + 'handle/', {
+      Id: id,
+      Status: 3,
+      ManagerComment: managerComment,
+    });
+  }
+
+  editRequest(bloodRequests: BloodRequest) {
+    return this.http.put<BloodRequest>(this.apiHost + 'edit/', bloodRequests, {
       headers: this.headers,
     });
   }

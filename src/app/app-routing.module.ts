@@ -15,6 +15,7 @@ import { VacationRequestComponent } from './vacation-request/vacation-request/va
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
+import { ReconsiderBloodRequestComponent } from './Manager/blood-request/reconsider-blood-request/reconsider-blood-request/reconsider-blood-request.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'vacation-requests-display',
     component: VacationRequestsComponent,
+  },
+  {
+    path: 'reconsider-blood-request',
+    component: ReconsiderBloodRequestComponent,
   },
 ];
 
