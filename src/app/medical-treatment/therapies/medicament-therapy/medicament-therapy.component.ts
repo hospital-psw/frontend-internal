@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Patient } from 'src/app/schedule/interface/Patient';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -26,7 +27,7 @@ export class MedicamentTherapyComponent implements OnInit {
     private dialogRef: MatDialogRef<NewTherapyDialogComponent>,
     private therapyService: MedicamentTherapyService,
     private medicineService: MedicineService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getMedicaments();
@@ -47,10 +48,15 @@ export class MedicamentTherapyComponent implements OnInit {
   public addTherapy(): void {
     this.therapyService
       .createMedicamentTherapy(this.newMedicamentTherapy)
-      .subscribe((response) => {
-        this.toastService.success('Therapy successfully created');
-        this.dialogRef.close();
-      });
+      .subscribe(
+        (response) => {
+          this.toastService.success('Therapy successfully created');
+          this.dialogRef.close();
+        },
+        (error: HttpErrorResponse) => {
+          this.toastService.error(error.message);
+        }
+      );
   }
 
   public closeDialog(): void {
