@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { parse } from 'date-fns';
 import { BloodAcquisition } from '../interface/BloodAcquisition';
 import { BloodAcquisitionService } from '../service/blood-acquisition.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './doctor-requests.component.html',
   styleUrls: ['./doctor-requests.component.scss'],
 })
-export class DoctorRequestsComponent {
+export class DoctorRequestsComponent implements OnInit {
   constructor(
     private bloodAcquisitionService: BloodAcquisitionService,
     private router: Router

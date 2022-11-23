@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { BloodType } from '../../interface/BloodType.enum';
 import { CreateExpenditureDTO } from '../../interface/CreateExpenditureDTO';
 import { BloodExpenditureService } from '../../service/blood-expenditure.service';
@@ -11,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './blood-expenditure.component.html',
   styleUrls: ['./blood-expenditure.component.scss'],
 })
-export class BloodExpenditureComponent {
+export class BloodExpenditureComponent implements OnInit, DoCheck {
   constructor(
     private bloodExpenditureService: BloodExpenditureService,
     private toastrService: ToastrService,
