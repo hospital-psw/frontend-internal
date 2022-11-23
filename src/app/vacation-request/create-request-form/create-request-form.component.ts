@@ -31,7 +31,7 @@ export class CreateRequestFormComponent implements OnInit {
     private vacationRequestService: VacationRequestService,
     private toaster: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.vacationRequestStatus = Object.values(VacationRequestStatus);
@@ -48,6 +48,8 @@ export class CreateRequestFormComponent implements OnInit {
   createVacationRequest() {
     this.from = this.range.controls['from'].value as Date;
     this.to = this.range.controls['to'].value as Date;
+    this.from.setHours(this.from.getHours() + 1);
+    this.to.setHours(this.from.getHours() + 1);
 
     this.newVacationRequest = {
       from: this.from,
