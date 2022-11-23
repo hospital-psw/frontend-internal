@@ -10,6 +10,8 @@ import { PatientRelease } from '../../interface/PatientRelease';
 import { MedicamentTherapy } from '../../interface/MedicamentTherapy';
 import { BloodunitTherapyService } from '../../service/bloodunit-therapy.service';
 import { MedicalTreatmentService } from '../../service/medical-treatment.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NewTherapyDialogComponent } from '../../therapies/new-therapy-dialog/new-therapy-dialog.component';
 
 @Component({
   selector: 'app-treatment-view',
@@ -22,7 +24,8 @@ export class TreatmentViewComponent implements OnInit {
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private router: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private dialog: MatDialog
   ) {}
 
   medicalTreatment: MedicalTreatment;
@@ -87,6 +90,17 @@ export class TreatmentViewComponent implements OnInit {
       });
   }
 
+  downloadPdf(): void {
+    this.medicalTreatmentService
+      .getPdf(this.medicalTreatment.id)
+      .subscribe((response: any) => {
+        let fileName = 'treatment.pdf';
+        let blob: Blob = response.body as Blob;
+        let url = window.URL.createObjectURL(blob);
+        window.open(url);
+      });
+  }
+
   getStatus() {
     return this.medicalTreatment.active ? 'Active' : 'Finished';
   }
@@ -103,5 +117,24 @@ export class TreatmentViewComponent implements OnInit {
     }
 
     return this.medicalTreatment.room.floor.number + 'th';
+  }
+
+  openDialog(): void {
+    console.log('Okinula se metoda open dialog');
+    const dialogRef = this.dialog
+      .open(NewTherapyDialogComponent, {
+        data: {
+          patient: this.medicalTreatment.patient,
+          treatmentId: this.medicalTreatment.id,
+        },
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        this.medicalTreatmentService
+          .getTreatment(this.medicalTreatment.id)
+          .subscribe((res) => {
+            this.medicalTreatment = res;
+          });
+      });
   }
 }

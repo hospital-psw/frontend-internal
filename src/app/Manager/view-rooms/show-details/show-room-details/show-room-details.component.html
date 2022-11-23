@@ -1,82 +1,92 @@
-<form
-  class="details-form"
-  (submit)="
-    editRoom(purpose.value, start.value, end.value, number.value, $event)
-  "
->
-  <div class="blocks">
-    <div class="details">
-      <mat-form-field>
-        <mat-label>Room number</mat-label>
-        <input
-          required
-          class="inputText"
-          matInput
-          [disabled]="isDisabled"
-          value="{{ this.room.number }}"
-          #number
-        />
-      </mat-form-field>
-    </div>
-    <div class="details">
-      <mat-form-field>
-        <mat-label>Room purpose</mat-label>
-        <input
-          required
-          class="inputText"
-          matInput
-          [disabled]="isDisabled"
-          value="{{ this.room.purpose }}"
-          #purpose
-        />
-      </mat-form-field>
-    </div>
-    <div
-      [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
-      class="details"
-    >
-      <mat-form-field>
-        <mat-label>Working hours start</mat-label>
-        <input
-          required
-          class="inputText"
-          matInput
-          [disabled]="isDisabled"
-          value="{{ this.room.workingHours.start | date: 'hh:mm' }}"
-          #start
-        />
-      </mat-form-field>
-    </div>
-    <div
-      [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
-      class="details"
-    >
-      <mat-form-field>
-        <mat-label>Working hours end</mat-label>
-        <input
-          required
-          class="inputText"
-          matInput
-          [disabled]="isDisabled"
-          value="{{ this.room.workingHours.end | date: 'hh:mm' }}"
-          #end
-        />
-      </mat-form-field>
-    </div>
-    <div class="button1">
-      <button class="button-30" (click)="enableFields()" type="button">
-        Edit
-      </button>
+<div class="details-form">
+  <form
+    (submit)="
+      editRoom(purpose.value, start.value, end.value, number.value, $event)
+    "
+  >
+    <div class="blocks">
+      <div class="details">
+        <mat-form-field>
+          <mat-label>Room number</mat-label>
+          <input
+            required
+            class="inputText"
+            matInput
+            [disabled]="isDisabled"
+            value="{{ this.room.number }}"
+            #number
+          />
+        </mat-form-field>
+      </div>
+      <div class="details">
+        <mat-form-field>
+          <mat-label>Room purpose</mat-label>
+          <input
+            required
+            class="inputText"
+            matInput
+            [disabled]="isDisabled"
+            value="{{ this.room.purpose }}"
+            #purpose
+          />
+        </mat-form-field>
+      </div>
+      <div
+        [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
+        class="details"
+      >
+        <mat-form-field>
+          <mat-label>Working hours start</mat-label>
+          <input
+            required
+            class="inputText"
+            matInput
+            [disabled]="isDisabled"
+            value="{{ this.room.workingHours.start | date: 'hh:mm' }}"
+            #start
+          />
+        </mat-form-field>
+      </div>
+      <div
+        [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
+        class="details"
+      >
+        <mat-form-field>
+          <mat-label>Working hours end</mat-label>
+          <input
+            required
+            class="inputText"
+            matInput
+            [disabled]="isDisabled"
+            value="{{ this.room.workingHours.end | date: 'hh:mm' }}"
+            #end
+          />
+        </mat-form-field>
+      </div>
+      <div class="button1">
+        <button class="button-30" (click)="enableFields()" type="button">
+          Edit
+        </button>
 
-      <input
-        (submit)="
-          editRoom(purpose.value, start.value, end.value, number.value, $event)
-        "
-        class="button-30"
-        type="submit"
-        value="Save"
-      />
+        <input
+          (submit)="
+            editRoom(
+              purpose.value,
+              start.value,
+              end.value,
+              number.value,
+              $event
+            )
+          "
+          class="button-30"
+          type="submit"
+          value="Save"
+        />
+      </div>
     </div>
-  </div>
-  <app-show-equipment [room]="room"></app-show-equipment>
-</form>
+  </form>
+  <app-show-equipment
+    (notifyRelocation)="relocate($event)"
+    [equipment]="equipment"
+  ></app-show-equipment>
+</div>

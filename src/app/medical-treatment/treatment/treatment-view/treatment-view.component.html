@@ -7,6 +7,13 @@
     >
       Finish treatment
     </button>
+    <button
+      class="finish-button"
+      [hidden]="medicalTreatment.active"
+      (click)="downloadPdf()"
+    >
+      Download pdf
+    </button>
   </div>
   <div class="treatment">
     <div class="treatment__info">
@@ -108,7 +115,13 @@
           {{ bloodTherapy.about }}
         </div>
       </div>
-      <div class="treatment__therapies-new">Add new treatment</div>
+      <button
+        class="treatment__therapies-new"
+        (click)="openDialog()"
+        *ngIf="medicalTreatment.active"
+      >
+        Add new treatment
+      </button>
     </div>
   </div>
 </div>

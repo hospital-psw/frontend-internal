@@ -1,5 +1,9 @@
 @import './../../../../styles/helpers/variables';
 
+.header {
+  color: $sidebar-color-secondary;
+}
+
 .content {
   width: 100%;
   height: 40rem;
@@ -7,22 +11,28 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding-top: 1.5rem;
 
   &__elements {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 25rem;
+    width: 30rem;
     height: 33rem;
+
+    &__combo {
+      width: 30rem;
+    }
   }
 
   &__actions {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    align-items: center;
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     padding-right: 2rem;
 
     &__button {

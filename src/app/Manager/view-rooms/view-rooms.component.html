@@ -2,14 +2,14 @@
   <div class="info">
     <div class="display-rooms-wrapper">
       <div class="input-wrapper">
-        <mat-form-field appearance="fill">
+        <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose hospital</mat-label>
           <mat-select (selectionChange)="selectHospital($event)">
             <mat-option value="4">{{ buildings[0]?.name }}</mat-option>
             <mat-option value="5">{{ buildings[1]?.name }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="fill">
+        <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose floor</mat-label>
           <mat-select (selectionChange)="selectFloor($event)">
             <mat-option value="0">0</mat-option>
@@ -18,6 +18,56 @@
             <mat-option value="3">3</mat-option>
           </mat-select>
         </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Number</mat-label>
+          <input matInput #number />
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Purpose</mat-label>
+          <input matInput #purpose />
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Start</mat-label>
+          <input matInput #start placeholder="hh:mm" />
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>End</mat-label>
+          <input matInput #end placeholder="hh:mm" />
+        </mat-form-field>
+        <mat-form-field class="search-hospital" appearance="fill">
+          <mat-label>Choose equipment</mat-label>
+          <mat-select (selectionChange)="selectEquipment($event)">
+            <mat-option value="0">Beds</mat-option>
+            <mat-option value="1">Scissors</mat-option>
+            <mat-option value="2">Needles</mat-option>
+            <mat-option value="3">Bandages</mat-option>
+            <mat-option value="4">Respirator</mat-option>
+            <mat-option value="5">Stethoscope</mat-option>
+            <mat-option value="6">Xray</mat-option>
+            <mat-option value="7">Plaster</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="search">
+          <mat-label>Quantity</mat-label>
+          <input type="number" matInput ngModel #quantity />
+        </mat-form-field>
+        <button
+          mat-stroked-button
+          color="primary"
+          class=""
+          (click)="
+            searchRooms(
+              number.value,
+              purpose.value,
+              start.value,
+              end.value,
+              quantity.value
+            )
+          "
+          type="button"
+        >
+          Search
+        </button>
       </div>
     </div>
     <div id="canvas-holder">
@@ -35,15 +85,22 @@
       [room]="clickedRoom"
     ></app-show-floor-details>
     <app-show-room-details
+      (relocateNotify)="relocate($event)"
       (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
+      [equipment]="equipments"
     ></app-show-room-details>
-  </div>
-  <div>
     <app-show-searched-rooms
       (newItemEvent)="sendRoomId($event)"
+      *ngIf="this.showSearchedRooms"
       [searchedRooms]="searchedRooms"
     ></app-show-searched-rooms>
   </div>
+  <app-stepper
+    *ngIf="doRelocate"
+    [equipment]="element"
+    (close)="closeStepper()"
+    (refreshEquipment)="refreshEquipment($event)"
+  ></app-stepper>
 </div>

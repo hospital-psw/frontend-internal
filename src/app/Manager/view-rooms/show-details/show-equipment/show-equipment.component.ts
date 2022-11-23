@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { RoomService } from '../../../service/room-service.service';
@@ -14,25 +21,16 @@ export class ShowEquipmentComponent implements OnInit {
     setInterval(() => {}, 100);
   }
 
-  @Input() room: IRoom;
+  @Output() notifyRelocation = new EventEmitter();
+  @Input() equipment: IEquipment[];
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
-  public equipment: IEquipment[] = [];
-  ngOnInit(): void {
-    this.roomService.getEquipment(this.room.id).subscribe((data) => {
-      this.equipment = data;
-      console.log(this.room.id);
-    });
-  }
+  ngOnInit(): void {}
 
   convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
   }
 
-  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  ngOnChanges() {
-    this.roomService.getEquipment(this.room.id).subscribe((data) => {
-      this.equipment = data;
-      console.log(this.room.id);
-    });
+  relocateEquipment(element: IEquipment) {
+    this.notifyRelocation.emit(element);
   }
 }

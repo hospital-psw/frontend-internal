@@ -1,3 +1,4 @@
+import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import {
@@ -30,10 +31,16 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
     'arrival',
   ];
   dataSource = new MatTableDataSource<MedicalTreatment>();
-  pageSize: number = 10;
-  pageNumber: number = 0;
+  //dataSize = pageSize
+  pageSize: number = 5;
+  pageNumber: number = 1;
   length: number;
+  //number of data getting from backend (dataSize~pageSize in emitting)
+  dataSize: number = 60;
+  paginatorColor: ThemePalette = 'primary';
   @Input() inactiveTreatments: MedicalTreatment[];
+  @Output() pageSizeOutput = new EventEmitter<number>();
+  @Output() pageNumberOutput = new EventEmitter<number>();
 
   @ViewChild('activeTreatmentPaginator') paginator: MatPaginator;
 
@@ -51,25 +58,33 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getInactiveTreatment();
+    this.pageSizeOutput.emit(this.dataSize);
+    this.pageNumberOutput.emit(this.pageNumber);
   }
 
   getInactiveTreatment(): void {
-    this.medicalTreatmentService.getInactive().subscribe(
-      (response: MedicalTreatment[]) => {
-        this.dataSource = new MatTableDataSource<MedicalTreatment>(response);
-        this.dataSource.paginator = this.paginator;
-        this.length = response.length;
-      },
-      (error: HttpErrorResponse) => {
-        this.toastService.error(error.message);
-      }
-    );
+    this.medicalTreatmentService
+      .getInactive(this.dataSize, this.pageNumber)
+      .subscribe(
+        (response: MedicalTreatment[]) => {
+          this.dataSource = new MatTableDataSource<MedicalTreatment>(response);
+          this.dataSource.paginator = this.paginator;
+          //pageSize data 0 not acceptable on backend, but required on front
+          this.pageNumber = 0;
+          this.length = response.length;
+        },
+        (error: HttpErrorResponse) => {
+          this.toastService.error(error.message);
+        }
+      );
   }
 
   onPaginateChange(event: any): void {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex;
     this.length = event.length;
+    this.pageSizeOutput.emit(this.pageSize);
+    this.pageNumberOutput.emit(this.pageNumber);
     console.log(this.pageSize, this.pageNumber);
   }
 

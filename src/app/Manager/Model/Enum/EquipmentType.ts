@@ -3,4 +3,8 @@ export enum EquipmentTypeEnum {
   Scissors,
   Needle,
   Bandage,
+  Respirator,
+  Stethoscope,
+  Xray,
+  Plaster,
 }

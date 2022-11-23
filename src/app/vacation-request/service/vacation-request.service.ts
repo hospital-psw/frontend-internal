@@ -21,4 +21,18 @@ export class VacationRequestService {
       vacationRequest
     );
   }
+
+  public getAllVacationRequests(
+    doctorId: number
+  ): Observable<VacationRequest[]> {
+    return this.http.get<VacationRequest[]>(
+      `${this.apiServerUrl}/${doctorId}`
+    );
+  }
+
+  public deleteVacationRequest(vacationRequestId: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.apiServerUrl}/delete/${vacationRequestId}`
+    );
+  }
 }

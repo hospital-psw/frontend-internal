@@ -3,6 +3,7 @@ import { IRoom } from 'src/app/Manager/Model/Room';
 import { IWorkingHours } from 'src/app/Manager/Model/WorkingHours';
 import { RoomService } from '../../../service/room-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { IEquipment } from 'src/app/Manager/Model/Equipment';
 
 @Component({
   selector: 'app-show-room-details',
@@ -17,7 +18,9 @@ export class ShowRoomDetailsComponent implements OnInit {
   }
 
   @Input() room: any;
+  @Input() equipment: IEquipment[];
   @Output() notify = new EventEmitter<any>();
+  @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
@@ -103,5 +106,9 @@ export class ShowRoomDetailsComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success('Successfully eddited room.', 'Success');
+  }
+
+  relocate(element: IEquipment) {
+    this.relocateNotify.emit(element);
   }
 }
