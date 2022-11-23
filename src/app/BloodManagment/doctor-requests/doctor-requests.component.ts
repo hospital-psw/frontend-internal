@@ -7,37 +7,35 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-doctor-requests',
   templateUrl: './doctor-requests.component.html',
-  styleUrls: ['./doctor-requests.component.scss']
+  styleUrls: ['./doctor-requests.component.scss'],
 })
 export class DoctorRequestsComponent {
-  
   constructor(
-    private bloodAcquisitionService:BloodAcquisitionService,
+    private bloodAcquisitionService: BloodAcquisitionService,
     private router: Router
-  ){}
+  ) {}
 
-  dataSource :Object[];
-  displayedColumns: string[] = ['date', 'bloodType', 'amount','reason', 'status'];
+  dataSource: Object[];
+  displayedColumns: string[] = [
+    'date',
+    'bloodType',
+    'amount',
+    'reason',
+    'status',
+  ];
 
-  ngOnInit() :void{
-    
+  ngOnInit(): void {
     this.bloodAcquisitionService
       .getBloodAcquisitionsForSpecificDoctor(2)
-      .subscribe(
-        (response: BloodAcquisition[]) => {
-          this.dataSource = response;
-        }
-      );
-      
-    
+      .subscribe((response: BloodAcquisition[]) => {
+        this.dataSource = response;
+      });
   }
 
-  createAcquisitionPage(){
+  createAcquisitionPage() {
     this.router.navigateByUrl('/bloodAcquisition/create');
   }
-  createExpenditurePage(){
+  createExpenditurePage() {
     this.router.navigateByUrl('/bloodExpenditure/create');
   }
-
-
 }

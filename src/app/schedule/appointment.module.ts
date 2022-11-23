@@ -37,7 +37,6 @@ import { BloodAcquisitionComponent } from '../BloodManagment/BloodAcquisition/bl
     SchedulingAppointmentFormComponent,
     SchedulingAppointmentTableComponent,
     SchedulingAppointmentCardComponent,
-
   ],
   imports: [
     CommonModule,

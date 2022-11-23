@@ -16,7 +16,7 @@ import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
 
-import { BloodAcquisitionComponent} from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component'
+import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 const routes: Routes = [
@@ -57,8 +57,8 @@ const routes: Routes = [
   },
   {
     path: 'bloodExpenditure/create',
-    component:BloodExpenditureComponent,
-  }
+    component: BloodExpenditureComponent,
+  },
 ];
 
 @NgModule({

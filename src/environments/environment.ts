@@ -6,14 +6,14 @@ export const environment = {
   production: false,
   apiAppointmentUrl: 'http://localhost:16177/api/Appointment',
   apiPatientUrl: 'http://localhost:16177/api/Patient',
-  apiVacationRequestUrl:'http://localhost:16177/api/VacationRequests',
+  apiVacationRequestUrl: 'http://localhost:16177/api/VacationRequests',
   apiDoctorUrl: 'http://localhost:16177/api/Doctor',
   apiMedicalTreatment: 'http://localhost:16177/api/MedicalTreatment',
   apiMedicamentTherapy: 'http://localhost:16177/api/MedicamentTherapy',
   apiBloodUnitTherapy: 'http://localhost:16177/api/BloodUnitTherapy',
   apiRooms: 'http://localhost:16177/api/Rooms',
   apiBloodAcquisition: 'http://localhost:16177/api/BloodAcquisition',
-  apiBloodExpenditure: 'http://localhost:16177/api/BloodExpenditure'
+  apiBloodExpenditure: 'http://localhost:16177/api/BloodExpenditure',
 };
 
 /*

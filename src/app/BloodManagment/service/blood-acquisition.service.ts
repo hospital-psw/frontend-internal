@@ -6,30 +6,27 @@ import { environment } from 'src/environments/environment';
 import { BloodAcquisition } from '../interface/BloodAcquisition';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BloodAcquisitionService {
   private apiServerUrl = environment.apiBloodAcquisition;
 
-  constructor(private http: HttpClient) { }
-
-  
+  constructor(private http: HttpClient) {}
 
   public createBloodAcquisition(
-    bloodAcquisition:CreateAcquisitionDTO
+    bloodAcquisition: CreateAcquisitionDTO
   ): Observable<CreateAcquisitionDTO> {
     return this.http.post<CreateAcquisitionDTO>(
       `${this.apiServerUrl}`,
-        bloodAcquisition
+      bloodAcquisition
     );
   }
 
   public getBloodAcquisitionsForSpecificDoctor(
-    id:number
-  ):Observable<BloodAcquisition[]>{
-    return this.http.get<BloodAcquisition[]>("http://localhost:16177/doctorAcquisitions/".concat(id.toString()));
+    id: number
+  ): Observable<BloodAcquisition[]> {
+    return this.http.get<BloodAcquisition[]>(
+      'http://localhost:16177/doctorAcquisitions/'.concat(id.toString())
+    );
   }
-
-    
-
 }
