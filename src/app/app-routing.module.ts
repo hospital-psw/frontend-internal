@@ -15,11 +15,9 @@ import { VacationRequestComponent } from './vacation-request/vacation-request/va
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
-
+import { StatisticsComponent } from './Statistics/statistics/Components/statistics/statistics.component';
 import { ReconsiderBloodRequestComponent } from './Manager/blood-request/reconsider-blood-request/reconsider-blood-request/reconsider-blood-request.component';
-
 import { ShowAllVacationRequestsComponent } from './vacation-request/show-all-vacation-requests/show-all-vacation-requests.component';
-
 import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
@@ -78,6 +76,10 @@ const routes: Routes = [
   {
     path: 'vacation-requests-display',
     component: VacationRequestsComponent,
+  },
+  {
+    path: 'statistics',
+    component: StatisticsComponent,
   },
   {
     path: 'reconsider-blood-request',

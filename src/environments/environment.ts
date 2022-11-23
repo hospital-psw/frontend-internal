@@ -16,6 +16,7 @@ export const environment = {
   apiBloodExpenditure: 'http://localhost:16177/api/BloodExpenditure',
   apiBloodUnit: 'http://localhost:16177/api/BloodUnit',
   apiMedicine: 'http://localhost:16177/api/Medicament',
+  apiStatistics: 'http://localhost:16177/api/Statistical',
 };
 
 /*

@@ -31,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { VacationRequestModule } from './vacation-request/vacation-request.module';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
+import { StatisticsModule } from './Statistics/statistics/statistics.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
@@ -80,6 +81,7 @@ import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blo
     }),
     FormsModule,
     VacationRequestsModule,
+    StatisticsModule,
     MatSelectModule,
     MatSliderModule,
     MatTableModule,
