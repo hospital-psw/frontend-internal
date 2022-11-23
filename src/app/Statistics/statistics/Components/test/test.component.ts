@@ -7,7 +7,7 @@ import { TestDataSource, TestItem } from './test-datasource';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;

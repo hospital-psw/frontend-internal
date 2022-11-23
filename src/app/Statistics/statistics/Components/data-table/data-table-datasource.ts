@@ -22,11 +22,11 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
 
   constructor(private parentData: DataTableItem[]) {
     super();
-    this.data = parentData
+    this.data = parentData;
   }
 
   setData() {
-    this.getSortedData(this.data)
+    this.getSortedData(this.data);
   }
   /**
    * Connect this data source to the table. The table will only update when
@@ -37,16 +37,17 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
     if (this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
-      return merge(observableOf(this.data), this.sort.sortChange)
-        .pipe(map(() => {
+      return merge(observableOf(this.data), this.sort.sortChange).pipe(
+        map(() => {
           return this.getSortedData([...this.data]);
-        }));
+        })
+      );
     } else {
       throw Error('Please sort on the data source before connecting.');
     }
   }
 
-  disconnect(): void { }
+  disconnect(): void {}
 
   private getSortedData(data: DataTableItem[]): DataTableItem[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
@@ -56,18 +57,29 @@ export class DataTableDataSource extends DataSource<DataTableItem> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'group1': return compare(+a.group1, +b.group1, isAsc);
-        case 'group2': return compare(+a.group2, +b.group2, isAsc);
-        case 'group3': return compare(+a.group3, +b.group3, isAsc);
-        case 'group4': return compare(+a.group4, +b.group4, isAsc);
-        case 'group5': return compare(+a.group5, +b.group5, isAsc);
-        case 'group6': return compare(+a.group6, +b.group6, isAsc);
-        default: return 0;
+        case 'group1':
+          return compare(+a.group1, +b.group1, isAsc);
+        case 'group2':
+          return compare(+a.group2, +b.group2, isAsc);
+        case 'group3':
+          return compare(+a.group3, +b.group3, isAsc);
+        case 'group4':
+          return compare(+a.group4, +b.group4, isAsc);
+        case 'group5':
+          return compare(+a.group5, +b.group5, isAsc);
+        case 'group6':
+          return compare(+a.group6, +b.group6, isAsc);
+        default:
+          return 0;
       }
     });
   }
 }
 
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
+function compare(
+  a: string | number,
+  b: string | number,
+  isAsc: boolean
+): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
