@@ -25,9 +25,7 @@ export class VacationRequestService {
   public getAllVacationRequests(
     doctorId: number
   ): Observable<VacationRequest[]> {
-    return this.http.get<VacationRequest[]>(
-      `${this.apiServerUrl}/${doctorId}`
-    );
+    return this.http.get<VacationRequest[]>(`${this.apiServerUrl}/${doctorId}`);
   }
 
   public deleteVacationRequest(vacationRequestId: number): Observable<void> {
