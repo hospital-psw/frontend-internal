@@ -30,7 +30,7 @@ export class ShowAllVacationRequestsComponent implements OnInit {
     private vacationRequestService: VacationRequestService,
     private router: Router,
     private toaster: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.refreshData();
@@ -67,6 +67,7 @@ export class ShowAllVacationRequestsComponent implements OnInit {
       .subscribe((data) => {
         this.toaster.success('You successfuly deleted this request!');
         this.refreshData();
+        this.disableDeleteButton = true;
       });
   }
 
