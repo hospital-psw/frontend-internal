@@ -48,7 +48,7 @@ export class ShowAllVacationRequestsComponent implements OnInit {
       status: vacationRequest.status,
       urgent: vacationRequest.urgent,
       comment: vacationRequest.comment,
-      managerComent: vacationRequest.managerComent,
+      managerComment: vacationRequest.managerComment,
       doctor: vacationRequest.doctor,
     };
     if (

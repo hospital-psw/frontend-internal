@@ -26,7 +26,7 @@ export class VacationRequestService {
     doctorId: number
   ): Observable<VacationRequest[]> {
     return this.http.get<VacationRequest[]>(
-      `${this.apiServerUrl}/waiting/${doctorId}`
+      `${this.apiServerUrl}/${doctorId}`
     );
   }
 
