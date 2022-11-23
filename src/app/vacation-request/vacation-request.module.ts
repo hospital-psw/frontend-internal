@@ -19,9 +19,29 @@ import { FormsModule } from '@angular/forms';
 import { VacationRequestComponent } from './vacation-request/vacation-request.component';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { ShowAllVacationRequestsComponent } from './show-all-vacation-requests/show-all-vacation-requests.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'vacation-requests/doctor',
+    component: ShowAllVacationRequestsComponent,
+  },
+  {
+    path: 'vacation-requests/doctor/create',
+    component: CreateRequestFormComponent,
+  },
+];
 
 @NgModule({
-  declarations: [CreateRequestFormComponent, VacationRequestComponent],
+  declarations: [
+    CreateRequestFormComponent,
+    VacationRequestComponent,
+    ShowAllVacationRequestsComponent,
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -32,6 +52,10 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatButtonModule,
     MatInputModule,
+    MatTableModule,
+    MatCardModule,
+    MatIconModule,
+    RouterModule.forChild(routes),
   ],
   providers: [VacationRequestService],
 })
