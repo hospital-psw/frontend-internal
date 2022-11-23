@@ -27,8 +27,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormField } from '@angular/material/form-field';
 import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from './material/material.module';
 import { VacationRequestModule } from './vacation-request/vacation-request.module';
-import { FormsModule } from '@angular/forms';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -69,6 +70,8 @@ import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blo
     MedicalTreatmentModule,
     NewsfeedModule,
     FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
     VacationRequestModule,
     MatInputModule,
     ToastrModule.forRoot({

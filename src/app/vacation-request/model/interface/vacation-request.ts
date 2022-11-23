@@ -9,5 +9,5 @@ export interface VacationRequest {
   status: VacationRequestStatus;
   comment: string;
   urgent: boolean;
-  managerComent: string;
+  managerComment: string;
 }
