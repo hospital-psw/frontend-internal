@@ -39,7 +39,7 @@ export class RequestComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'canceled') return;
       this.vacationRequestService
-        .declineVacationRequest(id, managerComment)
+        .declineVacationRequest(id, result)
         .subscribe((res) => {
           context.notify.emit();
         });
