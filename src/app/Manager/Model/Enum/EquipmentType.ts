@@ -6,5 +6,5 @@ export enum EquipmentTypeEnum {
   Respirator,
   Stethoscope,
   Xray,
-  Plaster
+  Plaster,
 }
