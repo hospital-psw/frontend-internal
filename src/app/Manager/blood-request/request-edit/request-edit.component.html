@@ -1,0 +1,39 @@
+<mat-card>
+  <div class="container">
+    <form [formGroup]="form" *ngIf="form">
+      <mat-form-field class="elem" appearance="fill">
+        <mat-label>Ckepa</mat-label>
+        <input matInput formControlName="doctor" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="elem" appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput formControlName="date" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="elem" appearance="fill">
+        <mat-label>Blood Type</mat-label>
+        <input matInput formControlName="bloodType" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="elem" appearance="fill">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="amount" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="elem" appearance="fill">
+        <mat-label>Reason</mat-label>
+        <input matInput formControlName="reason" />
+      </mat-form-field>
+      <br />
+      <mat-form-field class="elem" appearance="fill">
+        <mat-label>Manager Comment</mat-label>
+        <input matInput formControlName="managerComment" />
+      </mat-form-field>
+
+      <div class="btnSubmit">
+        <button mat-stroked-button (click)="editBloodRequest()">Submit</button>
+      </div>
+    </form>
+  </div>
+</mat-card>
