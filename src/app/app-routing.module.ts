@@ -15,6 +15,7 @@ import { VacationRequestComponent } from './vacation-request/vacation-request/va
 import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-view/treatment-view.component';
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
+import { StatisticsComponent } from './Statistics/statistics/Components/statistics/statistics.component';
 
 const routes: Routes = [
   {
@@ -72,10 +73,14 @@ const routes: Routes = [
     path: 'vacation-requests',
     component: VacationRequestsComponent,
   },
+  {
+    path: 'statistics',
+    component: StatisticsComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -30,6 +30,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatChipsModule,
     MatExpansionModule,
     MatDialogModule,
+    MatButtonModule
   ],
   exports: [
     CommonModule,
@@ -46,4 +47,4 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
   ],
 })
-export class MaterialModule {}
+export class MaterialModule { }

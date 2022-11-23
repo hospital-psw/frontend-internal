@@ -31,7 +31,6 @@ export class ApplicationMainComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe(() => {
-      console.log(this.router.url);
       if (this.router.url == '/appointments') {
         this.name = 'Appointments';
       } else if (this.router.url == '/patients') {
@@ -52,7 +51,10 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Medical treatments';
       } else if (this.router.url.includes('/treatment')) {
         this.name = 'Stationary Treatment';
+      } else if (this.router.url.includes('/statistics')) {
+        this.name = 'Hospital Statistics';
       }
+
     });
   }
 
@@ -63,7 +65,6 @@ export class ApplicationMainComponent implements OnInit {
   }
 
   handleHamburger(valueEmitted: any) {
-    console.log('Hello from doctor main component');
     this.valueEmittedFromChild = valueEmitted;
     this.hamburger = !this.hamburger;
   }

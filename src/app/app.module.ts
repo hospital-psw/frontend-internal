@@ -26,6 +26,7 @@ import { NewsfeedModule } from './newsfeed/newsfeed.module';
 import { VacationRequestModule } from './vacation-request/vacation-request.module';
 import { FormsModule } from '@angular/forms';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
+import { StatisticsModule } from './Statistics/statistics/statistics.module';
 
 @NgModule({
   declarations: [
@@ -62,9 +63,10 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
     }),
     FormsModule,
     VacationRequestsModule,
+    StatisticsModule
   ],
   bootstrap: [AppComponent],
   exports: [],
   providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
-export class AppModule {}
+export class AppModule { }

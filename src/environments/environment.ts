@@ -14,6 +14,7 @@ export const environment = {
   apiRooms: 'http://localhost:16177/api/Rooms',
   apiBloodUnit: 'http://localhost:16177/api/BloodUnit',
   apiMedicine: 'http://localhost:16177/api/Medicament',
+  apiStatistics: 'http://localhost:16177/api/Statistical'
 };
 
 /*
