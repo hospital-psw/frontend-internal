@@ -33,6 +33,9 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSliderModule} from '@angular/material/slider';
+import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
+import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import {MatSliderModule} from '@angular/material/slider';
     SidebarComponent,
     ApplicationMainComponent,
     BloodAcquisitionComponent,
+    DoctorRequestsComponent,
+    BloodExpenditureComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -75,6 +80,8 @@ import {MatSliderModule} from '@angular/material/slider';
     VacationRequestsModule,
     MatSelectModule,
     MatSliderModule,
+    MatTableModule,
+
   ],
   bootstrap: [AppComponent],
   exports: [],

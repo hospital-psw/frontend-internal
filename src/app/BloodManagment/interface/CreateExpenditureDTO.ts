@@ -1,6 +1,6 @@
-import {BloodType} from '../interface/BloodType.enum';
+import { BloodType } from "./BloodType.enum";
 
-export interface CreateAcquisitionDTO {
+export interface CreateExpenditureDTO {
     doctorId: number;
     date: Date;
     bloodType: string;
@@ -8,4 +8,3 @@ export interface CreateAcquisitionDTO {
     reason:string;
   }
   
-

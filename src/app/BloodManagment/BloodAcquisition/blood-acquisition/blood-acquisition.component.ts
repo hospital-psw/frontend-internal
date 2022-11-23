@@ -10,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
+
+
 @Component({
   selector: 'app-blood-acquisition',
   templateUrl: './blood-acquisition.component.html',
@@ -26,11 +28,14 @@ export class BloodAcquisitionComponent implements OnInit {
     
    }
 
+  disabled=true;
   createAcquisitionDTO:CreateAcquisitionDTO;
   dateSelected:Date;
   amount:number;
   reason:string;
   bloodType:BloodType;
+  bloodTypes = Object.values(BloodType);
+  bloodTypeString: string;
   minDate:Date;
 
   createAcquisition(){
@@ -42,13 +47,13 @@ export class BloodAcquisitionComponent implements OnInit {
       date?.getDate(),
       date?.getHours()! + 5
     );
-
-    this.createAcquisitionDTO.bloodType = this.bloodType;
     this.createAcquisitionDTO.reason = this.reason;
     this.createAcquisitionDTO.amount = this.amount;
-
     
-    console.log(this.createAcquisitionDTO);  
+    this.bloodTypeString = this.bloodTypes[parseInt(this.bloodType)];
+
+    this.createAcquisitionDTO.bloodType = this.bloodTypeString;
+    
       
     this.bloodAcquisitionService
       .createBloodAcquisition(this.createAcquisitionDTO)
@@ -57,12 +62,14 @@ export class BloodAcquisitionComponent implements OnInit {
           this.toastrService.success(
             'Create acquisition'
           );
-          this.router.navigate(['']);
+          this.router.navigateByUrl('/doctorBloodRequests');
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);
         }
       );
+      
+
   }
 
   
@@ -77,6 +84,14 @@ export class BloodAcquisitionComponent implements OnInit {
       bloodType:BloodType.AB_MINUS
 
     };
+  }
+
+ 
+
+  ngDoCheck():void{
+   
+    if(this.dateSelected!=null && this.bloodType!= null && this.amount != null && this.reason!=null &&this.reason!="")
+      this.disabled = false;
   }
 
 }

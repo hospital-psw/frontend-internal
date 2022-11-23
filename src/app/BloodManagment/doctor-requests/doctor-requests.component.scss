@@ -1,0 +1,35 @@
+.widest{
+    display: grid;
+    grid-template-rows: 10% 90%;
+    height: 100%;
+    width: 100%;
+    
+}
+.acquisitionsTable{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    overflow: scroll;
+}
+.acqTopBar{
+    display: grid;
+    grid-template-columns: 80% 10% 10%;
+    column-gap: 20px;
+    width: 100%;
+    height: 100%;
+    border-bottom: solid #4c5d72;
+}
+.labelOne{
+    height: 30px;
+}
+.acquisitionButton{
+    height: 30px;
+    width: 100px;
+}
+.expenditureButton{
+    height: 30px;
+    width: 100px;
+}
+table {
+    width: 100%;
+  }

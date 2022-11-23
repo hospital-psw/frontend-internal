@@ -49,7 +49,7 @@
     <div class="reason" >
         <label>Reason</label>
         <textarea required [(ngModel)]="reason"  class="reasonField" placeholder="Describe the reason for acquisition"></textarea>
-        <button (click)="createAcquisition()" class="buttonConf">Confirm</button>
+        <button [disabled]="disabled" (click)="createAcquisition()" class="buttonConf">Confirm</button>
     </div>
 
     
