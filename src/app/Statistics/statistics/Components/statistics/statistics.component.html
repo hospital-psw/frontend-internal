@@ -9,6 +9,9 @@
     <div class="size" *ngIf="agePyramid">
       <canvas class="segment" id="chart3"></canvas>
     </div>
+    <div class="size" *ngIf="tableData">
+      <app-data-table [fromParent]="tableData"></app-data-table>
+    </div>
     <div class="size pie" *ngIf="usersChart">
       <canvas class="segment" id="chart4"></canvas>
     </div>

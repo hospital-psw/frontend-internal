@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticsService } from '../../Services/statistics.service';
 import { Chart, registerables } from 'chart.js';
+import { DataTableItem } from '../data-table/data-table-datasource';
 
 @Component({
   selector: 'app-statistics',
@@ -15,11 +16,11 @@ export class StatisticsComponent implements OnInit {
   usersChart: any = []
   currentTab: number = 0
   max: number = 0
+  tableData: DataTableItem[] = []
 
   constructor(private service: StatisticsService) {
     Chart.register(...registerables);
   }
-
 
   getMax(data: [], data1: []) {
     let max = 0
@@ -45,6 +46,26 @@ export class StatisticsComponent implements OnInit {
   ngOnInit(): void {
     this.service.getStatistics().subscribe((data) => {
       this.chart_data = data
+
+      this.tableData.push({
+        groupName: "Male",
+        group1: this.chart_data.chart3Male.at(0),
+        group2: this.chart_data.chart3Male.at(1),
+        group3: this.chart_data.chart3Male.at(2),
+        group4: this.chart_data.chart3Male.at(3),
+        group5: this.chart_data.chart3Male.at(4),
+        group6: this.chart_data.chart3Male.at(5)
+      })
+      this.tableData.push({
+        groupName: "Female",
+        group1: this.chart_data.chart3Female.at(0),
+        group2: this.chart_data.chart3Female.at(1),
+        group3: this.chart_data.chart3Female.at(2),
+        group4: this.chart_data.chart3Female.at(3),
+        group5: this.chart_data.chart3Female.at(4),
+        group6: this.chart_data.chart3Female.at(5)
+      })
+
       this.max = this.getMax(this.chart_data.chart3Male, this.chart_data.chart3Female)
       this.chart_data.chart3Female = this.negateArray(this.chart_data.chart3Female)
 

@@ -30,6 +30,11 @@
   width: 40%;
 }
 
+.with-table {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* ===== Scrollbar CSS from https://codepen.io/stephenpaton-tech/full/JjRvGmY ===== */
   /* Firefox */
   * {
