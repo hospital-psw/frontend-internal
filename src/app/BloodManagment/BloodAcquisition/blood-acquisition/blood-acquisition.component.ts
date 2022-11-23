@@ -35,7 +35,7 @@ export class BloodAcquisitionComponent implements OnInit {
   reason:string;
   bloodType:BloodType;
   bloodTypes = Object.values(BloodType);
-  bloodTypeString: string;
+  bloodTypeString: number;
   minDate:Date;
 
   createAcquisition(){
@@ -50,7 +50,7 @@ export class BloodAcquisitionComponent implements OnInit {
     this.createAcquisitionDTO.reason = this.reason;
     this.createAcquisitionDTO.amount = this.amount;
     
-    this.bloodTypeString = this.bloodTypes[parseInt(this.bloodType)];
+    this.bloodTypeString = this.bloodTypes.indexOf(this.bloodType)
 
     this.createAcquisitionDTO.bloodType = this.bloodTypeString;
     
@@ -69,6 +69,7 @@ export class BloodAcquisitionComponent implements OnInit {
         }
       );
       
+    
 
   }
 
@@ -81,7 +82,7 @@ export class BloodAcquisitionComponent implements OnInit {
       reason: "",
       date: null as any,
       amount:20,
-      bloodType:BloodType.AB_MINUS
+      bloodType:0
 
     };
   }

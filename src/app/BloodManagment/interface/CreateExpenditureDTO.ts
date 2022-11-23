@@ -2,8 +2,7 @@ import { BloodType } from "./BloodType.enum";
 
 export interface CreateExpenditureDTO {
     doctorId: number;
-    date: Date;
-    bloodType: string;
+    bloodType: number;
     amount: number;
     reason:string;
   }

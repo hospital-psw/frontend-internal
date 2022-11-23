@@ -17,7 +17,7 @@ export class DoctorRequestsComponent {
   ){}
 
   dataSource :Object[];
-  displayedColumns: string[] = ['date', 'bloodType', 'amount', 'status'];
+  displayedColumns: string[] = ['date', 'bloodType', 'amount','reason', 'status'];
 
   ngOnInit() :void{
     

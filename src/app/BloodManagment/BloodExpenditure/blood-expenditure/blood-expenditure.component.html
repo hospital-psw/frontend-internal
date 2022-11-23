@@ -31,7 +31,7 @@
                 <textarea [(ngModel)]="reason" required placeholder="Describe the reason for expenditure" class="reasoningField"></textarea>
             </div>
             <div class="btuonOutter">
-                <button (click)="createExpenditure()" class="btuon">Confirm</button>
+                <button  [disabled]="disabled" (click)="createExpenditure()" class="btuon">Confirm</button>
             </div>
        </div>
     </div>
