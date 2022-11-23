@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="card">
   <div class="container">
     <div class="table-header">
       <p>Vacation requests</p>
@@ -64,7 +64,7 @@
           *matCellDef="let vacationRequest"
           class="clickable cell-center"
         >
-          {{ vacationRequest.urgency === true ? "Yes" : "No" }}
+          {{ vacationRequest.urgent === true ? "Yes" : "No" }}
         </td>
       </ng-container>
       <ng-container matColumnDef="comment">
@@ -86,7 +86,7 @@
           *matCellDef="let vacationRequest"
           class="clickable cell-center"
         >
-          {{ vacationRequest.managerComent }}
+          {{ vacationRequest.managerComment }}
         </td>
       </ng-container>
 

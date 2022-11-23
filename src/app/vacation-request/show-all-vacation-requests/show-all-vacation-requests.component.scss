@@ -6,6 +6,15 @@ table.mat-table {
   display: table;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 55rem !important;
+  width: 100%;
+  overflow-y: scroll;
+}
+
 .table-header {
   display: inline;
 }
@@ -39,4 +48,9 @@ section {
   font-weight: 600;
   color: $sidebar-color-secondary;
   width: auto;
+}
+
+.card {
+  height: 55rem;
+  width: 100%;
 }

@@ -21,12 +21,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
+import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormField } from '@angular/material/form-field';
 import { BloodRequestModule } from './../app/Manager/blood-request/blood-request.module';
 import { NewsfeedModule } from './newsfeed/newsfeed.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { VacationRequestModule } from './vacation-request/vacation-request.module';
 import { VacationRequestsModule } from './Manager/view-vacation-requests/vacation-requests.module';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
+import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
+import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +43,13 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
     NavigationBarComponent,
     SidebarComponent,
     ApplicationMainComponent,
+    BloodAcquisitionComponent,
+    DoctorRequestsComponent,
+    BloodExpenditureComponent,
   ],
   imports: [
+    MatDatepickerModule,
+    MatNativeDateModule,
     BrowserModule,
     AppRoutingModule,
     AppointmentModule,
@@ -59,12 +73,16 @@ import { VacationRequestsModule } from './Manager/view-vacation-requests/vacatio
     ReactiveFormsModule,
     MaterialModule,
     VacationRequestModule,
+    MatInputModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
     }),
     FormsModule,
     VacationRequestsModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatTableModule,
   ],
   bootstrap: [AppComponent],
   exports: [],
