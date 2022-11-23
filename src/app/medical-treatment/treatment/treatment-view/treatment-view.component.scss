@@ -2,232 +2,252 @@
 @import '../../../../styles/helpers/typography';
 
 .treatment-wrapper {
-    background-color: whitesmoke;
-    min-height: 100%;
-    max-height: 100%;
-    height: 100%;
-    border-radius: 1.5rem;
-    box-shadow: $card-box-shadow;
+  background-color: whitesmoke;
+  min-height: 100%;
+  max-height: 100%;
+  height: 100%;
+  border-radius: 1.5rem;
+  box-shadow: $card-box-shadow;
+  display: flex;
+  flex-direction: column;
+
+  .finish {
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    margin-right: 3rem;
 
-    .finish {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 1rem;
-        margin-right: 3rem;
+    &-button {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-right: 0rem;
+      padding: 0.5rem 1rem;
+      width: 15rem;
+      height: 3rem;
+      margin: 1.5rem;
+      cursor: pointer;
+      caret-color: transparent;
+      background-color: white;
+      border: 1px solid $button-color-primary;
+      font-weight: 600;
+      font-size: 1.5rem;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      border-radius: .5rem;
+      color: $button-color-primary;
+      transition: .3s;
 
-        &-button {
-            background-color: $sidebar-color-primary;
-            color: white;
-            border-radius: .5rem;
-            padding: .3rem;
-            transition: .3s;
+      &:hover {
+        transform: scale(1.07);
+        transition: .2s;
+        cursor: pointer;
+        background-color: $button-color-primary;
+        color: white;
+      }
 
-            &:hover {
-                transform: scale(1.05);
-                transition: .3s;
-            }
-
-            &:disabled {
-                    opacity: 0.3;
-                    cursor: default;
-                    transform: none;
-                    background-color: white;
-                    border: 1px solid $button-color-primary;
-                    color: $button-color-primary;
-            }
-        }
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+        transform: none;
+        background-color: white;
+        border: 1px solid $button-color-primary;
+        color: $button-color-primary;
+      }
     }
+  }
 
-    .treatment {
-        padding: 3rem;
-        padding-top: 1rem;
+  .treatment {
+    padding: 3rem;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    height: 90%;
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 60%;
+
+      & * {
+        border-radius: 1rem;
+        width: 90%;
+      }
+
+      &-patient {
+        padding: 3rem 2rem;
+        height: 14rem;
+        box-shadow: $inner-card-box-shadow;
         display: flex;
-        justify-content: space-between;
-        height: 90%;
+        font-size: 1.6rem;
 
-        &__info {
+        &-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          height: 100%;
+          width: 100;
+
+          &__name {
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            width: 60%;
+          }
 
-            & * {
-                border-radius: 1rem;
-                width: 90%;
-            }
-
-            &-patient {
-                padding: 3rem 2rem;
-                height: 14rem;
-                box-shadow: $inner-card-box-shadow;
-                display: flex;
-                font-size: 1.6rem;
-
-                &-col {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    height: 100%;
-                    width: 100;
-
-                    &__name {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-
-                    &__ssn {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-
-                    &__room {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-                }
-            }
-
-            &-reason {
-                padding: 2rem 2rem;
-                height: 11rem;
-                box-shadow: $shadow-light;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-
-                &__header {
-                    font-size: 2rem;
-                    font-weight: 500;
-                    margin-bottom: 1.5rem;
-                }
-
-                &__text {
-                    font-size: 1.5rem;
-                    font-weight: 400;
-                }
-            }
-
-            &-report {
-                padding: 2rem 2rem;
-                height: 11rem;
-                box-shadow: $shadow-light;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-
-                &__header {
-                    font-size: 2rem;
-                    font-weight: 500;
-                }
-
-                &__text {
-                    margin-top: 1rem;
-                    width: 100%;
-                    resize: none;
-                    background: transparent;
-                    border: 0 none;
-                    outline: none;
-                    height: 100%;
-                    font-size: 1.4rem;
-                }
-            }
-        }
-
-        &__therapies {
+          &__ssn {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
-            width: 35%;
-            
-            .therapy-header {
-                font-size: 1.6rem;
-                font-weight: 500;
-            }
+          }
 
-            & > div {
-                border-radius: 1rem;
-                box-shadow: $inner-card-box-shadow;
-                width: 100%;
-                margin-bottom: 2rem;
-                color: $color-white;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                font-size: 1.2rem;
-                transition: .3s;
-
-                &:hover {
-                    transform: scale(1.05);
-                    transition: .3s;
-                    cursor: default;
-                }
-            }
-
-            &-medicament {
-                background: $medicament-bg;
-                padding: 1.2rem 1rem;
-
-                &-header {
-                    display: flex;
-                    justify-content: space-between;
-                }
-
-                &-about {
-                    margin-top: 1rem;
-                }
-            }
-
-            &-blood {
-                background: $blood-bg;
-                padding: 1.2rem 1rem;
-
-                &-header {
-                        display: flex;
-                        justify-content: space-between;
-                    }
-                
-                &-about {
-                    margin-top: 1rem;
-                }
-            }
-
-            &-new {
-                margin-top: 3rem;
-                width: 30% !important;
-                padding: 1rem;
-                background-color: #fff;
-                border: 2px solid $button-color-primary;
-                border-radius: 10px;
-                color: $button-color-primary;
-                transition: .5s;
-                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-
-                &:hover {
-                    transform: scale(1.05);
-                    transition: .5s;
-                    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-                    cursor: pointer;
-                }
-
-                &:active {
-                    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-                    transform: scale(0.9);
-                    transition: .3s;
-                }
-            }
-
+          &__room {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
         }
+      }
+
+      &-reason {
+        padding: 2rem 2rem;
+        height: 11rem;
+        box-shadow: $shadow-light;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        &__header {
+          font-size: 2rem;
+          font-weight: 500;
+          margin-bottom: 1.5rem;
+        }
+
+        &__text {
+          font-size: 1.5rem;
+          font-weight: 400;
+        }
+      }
+
+      &-report {
+        padding: 2rem 2rem;
+        height: 11rem;
+        box-shadow: $shadow-light;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        &__header {
+          font-size: 2rem;
+          font-weight: 500;
+        }
+
+        &__text {
+          margin-top: 1rem;
+          width: 100%;
+          resize: none;
+          background: transparent;
+          border: 0 none;
+          outline: none;
+          height: 100%;
+          font-size: 1.4rem;
+        }
+      }
     }
+
+    &__therapies {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 35%;
+
+      .therapy-header {
+        font-size: 1.6rem;
+        font-weight: 500;
+      }
+
+      &>div {
+        border-radius: 1rem;
+        box-shadow: $inner-card-box-shadow;
+        width: 100%;
+        margin-bottom: 2rem;
+        color: $color-white;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        transition: .3s;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: .3s;
+          cursor: default;
+        }
+      }
+
+      &-medicament {
+        background: $medicament-bg;
+        padding: 1.2rem 1rem;
+
+        &-header {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &-about {
+          margin-top: 1rem;
+        }
+      }
+
+      &-blood {
+        background: $blood-bg;
+        padding: 1.2rem 1rem;
+
+        &-header {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &-about {
+          margin-top: 1rem;
+        }
+      }
+
+      &-new {
+        margin-top: 3rem;
+        width: 30% !important;
+        padding: 1rem;
+        background-color: #fff;
+        border: 2px solid $button-color-primary;
+        border-radius: 10px;
+        color: $button-color-primary;
+        transition: .7s;
+        font-size: 1.5rem;
+        font-weight: 600;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+        &:hover {
+          transform: scale(1.10);
+          transition: .7s;
+          box-shadow: rgb(38, 57, 77) 0px 10px 20px -10px;
+          cursor: pointer;
+          background-color: $button-color-primary;
+          color: #fff;
+        }
+
+        &:active {
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+          transform: scale(0.9);
+          transition: .3s;
+        }
+      }
+
+    }
+  }
 }
 
 .no-treatments {
-    font-size: 1.5rem;
-    text-align: center;
+  font-size: 1.5rem;
+  text-align: center;
 }

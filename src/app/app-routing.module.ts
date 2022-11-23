@@ -16,7 +16,10 @@ import { TreatmentViewComponent } from './medical-treatment/treatment/treatment-
 import { TreatmentResolver } from './medical-treatment/resolver/treatmentResolver';
 import { VacationRequestsComponent } from './Manager/view-vacation-requests/vacation-requests.component';
 import { StatisticsComponent } from './Statistics/statistics/Components/statistics/statistics.component';
-
+import { ShowAllVacationRequestsComponent } from './vacation-request/show-all-vacation-requests/show-all-vacation-requests.component';
+import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
+import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
+import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -46,15 +49,15 @@ const routes: Routes = [
     component: SchedulingComponent,
   },
   {
-    path: 'blood-request',
-    component: BloodRequestViewComponent,
+    path: 'bloodAcquisition/create',
+    component: BloodAcquisitionComponent,
   },
   {
-    path: 'newsfeed',
-    component: FeedComponent,
+    path: 'doctorBloodRequests',
+    component: DoctorRequestsComponent,
   },
   {
-    path: 'vacation-requests',
+    path: 'vacation-requests/doctor',
     component: VacationRequestComponent,
   },
   {
@@ -70,12 +73,16 @@ const routes: Routes = [
     component: BaseComponentComponent,
   },
   {
-    path: 'vacation-requests',
+    path: 'vacation-requests-display',
     component: VacationRequestsComponent,
   },
   {
     path: 'statistics',
     component: StatisticsComponent,
+  },
+  {
+    path: 'bloodExpenditure/create',
+    component: BloodExpenditureComponent,
   },
 ];
 

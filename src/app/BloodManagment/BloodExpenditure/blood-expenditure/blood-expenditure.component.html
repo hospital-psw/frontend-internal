@@ -1,0 +1,55 @@
+<div class="outtter">
+  <div class="outter4">
+    <div class="blodes">
+      <div class="smtng">
+        <label>Blood Type</label>
+        <mat-form-field height="30px" class="sldier">
+          <mat-select class="blodeSelect" [(ngModel)]="bloodType">
+            <mat-option value="A_PLUS">A+</mat-option>
+            <mat-option value="A_MINUS">A-</mat-option>
+            <mat-option value="B_PLUS">B+</mat-option>
+            <mat-option value="B_MINUS">B-</mat-option>
+            <mat-option value="AB_PLUS">AB+</mat-option>
+            <mat-option value="AB_MINUS">AB-</mat-option>
+            <mat-option value="O_PLUS">O+</mat-option>
+            <mat-option value="O_MINUS">O-</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="smtng">
+        <label>Amount</label>
+        <mat-slider
+          [(ngModel)]="amount"
+          class="sldier"
+          height="30px"
+          min="1"
+          max="20"
+          step="1"
+          thumbLabel
+          tickInterval="1"
+        ></mat-slider>
+      </div>
+    </div>
+
+    <div class="otheres">
+      <div class="reasoning">
+        <label>Reason</label>
+        <textarea
+          [(ngModel)]="reason"
+          required
+          placeholder="Describe the reason for expenditure"
+          class="reasoningField"
+        ></textarea>
+      </div>
+      <div class="btuonOutter">
+        <button
+          [disabled]="disabled"
+          (click)="createExpenditure()"
+          class="btuon"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

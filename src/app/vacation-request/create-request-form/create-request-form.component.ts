@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NewVacationRequestDTO } from '../model/enum/new-vacation-request-dto';
 import { VacationRequestStatus } from '../model/enum/vacation-request-status';
@@ -28,7 +29,8 @@ export class CreateRequestFormComponent implements OnInit {
 
   constructor(
     private vacationRequestService: VacationRequestService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +66,7 @@ export class CreateRequestFormComponent implements OnInit {
       .subscribe(
         (data) => {
           this.toaster.success('Successfully created request!');
+          this.router.navigate(['/vacation-requests/doctor']);
         },
         (error: HttpErrorResponse) => {
           this.toaster.error(error.error);

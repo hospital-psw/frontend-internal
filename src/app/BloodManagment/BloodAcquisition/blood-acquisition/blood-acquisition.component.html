@@ -1,0 +1,63 @@
+<div class="grid-container">
+  <div class="single">
+    <label>Date</label>
+    <mat-form-field class="dateField">
+      <input
+        id="date"
+        matInput
+        [(ngModel)]="dateSelected"
+        [matDatepicker]="picker"
+        name="date"
+        required
+        [min]="minDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="single">
+    <label>BloodType</label>
+    <mat-form-field class="bloodSelect">
+      <mat-select [(ngModel)]="bloodType">
+        <mat-option value="A_PLUS">A+</mat-option>
+        <mat-option value="A_MINUS">A-</mat-option>
+        <mat-option value="B_PLUS">B+</mat-option>
+        <mat-option value="B_MINUS">B-</mat-option>
+        <mat-option value="AB_PLUS">AB+</mat-option>
+        <mat-option value="AB_MINUS">AB-</mat-option>
+        <mat-option value="O_PLUS">O+</mat-option>
+        <mat-option value="O_MINUS">O-</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="single">
+    <label>Amount</label>
+    <mat-slider
+      min="1"
+      max="20"
+      step="1"
+      thumbLabel
+      tickInterval="1"
+      [(ngModel)]="amount"
+    ></mat-slider>
+  </div>
+
+  <div class="reason">
+    <label>Reason</label>
+    <textarea
+      required
+      [(ngModel)]="reason"
+      class="reasonField"
+      placeholder="Describe the reason for acquisition"
+    ></textarea>
+    <button
+      [disabled]="disabled"
+      (click)="createAcquisition()"
+      class="buttonConf"
+    >
+      Confirm
+    </button>
+  </div>
+</div>

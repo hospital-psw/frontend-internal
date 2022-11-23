@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { RoomService } from '../../../service/room-service.service';
@@ -14,11 +21,16 @@ export class ShowEquipmentComponent implements OnInit {
     setInterval(() => {}, 100);
   }
 
+  @Output() notifyRelocation = new EventEmitter();
   @Input() equipment: IEquipment[];
   displayedColumns: string[] = ['typeOfEquipment', 'quantity', 'button'];
   ngOnInit(): void {}
 
   convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
+  }
+
+  relocateEquipment(element: IEquipment) {
+    this.notifyRelocation.emit(element);
   }
 }

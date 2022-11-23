@@ -10,6 +10,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -28,6 +31,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatOptionModule,
     MatChipsModule,
+    MatStepperModule,
+    MatListModule,
+    MatProgressSpinnerModule,
     MatExpansionModule,
     MatDialogModule,
     MatButtonModule
@@ -43,6 +49,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTooltipModule,
     MatFormFieldModule,
     MatChipsModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatStepperModule,
+    MatListModule,
+    MatProgressSpinnerModule,
     MatExpansionModule,
     MatDialogModule,
   ],
