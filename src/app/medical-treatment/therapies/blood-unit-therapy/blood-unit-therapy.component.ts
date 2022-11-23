@@ -38,7 +38,7 @@ export class BloodUnitTherapyComponent implements OnInit, OnChanges {
     private dialogRef: MatDialogRef<NewTherapyDialogComponent>,
     private bloodUnitTherapyService: BloodunitTherapyService,
     private bloodUnitService: BloodUnitService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getBloodUnitForPatient();
@@ -76,10 +76,15 @@ export class BloodUnitTherapyComponent implements OnInit, OnChanges {
     console.log(this.newBloodUnitTherapy);
     this.bloodUnitTherapyService
       .createBloodUnitTherapy(this.newBloodUnitTherapy)
-      .subscribe((response: BloodUnitTherapy) => {
-        this.toastService.success('Therapy succesfully created');
-        this.dialogRef.close();
-      });
+      .subscribe(
+        (response: BloodUnitTherapy) => {
+          this.toastService.success('Therapy succesfully created');
+          this.dialogRef.close();
+        },
+        (error: HttpErrorResponse) => {
+          this.toastService.error(error.message);
+        }
+      );
   }
 
   closeDialog(): void {

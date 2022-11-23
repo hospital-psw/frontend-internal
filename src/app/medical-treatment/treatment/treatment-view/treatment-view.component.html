@@ -2,14 +2,14 @@
   <div class="finish">
     <button
       class="finish-button"
-      [hidden]="!medicalTreatment.active"
+      *ngIf="medicalTreatment.active"
       (click)="releasePatient()"
     >
       Finish treatment
     </button>
     <button
       class="finish-button"
-      [hidden]="medicalTreatment.active"
+      *ngIf="!medicalTreatment.active"
       (click)="downloadPdf()"
     >
       Download pdf
