@@ -54,7 +54,6 @@ export class ApplicationMainComponent implements OnInit {
       } else if (this.router.url.includes('/statistics')) {
         this.name = 'Hospital Statistics';
       }
-
     });
   }
 

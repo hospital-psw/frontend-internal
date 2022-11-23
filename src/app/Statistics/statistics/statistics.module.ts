@@ -10,8 +10,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TestComponent } from './Components/test/test.component';
 
-
-
 @NgModule({
   declarations: [
     StatisticsComponent,
@@ -25,7 +23,7 @@ import { TestComponent } from './Components/test/test.component';
     MaterialModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
-  ]
+    MatSortModule,
+  ],
 })
-export class StatisticsModule { }
+export class StatisticsModule {}
