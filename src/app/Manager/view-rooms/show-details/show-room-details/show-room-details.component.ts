@@ -4,6 +4,8 @@ import { IWorkingHours } from 'src/app/Manager/Model/WorkingHours';
 import { RoomService } from '../../../service/room-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
+import { IRelocationRequest } from 'src/app/schedule-relocation/model/RelocationRequest';
+import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationRequestDisplay';
 
 @Component({
   selector: 'app-show-room-details',
@@ -23,8 +25,11 @@ export class ShowRoomDetailsComponent implements OnInit {
   @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
+  relocationRequests: IRelocationRequestDisplay[]
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   checkWorkingHours(): void {
     if (this.room.workingHours == null) {
