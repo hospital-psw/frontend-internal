@@ -1,4 +1,5 @@
-<table mat-table [dataSource]="appointments" class="mat-elevation-z8">
+<div>
+  <table mat-table [dataSource]="appointments" class="mat-elevation-z8">
 
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>Date</th>
@@ -24,3 +25,4 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+</div>
