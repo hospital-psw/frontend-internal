@@ -21,6 +21,7 @@ import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.modul
 import { TabsDetailsComponent } from './show-details/tabs-details/tabs-details.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { RelocationsComponent } from './show-details/relocations/relocations.component';
+import { AppointmentsComponent } from './show-details/appointments/appointments.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { RelocationsComponent } from './show-details/relocations/relocations.com
     ShowRoomDetailsComponent,
     TabsDetailsComponent,
     RelocationsComponent,
+    AppointmentsComponent,
   ],
   imports: [
     CommonModule,
