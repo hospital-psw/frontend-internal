@@ -16,7 +16,7 @@
             </mat-radio-group>
 
           <div>
-            <button mat-button matStepperNext>Next</button>
+            <button mat-button matStepperNext (click)="decideRenovationType()">Next</button>
           </div>
         </form>
       </mat-step>
@@ -25,7 +25,7 @@
         <form [formGroup]="roomForm">
           <mat-form-field appearance="fill">
             <mat-label>Room</mat-label>
-            <mat-select formControlName="room1" (selectionChange)="findPossibleRoomsForRenovation($event)">
+            <mat-select formControlName="room1" (selectionChange)="findPossibleRoomsForMergeRenovation($event)">
               <mat-option
                 value="{{ room.room.id }}"
                 *ngFor="let room of rooms1"

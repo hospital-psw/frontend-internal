@@ -37,6 +37,11 @@ export class StepperComponent implements OnInit{
     })
   }
 
+  decideRenovationType(){
+    if(this.renovationTypeForm.value.type == 1)
+      this.findPossibleRoomsForSplitRenovation()
+  }
+
   findRoomById(id: number){
     return this.rooms1.filter(room => room.room.id == id)[0]
   }
@@ -45,14 +50,13 @@ export class StepperComponent implements OnInit{
     return this.rooms1.filter(room => room.room.id != this.firstSelectedRoom.room.id)
   }
 
-  findPossibleRoomsForRenovation(event: any){
+  findPossibleRoomsForMergeRenovation(event: any){
     this.rooms2 = []
     this.firstSelectedRoom = this.findRoomById(event.value)
     console.log(this.firstSelectedRoom)
     this.filterPossibleRooms().forEach(room => {
-      //console.log(room)
       if(this.firstSelectedRoom.width == 1){
-        if((this.firstSelectedRoom.x + this.firstSelectedRoom.width == room.x || this.firstSelectedRoom.x == room.x + room.width || this.firstSelectedRoom.x + this.firstSelectedRoom.width + 0.5 == room.x || this.firstSelectedRoom.x == room.x + room.width - 0.5) && this.firstSelectedRoom.z == room.z) {
+        if(this.isNextdoorRoom(room)) {
           this.rooms2.push(room)
         }
       }
@@ -61,8 +65,19 @@ export class StepperComponent implements OnInit{
           this.rooms2.push(room)
         }
       }
-
     });
+  }
+
+  findPossibleRoomsForSplitRenovation(){
+    this.rooms1 = this.rooms1.filter(room => room.width > 1)
+  }
+
+  isNextdoorRoom(room: IRoomMap){
+    if((this.firstSelectedRoom.x + this.firstSelectedRoom.width == room.x || this.firstSelectedRoom.x == room.x + room.width
+      || this.firstSelectedRoom.x + this.firstSelectedRoom.width + 0.5 == room.x || this.firstSelectedRoom.x == room.x + room.width - 0.5)
+      && this.firstSelectedRoom.z == room.z)
+      return true
+    return false
   }
 
   closeStepper(){
