@@ -18,6 +18,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { StepperComponent } from 'src/app/schedule-relocation/stepper/stepper.component';
 import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.module';
+import { TabsDetailsComponent } from './show-details/tabs-details/tabs-details.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { RelocationsComponent } from './show-details/relocations/relocations.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.modul
     ShowSearchedRoomsComponent,
     ShowEquipmentComponent,
     ShowRoomDetailsComponent,
+    TabsDetailsComponent,
+    RelocationsComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +43,7 @@ import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.modul
     MatTableModule,
     MatButtonModule,
     StepperModule,
+    MatTabsModule
   ],
   exports: [ViewRoomsComponent],
 })
