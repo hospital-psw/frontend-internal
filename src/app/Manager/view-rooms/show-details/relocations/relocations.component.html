@@ -3,14 +3,14 @@
     <ng-container matColumnDef="from">
         <th mat-header-cell *matHeaderCellDef>From</th>
         <td mat-cell *matCellDef="let element">
-          {{ convertEnum(element.equipmentType) }}
+          {{ element.fromRoomNumber}}
         </td>
     </ng-container>
 
     <ng-container matColumnDef="to">
         <th mat-header-cell *matHeaderCellDef>To</th>
         <td mat-cell *matCellDef="let element">
-          {{ convertEnum(element.equipmentType) }}
+          {{ element.toRoomNumber }}
         </td>
     </ng-container>
 

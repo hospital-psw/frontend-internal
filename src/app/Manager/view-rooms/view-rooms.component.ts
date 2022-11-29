@@ -22,6 +22,8 @@ import { IBuilding } from '../Model/Building';
 import { ISearchCriteriaDto } from '../Model/Dto/SearchCriteriaDto';
 import { ToastrService } from 'ngx-toastr';
 import { IEquipment } from '../Model/Equipment';
+import { IRelocationRequestDisplay } from '../Model/RelocationRequestDisplay';
+import { RelocationRequestService } from '../service/relocation-request-service';
 
 @Component({
   selector: 'app-view-rooms',
@@ -35,7 +37,8 @@ export class ViewRoomsComponent
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
     private ref: ApplicationRef,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private relocationRequestService: RelocationRequestService
   ) {}
 
   private scene?: SceneBuilder;
@@ -76,6 +79,7 @@ export class ViewRoomsComponent
 
   selectedEquipment: string = '-1';
   public searchedRooms: IRoom[] = [];
+  relocationRequests: IRelocationRequestDisplay[] = []
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -220,6 +224,7 @@ export class ViewRoomsComponent
             .subscribe((data) => {
               this.equipments = data;
             });
+          this.relocationRequestService.getRelocationRequests(this.clickedRoom.id).subscribe((data) => { this.relocationRequests = data;})
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;

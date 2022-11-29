@@ -6,7 +6,7 @@ import { IRelocationRequestDisplay } from '../Model/RelocationRequestDisplay';
 @Injectable({
   providedIn: 'root',
 })
-export class VacationRequestsService {
+export class RelocationRequestService {
   constructor(private http: HttpClient) {}
 
   getRelocationRequests(roomId: number): Observable<IRelocationRequestDisplay[]> {

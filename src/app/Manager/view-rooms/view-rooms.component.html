@@ -90,6 +90,7 @@
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
       [equipment]="equipments"
+      [relocationRequests]="relocationRequests"
     ></app-show-room-details>
     <app-show-searched-rooms
       (newItemEvent)="sendRoomId($event)"
