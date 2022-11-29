@@ -40,14 +40,15 @@ export class ViewRoomsComponent
 
   private scene?: SceneBuilder;
   private camera?: CameraBuilder;
-  private floor: number = -1;
-  private building: number = -1;
+  public floor: number = -1;
+  public building: number = -1;
   public clickedRoom?: IRoom;
   private renderer?: THREE.WebGLRenderer;
   private sub?: Subscription;
 
   element: IEquipment;
   doRelocate: boolean = false;
+  doRenovate: boolean = false
   rooms: IRoomMap[] = [];
   equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
@@ -382,5 +383,9 @@ export class ViewRoomsComponent
 
   closeStepper() {
     this.doRelocate = false;
+  }
+
+  renovate(){
+    this.doRenovate = true
   }
 }

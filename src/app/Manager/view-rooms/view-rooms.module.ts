@@ -16,8 +16,9 @@ import { ShowSearchedRoomsComponent } from './show-searched-rooms/show-searched-
 import { ShowEquipmentComponent } from './show-details/show-equipment/show-equipment.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
-import { StepperComponent } from 'src/app/schedule-relocation/stepper/stepper.component';
 import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.module';
+import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/stepper.module';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.modul
     MatTableModule,
     MatButtonModule,
     StepperModule,
+    RenovationStepperModule
   ],
   exports: [ViewRoomsComponent],
 })

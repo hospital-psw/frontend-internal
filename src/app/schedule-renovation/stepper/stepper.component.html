@@ -1,0 +1,60 @@
+<div class="stepper-container">
+  <div class="stepper-wrapper">
+    <mat-icon class="close-icon" (click)="closeStepper()">close</mat-icon>
+
+    <mat-stepper
+      orientation="horizontal"
+      [linear]="true"
+      class="stepper"
+      #stepper
+    >
+      <mat-step [stepControl]="renovationTypeForm">
+        <form [formGroup]="renovationTypeForm">
+            <mat-radio-group aria-label="Select an option" formControlName="type">
+              <mat-radio-button value=0>Joining rooms</mat-radio-button>
+              <mat-radio-button value=1>Splitting room</mat-radio-button>
+            </mat-radio-group>
+
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="roomForm">
+        <form [formGroup]="roomForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Room</mat-label>
+            <mat-select formControlName="room1" (selectionChange)="findPossibleRoomsForRenovation($event)">
+              <mat-option
+                value="{{ room.room.id }}"
+                *ngFor="let room of rooms1"
+              >
+                {{ room.room.number }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" *ngIf="renovationTypeForm.value.type==0 && roomForm.value.room1 !== null">
+            <mat-label>Room</mat-label>
+            <mat-select formControlName="room2">
+              <mat-option
+                value="{{ room.room.id }}"
+                *ngFor="let room of rooms2"
+              >
+                {{ room.room.number }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            <button mat-button matStepperPrevious>Previous</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+
+    </mat-stepper>
+  </div>
+</div>

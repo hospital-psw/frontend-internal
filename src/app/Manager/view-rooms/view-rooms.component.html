@@ -97,6 +97,14 @@
       [searchedRooms]="searchedRooms"
     ></app-show-searched-rooms>
   </div>
+  <button *ngIf="floor !== -1 && building !== -1" (click)="renovate()">Renovation</button>
+  <app-renovation-stepper
+    *ngIf="doRenovate"
+    (close)="doRenovate=false"
+    [floor]="floor"
+    [building]="building"
+  >
+  </app-renovation-stepper>
   <app-stepper
     *ngIf="doRelocate"
     [equipment]="element"
