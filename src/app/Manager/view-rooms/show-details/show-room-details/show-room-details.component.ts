@@ -7,6 +7,7 @@ import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRelocationRequest } from 'src/app/schedule-relocation/model/RelocationRequest';
 import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationRequestDisplay';
 import { RelocationRequestService } from '../../../service/relocation-request-service';
+import { IAppointmentDisplay } from 'src/app/Manager/Model/AppointmentDisplay';
 
 @Component({
   selector: 'app-show-room-details',
@@ -23,6 +24,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   @Input() room: any;
   @Input() equipment: IEquipment[];
   @Input() relocationRequests: IRelocationRequestDisplay[];
+  @Input() appointments: IAppointmentDisplay[];
   @Output() notify = new EventEmitter<any>();
   @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
