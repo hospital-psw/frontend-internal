@@ -22,6 +22,7 @@ import { TabsDetailsComponent } from './show-details/tabs-details/tabs-details.c
 import {MatTabsModule} from '@angular/material/tabs';
 import { RelocationsComponent } from './show-details/relocations/relocations.component';
 import { AppointmentsComponent } from './show-details/appointments/appointments.component';
+import { RenovationsComponent } from './show-details/renovations/renovations/renovations.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AppointmentsComponent } from './show-details/appointments/appointments.
     TabsDetailsComponent,
     RelocationsComponent,
     AppointmentsComponent,
+    RenovationsComponent,
   ],
   imports: [
     CommonModule,

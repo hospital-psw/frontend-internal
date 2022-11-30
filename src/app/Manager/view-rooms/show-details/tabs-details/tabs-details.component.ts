@@ -1,3 +1,4 @@
+import { IRenovationRequestDisplay } from './../../../Model/RenovationRequestDisplay';
 import { Component } from '@angular/core';
 import {  OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IAppointmentDisplay } from 'src/app/Manager/Model/AppointmentDisplay';
@@ -16,6 +17,7 @@ export class TabsDetailsComponent {
   @Input() relocationRequests: IRelocationRequestDisplay[];
   @Input() appointments: IAppointmentDisplay[]
   @Input() equipment: IEquipment[];
+  @Input() renovations: IRenovationRequestDisplay[];
 
   @Output() relocateNotify = new EventEmitter<any>();
   element: IEquipment;

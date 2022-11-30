@@ -1,0 +1,37 @@
+<div>
+    <table mat-table [dataSource]="renovations" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="renovationType">
+        <th mat-header-cell *matHeaderCellDef>Type of renovation</th>
+        <td mat-cell *matCellDef="let element">
+          {{ convertEnum(element.renovationType) }}
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="startTime">
+          <th mat-header-cell *matHeaderCellDef>StartTime</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.startTime | date: 'dd.MM.yyyy. HH:mm'}}
+          </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="duration">
+          <th mat-header-cell *matHeaderCellDef>Duration</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.duration }}
+          </td>
+      </ng-container>
+  
+      <!--
+      <ng-container matColumnDef="button">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="relocateEquipment(element)">Move</button>
+        </td>
+      </ng-container>
+      -->
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
