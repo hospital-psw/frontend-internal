@@ -74,7 +74,9 @@
       <canvas class="canvas" height="300px" width="300px"></canvas>
     </div>
   </div>
-  <div ngSwitch="switchDetails" class="details">
+
+  <div ngSwitch="switchDetails">
+    <button class="renovation-btn" *ngIf="floor !== -1 && building !== -1" (click)="renovate()">Renovation</button>
     <app-show-building-details
       (notify)="updateBuildingInfo()"
       *ngIf="this.showBuildingDetails"
@@ -99,7 +101,15 @@
       *ngIf="this.showSearchedRooms"
       [searchedRooms]="searchedRooms"
     ></app-show-searched-rooms>
+
   </div>
+  <app-renovation-stepper
+    *ngIf="doRenovate"
+    (close)="doRenovate=false"
+    [floor]="floor"
+    [building]="building"
+  >
+  </app-renovation-stepper>
   <app-stepper
     *ngIf="doRelocate"
     [equipment]="element"

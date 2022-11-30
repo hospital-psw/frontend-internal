@@ -82,8 +82,7 @@ export class StepperComponent implements OnInit {
     const endTime1 = new Date(this.periodForm.controls['endDate'].value);
     this.relocationService
       .recommendDateTimes({
-        fromRoomId: this.equipment.room.id,
-        toRoomId: this.destinationRoomForm.controls.room.value,
+        roomsId: [this.equipment.room.id, this.destinationRoomForm.controls.room.value],
         fromTime: startTime1,
         toTime: endTime1,
         duration: this.durationForm.controls.duration.value,
