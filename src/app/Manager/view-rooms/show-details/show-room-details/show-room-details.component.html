@@ -6,7 +6,7 @@
   >
     <div class="blocks">
       <div class="details">
-        <mat-form-field>
+        <mat-form-field class="detail">
           <mat-label>Room number</mat-label>
           <input
             required
@@ -17,9 +17,7 @@
             #number
           />
         </mat-form-field>
-      </div>
-      <div class="details">
-        <mat-form-field>
+        <mat-form-field class="detail">
           <mat-label>Room purpose</mat-label>
           <input
             required
@@ -35,7 +33,7 @@
         [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
         class="details"
       >
-        <mat-form-field>
+        <mat-form-field class="detail">
           <mat-label>Working hours start</mat-label>
           <input
             required
@@ -46,12 +44,7 @@
             #start
           />
         </mat-form-field>
-      </div>
-      <div
-        [style.visibility]="showWorkingHours === true ? 'visible' : 'hidden'"
-        class="details"
-      >
-        <mat-form-field>
+        <mat-form-field class="detail">
           <mat-label>Working hours end</mat-label>
           <input
             required
@@ -85,8 +78,11 @@
       </div>
     </div>
   </form>
+  <!--
   <app-show-equipment
     (notifyRelocation)="relocate($event)"
     [equipment]="equipment"
   ></app-show-equipment>
+  -->
+  <app-tabs-details [relocationRequests]="relocationRequests" [appointments]="appointments" [equipment]="equipment"></app-tabs-details>
 </div>

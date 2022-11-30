@@ -18,7 +18,8 @@
 }
 
 .info{
-  width: 70%;
+  width: 65%;
+  height: 100px;
   display: flex;
   flex-direction: column;
 }
@@ -60,6 +61,10 @@
   padding: 5px;
   height: 50px;
   text-align: center;
+}
+
+.details{
+  margin-top: 5%;
 }
 
 
