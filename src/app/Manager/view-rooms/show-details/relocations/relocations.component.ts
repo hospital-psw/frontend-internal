@@ -13,9 +13,15 @@ export class RelocationsComponent {
 
   displayedColumns: string[] = ['from', 'to', 'equipmentType', 'quantity' ,'startTime', 'duration'];
   @Input() relocationRequests: IRelocationRequestDisplay[]
-  
+  newDate: Date
   
   convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
+  }
+
+  formatDate(date: Date): Date {
+    this.newDate = new Date(date)
+    this.newDate.setMonth(date.getMonth() + 1)
+    return this.newDate
   }
 }
