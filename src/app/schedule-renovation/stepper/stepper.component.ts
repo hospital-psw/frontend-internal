@@ -40,7 +40,9 @@ export class StepperComponent implements OnInit{
     newName1: new FormControl(),
     newName2: new FormControl(),
     newPurpose1: new FormControl(),
-    newPurpose2: new FormControl()
+    newPurpose2: new FormControl(),
+    newCapacity1: new FormControl(),
+    newCapacity2: new FormControl()
   })
 
   rooms1: IRoomMap[] = []
@@ -122,7 +124,7 @@ export class StepperComponent implements OnInit{
       roomsId.push(this.roomForm.controls.room2.value)
     } else {
       roomsId.push(this.roomForm.controls.room1.value)
-    } 
+    }
     this.renovationService
       .recommendDateTimes({
         roomsId: roomsId,
@@ -148,7 +150,7 @@ export class StepperComponent implements OnInit{
       roomsId.push(this.roomForm.controls.room1.value)
       renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value})
       renovationDetails.push({newRoomName: this.newInfoForm.controls.newName2.value, newRoomPurpose: this.newInfoForm.controls.newPurpose2.value})
-    } 
+    }
     this.renovationService
       .createRenovationRequest({
         renovationType: parseInt(this.renovationTypeForm.controls.type.value),
