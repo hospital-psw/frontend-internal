@@ -20,8 +20,8 @@ export class RelocationsComponent {
   }
 
   formatDate(date: Date): Date {
-    this.newDate = new Date(date)
-    this.newDate.setMonth(date.getMonth() + 1)
+    var newDate = new Date(date)
+    newDate.setMonth(date.getMonth() + 1)
     return this.newDate
   }
 }
