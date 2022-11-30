@@ -19,6 +19,22 @@ export class StepperComponent implements OnInit{
     room2: new FormControl(null)
   })
 
+  periodForm = new FormGroup({
+    startDate: new FormControl(null),
+    endDate: new FormControl(null)
+  })
+
+  durationForm = new FormGroup({
+    duration: new FormControl()
+  })
+
+  newInfoForm = new FormGroup({
+    newName1: new FormControl(''),
+    newName2: new FormControl(''),
+    newPurpose1: new FormControl(''),
+    newPurpose2: new FormControl('')
+  })
+
   rooms1: IRoomMap[] = []
   rooms2: IRoomMap[] = []
   firstSelectedRoom: IRoomMap
