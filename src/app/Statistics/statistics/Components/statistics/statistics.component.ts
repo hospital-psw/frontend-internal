@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StatisticsService } from '../../Services/statistics.service';
 import { Chart, registerables } from 'chart.js';
 import { DataTableItem } from '../data-table/data-table-datasource';
+import { DoctorService } from '../../Services/doctor.service';
 
 @Component({
   selector: 'app-statistics',
@@ -16,8 +17,10 @@ export class StatisticsComponent implements OnInit {
   currentTab: number = 0;
   max: number = 0;
   tableData: DataTableItem[] = [];
+  vacationsChart: any = [];
+  doctors:any = [];
 
-  constructor(private service: StatisticsService) {
+  constructor(private service: StatisticsService, private doctorService: DoctorService) {
     Chart.register(...registerables);
   }
 
@@ -43,6 +46,9 @@ export class StatisticsComponent implements OnInit {
   chart_data: any = [];
 
   ngOnInit(): void {
+    this.doctorService.getDoctors().subscribe((data) => {
+      this.doctors = data;
+    });
     this.service.getStatistics().subscribe((data) => {
       this.chart_data = data;
 
@@ -325,5 +331,8 @@ export class StatisticsComponent implements OnInit {
         },
       });
     });
+  }
+  getVacationStatistic(event: any){
+
   }
 }
