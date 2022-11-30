@@ -21,7 +21,12 @@ import { ShowAllVacationRequestsComponent } from './vacation-request/show-all-va
 import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+import { LoginPageComponent } from './login/components/login-page/login-page.component';
 const routes: Routes = [
+  {
+    path: '',
+    component: LoginPageComponent,
+  },
   {
     path: 'appointments',
     component: AppointmentsComponent,

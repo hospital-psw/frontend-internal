@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './common/auth/service/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'frontend-internal';
+  isLogged = false
+  private userSub: Subscription;
+
+  constructor(private authService: AuthService){}
+
+  ngOnInit(): void{
+    this.authService.autoLogin()
+    this.userSub = this.authService.user.subscribe(user =>{
+      this.isLogged = !!user
+      console.log(this.isLogged)    
+    });
+  }
 }

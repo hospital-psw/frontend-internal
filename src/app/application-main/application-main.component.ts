@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import {
   transition,
   animate,
@@ -7,6 +8,7 @@ import {
   state,
   style,
 } from '@angular/animations';
+import { AuthService } from '../common/auth/service/auth.service';
 
 @Component({
   selector: 'app-application-main',
@@ -28,8 +30,10 @@ import {
 export class ApplicationMainComponent implements OnInit {
   name: string;
   hamburger: boolean;
+  private userSub: Subscription;
+  isLogged = false
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {
     this.router.events.subscribe(() => {
       if (this.router.url == '/appointments') {
         this.name = 'Appointments';
@@ -61,6 +65,10 @@ export class ApplicationMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.hamburger = true;
+    this.authService.autoLogin()
+    this.userSub = this.authService.user.subscribe(user =>{
+      this.isLogged = !!user    
+    });
   }
 
   handleHamburger(valueEmitted: any) {
