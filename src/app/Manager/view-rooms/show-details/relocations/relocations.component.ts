@@ -19,9 +19,4 @@ export class RelocationsComponent {
     return EquipmentTypeEnum[type];
   }
 
-  formatDate(date: Date): Date {
-    var newDate = new Date(date)
-    newDate.setMonth(date.getMonth() + 1)
-    return this.newDate
-  }
 }
