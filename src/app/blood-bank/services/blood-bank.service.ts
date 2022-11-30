@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { BloodBank } from '../model/blood-bank.model';
+import { MonthlyTransfer } from '../model/MonthlyTransfer.model';
 
 @Injectable({
   providedIn: 'root',
@@ -92,6 +93,13 @@ export class BloodBankService {
         bloodType +
         '/' +
         amount
+    );
+  }
+
+  updateMonthly(id: Number, mt: MonthlyTransfer) {
+    return this.http.patch<any>(
+      this.apiHost + `api/BloodBank/monthlyTransferConfiguration/${id}`,
+      mt
     );
   }
 }
