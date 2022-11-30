@@ -21,6 +21,7 @@ export class RenovationService {
   }
 
   createRenovationRequest(request: IRenovationRequest) {
+    console.log(request);
     return this.http.post<IRenovationRequest>(
       `http://localhost:16177/api/renovation/createRenovationRequest`,
       request
