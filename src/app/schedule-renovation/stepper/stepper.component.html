@@ -82,15 +82,31 @@
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext (click)="recommend()">
+              Next
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <mat-spinner *ngIf="showSpinner"></mat-spinner>
+        <form [formGroup]="startTimeForm">
+          <mat-selection-list [multiple]="false" formControlName="startTime">
+            <mat-list-option
+              value="{{ dateTime }}"
+              *ngFor="let dateTime of dateTimes"
+            >
+              {{ dateTime | date: "dd.MM.yyyy HH:mm" }}
+            </mat-list-option>
+          </mat-selection-list>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>
               Next
             </button>
           </div>
         </form>
       </mat-step>
-
-
-
 
       <!-- new info about rooms/room -->
       <mat-step>
@@ -117,7 +133,7 @@
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext>
-              Next
+              Schedule
             </button>
           </div>
         </form>

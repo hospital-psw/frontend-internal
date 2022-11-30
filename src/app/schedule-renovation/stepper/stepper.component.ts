@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
 import { RoomService } from 'src/app/Manager/service/room-service.service';
+import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 
 @Component({
   selector: 'app-renovation-stepper',
@@ -15,18 +16,22 @@ export class StepperComponent implements OnInit{
   });
 
   roomForm = new FormGroup({
-    room1: new FormControl(null),
-    room2: new FormControl(null)
+    room1: new FormControl(),
+    room2: new FormControl()
   })
 
   periodForm = new FormGroup({
-    startDate: new FormControl(null),
-    endDate: new FormControl(null)
+    startDate: new FormControl(),
+    endDate: new FormControl()
   })
 
   durationForm = new FormGroup({
     duration: new FormControl()
   })
+
+  startTimeForm = new FormGroup({
+    startTime: new FormControl([]),
+  });
 
   newInfoForm = new FormGroup({
     newName1: new FormControl(''),
@@ -43,7 +48,10 @@ export class StepperComponent implements OnInit{
 
   @Output() close = new EventEmitter()
 
-  constructor(private roomService: RoomService) {}
+  dateTimes: Date[] = [];
+  showSpinner: boolean = false;
+
+  constructor(private roomService: RoomService, private renovationService: RenovationService) {}
 
 
   ngOnInit(): void {
@@ -98,5 +106,25 @@ export class StepperComponent implements OnInit{
 
   closeStepper(){
     this.close.emit()
+  }
+
+  recommend() {
+    console.log(this.roomForm.controls.room1.value)
+    this.dateTimes = [];
+    this.showSpinner = true;
+    const startTime1 = new Date(this.periodForm.controls['startDate'].value);
+    const endTime1 = new Date(this.periodForm.controls['endDate'].value);
+    this.renovationService
+      .recommendDateTimes({
+        roomsId: [this.roomForm.controls.room1.value, this.roomForm.controls.room2.value],
+        fromTime: startTime1,
+        toTime: endTime1,
+        duration: this.durationForm.controls.duration.value,
+      })
+      .subscribe((data) => {
+        this.showSpinner = false;
+        this.dateTimes = data;
+        console.log(data);
+      });
   }
 }
