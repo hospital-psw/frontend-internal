@@ -24,10 +24,6 @@ import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blo
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 const routes: Routes = [
   {
-    path: '',
-    component: LoginPageComponent,
-  },
-  {
     path: 'appointments',
     component: AppointmentsComponent,
   },
