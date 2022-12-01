@@ -11,7 +11,7 @@ import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationReque
 export class RelocationsComponent {
   constructor(private roomService: RoomService){}
 
-  displayedColumns: string[] = ['from', 'to', 'equipmentType', 'quantity' ,'startTime', 'duration']; //, 'button'
+  displayedColumns: string[] = ['from', 'equipmentType', 'quantity' ,'startTime', 'duration', 'button']; //, 'to'
   @Input() relocationRequests: IRelocationRequestDisplay[]
   newDate: Date
   
@@ -23,8 +23,13 @@ export class RelocationsComponent {
     const now = new Date().valueOf()
     const relocation = new Date(date).valueOf()
     var hours = relocation - now
+    if(hours > 86400000){
+      console.log('lepo moze')
+      return true;
+    }
     console.log(hours)
-    return true;
+    console.log('ne moze')
+    return false;
   }
 
 }
