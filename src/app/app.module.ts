@@ -38,6 +38,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

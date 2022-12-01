@@ -27,6 +27,7 @@ import { RelocationRequestService } from '../service/relocation-request-service'
 import { IAppointmentDisplay } from '../Model/AppointmentDisplay';
 import { trackByHourSegment } from 'angular-calendar/modules/common/util';
 import { AppointmentService } from '../service/appointment-service';
+import { IRenovationRequestDisplay } from '../Model/RenovationRequestDisplay';
 
 @Component({
   selector: 'app-view-rooms',
@@ -47,14 +48,15 @@ export class ViewRoomsComponent
 
   private scene?: SceneBuilder;
   private camera?: CameraBuilder;
-  private floor: number = -1;
-  private building: number = -1;
+  public floor: number = -1;
+  public building: number = -1;
   public clickedRoom?: IRoom;
   private renderer?: THREE.WebGLRenderer;
   private sub?: Subscription;
 
   element: IEquipment;
   doRelocate: boolean = false;
+  doRenovate: boolean = false
   rooms: IRoomMap[] = [];
   equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
@@ -85,6 +87,7 @@ export class ViewRoomsComponent
   public searchedRooms: IRoom[] = [];
   relocationRequests: IRelocationRequestDisplay[] = []
   appointments: IAppointmentDisplay[] = []
+  renovations: IRenovationRequestDisplay[] = []
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -231,6 +234,7 @@ export class ViewRoomsComponent
             });
           this.relocationRequestService.getRelocationRequests(this.clickedRoom.id).subscribe((data) => { this.relocationRequests = data;})
           this.appointmentService.getAppointments(this.clickedRoom.id).subscribe((data) => {this.appointments = data;})
+          // pozovem servis da dobavim sve renovacije
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;
@@ -393,5 +397,9 @@ export class ViewRoomsComponent
 
   closeStepper() {
     this.doRelocate = false;
+  }
+
+  renovate(){
+    this.doRenovate = true
   }
 }
