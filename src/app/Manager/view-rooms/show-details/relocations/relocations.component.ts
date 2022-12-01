@@ -22,7 +22,7 @@ export class RelocationsComponent {
   relocations: IRelocationRequestDisplay[]
   
   ngOnInit(): void {
-    this.relocationRequestService.getRelocationRequests(this.room.id).subscribe((data) => { this.relocations = data;})
+    this.relocationRequestService.getRelocationRequests(this.room.id).subscribe((data) => { this.relocationRequests = data;})
   }
 
   convertEnum(type: number): string {
