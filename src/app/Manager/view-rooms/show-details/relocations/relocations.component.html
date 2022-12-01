@@ -1,5 +1,5 @@
 <div>
-  <table mat-table [dataSource]="relocationRequests" class="mat-elevation-z8">
+  <table mat-table [dataSource]="relocations" class="mat-elevation-z8">
 
     <ng-container matColumnDef="from">
         <th mat-header-cell *matHeaderCellDef>From</th>
@@ -46,7 +46,7 @@
         <button *ngIf="check24h(element.startTime)"
             mat-icon-button
             class="button1"
-            (click)="check24h(element.startTime)"
+            (click)="decline(element.id)"
           >
             Decline
           </button>
