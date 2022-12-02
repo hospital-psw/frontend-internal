@@ -74,7 +74,7 @@
       <canvas class="canvas" height="300px" width="300px"></canvas>
     </div>
   </div>
-  <div ngSwitch="switchDetails">
+  <div ngSwitch="switchDetails" class="details">
     <app-show-building-details
       (notify)="updateBuildingInfo()"
       *ngIf="this.showBuildingDetails"
@@ -89,6 +89,8 @@
       (notify)="updateView()"
       *ngIf="this.showRoomDetails"
       [room]="clickedRoom"
+      [relocationRequests]="relocationRequests"
+      [appointments]="appointments"
       [equipment]="equipments"
     ></app-show-room-details>
     <app-show-searched-rooms
