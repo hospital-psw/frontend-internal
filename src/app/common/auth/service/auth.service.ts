@@ -1,11 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { da } from "date-fns/locale";
 import { ToastrService } from "ngx-toastr";
-import { BehaviorSubject, tap} from "rxjs"
+import { BehaviorSubject, catchError, tap, throwError} from "rxjs"
 import { environment } from "src/environments/environment";
-import { JWTData } from "../interface/JWTData";
 import { LoginDTO } from "../interface/LoginDTO";
 import { LoginResponseDTO } from "../interface/LoginResponseDTO";
 import { User } from "../model/user.model";
@@ -39,16 +37,10 @@ export class AuthService{
     public login(data: LoginDTO){
         return this.http.post<LoginResponseDTO>(this.api, data).pipe(tap(response => {
             this.handleLogin(response);
-        }))
+        })).pipe(catchError(this.handleError))
     }
 
     private handleLogin(dto: LoginResponseDTO){
-        //const data : any = this.decoder.decodeToken(token)        
-        // const expirationDate = new Date(data.exp)
-        // const user = new User(data.id, data.email, data.role, token, expirationDate)
-        // this.user.next(user)
-        // this.autoLogout(data.exp)
-        // console.log(user)
         const expirationDate = new Date(new Date().getTime() + dto.expiresIn*60000);
         const user = new User(dto.id, dto.email, dto.token, expirationDate);
         this.user.next(user);
@@ -89,5 +81,13 @@ export class AuthService{
         this.tokenExpirationTimer = setTimeout(() =>{
             this.logout();
         }, expireIn)
+    }
+
+   private handleError(errorResp: HttpErrorResponse){
+        let errorMessage = "An unknown error occurred!"
+        if(!errorResp.error || errorResp.error.type){
+            return throwError(errorMessage);
+        }
+        return throwError(errorResp.error);
     }
 }

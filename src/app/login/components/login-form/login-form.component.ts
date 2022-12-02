@@ -31,9 +31,9 @@ export class LoginFormComponent {
         this.router.navigate(['appointments'])
         this.isLogging=false
       },
-      (error: HttpErrorResponse) =>{
+      message =>{
         this.showError = true
-        this.errorMessage = error.error
+        this.errorMessage = message;
         form.resetForm();
       }
     )
