@@ -234,8 +234,16 @@ export class ViewRoomsComponent
             .subscribe((data) => {
               this.equipments = data;
             });
-          this.relocationRequestService.getRelocationRequests(this.clickedRoom.id).subscribe((data) => { this.relocationRequests = data;})
-          this.appointmentService.getAppointments(this.clickedRoom.id).subscribe((data) => {this.appointments = data;})
+          this.relocationRequestService
+            .getRelocationRequests(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.relocationRequests = data;
+            });
+          this.appointmentService
+            .getAppointments(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.appointments = data;
+            });
           this.renovationService.getRenovations(this.clickedRoom.id).subscribe((data) => {this.renovations = data;})
           this.cdRef.detectChanges();
           this.showFloorDetails = false;

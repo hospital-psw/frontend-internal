@@ -6,17 +6,23 @@ import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationReque
 @Component({
   selector: 'app-relocations',
   templateUrl: './relocations.component.html',
-  styleUrls: ['./relocations.component.scss']
+  styleUrls: ['./relocations.component.scss'],
 })
 export class RelocationsComponent {
-  constructor(private roomService: RoomService){}
+  constructor(private roomService: RoomService) {}
 
-  displayedColumns: string[] = ['from', 'to', 'equipmentType', 'quantity' ,'startTime', 'duration'];
-  @Input() relocationRequests: IRelocationRequestDisplay[]
-  newDate: Date
-  
+  displayedColumns: string[] = [
+    'from',
+    'to',
+    'equipmentType',
+    'quantity',
+    'startTime',
+    'duration',
+  ];
+  @Input() relocationRequests: IRelocationRequestDisplay[];
+  newDate: Date;
+
   convertEnum(type: number): string {
     return EquipmentTypeEnum[type];
   }
-
 }

@@ -35,6 +35,19 @@
   justify-content: space-between;
 }
 
+.combo{
+  width: 95%;
+  //display:flex;
+  //justify-content: left;
+  //left: 5%;
+  float: left !important;
+}
+
+.search-doctors{
+  width:20%;
+  float: left;
+}
+
 /* ===== Scrollbar CSS from https://codepen.io/stephenpaton-tech/full/JjRvGmY ===== */
   /* Firefox */
   * {
