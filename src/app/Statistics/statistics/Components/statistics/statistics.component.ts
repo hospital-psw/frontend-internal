@@ -17,7 +17,7 @@ export class StatisticsComponent implements OnInit {
   currentTab: number = 0;
   max: number = 0;
   tableData: DataTableItem[] = [];
-  chart5_data: any = [0,0,0,0,0,0,0,0,0,0,0,0];
+  chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   vacationsChart: Chart = new Chart('chart5', {
     type: 'line',
     data: {
@@ -77,10 +77,13 @@ export class StatisticsComponent implements OnInit {
         },
       },
     },
-  });;
-  doctors:any = [];
+  });
+  doctors: any = [];
 
-  constructor(private service: StatisticsService, private doctorService: DoctorService) {
+  constructor(
+    private service: StatisticsService,
+    private doctorService: DoctorService
+  ) {
     Chart.register(...registerables);
   }
 
@@ -392,9 +395,9 @@ export class StatisticsComponent implements OnInit {
       });
     });
   }
-  getVacationStatistic(event: any){
+  getVacationStatistic(event: any) {
     //pozvati funkciju za dobijanje podataka i proslediti event.value
-    console.log("doktor id:");
+    console.log('doktor id:');
     console.log(event.value);
     this.vacationsChart.destroy();
     this.service.getVacationStatistics(event.value).subscribe((data) => {

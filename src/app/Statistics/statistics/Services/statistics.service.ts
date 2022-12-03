@@ -12,7 +12,9 @@ export class StatisticsService {
     return this._http.get(`${environment.apiStatistics}/getStats`);
   }
 
-  getVacationStatistics(doctorId: number){
-    return this._http.get(`${environment.apiStatistics}/getVacationStats/${doctorId}`);
+  getVacationStatistics(doctorId: number) {
+    return this._http.get(
+      `${environment.apiStatistics}/getVacationStats/${doctorId}`
+    );
   }
 }

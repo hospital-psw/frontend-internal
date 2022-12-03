@@ -19,7 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { StepperComponent } from 'src/app/schedule-relocation/stepper/stepper.component';
 import { StepperModule } from 'src/app/schedule-relocation/stepper/stepper.module';
 import { TabsDetailsComponent } from './show-details/tabs-details/tabs-details.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { RelocationsComponent } from './show-details/relocations/relocations.component';
 import { AppointmentsComponent } from './show-details/appointments/appointments.component';
 
@@ -45,7 +45,7 @@ import { AppointmentsComponent } from './show-details/appointments/appointments.
     MatTableModule,
     MatButtonModule,
     StepperModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   exports: [ViewRoomsComponent],
 })
