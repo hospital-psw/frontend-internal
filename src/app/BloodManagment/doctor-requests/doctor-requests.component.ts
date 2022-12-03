@@ -13,7 +13,7 @@ export class DoctorRequestsComponent implements OnInit {
   constructor(
     private bloodAcquisitionService: BloodAcquisitionService,
     private router: Router
-  ) {}
+  ) { }
 
   dataSource: Object[];
   displayedColumns: string[] = [
@@ -26,7 +26,7 @@ export class DoctorRequestsComponent implements OnInit {
 
   ngOnInit(): void {
     this.bloodAcquisitionService
-      .getBloodAcquisitionsForSpecificDoctor(2)
+      .getBloodAcquisitionsForSpecificDoctor(8)
       .subscribe((response: BloodAcquisition[]) => {
         this.dataSource = response;
       });

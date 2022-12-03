@@ -16,7 +16,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
     private bloodExpenditureService: BloodExpenditureService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   disabled = true;
   reason: string;
@@ -32,7 +32,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
 
     this.bloodTypeString = this.bloodTypes.indexOf(this.bloodType);
     this.createExpenditureDTO.bloodType = this.bloodTypeString;
-    this.createExpenditureDTO.doctorId = 2;
+    this.createExpenditureDTO.doctorId = 8;
 
     this.bloodExpenditureService
       .createBloodExpenditure(this.createExpenditureDTO)
@@ -49,7 +49,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.createExpenditureDTO = {
-      doctorId: 2,
+      doctorId: 8,
       reason: '',
       amount: 20,
       bloodType: 0,

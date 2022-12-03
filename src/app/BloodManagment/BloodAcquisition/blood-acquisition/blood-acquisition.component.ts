@@ -65,7 +65,7 @@ export class BloodAcquisitionComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.createAcquisitionDTO = {
-      doctorId: 2,
+      doctorId: 8,
       reason: '',
       date: null as any,
       amount: 20,
