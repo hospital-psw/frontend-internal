@@ -11,9 +11,15 @@
   <mat-tab label="Relocations" class="tab">
     <app-relocations
       [relocationRequests]="relocationRequests"
+      [room]="room"
     ></app-relocations>
   </mat-tab>
-  <mat-tab label="Renovations" class="tab"> Renovations </mat-tab>
+  <mat-tab label="Renovations" class="tab">
+    <app-renovations
+      [renovations]="renovations"
+      [room]="room"
+    ></app-renovations>
+  </mat-tab>
 </mat-tab-group>
 
 <app-stepper
