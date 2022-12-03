@@ -15,8 +15,8 @@
 </mat-tab-group>
 
 <app-stepper
-    *ngIf="doRelocate"
-    [equipment]="element"
-    (close)="closeStepper()"
-    (refreshEquipment)="refreshEquipment($event)"
+  *ngIf="doRelocate"
+  [equipment]="element"
+  (close)="closeStepper()"
+  (refreshEquipment)="refreshEquipment($event)"
 ></app-stepper>

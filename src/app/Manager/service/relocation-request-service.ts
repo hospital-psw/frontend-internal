@@ -9,7 +9,9 @@ import { IRelocationRequestDisplay } from '../Model/RelocationRequestDisplay';
 export class RelocationRequestService {
   constructor(private http: HttpClient) {}
 
-  getRelocationRequests(roomId: number): Observable<IRelocationRequestDisplay[]> {
+  getRelocationRequests(
+    roomId: number
+  ): Observable<IRelocationRequestDisplay[]> {
     return this.http.get<IRelocationRequestDisplay[]>(
       `http://localhost:16177/api/Relocation/${roomId}`
     );
@@ -23,3 +25,4 @@ export class RelocationRequestService {
   }
 
 }
+

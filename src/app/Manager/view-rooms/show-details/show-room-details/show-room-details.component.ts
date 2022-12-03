@@ -16,7 +16,11 @@ import { IAppointmentDisplay } from 'src/app/Manager/Model/AppointmentDisplay';
   styleUrls: ['./show-room-details.component.scss'],
 })
 export class ShowRoomDetailsComponent implements OnInit {
-  constructor(private roomService: RoomService, private toastr: ToastrService, private relocationRequestService: RelocationRequestService) {
+  constructor(
+    private roomService: RoomService,
+    private toastr: ToastrService,
+    private relocationRequestService: RelocationRequestService
+  ) {
     setInterval(() => {
       this.checkWorkingHours();
     }, 100);
@@ -32,8 +36,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   checkWorkingHours(): void {
     if (this.room.workingHours == null) {

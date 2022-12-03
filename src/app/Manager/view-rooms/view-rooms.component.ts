@@ -233,8 +233,17 @@ export class ViewRoomsComponent
               this.equipments = data;
             });
           this.relocationRequestService.getRelocationRequests(this.clickedRoom.id).subscribe((data) => { this.relocationRequests = data;})
-          this.appointmentService.getAppointments(this.clickedRoom.id).subscribe((data) => {this.appointments = data;})
-          // pozovem servis da dobavim sve renovacije
+
+          this.relocationRequestService
+            .getRelocationRequests(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.relocationRequests = data;
+            });
+          this.appointmentService
+            .getAppointments(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.appointments = data;
+            });
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;
