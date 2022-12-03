@@ -17,12 +17,10 @@ export class RelocationRequestService {
     );
   }
 
-  decline(requestId: number):  Observable<any>{
+  decline(requestId: number): Observable<any> {
     return this.http.post<IRelocationRequestDisplay[]>(
       `http://localhost:16177/api/Relocation/decline`,
       requestId
     );
   }
-
 }
-

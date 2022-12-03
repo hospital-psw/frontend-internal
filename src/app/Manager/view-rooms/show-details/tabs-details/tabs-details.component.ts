@@ -24,7 +24,6 @@ export class TabsDetailsComponent {
   @Input() room: IRoom;
   @Input() renovations: IRenovationRequestDisplay[];
 
-
   @Output() relocateNotify = new EventEmitter<any>();
   element: IEquipment;
   doRelocate: boolean = false;

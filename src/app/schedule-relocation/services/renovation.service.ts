@@ -35,7 +35,7 @@ export class RenovationService {
     );
   }
 
-  decline(requestId: number):  Observable<any>{
+  decline(requestId: number): Observable<any> {
     return this.http.post<IRenovationRequestDisplay[]>(
       `http://localhost:16177/api/Renovation/decline`,
       requestId

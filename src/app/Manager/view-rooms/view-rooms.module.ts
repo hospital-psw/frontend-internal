@@ -48,7 +48,7 @@ import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/ste
     MatButtonModule,
     StepperModule,
     MatTabsModule,
-    RenovationStepperModule
+    RenovationStepperModule,
   ],
   exports: [ViewRoomsComponent],
 })

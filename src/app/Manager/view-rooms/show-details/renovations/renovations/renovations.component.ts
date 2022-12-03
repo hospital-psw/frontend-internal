@@ -10,33 +10,41 @@ import { IRoom } from 'src/app/Manager/Model/Room';
   styleUrls: ['./renovations.component.scss'],
 })
 export class RenovationsComponent {
-  displayedColumns: string[] = ['renovationType', 'startTime', 'duration', 'button'];
+  displayedColumns: string[] = [
+    'renovationType',
+    'startTime',
+    'duration',
+    'button',
+  ];
   @Input() renovations: IRenovationRequestDisplay[];
-  @Input() room: IRoom
+  @Input() room: IRoom;
 
-  constructor(private renovationRequestService: RenovationService){}
+  constructor(private renovationRequestService: RenovationService) {}
 
   ngOnInit(): void {
-    this.renovationRequestService.getRenovations(this.room.id).subscribe((data) => { this.renovations = data;})
+    this.renovationRequestService
+      .getRenovations(this.room.id)
+      .subscribe((data) => {
+        this.renovations = data;
+      });
   }
   convertEnum(type: number): string {
     return RenovationTypeEnum[type];
   }
 
-  check24h(date: any):boolean{
-    const now = new Date().valueOf()
-    const relocation = new Date(date).valueOf()
-    var hours = relocation - now
-    if(hours > 86400000){
+  check24h(date: any): boolean {
+    const now = new Date().valueOf();
+    const relocation = new Date(date).valueOf();
+    var hours = relocation - now;
+    if (hours > 86400000) {
       return true;
     }
     return false;
   }
 
-  decline(requestId: number){
+  decline(requestId: number) {
     this.renovationRequestService.decline(requestId).subscribe((res) => {
       this.ngOnInit();
     });
-    
   }
 }
