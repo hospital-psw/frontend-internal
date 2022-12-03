@@ -111,28 +111,54 @@
       <!-- new info about rooms/room -->
       <mat-step>
         <form [formGroup]="newInfoForm">
-          <mat-form-field appearance="fill">
-            <mat-label>New room name</mat-label>
-            <input formControlName="newName1" matInput type="text"/>
-          </mat-form-field>
+            <div>
+              <mat-form-field appearance="fill">
+                <mat-label>New room name</mat-label>
+                <input formControlName="newName1" matInput type="text"/>
+              </mat-form-field>
 
-          <mat-form-field appearance="fill">
-            <mat-label>New room purpose</mat-label>
-            <input formControlName="newPurpose1" matInput type="text"/>
-          </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>New room purpose</mat-label>
+                <mat-select formControlName="newPurpose1">
+                  <mat-option value="sala za sastanke">SALA ZA SASTANKE</mat-option>
+                  <mat-option value="ordinacija">ORDINACIJA</mat-option>
+                  <mat-option value="operaciona sala">OPERACIONA SALA</mat-option>
+                  <mat-option value="laboratorija">LABORATORIJA</mat-option>
+                  <mat-option value="kafeterija">KAFETERIJA</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field appearance="fill" *ngIf="newInfoForm.value.newPurpose1=='operaciona sala'">
+                <mat-label>New room capacity</mat-label>
+                <input formControlName="newCapacity1" matInput type="number" min="0"/>
+              </mat-form-field>
+            </div>
 
-          <mat-form-field appearance="fill" *ngIf="renovationTypeForm.value.type==1">
-            <mat-label>New room name</mat-label>
-            <input formControlName="newName2" matInput type="text"/>
-          </mat-form-field>
+            <div>
+              <mat-form-field appearance="fill" *ngIf="renovationTypeForm.value.type==1">
+                <mat-label>New room name</mat-label>
+                <input formControlName="newName2" matInput type="text"/>
+              </mat-form-field>
 
-          <mat-form-field appearance="fill" *ngIf="renovationTypeForm.value.type==1">
-            <mat-label>New room purpose</mat-label>
-            <input formControlName="newPurpose2" matInput type="text"/>
-          </mat-form-field>
-          <div>
+              <mat-form-field appearance="fill" *ngIf="renovationTypeForm.value.type==1">
+                <mat-label>New room purpose</mat-label>
+                <mat-select formControlName="newPurpose2">
+                  <mat-option value="sala za sastanke">SALA ZA SASTANKE</mat-option>
+                  <mat-option value="ordinacija">ORDINACIJA</mat-option>
+                  <mat-option value="operaciona sala">OPERACIONA SALA</mat-option>
+                  <mat-option value="laboratorija">LABORATORIJA</mat-option>
+                  <mat-option value="kafeterija">KAFETERIJA</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" *ngIf="newInfoForm.value.newPurpose2=='operaciona sala'">
+                <mat-label>New room capacity</mat-label>
+                <input formControlName="newCapacity2" matInput type="number" min="0"/>
+              </mat-form-field>
+              <div>
+            </div>
+
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>
+            <button mat-button matStepperNext (click)="schedule()">
               Schedule
             </button>
           </div>
