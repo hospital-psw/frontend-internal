@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IAppointmentDisplay } from 'src/app/Manager/Model/AppointmentDisplay';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationRequestDisplay';
@@ -9,12 +9,15 @@ import { RelocationRequestService } from 'src/app/Manager/service/relocation-req
 @Component({
   selector: 'app-tabs-details',
   templateUrl: './tabs-details.component.html',
-  styleUrls: ['./tabs-details.component.scss']
+  styleUrls: ['./tabs-details.component.scss'],
 })
 export class TabsDetailsComponent {
-  constructor(private toastr: ToastrService, private relocationRequestService: RelocationRequestService) {}
+  constructor(
+    private toastr: ToastrService,
+    private relocationRequestService: RelocationRequestService
+  ) {}
   @Input() relocationRequests: IRelocationRequestDisplay[];
-  @Input() appointments: IAppointmentDisplay[]
+  @Input() appointments: IAppointmentDisplay[];
   @Input() equipment: IEquipment[];
 
   @Output() relocateNotify = new EventEmitter<any>();
@@ -26,7 +29,7 @@ export class TabsDetailsComponent {
   }
 
   //relocate(element: IEquipment) {
-   // this.relocateNotify.emit(element);
+  // this.relocateNotify.emit(element);
   //}
 
   selectEquipment(evt: any): void {

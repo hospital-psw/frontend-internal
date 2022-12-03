@@ -14,6 +14,4 @@ export class AppointmentService {
       `http://localhost:16177/api/Appointment/room/${roomId}`
     );
   }
-
-
 }
