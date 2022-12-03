@@ -28,6 +28,7 @@ import { IAppointmentDisplay } from '../Model/AppointmentDisplay';
 import { trackByHourSegment } from 'angular-calendar/modules/common/util';
 import { AppointmentService } from '../service/appointment-service';
 import { IRenovationRequestDisplay } from '../Model/RenovationRequestDisplay';
+import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 
 @Component({
   selector: 'app-view-rooms',
@@ -43,7 +44,8 @@ export class ViewRoomsComponent
     private ref: ApplicationRef,
     private toastr: ToastrService,
     private relocationRequestService: RelocationRequestService,
-    private appointmentService: AppointmentService
+    private appointmentService: AppointmentService,
+    private renovationService: RenovationService
   ) {}
 
   private scene?: SceneBuilder;
@@ -234,7 +236,7 @@ export class ViewRoomsComponent
             });
           this.relocationRequestService.getRelocationRequests(this.clickedRoom.id).subscribe((data) => { this.relocationRequests = data;})
           this.appointmentService.getAppointments(this.clickedRoom.id).subscribe((data) => {this.appointments = data;})
-          // pozovem servis da dobavim sve renovacije
+          this.renovationService.getRenovations(this.clickedRoom.id).subscribe((data) => {this.renovations = data;})
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;
