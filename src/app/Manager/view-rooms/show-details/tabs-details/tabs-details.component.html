@@ -1,17 +1,22 @@
 <mat-tab-group class="tab-group">
-    <mat-tab label="Equipment" class="tab">
-        <app-show-equipment (notifyRelocation)="relocate($event)"
-        [equipment]="equipment"></app-show-equipment>
-    </mat-tab>
-    <mat-tab label="Appointments" class="tab">
-        <app-appointments [appointments]="appointments"></app-appointments>
-    </mat-tab>
-    <mat-tab label="Relocations" class="tab"> 
-        <app-relocations [relocationRequests]="relocationRequests" [room]="room"></app-relocations>
-    </mat-tab>
-    <mat-tab label="Renovations" class="tab"> 
-        <app-renovations [renovations]="renovations"></app-renovations>
-    </mat-tab>
+  <mat-tab label="Equipment" class="tab">
+    <app-show-equipment
+      (notifyRelocation)="relocate($event)"
+      [equipment]="equipment"
+    ></app-show-equipment>
+  </mat-tab>
+  <mat-tab label="Appointments" class="tab">
+    <app-appointments [appointments]="appointments"></app-appointments>
+  </mat-tab>
+  <mat-tab label="Relocations" class="tab">
+    <app-relocations
+      [relocationRequests]="relocationRequests"
+      [room]="room"
+    ></app-relocations>
+  </mat-tab>
+  <mat-tab label="Renovations" class="tab">
+    <app-renovations [renovations]="renovations"></app-renovations>
+  </mat-tab>
 </mat-tab-group>
 
 <app-stepper

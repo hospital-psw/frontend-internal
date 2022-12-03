@@ -1,8 +1,8 @@
-import { RenovationTypeEnum } from "./Enum/RenovationType";
+import { RenovationTypeEnum } from './Enum/RenovationType';
 
 export interface IRenovationRequestDisplay {
-    id: number,
-    renovationType: RenovationTypeEnum,
-    startTime: Date,
-    duration: number
-  }
+  id: number;
+  renovationType: RenovationTypeEnum;
+  startTime: Date;
+  duration: number;
+}

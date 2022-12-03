@@ -1,10 +1,9 @@
-import { IRenovationDetails } from "./RenovationDetails";
+import { IRenovationDetails } from './RenovationDetails';
 
 export interface IRenovationRequest {
-    renovationType: number;
-    roomsId: number[];
-    startTime?: Date;
-    duration: number;
-    renovationDetails: IRenovationDetails[]
-  }
-  
+  renovationType: number;
+  roomsId: number[];
+  startTime?: Date;
+  duration: number;
+  renovationDetails: IRenovationDetails[];
+}

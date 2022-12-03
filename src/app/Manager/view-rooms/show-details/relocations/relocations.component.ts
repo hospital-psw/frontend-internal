@@ -9,7 +9,7 @@ import { IRoom } from 'src/app/Manager/Model/Room';
 @Component({
   selector: 'app-relocations',
   templateUrl: './relocations.component.html',
-  styleUrls: ['./relocations.component.scss'],
+  styleUrls: ['./relocations.component.scss']
 })
 export class RelocationsComponent {
   constructor(private relocationRequestService: RelocationRequestService){}
@@ -46,6 +46,5 @@ export class RelocationsComponent {
     });
     
   }
-
 
 }
