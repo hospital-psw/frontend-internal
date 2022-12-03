@@ -58,7 +58,7 @@ export class ViewRoomsComponent
 
   element: IEquipment;
   doRelocate: boolean = false;
-  doRenovate: boolean = false
+  doRenovate: boolean = false;
   rooms: IRoomMap[] = [];
   equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
@@ -87,9 +87,9 @@ export class ViewRoomsComponent
 
   selectedEquipment: string = '-1';
   public searchedRooms: IRoom[] = [];
-  relocationRequests: IRelocationRequestDisplay[] = []
-  appointments: IAppointmentDisplay[] = []
-  renovations: IRenovationRequestDisplay[] = []
+  relocationRequests: IRelocationRequestDisplay[] = [];
+  appointments: IAppointmentDisplay[] = [];
+  renovations: IRenovationRequestDisplay[] = [];
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -244,7 +244,11 @@ export class ViewRoomsComponent
             .subscribe((data) => {
               this.appointments = data;
             });
-          this.renovationService.getRenovations(this.clickedRoom.id).subscribe((data) => {this.renovations = data;})
+          this.renovationService
+            .getRenovations(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.renovations = data;
+            });
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;
@@ -409,7 +413,7 @@ export class ViewRoomsComponent
     this.doRelocate = false;
   }
 
-  renovate(){
-    this.doRenovate = true
+  renovate() {
+    this.doRenovate = true;
   }
 }

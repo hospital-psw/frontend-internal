@@ -1,4 +1,4 @@
 export enum RenovationTypeEnum {
-    Merge,
-    Split
-  }
+  Merge,
+  Split,
+}

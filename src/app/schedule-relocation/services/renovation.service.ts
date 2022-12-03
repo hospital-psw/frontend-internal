@@ -29,7 +29,9 @@ export class RenovationService {
     );
   }
 
-  getRenovations(roomId: number): Observable<IRenovationRequestDisplay[]>{
-    return this.http.get<IRenovationRequestDisplay[]>(`http://localhost:16177/api/renovation/${roomId}`);
+  getRenovations(roomId: number): Observable<IRenovationRequestDisplay[]> {
+    return this.http.get<IRenovationRequestDisplay[]>(
+      `http://localhost:16177/api/renovation/${roomId}`
+    );
   }
 }

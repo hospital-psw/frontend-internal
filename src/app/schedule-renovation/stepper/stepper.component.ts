@@ -10,27 +10,26 @@ import { RenovationService } from 'src/app/schedule-relocation/services/renovati
 @Component({
   selector: 'app-renovation-stepper',
   templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.scss']
+  styleUrls: ['./stepper.component.scss'],
 })
-export class StepperComponent implements OnInit{
-
+export class StepperComponent implements OnInit {
   renovationTypeForm = new FormGroup({
     type: new FormControl(),
   });
 
   roomForm = new FormGroup({
     room1: new FormControl(),
-    room2: new FormControl()
-  })
+    room2: new FormControl(),
+  });
 
   periodForm = new FormGroup({
     startDate: new FormControl(),
-    endDate: new FormControl()
-  })
+    endDate: new FormControl(),
+  });
 
   durationForm = new FormGroup({
-    duration: new FormControl()
-  })
+    duration: new FormControl(),
+  });
 
   startTimeForm = new FormGroup({
     startTime: new FormControl([]),
@@ -42,75 +41,93 @@ export class StepperComponent implements OnInit{
     newPurpose1: new FormControl(),
     newPurpose2: new FormControl(),
     newCapacity1: new FormControl(),
-    newCapacity2: new FormControl()
-  })
+    newCapacity2: new FormControl(),
+  });
 
-  rooms1: IRoomMap[] = []
-  rooms2: IRoomMap[] = []
-  firstSelectedRoom: IRoomMap
-  @Input() floor: number
-  @Input() building: number
+  rooms1: IRoomMap[] = [];
+  rooms2: IRoomMap[] = [];
+  firstSelectedRoom: IRoomMap;
+  @Input() floor: number;
+  @Input() building: number;
 
-  @Output() close = new EventEmitter()
+  @Output() close = new EventEmitter();
 
   dateTimes: Date[] = [];
   showSpinner: boolean = false;
 
-  constructor(private roomService: RoomService, private renovationService: RenovationService, private toastr: ToastrService) {}
-
+  constructor(
+    private roomService: RoomService,
+    private renovationService: RenovationService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    this.roomService.getRooms(this.building, this.floor.toString()).subscribe(data => {
-      this.rooms1 = data
-      this.rooms1 = this.rooms1.filter(room => room.room.purpose !== 'hodnik')
-    })
+    this.roomService
+      .getRooms(this.building, this.floor.toString())
+      .subscribe((data) => {
+        this.rooms1 = data;
+        this.rooms1 = this.rooms1.filter(
+          (room) => room.room.purpose !== 'hodnik'
+        );
+      });
   }
 
-  decideRenovationType(){
-    if(this.renovationTypeForm.value.type == 1)
-      this.findPossibleRoomsForSplitRenovation()
+  decideRenovationType() {
+    if (this.renovationTypeForm.value.type == 1)
+      this.findPossibleRoomsForSplitRenovation();
   }
 
-  findRoomById(id: number){
-    return this.rooms1.filter(room => room.room.id == id)[0]
+  findRoomById(id: number) {
+    return this.rooms1.filter((room) => room.room.id == id)[0];
   }
 
-  filterPossibleRooms(){
-    return this.rooms1.filter(room => room.room.id != this.firstSelectedRoom.room.id)
+  filterPossibleRooms() {
+    return this.rooms1.filter(
+      (room) => room.room.id != this.firstSelectedRoom.room.id
+    );
   }
 
-  findPossibleRoomsForMergeRenovation(event: any){
-    this.rooms2 = []
-    this.firstSelectedRoom = this.findRoomById(event.value)
-    console.log(this.firstSelectedRoom)
-    this.filterPossibleRooms().forEach(room => {
-      if(this.firstSelectedRoom.width == 1){
-        if(this.isNextdoorRoom(room)) {
-          this.rooms2.push(room)
+  findPossibleRoomsForMergeRenovation(event: any) {
+    this.rooms2 = [];
+    this.firstSelectedRoom = this.findRoomById(event.value);
+    console.log(this.firstSelectedRoom);
+    this.filterPossibleRooms().forEach((room) => {
+      if (this.firstSelectedRoom.width == 1) {
+        if (this.isNextdoorRoom(room)) {
+          this.rooms2.push(room);
         }
-      }
-      else if(this.firstSelectedRoom.width == 2){
-        if((this.firstSelectedRoom.x + this.firstSelectedRoom.width - 0.5 == room.x || this.firstSelectedRoom.x == room.x + room.width + 0.5) && this.firstSelectedRoom.z == room.z){
-          this.rooms2.push(room)
+      } else if (this.firstSelectedRoom.width == 2) {
+        if (
+          (this.firstSelectedRoom.x + this.firstSelectedRoom.width - 0.5 ==
+            room.x ||
+            this.firstSelectedRoom.x == room.x + room.width + 0.5) &&
+          this.firstSelectedRoom.z == room.z
+        ) {
+          this.rooms2.push(room);
         }
       }
     });
   }
 
-  findPossibleRoomsForSplitRenovation(){
-    this.rooms1 = this.rooms1.filter(room => room.width > 1)
+  findPossibleRoomsForSplitRenovation() {
+    this.rooms1 = this.rooms1.filter((room) => room.width > 1);
   }
 
-  isNextdoorRoom(room: IRoomMap){
-    if((this.firstSelectedRoom.x + this.firstSelectedRoom.width == room.x || this.firstSelectedRoom.x == room.x + room.width
-      || this.firstSelectedRoom.x + this.firstSelectedRoom.width + 0.5 == room.x || this.firstSelectedRoom.x == room.x + room.width - 0.5)
-      && this.firstSelectedRoom.z == room.z)
-      return true
-    return false
+  isNextdoorRoom(room: IRoomMap) {
+    if (
+      (this.firstSelectedRoom.x + this.firstSelectedRoom.width == room.x ||
+        this.firstSelectedRoom.x == room.x + room.width ||
+        this.firstSelectedRoom.x + this.firstSelectedRoom.width + 0.5 ==
+          room.x ||
+        this.firstSelectedRoom.x == room.x + room.width - 0.5) &&
+      this.firstSelectedRoom.z == room.z
+    )
+      return true;
+    return false;
   }
 
-  closeStepper(){
-    this.close.emit()
+  closeStepper() {
+    this.close.emit();
   }
 
   recommend() {
@@ -118,12 +135,12 @@ export class StepperComponent implements OnInit{
     this.showSpinner = true;
     const startTime1 = new Date(this.periodForm.controls['startDate'].value);
     const endTime1 = new Date(this.periodForm.controls['endDate'].value);
-    var roomsId : number[] = []
-    if (this.renovationTypeForm.controls.type.value == 0){
-      roomsId.push(this.roomForm.controls.room1.value)
-      roomsId.push(this.roomForm.controls.room2.value)
+    var roomsId: number[] = [];
+    if (this.renovationTypeForm.controls.type.value == 0) {
+      roomsId.push(this.roomForm.controls.room1.value);
+      roomsId.push(this.roomForm.controls.room2.value);
     } else {
-      roomsId.push(this.roomForm.controls.room1.value)
+      roomsId.push(this.roomForm.controls.room1.value);
     }
     this.renovationService
       .recommendDateTimes({
@@ -140,16 +157,25 @@ export class StepperComponent implements OnInit{
   }
 
   schedule() {
-    var renovationDetails : IRenovationDetails[] = []
-    var roomsId : number[] = []
-    if (this.renovationTypeForm.controls.type.value == 0){
-      roomsId.push(this.roomForm.controls.room1.value)
-      roomsId.push(this.roomForm.controls.room2.value)
-      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value})
+    var renovationDetails: IRenovationDetails[] = [];
+    var roomsId: number[] = [];
+    if (this.renovationTypeForm.controls.type.value == 0) {
+      roomsId.push(this.roomForm.controls.room1.value);
+      roomsId.push(this.roomForm.controls.room2.value);
+      renovationDetails.push({
+        newRoomName: this.newInfoForm.controls.newName1.value,
+        newRoomPurpose: this.newInfoForm.controls.newPurpose1.value,
+      });
     } else {
-      roomsId.push(this.roomForm.controls.room1.value)
-      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value})
-      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName2.value, newRoomPurpose: this.newInfoForm.controls.newPurpose2.value})
+      roomsId.push(this.roomForm.controls.room1.value);
+      renovationDetails.push({
+        newRoomName: this.newInfoForm.controls.newName1.value,
+        newRoomPurpose: this.newInfoForm.controls.newPurpose1.value,
+      });
+      renovationDetails.push({
+        newRoomName: this.newInfoForm.controls.newName2.value,
+        newRoomPurpose: this.newInfoForm.controls.newPurpose2.value,
+      });
     }
     this.renovationService
       .createRenovationRequest({
@@ -157,7 +183,7 @@ export class StepperComponent implements OnInit{
         roomsId: roomsId,
         startTime: this.startTimeForm.controls.startTime.value?.at(0),
         duration: this.durationForm.controls.duration.value,
-        renovationDetails: renovationDetails
+        renovationDetails: renovationDetails,
       })
       .subscribe({
         next: (res) => {

@@ -24,7 +24,6 @@ import { AppointmentsComponent } from './show-details/appointments/appointments.
 import { RenovationsComponent } from './show-details/renovations/renovations/renovations.component';
 import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/stepper.module';
 
-
 @NgModule({
   declarations: [
     ViewRoomsComponent,
@@ -49,7 +48,7 @@ import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/ste
     MatButtonModule,
     StepperModule,
     MatTabsModule,
-    RenovationStepperModule
+    RenovationStepperModule,
   ],
   exports: [ViewRoomsComponent],
 })
