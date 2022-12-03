@@ -2,6 +2,7 @@ import { RenovationTypeEnum } from './../../../../Model/Enum/RenovationType';
 import { IRenovationRequestDisplay } from './../../../../Model/RenovationRequestDisplay';
 import { Component, Input } from '@angular/core';
 import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
+import { IRoom } from 'src/app/Manager/Model/Room';
 
 @Component({
   selector: 'app-renovations',
@@ -11,11 +12,12 @@ import { RenovationService } from 'src/app/schedule-relocation/services/renovati
 export class RenovationsComponent {
   displayedColumns: string[] = ['renovationType', 'startTime', 'duration', 'button'];
   @Input() renovations: IRenovationRequestDisplay[];
+  @Input() room: IRoom
 
   constructor(private renovationRequestService: RenovationService){}
 
   ngOnInit(): void {
-    //this.renovationRequestService.getRenovations(this.room.id).subscribe((data) => { this.relocationRequests = data;})
+    this.renovationRequestService.getRenovations(this.room.id).subscribe((data) => { this.renovations = data;})
   }
   convertEnum(type: number): string {
     return RenovationTypeEnum[type];
