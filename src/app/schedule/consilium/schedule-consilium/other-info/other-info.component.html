@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card__header">Required consilium informations</div>
+  <div class="card__content">
+    <h4 class="card__content__header">Select room</h4>
+    <div class="card__content__rooms">
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <mat-select>
+          <mat-option *ngFor="" [value]=""> </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <h4 class="card__content__header">Select date range</h4>
+    <div class="card__content__datepicker">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date">
+          <input matEndDate placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+    <h4 class="card__content__header">Please type into a topic</h4>
+    <textarea
+      class="card__content__topic"
+      placeholder="Please enter a topic."
+    ></textarea>
+  </div>
+</div>

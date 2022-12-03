@@ -10,7 +10,7 @@ import { Patient } from '../interface/Patient';
 export class PatientService {
   private apiServerUrl = environment.apiPatientUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   public getAllPatients(): Observable<Patient[]> {
     return this.http.get<Patient[]>(`${this.apiServerUrl}/all`);

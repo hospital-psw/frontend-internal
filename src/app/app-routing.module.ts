@@ -1,3 +1,5 @@
+import { AllConsiliumsComponent } from './schedule/consilium/all-consiliums/all-consiliums.component';
+import { ScheduleConsiliumComponent } from './schedule/consilium/schedule-consilium/main-component/schedule-consilium.component';
 import { BaseComponentComponent } from './medical-treatment/show-treatments/base-component/base-component.component';
 import { ReschedulingAppointmentComponent } from './schedule/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { NgModule } from '@angular/core';
@@ -89,10 +91,18 @@ const routes: Routes = [
     path: 'bloodExpenditure/create',
     component: BloodExpenditureComponent,
   },
+  {
+    path: 'schedule-consilium',
+    component: ScheduleConsiliumComponent,
+  },
+  {
+    path: 'consiliums',
+    component: AllConsiliumsComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

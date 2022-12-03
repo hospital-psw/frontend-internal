@@ -50,9 +50,13 @@ export class ApplicationMainComponent implements OnInit {
       } else if (this.router.url == '/show-treatments') {
         this.name = 'Medical treatments';
       } else if (this.router.url.includes('/treatment')) {
-        this.name = 'Stationary Treatment';
+        this.name = 'Stationary treatment';
       } else if (this.router.url.includes('/statistics')) {
-        this.name = 'Hospital Statistics';
+        this.name = 'Hospital statistics';
+      } else if (this.router.url.includes('/schedule-consilium')) {
+        this.name = 'Schedule consilium';
+      } else if (this.router.url.includes('/consiliums')) {
+        this.name = 'Consiliums';
       }
     });
   }
