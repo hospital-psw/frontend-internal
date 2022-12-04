@@ -45,6 +45,7 @@ export class StepperComponent implements OnInit {
 
   @Input() equipment: IEquipment;
   destinationRooms: IRoomMap[] = [];
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() close = new EventEmitter();
   @Output() refreshEquipment = new EventEmitter();
   constructor(

@@ -8,9 +8,8 @@ describe('SpecializationsListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SpecializationsListComponent ]
-    })
-    .compileComponents();
+      declarations: [SpecializationsListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SpecializationsListComponent);
     component = fixture.componentInstance;

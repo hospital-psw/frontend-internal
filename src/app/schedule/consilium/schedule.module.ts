@@ -26,4 +26,4 @@ import { MatInputModule } from '@angular/material/input';
     MatDatepickerModule,
   ],
 })
-export class ScheduleModule { }
+export class ScheduleModule {}

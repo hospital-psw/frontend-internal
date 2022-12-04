@@ -83,8 +83,8 @@ export class ViewRoomsComponent
 
   selectedEquipment: string = '-1';
   public searchedRooms: IRoom[] = [];
-  relocationRequests: IRelocationRequestDisplay[] = []
-  appointments: IAppointmentDisplay[] = []
+  relocationRequests: IRelocationRequestDisplay[] = [];
+  appointments: IAppointmentDisplay[] = [];
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -229,8 +229,16 @@ export class ViewRoomsComponent
             .subscribe((data) => {
               this.equipments = data;
             });
-          this.relocationRequestService.getRelocationRequests(this.clickedRoom.id).subscribe((data) => { this.relocationRequests = data;})
-          this.appointmentService.getAppointments(this.clickedRoom.id).subscribe((data) => {this.appointments = data;})
+          this.relocationRequestService
+            .getRelocationRequests(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.relocationRequests = data;
+            });
+          this.appointmentService
+            .getAppointments(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.appointments = data;
+            });
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;

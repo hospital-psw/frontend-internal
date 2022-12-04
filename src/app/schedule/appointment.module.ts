@@ -60,4 +60,4 @@ import { BloodAcquisitionComponent } from '../BloodManagment/BloodAcquisition/bl
   ],
   providers: [ScheduleService, PatientService],
 })
-export class AppointmentModule { }
+export class AppointmentModule {}
