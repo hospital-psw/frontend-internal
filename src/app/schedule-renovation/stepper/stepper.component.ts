@@ -145,11 +145,11 @@ export class StepperComponent implements OnInit{
     if (this.renovationTypeForm.controls.type.value == 0){
       roomsId.push(this.roomForm.controls.room1.value)
       roomsId.push(this.roomForm.controls.room2.value)
-      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value})
+      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value, newCapacity: this.newInfoForm.controls.newCapacity1.value})
     } else {
       roomsId.push(this.roomForm.controls.room1.value)
-      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value})
-      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName2.value, newRoomPurpose: this.newInfoForm.controls.newPurpose2.value})
+      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value, newCapacity: this.newInfoForm.controls.newCapacity1.value})
+      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName2.value, newRoomPurpose: this.newInfoForm.controls.newPurpose2.value, newCapacity: this.newInfoForm.controls.newCapacity2.value})
     }
     this.renovationService
       .createRenovationRequest({
