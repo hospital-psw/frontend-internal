@@ -8,7 +8,7 @@ import { BloodAcquisitionService } from '../../service/blood-acquisition.service
 @Component({
   selector: 'app-urgent-blood-request',
   templateUrl: './urgent-blood-request.component.html',
-  styleUrls: ['./urgent-blood-request.component.scss']
+  styleUrls: ['./urgent-blood-request.component.scss'],
 })
 export class UrgentBloodRequestComponent {
   constructor(
@@ -18,8 +18,8 @@ export class UrgentBloodRequestComponent {
   ) {
     this.urgentBloodRequest = {
       bloodType: 0,
-      amount: 0
-    }
+      amount: 0,
+    };
   }
 
   disabled = true;
@@ -31,18 +31,16 @@ export class UrgentBloodRequestComponent {
 
   createUrgentRequest() {
     this.urgentBloodRequest.bloodType = this.bloodTypes.indexOf(this.bloodType);
-    this.urgentBloodRequest.amount = this.amount
-    this.bloodAcquisitionService.createUrgentBloodRequest(this.urgentBloodRequest).subscribe(res => {
-      this.toastrService.success("Urgent request sent!");
-      this.router.navigate(['/doctorBloodRequests']);
-    });
+    this.urgentBloodRequest.amount = this.amount;
+    this.bloodAcquisitionService
+      .createUrgentBloodRequest(this.urgentBloodRequest)
+      .subscribe((res) => {
+        this.toastrService.success('Urgent request sent!');
+        this.router.navigate(['/doctorBloodRequests']);
+      });
   }
 
   ngDoCheck(): void {
-    if (
-      this.bloodType != null &&
-      this.amount != null
-    )
-      this.disabled = false;
+    if (this.bloodType != null && this.amount != null) this.disabled = false;
   }
 }

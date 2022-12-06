@@ -32,9 +32,7 @@ export class BloodAcquisitionService {
     );
   }
 
-  public createUrgentBloodRequest(
-    urgentRequest: CreateUrgentRequestDTO
-  ) {
+  public createUrgentBloodRequest(urgentRequest: CreateUrgentRequestDTO) {
     return this.http.post<CreateUrgentRequestDTO>(
       'http://localhost:45488/api/UrgentBloodTransfer',
       urgentRequest
