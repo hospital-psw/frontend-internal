@@ -48,6 +48,9 @@ export class DetailComponent implements OnInit {
           if (String(this.bloodBank.reportFrom) === '0001-01-01T00:00:00') {
             this.bloodBank.reportFrom = new Date();
           }
+          if (this.bloodBank.monthlyTransfer == null) {
+            this.bloodBank.monthlyTransfer = new MonthlyTransfer();
+          }
         },
         (err) => {
           this.bloodBankService.errorHandling(err);
