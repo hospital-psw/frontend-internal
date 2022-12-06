@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="grid-container">
+        <h1>Urgent blood request</h1>
+        <div>
+            <div class="single">
+            <label>BloodType</label>
+            <mat-form-field class="bloodSelect">
+                <mat-select [(ngModel)]="bloodType">
+                <mat-option value="A_PLUS">A+</mat-option>
+                <mat-option value="A_MINUS">A-</mat-option>
+                <mat-option value="B_PLUS">B+</mat-option>
+                <mat-option value="B_MINUS">B-</mat-option>
+                <mat-option value="AB_PLUS">AB+</mat-option>
+                <mat-option value="AB_MINUS">AB-</mat-option>
+                <mat-option value="O_PLUS">O+</mat-option>
+                <mat-option value="O_MINUS">O-</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+        
+            <div class="single">
+            <label>Amount</label>
+            <mat-slider
+                min="1"
+                max="20"
+                step="1"
+                thumbLabel
+                tickInterval="1"
+                [(ngModel)]="amount"
+            ></mat-slider>
+            </div>
+            <div class="container">
+            <button
+                [disabled]="disabled"
+                (click)="createUrgentRequest()"
+                class="buttonConf"
+            >
+                Confirm
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
