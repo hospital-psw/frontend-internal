@@ -39,6 +39,7 @@ import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 import { JwtService } from './common/auth/service/jwt.service';
 import { LoginModule } from './login/login.module';
+import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { LoginModule } from './login/login.module';
     BloodAcquisitionComponent,
     DoctorRequestsComponent,
     BloodExpenditureComponent,
+    UrgentBloodRequestComponent,
   ],
   imports: [
     MatDatepickerModule,

@@ -38,7 +38,7 @@ export class BloodUnitTherapyComponent implements OnInit, OnChanges {
     private dialogRef: MatDialogRef<NewTherapyDialogComponent>,
     private bloodUnitTherapyService: BloodunitTherapyService,
     private bloodUnitService: BloodUnitService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getBloodUnitForPatient();

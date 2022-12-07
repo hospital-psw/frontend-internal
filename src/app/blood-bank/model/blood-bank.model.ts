@@ -1,3 +1,5 @@
+import { MonthlyTransfer } from './MonthlyTransfer.model';
+
 export class BloodBank {
   public id: number = 0;
   public name: string = '';
@@ -10,6 +12,7 @@ export class BloodBank {
   public frequently: number = 0;
   public reportTo: Date;
   public reportFrom: Date;
+  public monthlyTransfer: MonthlyTransfer;
 
   public constructor(obj?: any) {
     if (obj) {
@@ -25,6 +28,7 @@ export class BloodBank {
       this.frequently = obj.frequently;
       this.reportFrom = obj.reportFrom;
       this.reportTo = obj.reportTo;
+      this.monthlyTransfer = obj.monthlyTransfer;
     }
   }
 }

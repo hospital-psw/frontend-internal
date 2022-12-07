@@ -148,5 +148,116 @@
         </div>
       </div>
     </fieldset>
+    <fieldset class="conf-area" *ngIf="showConf">
+      <legend>Monthly transfer configuration</legend>
+      <div class="row">
+        <mat-form-field appearance="fill" class="email">
+          <mat-label>Start date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            [(ngModel)]="bloodBank.monthlyTransfer.dateTime"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker2"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="wrapper">
+        <div class="wrapper__elem">
+          <div class="wrapper__elem-el">
+            <label class="number__label">A+ </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.aPlus"
+            />
+          </div>
+          <div class="wrapper__elem-el">
+            <label class="number__label">B+ </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.bPlus"
+            />
+          </div>
+          <div class="wrapper__elem-el">
+            <label class="number__label">AB+ </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.aBPlus"
+            />
+          </div>
+          <div class="wrapper__elem-el">
+            <label class="number__label">O+ </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.oPlus"
+            />
+          </div>
+        </div>
+        <div class="wrapper__elem">
+          <div class="wrapper__elem-el">
+            <label class="number__label">A- </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.aMinus"
+            />
+          </div>
+          <div class="wrapper__elem-el">
+            <label class="number__label">B- </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.bMinus"
+            />
+          </div>
+          <div class="wrapper__elem-el">
+            <label class="number__label">AB- </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.aBMinus"
+            />
+          </div>
+          <div class="wrapper__elem-el">
+            <label class="number__label">O- </label>
+            <input
+              type="number"
+              min="0"
+              class="number__area"
+              placeholder="0"
+              [(ngModel)]="bloodBank.monthlyTransfer.oMinus"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="saveBtn">
+        <button mat-raised-button color="primary" (click)="updateMonthly()">
+          <!--TODO binduj na klik-->
+          Save
+        </button>
+      </div>
+    </fieldset>
   </div>
 </mat-card>
