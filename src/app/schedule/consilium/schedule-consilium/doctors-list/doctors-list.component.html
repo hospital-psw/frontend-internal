@@ -1,7 +1,10 @@
 <div class="card">
   <div class="card__header">Doctors</div>
   <div class="card__content">
-    <mat-selection-list [(ngModel)]="selectedDoctors" (selectionChange)="showData()">
+    <mat-selection-list
+      [(ngModel)]="selectedDoctors"
+      (selectionChange)="showData()"
+    >
       <mat-list-option
         class="mat-primary"
         *ngFor="let d of doctors"

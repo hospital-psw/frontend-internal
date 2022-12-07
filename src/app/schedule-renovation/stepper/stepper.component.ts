@@ -50,6 +50,7 @@ export class StepperComponent implements OnInit {
   @Input() floor: number;
   @Input() building: number;
 
+  // eslint-disable-next-line @angular-eslint/no-output-native
   @Output() close = new EventEmitter();
 
   dateTimes: Date[] = [];

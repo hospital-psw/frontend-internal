@@ -52,4 +52,4 @@ import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/ste
   ],
   exports: [ViewRoomsComponent],
 })
-export class ViewRoomsModule { }
+export class ViewRoomsModule {}

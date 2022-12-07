@@ -7,7 +7,7 @@ import { IRelocationRequestDisplay } from '../Model/RelocationRequestDisplay';
   providedIn: 'root',
 })
 export class RelocationRequestService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getRelocationRequests(
     roomId: number

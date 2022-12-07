@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class DoctorService {
   private apiServerUrl = environment.apiDoctorUrl;
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {}
 
   getDoctors() {
     return this._http.get(`http://localhost:16177/api/ApplicationDoctor/all`);

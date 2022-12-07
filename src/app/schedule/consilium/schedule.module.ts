@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
     MatSelectModule,
     MatDatepickerModule,
     MatOptionModule,
-    FormsModule
+    FormsModule,
   ],
 })
-export class ScheduleModule { }
+export class ScheduleModule {}

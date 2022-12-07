@@ -36,7 +36,8 @@ import { RenovationService } from 'src/app/schedule-relocation/services/renovati
   styleUrls: ['./view-rooms.component.scss'],
 })
 export class ViewRoomsComponent
-  implements OnInit, OnDestroy, AfterContentChecked {
+  implements OnInit, OnDestroy, AfterContentChecked
+{
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -45,7 +46,7 @@ export class ViewRoomsComponent
     private relocationRequestService: RelocationRequestService,
     private appointmentService: AppointmentService,
     private renovationService: RenovationService
-  ) { }
+  ) {}
 
   private scene?: SceneBuilder;
   private camera?: CameraBuilder;
@@ -205,7 +206,7 @@ export class ViewRoomsComponent
     if (rect && holder) {
       x =
         ((event.pageX - rect?.left - window.scrollX) / holder?.clientWidth) *
-        2 -
+          2 -
         1;
       y =
         -((event.pageY - rect.top - window.scrollY) / holder.clientHeight) * 2 +
@@ -268,7 +269,7 @@ export class ViewRoomsComponent
       if (
         room.getRoomData().x == intersected[0].object.position.x &&
         room.getRoomData().room.floor.number ===
-        intersected[0].object.position.y &&
+          intersected[0].object.position.y &&
         room.getRoomData().z == intersected[0].object.position.z
       )
         return true;

@@ -16,7 +16,7 @@ export class DoctorsListComponent implements OnInit {
   constructor(
     private doctorService: DoctorService,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getDoctorsInSameShift();

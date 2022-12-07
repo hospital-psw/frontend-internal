@@ -15,7 +15,7 @@ import { IEquipment } from '../Model/Equipment';
 export class RoomService {
   private apiServerUrl = environment.apiRooms;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getRooms(buildingId: number, floor: string) {
     return this.http.get<IRoomMap[]>(

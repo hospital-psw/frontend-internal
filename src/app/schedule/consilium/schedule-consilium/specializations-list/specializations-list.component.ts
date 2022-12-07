@@ -10,14 +10,13 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./specializations-list.component.scss'],
 })
 export class SpecializationsListComponent implements OnInit {
-
   specializations: string[] = [];
   selectedSpecializations: string[];
   selectedSpecializationsNumbers: number[];
   constructor(
     private doctorService: DoctorService,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getSpecializationsOfDoctorsInSameShift();

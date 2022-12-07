@@ -21,14 +21,14 @@ export class OtherInfoComponent implements OnInit {
   constructor(
     private roomService: RoomService,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getMeetingRooms();
     this.selectedDateRange = {
       from: Date.now as any,
       to: Date.now as any,
-    }
+    };
   }
 
   getMeetingRooms(): void {

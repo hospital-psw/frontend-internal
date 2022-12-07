@@ -12,7 +12,7 @@ import { IRoom } from 'src/app/Manager/Model/Room';
   styleUrls: ['./relocations.component.scss'],
 })
 export class RelocationsComponent {
-  constructor(private relocationRequestService: RelocationRequestService) { }
+  constructor(private relocationRequestService: RelocationRequestService) {}
 
   displayedColumns: string[] = [
     'from',
