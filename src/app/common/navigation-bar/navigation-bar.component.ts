@@ -14,15 +14,15 @@ export class NavigationBarComponent implements OnInit {
     new EventEmitter<string>();
 
   private userSub: Subscription;
-  isLogged = false
-  userMail = ''
+  isLogged = false;
+  userMail = '';
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userSub = this.authService.user.subscribe(user =>{
-      this.isLogged = !!user    
-      this.userMail = user.email
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isLogged = !!user;
+      this.userMail = user.email;
     });
   }
 
@@ -30,7 +30,7 @@ export class NavigationBarComponent implements OnInit {
     this.userSub.unsubscribe();
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logout();
   }
 }

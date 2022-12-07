@@ -31,9 +31,13 @@ export class ApplicationMainComponent implements OnInit {
   name: string;
   hamburger: boolean;
   private userSub: Subscription;
-  isLogged = false
+  isLogged = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private authService: AuthService) {
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {
     this.router.events.subscribe(() => {
       if (this.router.url == '/appointments') {
         this.name = 'Appointments';
@@ -65,9 +69,9 @@ export class ApplicationMainComponent implements OnInit {
 
   ngOnInit(): void {
     this.hamburger = true;
-    this.authService.autoLogin()
-    this.userSub = this.authService.user.subscribe(user =>{
-      this.isLogged = !!user    
+    this.authService.autoLogin();
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isLogged = !!user;
     });
   }
 

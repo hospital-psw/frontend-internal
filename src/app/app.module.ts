@@ -93,6 +93,10 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
   ],
   bootstrap: [AppComponent],
   exports: [],
-  providers: [DatePipe, JwtService,{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [
+    DatePipe,
+    JwtService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  ],
 })
 export class AppModule {}

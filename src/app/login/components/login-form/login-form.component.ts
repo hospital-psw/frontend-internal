@@ -8,34 +8,34 @@ import { LoginResponseDTO } from 'src/app/common/auth/interface/LoginResponseDTO
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
+  styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   hide = true;
-  defaultRemember = false
+  defaultRemember = false;
   showError = false;
-  errorMessage = ''
+  errorMessage = '';
   isLogging = false;
 
-  onSubmit(form: NgForm){
-    this.showError = false
+  onSubmit(form: NgForm) {
+    this.showError = false;
     this.isLogging = true;
-    if(form.value.rememberMe == null){
-      form.value.rememberMe = false
+    if (form.value.rememberMe == null) {
+      form.value.rememberMe = false;
     }
     this.authService.login(form.value).subscribe(
-      (response: LoginResponseDTO) =>{
+      (response: LoginResponseDTO) => {
         this.authService.showSuccess();
-        this.router.navigate(['appointments'])
-        this.isLogging=false
+        this.router.navigate(['appointments']);
+        this.isLogging = false;
       },
-      message =>{
-        this.showError = true
+      (message) => {
+        this.showError = true;
         this.errorMessage = message;
         form.resetForm();
       }
-    )
+    );
   }
 }

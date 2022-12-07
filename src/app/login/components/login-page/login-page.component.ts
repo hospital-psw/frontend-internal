@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
-    constructor(private router: Router) { }
+  constructor(private router: Router) {}
 }

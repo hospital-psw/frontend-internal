@@ -7,18 +7,18 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'frontend-internal';
-  isLogged = false
+  isLogged = false;
   private userSub: Subscription;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void{
-    this.authService.autoLogin()
-    this.userSub = this.authService.user.subscribe(user =>{
-      this.isLogged = !!user
-      console.log(this.isLogged)    
+  ngOnInit(): void {
+    this.authService.autoLogin();
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isLogged = !!user;
+      console.log(this.isLogged);
     });
   }
 }
