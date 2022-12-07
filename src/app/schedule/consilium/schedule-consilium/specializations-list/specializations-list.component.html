@@ -1,9 +1,16 @@
 <div class="card">
   <div class="card__header">Specializations</div>
   <div class="card__content">
-    <mat-selection-list #shoes>
-      <mat-list-option *ngFor="let shoe of typesOfShoes">
-        {{ shoe }}
+    <mat-selection-list
+      [(ngModel)]="selectedSpecializations"
+      (selectionChange)="showData()"
+    >
+      <mat-list-option
+        class="mat-primary"
+        *ngFor="let spec of specializations"
+        [value]="spec"
+      >
+        {{ spec | titlecase }}
       </mat-list-option>
     </mat-selection-list>
   </div>

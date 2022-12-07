@@ -9,6 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatSelectModule,
     MatDatepickerModule,
+    MatOptionModule,
+    FormsModule
   ],
 })
-export class ScheduleModule {}
+export class ScheduleModule { }

@@ -43,3 +43,7 @@
   color: #0E4C92;
   font-size: 1.4rem;
 }
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked {
+  background: #0E4C92;
+}

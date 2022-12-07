@@ -4,9 +4,12 @@
     <h4 class="card__content__header">Select room</h4>
     <div class="card__content__rooms">
       <mat-form-field appearance="fill">
-        <mat-label>Favorite food</mat-label>
-        <mat-select>
-          <mat-option *ngFor="" [value]=""> </mat-option>
+        <mat-label>Meeting rooms</mat-label>
+        <mat-select [(ngModel)]="selectedRoomId" (selectionChange)="showData()">
+          <mat-option *ngFor="let r of meetingRooms" [value]="r.id">
+            Number: {{ r.number }} Floor: {{ r.floor.number }} Building:
+            {{ r.floor.building.name | titlecase }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -16,8 +19,16 @@
         <mat-label>Enter a date range</mat-label>
         <div class="card__content__datepicker__elements">
           <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Start date" />
-            <input matEndDate placeholder="End date" />
+            <input
+              matStartDate
+              placeholder="Start date"
+              [(ngModel)]="selectedDateRange.from"
+            />
+            <input
+              matEndDate
+              placeholder="End date"
+              [(ngModel)]="selectedDateRange.to"
+            />
           </mat-date-range-input>
           <mat-datepicker-toggle
             matIconSuffix
@@ -31,6 +42,7 @@
     <textarea
       class="card__content__topic"
       placeholder="Please enter a topic."
+      [(ngModel)]="topic"
     ></textarea>
   </div>
 </div>
