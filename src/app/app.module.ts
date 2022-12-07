@@ -37,6 +37,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blo
     BloodAcquisitionComponent,
     DoctorRequestsComponent,
     BloodExpenditureComponent,
+    ShowTendersComponent,
   ],
   imports: [
     MatDatepickerModule,

@@ -1,0 +1,59 @@
+.container {
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 5rem;
+    margin-top: 5rem;
+    background: white;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .content__elem {
+    width: 40rem;
+    height: 4rem;
+    background: lightgray;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .showDown {
+    background-color: rgb(167, 167, 167);
+    border-radius: 5px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .tender__title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .offers__elem {
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+  }
+  .acceptBtn {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+  }
+  .acceptBtn:hover {
+    background-color: white;
+    color: green;
+  }
+  
