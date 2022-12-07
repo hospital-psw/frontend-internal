@@ -22,6 +22,7 @@ export class SchedulingAppointmentFormComponent implements OnInit {
   examinationType: string;
   selectedPatient: number;
   scheduleAppointment: ScheduleAppointmentDTO;
+  minDate: Date;
 
   recommendedDates: Date[];
 
@@ -34,7 +35,9 @@ export class SchedulingAppointmentFormComponent implements OnInit {
     private patientService: PatientService,
     private toastService: ToastrService,
     private appointmentService: ScheduleService
-  ) {}
+  ) {
+    this.minDate = new Date();
+  }
 
   ngOnInit(): void {
     this.patientService.getAllPatients().subscribe(

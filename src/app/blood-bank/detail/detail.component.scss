@@ -65,3 +65,31 @@ legend{
   display: flex;
   justify-content: center;
 }
+
+.wrapper{
+  margin: 0.5rem;
+  width: 24rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper__elem{
+  display: flex;
+  flex-direction: column;
+}
+.wrapper__elem-el{
+  display: flex;
+  justify-content: space-between;
+  width: 10rem;
+  margin-bottom: 1rem;
+}
+
+.number__area{
+  width: 4rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+.number__label{
+  font-size: medium;
+}

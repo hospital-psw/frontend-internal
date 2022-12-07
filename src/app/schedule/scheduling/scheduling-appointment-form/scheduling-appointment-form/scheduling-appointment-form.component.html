@@ -11,6 +11,7 @@
             [matDatepicker]="picker"
             [(ngModel)]="recommendedDto.date"
             name="date"
+            [min]="minDate"
             required
           />
           <mat-hint>MM/DD/YYYY</mat-hint>
