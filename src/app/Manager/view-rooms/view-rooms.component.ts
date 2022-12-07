@@ -27,6 +27,8 @@ import { RelocationRequestService } from '../service/relocation-request-service'
 import { IAppointmentDisplay } from '../Model/AppointmentDisplay';
 import { trackByHourSegment } from 'angular-calendar/modules/common/util';
 import { AppointmentService } from '../service/appointment-service';
+import { IRenovationRequestDisplay } from '../Model/RenovationRequestDisplay';
+import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 
 @Component({
   selector: 'app-view-rooms',
@@ -34,27 +36,28 @@ import { AppointmentService } from '../service/appointment-service';
   styleUrls: ['./view-rooms.component.scss'],
 })
 export class ViewRoomsComponent
-  implements OnInit, OnDestroy, AfterContentChecked
-{
+  implements OnInit, OnDestroy, AfterContentChecked {
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
     private ref: ApplicationRef,
     private toastr: ToastrService,
     private relocationRequestService: RelocationRequestService,
-    private appointmentService: AppointmentService
-  ) {}
+    private appointmentService: AppointmentService,
+    private renovationService: RenovationService
+  ) { }
 
   private scene?: SceneBuilder;
   private camera?: CameraBuilder;
-  private floor: number = -1;
-  private building: number = -1;
+  public floor: number = -1;
+  public building: number = -1;
   public clickedRoom?: IRoom;
   private renderer?: THREE.WebGLRenderer;
   private sub?: Subscription;
 
   element: IEquipment;
   doRelocate: boolean = false;
+  doRenovate: boolean = false;
   rooms: IRoomMap[] = [];
   equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
@@ -85,6 +88,7 @@ export class ViewRoomsComponent
   public searchedRooms: IRoom[] = [];
   relocationRequests: IRelocationRequestDisplay[] = [];
   appointments: IAppointmentDisplay[] = [];
+  renovations: IRenovationRequestDisplay[] = [];
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -201,7 +205,7 @@ export class ViewRoomsComponent
     if (rect && holder) {
       x =
         ((event.pageX - rect?.left - window.scrollX) / holder?.clientWidth) *
-          2 -
+        2 -
         1;
       y =
         -((event.pageY - rect.top - window.scrollY) / holder.clientHeight) * 2 +
@@ -239,6 +243,11 @@ export class ViewRoomsComponent
             .subscribe((data) => {
               this.appointments = data;
             });
+          this.renovationService
+            .getRenovations(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.renovations = data;
+            });
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
           this.showBuildingDetails = false;
@@ -259,7 +268,7 @@ export class ViewRoomsComponent
       if (
         room.getRoomData().x == intersected[0].object.position.x &&
         room.getRoomData().room.floor.number ===
-          intersected[0].object.position.y &&
+        intersected[0].object.position.y &&
         room.getRoomData().z == intersected[0].object.position.z
       )
         return true;
@@ -401,5 +410,9 @@ export class ViewRoomsComponent
 
   closeStepper() {
     this.doRelocate = false;
+  }
+
+  renovate() {
+    this.doRenovate = true;
   }
 }

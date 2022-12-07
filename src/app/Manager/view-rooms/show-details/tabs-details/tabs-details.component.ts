@@ -1,3 +1,4 @@
+import { IRenovationRequestDisplay } from './../../../Model/RenovationRequestDisplay';
 import { Component } from '@angular/core';
 import { OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IAppointmentDisplay } from 'src/app/Manager/Model/AppointmentDisplay';
@@ -5,6 +6,7 @@ import { IEquipment } from 'src/app/Manager/Model/Equipment';
 import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationRequestDisplay';
 import { ToastrService } from 'ngx-toastr';
 import { RelocationRequestService } from 'src/app/Manager/service/relocation-request-service';
+import { IRoom } from 'src/app/Manager/Model/Room';
 
 @Component({
   selector: 'app-tabs-details',
@@ -19,6 +21,8 @@ export class TabsDetailsComponent {
   @Input() relocationRequests: IRelocationRequestDisplay[];
   @Input() appointments: IAppointmentDisplay[];
   @Input() equipment: IEquipment[];
+  @Input() room: IRoom;
+  @Input() renovations: IRenovationRequestDisplay[];
 
   @Output() relocateNotify = new EventEmitter<any>();
   element: IEquipment;

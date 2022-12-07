@@ -15,5 +15,18 @@
     <div class="size pie" *ngIf="usersChart">
       <canvas class="segment" id="chart4"></canvas>
     </div>
+    <div class="combo">
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Choose doctor</mat-label>
+        <mat-select (selectionChange)="getVacationStatistic($event)">
+          <mat-option *ngFor="let d of doctors" [value]="d.id">{{
+            d.firstName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="size" *ngIf="vacationsChart">
+      <canvas class="segment" id="chart5"></canvas>
+    </div>
   </div>
 </div>

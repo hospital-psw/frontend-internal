@@ -7,13 +7,20 @@ import { IRelocationRequestDisplay } from '../Model/RelocationRequestDisplay';
   providedIn: 'root',
 })
 export class RelocationRequestService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getRelocationRequests(
     roomId: number
   ): Observable<IRelocationRequestDisplay[]> {
     return this.http.get<IRelocationRequestDisplay[]>(
       `http://localhost:16177/api/Relocation/${roomId}`
+    );
+  }
+
+  decline(requestId: number): Observable<any> {
+    return this.http.post<IRelocationRequestDisplay[]>(
+      `http://localhost:16177/api/Relocation/decline`,
+      requestId
     );
   }
 }

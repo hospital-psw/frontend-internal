@@ -38,4 +38,8 @@ export class DoctorRequestsComponent implements OnInit {
   createExpenditurePage() {
     this.router.navigateByUrl('/bloodExpenditure/create');
   }
+
+  createUrgentRequestPage() {
+    this.router.navigateByUrl('/urgentBloodRequest/create');
+  }
 }

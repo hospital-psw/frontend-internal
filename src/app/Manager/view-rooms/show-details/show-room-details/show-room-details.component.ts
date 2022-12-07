@@ -1,3 +1,4 @@
+import { IRenovationRequestDisplay } from './../../../Model/RenovationRequestDisplay';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IWorkingHours } from 'src/app/Manager/Model/WorkingHours';
@@ -29,6 +30,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   @Input() equipment: IEquipment[];
   @Input() relocationRequests: IRelocationRequestDisplay[];
   @Input() appointments: IAppointmentDisplay[];
+  @Input() renovations: IRenovationRequestDisplay[];
   @Output() notify = new EventEmitter<any>();
   @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
