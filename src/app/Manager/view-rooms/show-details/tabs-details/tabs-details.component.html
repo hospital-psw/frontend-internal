@@ -1,4 +1,4 @@
-<mat-tab-group class="tab-group">
+<mat-tab-group id="tabs" class="tab-group">
   <mat-tab label="Equipment" class="tab">
     <app-show-equipment
       (notifyRelocation)="relocate($event)"
@@ -8,7 +8,7 @@
   <mat-tab label="Appointments" class="tab">
     <app-appointments [appointments]="appointments"></app-appointments>
   </mat-tab>
-  <mat-tab label="Relocations" class="tab">
+  <mat-tab id="relocationsLabel" label="Relocations" class="tab">
     <app-relocations
       [relocationRequests]="relocationRequests"
       [room]="room"

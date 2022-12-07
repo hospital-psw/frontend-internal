@@ -4,7 +4,7 @@
       <div class="input-wrapper">
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose hospital</mat-label>
-          <mat-select (selectionChange)="selectHospital($event)">
+          <mat-select id = "buildingSelect"(selectionChange)="selectHospital($event)">
             <mat-option value="4">{{ buildings[0]?.name }}</mat-option>
             <mat-option value="5">{{ buildings[1]?.name }}</mat-option>
           </mat-select>
@@ -75,7 +75,7 @@
     </div>
   </div>
 
-  <div ngSwitch="switchDetails">
+  <div id="switchDetails" ngSwitch="switchDetails">
     <button
       class="renovation-btn"
       *ngIf="floor !== -1 && building !== -1"
