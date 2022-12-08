@@ -40,6 +40,7 @@ import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blo
 import { JwtService } from './common/auth/service/jwt.service';
 import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
+import { ExaminationsModule } from './examinations/examinations.module';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
     MatSliderModule,
     MatTableModule,
     LoginModule,
+    ExaminationsModule
   ],
   bootstrap: [AppComponent],
   exports: [],

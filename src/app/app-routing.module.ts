@@ -23,6 +23,7 @@ import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
+import { ExaminationStepperComponent } from './examinations/examination-stepper/examination-stepper.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -95,6 +96,13 @@ const routes: Routes = [
     path: 'bloodExpenditure/create',
     component: BloodExpenditureComponent,
   },
+  {
+    path: 'examination/:id',
+    resolve: {
+      appointment: AppointmentResolver,
+    },
+    component: ExaminationStepperComponent,
+  }
 ];
 
 @NgModule({
