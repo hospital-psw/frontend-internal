@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { ButtonSpaceComponent } from './schedule-consilium/button-space/button-space.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     DoctorsListComponent,
     SpecializationsListComponent,
     OtherInfoComponent,
+    ButtonSpaceComponent,
   ],
   imports: [
     CommonModule,
