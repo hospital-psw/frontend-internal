@@ -21,6 +21,8 @@ import { ShowAllVacationRequestsComponent } from './vacation-request/show-all-va
 import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+import { LoginPageComponent } from './login/components/login-page/login-page.component';
+import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -56,6 +58,10 @@ const routes: Routes = [
   {
     path: 'doctorBloodRequests',
     component: DoctorRequestsComponent,
+  },
+  {
+    path: 'urgentBloodRequest/create',
+    component: UrgentBloodRequestComponent,
   },
   {
     path: 'vacation-requests/doctor',

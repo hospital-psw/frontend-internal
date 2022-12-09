@@ -2,10 +2,10 @@
   <div class="navbar__header">
     <span>{{ name }}</span>
   </div>
-  <div class="navbar__profile">
+  <div (click)="onLogout()" class="navbar__profile">
     <svg class="navbar__profile-icon">
       <use xlink:href="../../assets/SVG/sprite.svg#icon-user-check"></use>
     </svg>
-    <span>USER</span>
+    <span>{{ this.userMail }}</span>
   </div>
 </nav>
