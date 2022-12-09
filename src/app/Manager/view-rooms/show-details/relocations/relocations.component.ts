@@ -5,6 +5,7 @@ import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationReque
 import { RelocationRequestService } from 'src/app/Manager/service/relocation-request-service';
 import { NodeStyleEventEmitter } from 'rxjs/internal/observable/fromEvent';
 import { IRoom } from 'src/app/Manager/Model/Room';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-relocations',
@@ -12,7 +13,7 @@ import { IRoom } from 'src/app/Manager/Model/Room';
   styleUrls: ['./relocations.component.scss'],
 })
 export class RelocationsComponent {
-  constructor(private relocationRequestService: RelocationRequestService) {}
+  constructor(private relocationRequestService: RelocationRequestService, private toastr: ToastrService) {}
 
   displayedColumns: string[] = [
     'from',
@@ -54,6 +55,11 @@ export class RelocationsComponent {
     this.relocationRequestService.decline(requestId).subscribe((res) => {
       this.notify.emit();
       this.ngOnInit();
+      this.showSuccess();
     });
+  }
+
+  showSuccess() {
+    this.toastr.success('Successfully declined request.', 'Success');
   }
 }

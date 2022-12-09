@@ -1,8 +1,9 @@
 import { RenovationTypeEnum } from './../../../../Model/Enum/RenovationType';
 import { IRenovationRequestDisplay } from './../../../../Model/RenovationRequestDisplay';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 import { IRoom } from 'src/app/Manager/Model/Room';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-renovations',
@@ -18,8 +19,9 @@ export class RenovationsComponent {
   ];
   @Input() renovations: IRenovationRequestDisplay[];
   @Input() room: IRoom;
+  @Output() notify = new EventEmitter<any>();
 
-  constructor(private renovationRequestService: RenovationService) {}
+  constructor(private renovationRequestService: RenovationService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.renovationRequestService
@@ -45,6 +47,12 @@ export class RenovationsComponent {
   decline(requestId: number) {
     this.renovationRequestService.decline(requestId).subscribe((res) => {
       this.ngOnInit();
+      this.notify.emit();
+      this.showSuccess();
     });
+  }
+
+  showSuccess() {
+    this.toastr.success('Successfully eddited room.', 'Success');
   }
 }
