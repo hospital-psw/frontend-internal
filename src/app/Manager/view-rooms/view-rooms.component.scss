@@ -18,7 +18,8 @@
 }
 
 .info{
-  width: 70%;
+  width: 65%;
+  height: 100px;
   display: flex;
   flex-direction: column;
 }
@@ -62,6 +63,9 @@
   text-align: center;
 }
 
+.details{
+  margin-top: 5%;
+}
 .renovation-btn{
   height: 40px;
   outline: none;

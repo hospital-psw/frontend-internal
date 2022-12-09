@@ -1,9 +1,14 @@
+import { IRenovationRequestDisplay } from './../../../Model/RenovationRequestDisplay';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { IWorkingHours } from 'src/app/Manager/Model/WorkingHours';
 import { RoomService } from '../../../service/room-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { IEquipment } from 'src/app/Manager/Model/Equipment';
+import { IRelocationRequest } from 'src/app/schedule-relocation/model/RelocationRequest';
+import { IRelocationRequestDisplay } from 'src/app/Manager/Model/RelocationRequestDisplay';
+import { RelocationRequestService } from '../../../service/relocation-request-service';
+import { IAppointmentDisplay } from 'src/app/Manager/Model/AppointmentDisplay';
 
 @Component({
   selector: 'app-show-room-details',
@@ -11,7 +16,11 @@ import { IEquipment } from 'src/app/Manager/Model/Equipment';
   styleUrls: ['./show-room-details.component.scss'],
 })
 export class ShowRoomDetailsComponent implements OnInit {
-  constructor(private roomService: RoomService, private toastr: ToastrService) {
+  constructor(
+    private roomService: RoomService,
+    private toastr: ToastrService,
+    private relocationRequestService: RelocationRequestService
+  ) {
     setInterval(() => {
       this.checkWorkingHours();
     }, 100);
@@ -19,6 +28,9 @@ export class ShowRoomDetailsComponent implements OnInit {
 
   @Input() room: any;
   @Input() equipment: IEquipment[];
+  @Input() relocationRequests: IRelocationRequestDisplay[];
+  @Input() appointments: IAppointmentDisplay[];
+  @Input() renovations: IRenovationRequestDisplay[];
   @Output() notify = new EventEmitter<any>();
   @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
