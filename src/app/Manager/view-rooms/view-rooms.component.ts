@@ -29,6 +29,8 @@ import { trackByHourSegment } from 'angular-calendar/modules/common/util';
 import { AppointmentService } from '../service/appointment-service';
 import { IRenovationRequestDisplay } from '../Model/RenovationRequestDisplay';
 import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
+import { IConsiliumDisplay } from '../Model/ConsiliumDisplay';
+import { ConsiliumService } from '../service/consilium.service';
 
 @Component({
   selector: 'app-view-rooms',
@@ -45,7 +47,8 @@ export class ViewRoomsComponent
     private toastr: ToastrService,
     private relocationRequestService: RelocationRequestService,
     private appointmentService: AppointmentService,
-    private renovationService: RenovationService
+    private renovationService: RenovationService,
+    private consiliumService: ConsiliumService
   ) {}
 
   private scene?: SceneBuilder;
@@ -90,6 +93,7 @@ export class ViewRoomsComponent
   relocationRequests: IRelocationRequestDisplay[] = [];
   appointments: IAppointmentDisplay[] = [];
   renovations: IRenovationRequestDisplay[] = [];
+  consiliums: IConsiliumDisplay[];
 
   ngOnInit(): void {
     let selectedCanvas: any = document.querySelector('.canvas');
@@ -248,6 +252,11 @@ export class ViewRoomsComponent
             .getRenovations(this.clickedRoom.id)
             .subscribe((data) => {
               this.renovations = data;
+            });
+            this.consiliumService
+            .getConsiliums(this.clickedRoom.id)
+            .subscribe((data) => {
+              this.consiliums = data;
             });
           this.cdRef.detectChanges();
           this.showFloorDetails = false;
