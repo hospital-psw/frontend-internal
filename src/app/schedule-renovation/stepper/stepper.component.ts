@@ -54,6 +54,7 @@ export class StepperComponent implements OnInit {
 
   dateTimes: Date[] = [];
   showSpinner: boolean = false;
+  public selectRoom : number = 0
 
   constructor(
     private roomService: RoomService,
