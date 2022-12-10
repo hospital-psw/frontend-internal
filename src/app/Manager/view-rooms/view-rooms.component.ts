@@ -253,7 +253,7 @@ export class ViewRoomsComponent
             .subscribe((data) => {
               this.renovations = data;
             });
-            this.consiliumService
+          this.consiliumService
             .getConsiliums(this.clickedRoom.id)
             .subscribe((data) => {
               this.consiliums = data;
