@@ -57,8 +57,7 @@
           <mat-form-field
             appearance="fill"
             *ngIf="
-              renovationTypeForm.value.type === '0' &&
-              roomForm.value.room1
+              renovationTypeForm.value.type === '0' && roomForm.value.room1
             "
           >
             <mat-label>Room</mat-label>
@@ -80,10 +79,7 @@
       </mat-step>
 
       <mat-step
-        [completed]="
-          periodForm.value.startDate &&
-          periodForm.value.endDate
-        "
+        [completed]="periodForm.value.startDate && periodForm.value.endDate"
       >
         <form [formGroup]="periodForm">
           <mat-form-field appearance="fill">

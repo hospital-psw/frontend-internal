@@ -142,7 +142,12 @@ export class StepperComponent implements OnInit {
     } else {
       roomsId.push(this.roomForm.controls.room1.value);
     }
-    console.log(roomsId, startTime1, endTime1, this.durationForm.controls.duration.value)
+    console.log(
+      roomsId,
+      startTime1,
+      endTime1,
+      this.durationForm.controls.duration.value
+    );
     this.renovationService
       .recommendDateTimes({
         roomsId: roomsId,
