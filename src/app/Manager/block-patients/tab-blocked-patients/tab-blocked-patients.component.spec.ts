@@ -8,9 +8,8 @@ describe('TabBlockedPatientsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TabBlockedPatientsComponent ]
-    })
-    .compileComponents();
+      declarations: [TabBlockedPatientsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TabBlockedPatientsComponent);
     component = fixture.componentInstance;

@@ -91,7 +91,7 @@ import { BlockPatientsModule } from './Manager/block-patients/block-patients.mod
     MatSliderModule,
     MatTableModule,
     LoginModule,
-    BlockPatientsModule
+    BlockPatientsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

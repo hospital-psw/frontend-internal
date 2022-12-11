@@ -43,7 +43,7 @@
           <mat-form-field
             appearance="fill"
             *ngIf="
-              renovationTypeForm.value.type == 0 &&
+              renovationTypeForm.value.type === 0 &&
               roomForm.value.room1 !== null
             "
           >
@@ -154,7 +154,7 @@
           <div>
             <mat-form-field
               appearance="fill"
-              *ngIf="renovationTypeForm.value.type == 1"
+              *ngIf="renovationTypeForm.value.type === 1"
             >
               <mat-label>New room name</mat-label>
               <input formControlName="newName2" matInput type="text" />
@@ -162,7 +162,7 @@
 
             <mat-form-field
               appearance="fill"
-              *ngIf="renovationTypeForm.value.type == 1"
+              *ngIf="renovationTypeForm.value.type === 1"
             >
               <mat-label>New room purpose</mat-label>
               <mat-select formControlName="newPurpose2">

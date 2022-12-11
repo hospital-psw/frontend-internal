@@ -18,7 +18,7 @@ export const environment = {
   apiMedicine: 'http://localhost:16177/api/Medicament',
   apiStatistics: 'http://localhost:16177/api/Statistical',
   apiAuthUrl: 'http://localhost:16177/api/Auth/login',
-  apiApplicationPatient:'http://localhost:16177/api/ApplicationPatient'
+  apiApplicationPatient: 'http://localhost:16177/api/ApplicationPatient',
 };
 
 /*

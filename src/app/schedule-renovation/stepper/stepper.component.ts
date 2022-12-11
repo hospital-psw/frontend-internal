@@ -50,7 +50,7 @@ export class StepperComponent implements OnInit {
   @Input() floor: number;
   @Input() building: number;
 
-  @Output() close = new EventEmitter();
+  @Output() closed = new EventEmitter();
 
   dateTimes: Date[] = [];
   showSpinner: boolean = false;
@@ -127,7 +127,7 @@ export class StepperComponent implements OnInit {
   }
 
   closeStepper() {
-    this.close.emit();
+    this.closed.emit();
   }
 
   recommend() {
