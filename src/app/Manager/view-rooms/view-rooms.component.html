@@ -4,8 +4,13 @@
       <div class="input-wrapper">
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose hospital</mat-label>
-          <mat-select id="buildingSelect" (selectionChange)="selectHospital($event)">
-            <mat-option id="mat-option-building" value="4">{{ buildings[0]?.name }}</mat-option>
+          <mat-select
+            id="buildingSelect"
+            (selectionChange)="selectHospital($event)"
+          >
+            <mat-option id="mat-option-building" value="4">{{
+              buildings[0]?.name
+            }}</mat-option>
             <mat-option value="5">{{ buildings[1]?.name }}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -111,7 +116,7 @@
   </div>
   <app-renovation-stepper
     *ngIf="doRenovate"
-    (close)="doRenovate = false"
+    (closeNotify)="doRenovate = false"
     [floor]="floor"
     [building]="building"
   >
@@ -119,7 +124,7 @@
   <app-stepper
     *ngIf="doRelocate"
     [equipment]="element"
-    (close)="closeStepper()"
-    (refreshEquipment)="refreshEquipment($event)"
+    (closeNotify)="closeStepper()"
+    (refreshEquipmentNotify)="refreshEquipment($event)"
   ></app-stepper>
 </div>
