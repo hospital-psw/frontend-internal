@@ -21,7 +21,10 @@ export class RenovationsComponent {
   @Input() room: IRoom;
   @Output() notify = new EventEmitter<any>();
 
-  constructor(private renovationRequestService: RenovationService, private toastr: ToastrService) {}
+  constructor(
+    private renovationRequestService: RenovationService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.renovationRequestService

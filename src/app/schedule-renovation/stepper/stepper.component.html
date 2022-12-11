@@ -10,13 +10,24 @@
     >
       <mat-step [stepControl]="renovationTypeForm">
         <form [formGroup]="renovationTypeForm">
-          <mat-radio-group aria-label="Select an option" formControlName="type" id="renovation-type">
+          <mat-radio-group
+            aria-label="Select an option"
+            formControlName="type"
+            id="renovation-type"
+          >
             <mat-radio-button value="0">Joining rooms</mat-radio-button>
-            <mat-radio-button value="1" id="mat-radio-button-type">Splitting room</mat-radio-button>
+            <mat-radio-button value="1" id="mat-radio-button-type"
+              >Splitting room</mat-radio-button
+            >
           </mat-radio-group>
 
           <div>
-            <button mat-button matStepperNext (click)="decideRenovationType()" id="next1">
+            <button
+              mat-button
+              matStepperNext
+              (click)="decideRenovationType()"
+              id="next1"
+            >
               Next
             </button>
           </div>
@@ -34,8 +45,8 @@
             >
               <mat-option
                 value="{{ room.room.id }}"
-                *ngFor="let room of rooms1;index as i"
-                id="room{{i}}"
+                *ngFor="let room of rooms1; index as i"
+                id="room{{ i }}"
               >
                 {{ room.room.number }}
               </mat-option>
@@ -71,12 +82,22 @@
         <form [formGroup]="periodForm">
           <mat-form-field appearance="fill">
             <mat-label>Start date</mat-label>
-            <input formControlName="startDate" matInput type="date" id="datePicker1"/>
+            <input
+              formControlName="startDate"
+              matInput
+              type="date"
+              id="datePicker1"
+            />
           </mat-form-field>
 
           <mat-form-field appearance="fill">
             <mat-label>End date</mat-label>
-            <input formControlName="endDate" matInput type="date" id="datePicker2"/>
+            <input
+              formControlName="endDate"
+              matInput
+              type="date"
+              id="datePicker2"
+            />
           </mat-form-field>
 
           <div>
@@ -90,7 +111,13 @@
         <form [formGroup]="durationForm">
           <mat-form-field appearance="fill">
             <mat-label>Renovation duration in hours</mat-label>
-            <input formControlName="duration" matInput type="number" min="0" id="duration"/>
+            <input
+              formControlName="duration"
+              matInput
+              type="number"
+              min="0"
+              id="duration"
+            />
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Back</button>
@@ -107,7 +134,7 @@
             <mat-list-option
               value="{{ dateTime }}"
               *ngFor="let dateTime of dateTimes; index as i"
-              id="startTime{{i}}"
+              id="startTime{{ i }}"
             >
               {{ dateTime | date: "dd.MM.yyyy HH:mm" }}
             </mat-list-option>
@@ -125,7 +152,12 @@
           <div>
             <mat-form-field appearance="fill">
               <mat-label>New room name</mat-label>
-              <input formControlName="newName1" matInput type="text" id="newName1"/>
+              <input
+                formControlName="newName1"
+                matInput
+                type="text"
+                id="newName1"
+              />
             </mat-form-field>
 
             <mat-form-field appearance="fill">
@@ -160,7 +192,12 @@
               *ngIf="renovationTypeForm.value.type == 1"
             >
               <mat-label>New room name</mat-label>
-              <input formControlName="newName2" matInput type="text" id="newName2"/>
+              <input
+                formControlName="newName2"
+                matInput
+                type="text"
+                id="newName2"
+              />
             </mat-form-field>
 
             <mat-form-field
@@ -194,7 +231,12 @@
             <div></div>
 
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext (click)="schedule()" id="schedule">
+            <button
+              mat-button
+              matStepperNext
+              (click)="schedule()"
+              id="schedule"
+            >
               Schedule
             </button>
           </div>

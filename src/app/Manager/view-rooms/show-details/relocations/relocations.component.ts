@@ -13,7 +13,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./relocations.component.scss'],
 })
 export class RelocationsComponent {
-  constructor(private relocationRequestService: RelocationRequestService, private toastr: ToastrService) {}
+  constructor(
+    private relocationRequestService: RelocationRequestService,
+    private toastr: ToastrService
+  ) {}
 
   displayedColumns: string[] = [
     'from',
