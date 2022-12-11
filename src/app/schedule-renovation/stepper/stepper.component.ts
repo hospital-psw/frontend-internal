@@ -54,6 +54,7 @@ export class StepperComponent implements OnInit {
 
   dateTimes: Date[] = [];
   showSpinner: boolean = false;
+  public selectRoom : number = 0
 
   constructor(
     private roomService: RoomService,
@@ -157,25 +158,22 @@ export class StepperComponent implements OnInit {
   }
 
   schedule() {
-    var renovationDetails: IRenovationDetails[] = [];
-    var roomsId: number[] = [];
-    if (this.renovationTypeForm.controls.type.value == 0) {
-      roomsId.push(this.roomForm.controls.room1.value);
-      roomsId.push(this.roomForm.controls.room2.value);
-      renovationDetails.push({
-        newRoomName: this.newInfoForm.controls.newName1.value,
-        newRoomPurpose: this.newInfoForm.controls.newPurpose1.value,
-      });
+    var renovationDetails : IRenovationDetails[] = []
+    var roomsId : number[] = []
+    if (this.renovationTypeForm.controls.type.value == 0){
+      roomsId.push(this.roomForm.controls.room1.value)
+      roomsId.push(this.roomForm.controls.room2.value)
+      var newCapacity = 0
+      if (this.newInfoForm.value.newPurpose1=='operaciona sala') newCapacity = this.newInfoForm.controls.newCapacity1.value
+      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value, newCapacity: newCapacity})
     } else {
-      roomsId.push(this.roomForm.controls.room1.value);
-      renovationDetails.push({
-        newRoomName: this.newInfoForm.controls.newName1.value,
-        newRoomPurpose: this.newInfoForm.controls.newPurpose1.value,
-      });
-      renovationDetails.push({
-        newRoomName: this.newInfoForm.controls.newName2.value,
-        newRoomPurpose: this.newInfoForm.controls.newPurpose2.value,
-      });
+      roomsId.push(this.roomForm.controls.room1.value)
+      var newCapacity1 = 0
+      var newCapacity2 = 0
+      if (this.newInfoForm.value.newPurpose1=='operaciona sala') newCapacity1 = this.newInfoForm.controls.newCapacity1.value
+      if (this.newInfoForm.value.newPurpose2 == 'operaciona sala') newCapacity2 = this.newInfoForm.controls.newCapacity2.value;
+      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName1.value, newRoomPurpose: this.newInfoForm.controls.newPurpose1.value, newCapacity: newCapacity1})
+      renovationDetails.push({newRoomName: this.newInfoForm.controls.newName2.value, newRoomPurpose: this.newInfoForm.controls.newPurpose2.value, newCapacity: newCapacity2})
     }
     this.renovationService
       .createRenovationRequest({

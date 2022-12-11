@@ -1,4 +1,7 @@
 export interface IRenovationDetails {
-  newRoomName: string;
-  newRoomPurpose: string;
+
+    newRoomName: string;
+    newRoomPurpose: string;
+    newCapacity: number;
 }
+

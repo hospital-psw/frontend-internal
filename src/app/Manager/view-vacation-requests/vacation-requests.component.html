@@ -1,9 +1,10 @@
 <div class="wrapper">
   <div class="users-wrapper">
     <app-request
-      *ngFor="let vacationRequest of vacationRequests"
+      *ngFor="let vacationRequest of vacationRequests;index as i"
       [request]="vacationRequest"
       (notify)="refresh()"
+      id="vacation-request{{i}}"
     ></app-request>
   </div>
 </div>
