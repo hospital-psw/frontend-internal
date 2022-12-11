@@ -27,7 +27,7 @@ export class MedicamentTherapyComponent implements OnInit {
     private dialogRef: MatDialogRef<NewTherapyDialogComponent>,
     private therapyService: MedicamentTherapyService,
     private medicineService: MedicineService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getMedicaments();

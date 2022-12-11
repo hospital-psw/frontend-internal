@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiAppointmentUrl: 'http://localhost:16177/api/Appointment',
-  apiPatientUrl: 'http://localhost:16177/api/Patient',
+  apiPatientUrl: 'http://localhost:16177/api/ApplicationPatient',
   apiVacationRequestUrl: 'http://localhost:16177/api/VacationRequests',
   apiDoctorUrl: 'http://localhost:16177/api/Doctor',
   apiMedicalTreatment: 'http://localhost:16177/api/MedicalTreatment',
@@ -17,6 +17,7 @@ export const environment = {
   apiBloodUnit: 'http://localhost:16177/api/BloodUnit',
   apiMedicine: 'http://localhost:16177/api/Medicament',
   apiStatistics: 'http://localhost:16177/api/Statistical',
+  apiAuthUrl: 'http://localhost:16177/api/Auth/login',
   apiApplicationPatient:'http://localhost:16177/api/ApplicationPatient'
 };
 
