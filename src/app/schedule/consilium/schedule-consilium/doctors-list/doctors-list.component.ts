@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Doctor } from 'src/app/schedule/interface/Doctor';
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from './../../../../Statistics/statistics/Services/doctor.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-doctors-list',
@@ -12,11 +12,12 @@ import { Component, OnInit } from '@angular/core';
 export class DoctorsListComponent implements OnInit {
   doctors: Doctor[];
   selectedDoctors: number[];
+  @Output() outputDoctors = new EventEmitter<number[]>();
 
   constructor(
     private doctorService: DoctorService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getDoctorsInSameShift();
@@ -35,6 +36,6 @@ export class DoctorsListComponent implements OnInit {
   }
 
   showData(): void {
-    console.log(this.selectedDoctors);
+    this.outputDoctors.emit(this.selectedDoctors);
   }
 }

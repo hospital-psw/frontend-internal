@@ -1,12 +1,24 @@
 <div class="component">
   <div class="component__info">
-    <app-other-info class="component__info__element"></app-other-info>
+    <app-other-info
+      (outputData)="storeFromChildInfo($event)"
+      class="component__info__element"
+    ></app-other-info>
   </div>
   <div class="component__list">
-    <app-doctors-list class="component__list__element"></app-doctors-list>
+    <app-doctors-list
+      (outputDoctors)="storeFromChildDoctorsList($event)"
+      class="component__list__element"
+    ></app-doctors-list>
     <app-specializations-list
+      (outputSpecializations)="storeFromChildSpecializations($event)"
       class="component__list__element"
     ></app-specializations-list>
-    <app-button-space class="component__list__button"></app-button-space>
+    <app-button-space
+      [scheduleConsiliumDto]="scheduleConsiliumDto"
+      [selectedDoctors]="selectedDoctors"
+      [selectedSpecializations]="selectedSpecializations"
+      class="component__list__button"
+    ></app-button-space>
   </div>
 </div>

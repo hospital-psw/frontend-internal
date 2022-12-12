@@ -1,7 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from './../../../../Statistics/statistics/Services/doctor.service';
 import { Specialization } from './../../../enum/Specialization.enum';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -11,12 +11,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class SpecializationsListComponent implements OnInit {
   specializations: string[] = [];
-  selectedSpecializations: string[];
-  selectedSpecializationsNumbers: number[];
+  selectedSpecializations: string[] = [];
+  selectedSpecializationsNumbers: number[] = [];
+  @Output() outputSpecializations = new EventEmitter<number[]>();
+
   constructor(
     private doctorService: DoctorService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getSpecializationsOfDoctorsInSameShift();
@@ -29,7 +31,6 @@ export class SpecializationsListComponent implements OnInit {
         response.forEach((specNum) =>
           this.specializations.push(Specialization[specNum])
         );
-        console.log(this.specializations);
       },
       (error: HttpErrorResponse) => {
         this.toastrService.error(error.message);
@@ -38,6 +39,11 @@ export class SpecializationsListComponent implements OnInit {
   }
 
   showData(): void {
-    console.log(this.selectedSpecializations);
+    this.selectedSpecializationsNumbers = [];
+    let allSpecializations = Object.values(Specialization);
+    this.selectedSpecializations.forEach((spec) =>
+      this.selectedSpecializationsNumbers.push(allSpecializations.indexOf(spec))
+    );
+    this.outputSpecializations.emit(this.selectedSpecializationsNumbers);
   }
 }

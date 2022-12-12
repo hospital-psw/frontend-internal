@@ -5,7 +5,7 @@ export interface ScheduleConsilium {
   dateRange: DateRange;
   topic: string;
   selectedDoctors: number[];
-  selectedSpecializations: Specialization[];
+  selectedSpecializations: number[];
   duration: number;
   doctorId: number;
   roomId: number;
