@@ -40,9 +40,6 @@ export class TabBlockedPatientsComponent {
       }
     );
   }
-  onTableRowClick(patient: IPatient): void {
-    this.router.navigate(['/unblock/', patient.id]);
-  }
   UnblockPatient(patientId: number): void {
     console.log(patientId);
     this.patientService
