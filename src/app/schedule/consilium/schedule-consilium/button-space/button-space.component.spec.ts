@@ -8,9 +8,8 @@ describe('ButtonSpaceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ButtonSpaceComponent ]
-    })
-    .compileComponents();
+      declarations: [ButtonSpaceComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ButtonSpaceComponent);
     component = fixture.componentInstance;

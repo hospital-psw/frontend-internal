@@ -24,7 +24,7 @@ export class OtherInfoComponent implements OnInit {
   constructor(
     private roomService: RoomService,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getMeetingRooms();

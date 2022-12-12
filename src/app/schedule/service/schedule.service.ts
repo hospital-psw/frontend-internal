@@ -17,7 +17,7 @@ export class ScheduleService {
   private apiAppointmentUrl = environment.apiAppointmentUrl;
   private apiConsiliumUrl = environment.apiConsiliumUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public scheduleAppointment(
     appointment: ScheduleAppointmentDTO

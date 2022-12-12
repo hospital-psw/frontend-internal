@@ -28,7 +28,7 @@ export class SpecializationsListComponent implements OnInit, OnChanges {
   constructor(
     private doctorService: DoctorService,
     private toastrService: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getSpecializationsOfDoctorsInSameShift();

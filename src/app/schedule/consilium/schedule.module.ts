@@ -32,4 +32,4 @@ import { ButtonSpaceComponent } from './schedule-consilium/button-space/button-s
     FormsModule,
   ],
 })
-export class ScheduleModule { }
+export class ScheduleModule {}
