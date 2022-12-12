@@ -13,9 +13,9 @@ import {
   styleUrls: ['./schedule-consilium.component.scss'],
 })
 export class ScheduleConsiliumComponent implements OnInit {
-  @Input() scheduleConsiliumDto: ScheduleConsilium;
-  @Input() selectedSpecializations: number[];
-  @Input() selectedDoctors: number[];
+  scheduleConsiliumDto: ScheduleConsilium;
+  selectedSpecializations: number[];
+  selectedDoctors: number[];
 
   ngOnInit(): void {
     this.scheduleConsiliumDto = {
@@ -28,15 +28,6 @@ export class ScheduleConsiliumComponent implements OnInit {
       topic: '',
     };
   }
-
-  constructor() { }
-
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   changes['scheduleConsiliumDto'].currentValue.selectedSpecialization =
-  //     changes['selectedSpecialization'].currentValue;
-  //   changes['scheduleConsiliumDto'].currentValue.selectedDoctors =
-  //     changes['selectedDoctors'].currentValue;
-  // }
 
   storeFromChildInfo(scheduleConsiliumDto: ScheduleConsilium): void {
     this.scheduleConsiliumDto = scheduleConsiliumDto;

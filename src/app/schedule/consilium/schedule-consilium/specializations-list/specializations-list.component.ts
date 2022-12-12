@@ -1,7 +1,15 @@
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from './../../../../Statistics/statistics/Services/doctor.service';
 import { Specialization } from './../../../enum/Specialization.enum';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -9,10 +17,12 @@ import { HttpErrorResponse } from '@angular/common/http';
   templateUrl: './specializations-list.component.html',
   styleUrls: ['./specializations-list.component.scss'],
 })
-export class SpecializationsListComponent implements OnInit {
+export class SpecializationsListComponent implements OnInit, OnChanges {
   specializations: string[] = [];
   selectedSpecializations: string[] = [];
   selectedSpecializationsNumbers: number[] = [];
+  disableList: boolean = false;
+  @Input() selectedDoctors: number[];
   @Output() outputSpecializations = new EventEmitter<number[]>();
 
   constructor(
@@ -22,6 +32,14 @@ export class SpecializationsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSpecializationsOfDoctorsInSameShift();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedDoctors'].currentValue.length != 0) {
+      this.disableList = true;
+    } else {
+      this.disableList = false;
+    }
   }
 
   getSpecializationsOfDoctorsInSameShift(): void {

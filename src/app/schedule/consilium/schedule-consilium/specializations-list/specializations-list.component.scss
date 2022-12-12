@@ -44,6 +44,11 @@
   font-size: 1.4rem;
 }
 
+.mat-list-disabled-option {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 ::ng-deep .mat-primary .mat-pseudo-checkbox-checked {
   background: #0E4C92;
 }

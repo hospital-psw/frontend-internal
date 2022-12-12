@@ -8,10 +8,12 @@
   <div class="component__list">
     <app-doctors-list
       (outputDoctors)="storeFromChildDoctorsList($event)"
+      [selectedSpecializations]="selectedSpecializations"
       class="component__list__element"
     ></app-doctors-list>
     <app-specializations-list
       (outputSpecializations)="storeFromChildSpecializations($event)"
+      [selectedDoctors]="selectedDoctors"
       class="component__list__element"
     ></app-specializations-list>
     <app-button-space
