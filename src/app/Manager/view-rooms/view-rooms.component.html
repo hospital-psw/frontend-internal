@@ -4,15 +4,20 @@
       <div class="input-wrapper">
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose hospital</mat-label>
-          <mat-select (selectionChange)="selectHospital($event)">
-            <mat-option value="4">{{ buildings[0]?.name }}</mat-option>
+          <mat-select
+            id="buildingSelect"
+            (selectionChange)="selectHospital($event)"
+          >
+            <mat-option id="mat-option-building" value="4">{{
+              buildings[0]?.name
+            }}</mat-option>
             <mat-option value="5">{{ buildings[1]?.name }}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose floor</mat-label>
-          <mat-select (selectionChange)="selectFloor($event)">
-            <mat-option value="0">0</mat-option>
+          <mat-select id="floorSelect" (selectionChange)="selectFloor($event)">
+            <mat-option id="mat-option-floor" value="0">0</mat-option>
             <mat-option value="1">1</mat-option>
             <mat-option value="2">2</mat-option>
             <mat-option value="3">3</mat-option>
@@ -80,6 +85,7 @@
       class="renovation-btn"
       *ngIf="floor !== -1 && building !== -1"
       (click)="renovate()"
+      id="renovation-button"
     >
       Renovation
     </button>
@@ -111,7 +117,7 @@
   </div>
   <app-renovation-stepper
     *ngIf="doRenovate"
-    (close)="doRenovate = false"
+    (closeNotify)="doRenovate = false"
     [floor]="floor"
     [building]="building"
   >
@@ -119,7 +125,7 @@
   <app-stepper
     *ngIf="doRelocate"
     [equipment]="element"
-    (close)="closeStepper()"
-    (refreshEquipment)="refreshEquipment($event)"
+    (closeNotify)="closeStepper()"
+    (refreshEquipmentNotify)="refreshEquipment($event)"
   ></app-stepper>
 </div>
