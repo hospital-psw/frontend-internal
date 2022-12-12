@@ -50,7 +50,7 @@ export class StepperComponent implements OnInit {
   @Input() floor: number;
   @Input() building: number;
 
-  @Output() close = new EventEmitter();
+  @Output() closeNotify = new EventEmitter();
 
   dateTimes: Date[] = [];
   showSpinner: boolean = false;
@@ -91,7 +91,6 @@ export class StepperComponent implements OnInit {
   findPossibleRoomsForMergeRenovation(event: any) {
     this.rooms2 = [];
     this.firstSelectedRoom = this.findRoomById(event.value);
-    console.log(this.firstSelectedRoom);
     this.filterPossibleRooms().forEach((room) => {
       if (this.firstSelectedRoom.width == 1) {
         if (this.isNextdoorRoom(room)) {
@@ -128,7 +127,7 @@ export class StepperComponent implements OnInit {
   }
 
   closeStepper() {
-    this.close.emit();
+    this.closeNotify.emit();
   }
 
   recommend() {
@@ -143,6 +142,12 @@ export class StepperComponent implements OnInit {
     } else {
       roomsId.push(this.roomForm.controls.room1.value);
     }
+    console.log(
+      roomsId,
+      startTime1,
+      endTime1,
+      this.durationForm.controls.duration.value
+    );
     this.renovationService
       .recommendDateTimes({
         roomsId: roomsId,
@@ -157,10 +162,51 @@ export class StepperComponent implements OnInit {
       });
   }
 
+  doesNewRoomNameExists(number: string): boolean {
+    return this.rooms1.some((room) => room.room.number == number);
+  }
+
+  validateNewDetailsWhenSplit(): boolean {
+    if (
+      !this.newInfoForm.value.newName1.startsWith(this.floor.toString()) ||
+      this.doesNewRoomNameExists(this.newInfoForm.value.newName1) ||
+      !this.newInfoForm.value.newName2.startsWith(this.floor.toString()) ||
+      this.doesNewRoomNameExists(this.newInfoForm.value.newName2) ||
+      this.newInfoForm.value.newName1 == undefined ||
+      this.newInfoForm.value.newName2 == undefined ||
+      this.newInfoForm.value.newPurpose1 == undefined ||
+      this.newInfoForm.value.newPurpose2 == undefined
+    ) {
+      this.toastr.error(
+        'New room number invalid, please enter valid data.',
+        'Warning'
+      );
+      return false;
+    }
+    return true;
+  }
+
+  validateNewDetailsWhenMerge(): boolean {
+    if (
+      !this.newInfoForm.value.newName1.startsWith(this.floor.toString()) ||
+      this.doesNewRoomNameExists(this.newInfoForm.value.newName1) ||
+      this.newInfoForm.value.newPurpose1 == undefined ||
+      this.newInfoForm.value.newName1 == undefined
+    ) {
+      this.toastr.error(
+        'New room number invalid, please enter valid data.',
+        'Warning'
+      );
+      return false;
+    }
+    return true;
+  }
+
   schedule() {
     var renovationDetails: IRenovationDetails[] = [];
     var roomsId: number[] = [];
     if (this.renovationTypeForm.controls.type.value == 0) {
+      if (!this.validateNewDetailsWhenMerge()) return;
       roomsId.push(this.roomForm.controls.room1.value);
       roomsId.push(this.roomForm.controls.room2.value);
       var newCapacity = 0;
@@ -172,6 +218,7 @@ export class StepperComponent implements OnInit {
         newCapacity: newCapacity,
       });
     } else {
+      if (!this.validateNewDetailsWhenSplit()) return;
       roomsId.push(this.roomForm.controls.room1.value);
       var newCapacity1 = 0;
       var newCapacity2 = 0;
