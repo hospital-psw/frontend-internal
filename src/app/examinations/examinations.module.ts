@@ -5,21 +5,17 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
 import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
-import { MatDatepickerModule} from '@angular/material/datepicker';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
-  declarations: [
-    ExaminationStepperComponent,
-    PrescriptionsComponent
-  ],
+  declarations: [ExaminationStepperComponent, PrescriptionsComponent],
   imports: [
     CommonModule,
     MaterialModule,
     DragDropModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,
   ],
 })
-export class ExaminationsModule { }
+export class ExaminationsModule {}

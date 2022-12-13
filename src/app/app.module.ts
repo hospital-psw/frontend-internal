@@ -91,7 +91,7 @@ import { ExaminationsModule } from './examinations/examinations.module';
     MatSliderModule,
     MatTableModule,
     LoginModule,
-    ExaminationsModule
+    ExaminationsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

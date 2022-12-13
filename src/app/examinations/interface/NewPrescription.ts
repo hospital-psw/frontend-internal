@@ -1,6 +1,9 @@
+import { Medicament } from 'src/app/medical-treatment/interface/Medicament';
+
 export interface NewPrescription {
-    medicamentId: number;
-    description: string;
-    from: Date;
-    to: Date;
+  medicine: Medicament;
+  medicamentId: number;
+  description: string;
+  from: Date;
+  to: Date;
 }

@@ -20,6 +20,5 @@ export class NewTherapyDialogComponent implements OnInit {
     this.treatmentId = data.treatmentId;
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

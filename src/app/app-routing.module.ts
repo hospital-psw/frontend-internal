@@ -102,7 +102,7 @@ const routes: Routes = [
       appointment: AppointmentResolver,
     },
     component: ExaminationStepperComponent,
-  }
+  },
 ];
 
 @NgModule({

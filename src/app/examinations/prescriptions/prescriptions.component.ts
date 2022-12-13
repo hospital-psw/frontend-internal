@@ -24,7 +24,9 @@ export class PrescriptionsComponent implements OnInit {
   @Output() prescriptionCreatedEvent = new EventEmitter<NewPrescription>();
   newPrescription : NewPrescription;
   medicaments: Medicament[];
+  selectedMedicament: Medicament;
   patientId : number;
+  modalState: boolean;
 
   constructor(private toastrService: ToastrService,
               private medicamentService: MedicineService,
@@ -36,6 +38,12 @@ export class PrescriptionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.newPrescription = {
+      medicine: {
+        id: -1,
+        description: "",
+        name: "",
+        quantity: -1
+      },
       medicamentId: -1,
       description: "",
       from: new Date(),
@@ -55,6 +63,7 @@ export class PrescriptionsComponent implements OnInit {
   createPrescription() : void {
     this.newPrescription.from = this.range.controls["from"].value as Date;
     this.newPrescription.to = this.range.controls["to"].value as Date;
+    this.newPrescription.medicamentId = this.newPrescription.medicine.id;
     if (this.newPrescription.medicamentId === -1){
       this.toastrService.warning("Please select medicament for prescription")
       return;
@@ -66,11 +75,13 @@ export class PrescriptionsComponent implements OnInit {
       return;
     }
     this.toastrService.success("Succesfully created prescription");
-    this.dialogRef.close({newPrescription : this.newPrescription});
+    this.modalState = true;
+    this.dialogRef.close({newPrescription : this.newPrescription, modalState: this.modalState});
   }
 
   closeDialog() : void {
-    this.dialogRef.close();
+    this.modalState = false;
+    this.dialogRef.close({modalState: this.modalState});
   }
 
   

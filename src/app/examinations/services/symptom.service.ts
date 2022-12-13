@@ -5,16 +5,14 @@ import { Observable } from 'rxjs';
 import { Symptom } from '../interface/symptom';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SymptomService {
   private apiServerUrl = environment.apiSymptom;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
-
-  public getSymptoms() : Observable<Symptom[]> {
+  public getSymptoms(): Observable<Symptom[]> {
     return this.http.get<Symptom[]>(`${this.apiServerUrl}`);
   }
 }

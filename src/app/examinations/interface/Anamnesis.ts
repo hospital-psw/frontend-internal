@@ -1,4 +1,4 @@
 export interface Anamnesis {
-    id: number; 
-    description: string;
+  id: number;
+  description: string;
 }

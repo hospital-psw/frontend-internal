@@ -16,7 +16,9 @@ export class MedicineService {
     return this.http.get<Medicament[]>(`${this.apiServerUrl}`);
   }
 
-  public getAcceptable(patientId : number) : Observable<Medicament[]> {
-    return this.http.get<Medicament[]>(`${this.apiServerUrl}/acceptable/${patientId}`)
+  public getAcceptable(patientId: number): Observable<Medicament[]> {
+    return this.http.get<Medicament[]>(
+      `${this.apiServerUrl}/acceptable/${patientId}`
+    );
   }
 }

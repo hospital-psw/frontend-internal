@@ -6,8 +6,8 @@
     <div class="prescription__main-content">
         <mat-form-field appearance="fill" class="prescription__form-field">
             <mat-label>Medicaments</mat-label>
-            <mat-select [(ngModel)]="newPrescription.medicamentId">
-                <mat-option *ngFor="let m of medicaments" [value]="m.id">{{
+            <mat-select [(ngModel)]="newPrescription.medicine">
+                <mat-option *ngFor="let m of medicaments" [value]="m">{{
                     m.name | titlecase
                     }}</mat-option>
             </mat-select>

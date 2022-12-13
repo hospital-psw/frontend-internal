@@ -6,16 +6,14 @@ import { Anamnesis } from '../interface/Anamnesis';
 import { NewAnamnesis } from '../interface/NewAnamnesis';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AnamnesisService {
   private apiServerUrl = environment.apiAnamnesis;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
-
-  public createAnamnesis(newAnamnesis : NewAnamnesis) : Observable<Anamnesis> {
+  public createAnamnesis(newAnamnesis: NewAnamnesis): Observable<Anamnesis> {
     return this.http.post<Anamnesis>(`${this.apiServerUrl}/`, newAnamnesis);
   }
 }

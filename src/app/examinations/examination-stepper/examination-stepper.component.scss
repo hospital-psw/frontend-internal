@@ -120,6 +120,88 @@
         }
     }
 
+    .prescriptions-tab {
+        display: flex;
+        flex-direction: column;
+        height: 50rem;
+
+        .header {
+            height: 5%;
+            margin-bottom: 4rem;
+            margin-top: 4rem;
+
+            .pres-button {
+                width: 15rem;
+                height: 3rem;
+                border-color: #fd5c63;
+                color: #fd5c63;
+
+                &:hover {
+                    background-color: #fd5c63;
+                    color: #fff;
+                }
+            }
+
+        }
+
+        .main-content {
+            height: 60%;
+            margin-bottom: 2rem;
+           
+            .list-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            &__single {
+                height: 5rem;
+                border-radius: 1rem;
+                box-shadow: $card-box-shadow;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: .5rem 2rem;
+                background-color: #fff;
+                background-image: url('../../../assets/img/vector-blue.png');
+                background-repeat: no-repeat;
+                background-position: left;
+                color: black;
+                margin-bottom: 1rem;
+
+                .header-desc {
+                    display: flex;
+                    width: 50%;
+                }
+
+                &-header {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    margin-right: 2rem;
+                    width: 15rem;
+                }
+
+                &-description {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    width: 20rem;
+                }
+
+                &-daterange {
+                    font-size: 1.6rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .footer {
+            height: 20%;
+        }
+    }
+
     .finish {
 
         margin-top: 3rem;
