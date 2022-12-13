@@ -39,7 +39,7 @@ import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.component';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
-
+import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +52,7 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
     BloodExpenditureComponent,
     ShowTendersComponent,
     UrgentBloodRequestComponent,
+    CreateTenderComponent,
   ],
   imports: [
     MatDatepickerModule,

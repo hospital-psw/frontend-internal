@@ -23,6 +23,7 @@ import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.component';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
+import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -98,6 +99,11 @@ const routes: Routes = [
   {
     path: 'bloodExpenditure/create',
     component: BloodExpenditureComponent,
+  },
+
+  {
+    path: 'create-tender',
+    component: CreateTenderComponent,
   },
 ];
 

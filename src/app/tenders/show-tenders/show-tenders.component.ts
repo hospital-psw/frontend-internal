@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ITender } from '../model/tender.model';
 import { TenderService } from '../services/tender.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-tenders',
@@ -10,7 +11,7 @@ import { TenderService } from '../services/tender.service';
 export class ShowTendersComponent {
   showOffers: boolean[] = [];
   tenders: ITender[];
-  constructor(private tenderService: TenderService) {}
+  constructor(private tenderService: TenderService, private router: Router) {}
 
   ngOnInit(): void {
     this.tenderService.getAll().subscribe((res) => {
@@ -29,5 +30,9 @@ export class ShowTendersComponent {
   getStatus(status: Number) {
     if (status === 0) return 'OPEN';
     else return '';
+  }
+
+  createTenderPage() {
+    this.router.navigateByUrl('/create-tender');
   }
 }

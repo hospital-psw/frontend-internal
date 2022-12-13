@@ -56,4 +56,18 @@
     background-color: white;
     color: green;
   }
+
+  .createTenderButton{
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.TopBar{
+  display: grid;
+  grid-template-columns: 70% 10% 10% 10%;
+  width: auto;
+  height: 40px;
+  border-bottom: solid #4c5d72;
+}
   
