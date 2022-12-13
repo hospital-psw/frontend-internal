@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../auth/service/auth.service';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -11,7 +13,24 @@ export class NavigationBarComponent implements OnInit {
   @Output() sidebarButtonClicked: EventEmitter<string> =
     new EventEmitter<string>();
 
-  constructor() {}
+  private userSub: Subscription;
+  isLogged = false;
+  userMail = '';
 
-  ngOnInit(): void {}
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isLogged = !!user;
+      this.userMail = user.email;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
+  }
+
+  onLogout() {
+    this.authService.logout();
+  }
 }
