@@ -4,11 +4,14 @@ import { ExaminationStepperComponent } from './examination-stepper/examination-s
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { PrescriptionsComponent } from './prescriptions/prescriptions.component';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
   declarations: [
-    ExaminationStepperComponent
+    ExaminationStepperComponent,
+    PrescriptionsComponent
   ],
   imports: [
     CommonModule,
@@ -16,6 +19,7 @@ import { MaterialModule } from '../material/material.module';
     DragDropModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDatepickerModule
   ],
 })
 export class ExaminationsModule { }

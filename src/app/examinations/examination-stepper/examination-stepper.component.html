@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <div class="examinations-wrapper">
     <mat-stepper orientation="horizontal" class="exam-stepper" [linear]="true">
         <mat-step class="step">
@@ -74,10 +75,20 @@
         <mat-step [stepControl]="prescriptionForm" class="step">
             <form [formGroup]="prescriptionForm">
                 <ng-template matStepLabel>Prescriptions</ng-template>
-        
-        
-                <div>
-                    <button mat-button matStepperNext>Next</button>
+                
+                <div class="header">
+                    <button (click)="openDialog()">Add new prescription</button>
+                </div>
+                <div class="main-content">
+                    <div class="main-content__single" *ngFor="let p in anamnesis.prescriptions">
+                        <h2>{{p.medicine.name}}</h2>
+                        <p>{{p.description}}</p>
+                    </div>
+                </div>    
+                
+                <div class="buttonContainer">
+                    <button mat-button matStepperPrevious class="button">Previous</button>
+                    <button mat-button matStepperNext class="button">Next</button>
                 </div>
             </form>
         </mat-step>

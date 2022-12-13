@@ -1,3 +1,5 @@
+import { PrescriptionsComponent } from './../prescriptions/prescriptions.component';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
 import {
   FormArray,
@@ -48,6 +50,7 @@ export class ExaminationStepperComponent implements OnInit {
     private symptomService: SymptomService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -89,6 +92,14 @@ export class ExaminationStepperComponent implements OnInit {
     }, (error) => {
       this.toastr.error(error.error)
     })
+  }
+
+  openDialog() : void {
+    const dialogRef = this.dialog.open(PrescriptionsComponent, { data: { patientId : this.appointment.patient.id}})
+                                 .afterClosed()
+                                 .subscribe((result) => {
+                                  this.anamnesis.prescriptions.push(result)
+                                 })
   }
 
 }

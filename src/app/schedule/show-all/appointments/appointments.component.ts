@@ -83,7 +83,7 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.canClick = false;
-    this.viewDate = new Date('2022-10-27');
+    this.viewDate = new Date();
     this.viewDateEnd = addDays(this.viewDate, 6);
     this.examinationTypes = Object.values(ExaminationType);
     this.getAllAppointments();
