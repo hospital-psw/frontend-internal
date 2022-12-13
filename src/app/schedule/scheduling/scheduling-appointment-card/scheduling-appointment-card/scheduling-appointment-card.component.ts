@@ -21,9 +21,9 @@ export class SchedulingAppointmentCardComponent implements OnInit {
     private scheduleService: ScheduleService,
     private toaster: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   createSchedulingAppointment(): void {
     this.appointmentData.date = this.cardInfo.date;
@@ -36,7 +36,7 @@ export class SchedulingAppointmentCardComponent implements OnInit {
         this.toaster.success(
           'Appointment succesfully scheduled on date ' + response.date
         );
-        this.router.navigate(['/appointments']);
+        this.router.navigate(['/app/appointments']);
       },
       (error: HttpErrorResponse) => {
         this.toaster.error(error.error);

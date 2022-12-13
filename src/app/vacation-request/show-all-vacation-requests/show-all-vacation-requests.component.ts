@@ -30,14 +30,14 @@ export class ShowAllVacationRequestsComponent implements OnInit {
     private vacationRequestService: VacationRequestService,
     private router: Router,
     private toaster: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.refreshData();
   }
 
   public createVacationRequest() {
-    this.router.navigate(['/vacation-requests/doctor/create']);
+    this.router.navigate(['/app/vacation-requests/doctor/create']);
   }
 
   public setSelectedItem(vacationRequest: VacationRequest) {

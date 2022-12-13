@@ -28,13 +28,16 @@ export class SpecializationsListComponent implements OnInit, OnChanges {
   constructor(
     private doctorService: DoctorService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getSpecializationsOfDoctorsInSameShift();
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedDoctors'].currentValue == undefined) {
+      changes['selectedDoctors'].currentValue = [];
+    }
     if (changes['selectedDoctors'].currentValue.length != 0) {
       this.disableList = true;
     } else {

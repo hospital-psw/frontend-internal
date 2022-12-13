@@ -26,7 +26,7 @@ export class TreatmentViewComponent implements OnInit {
     private router: Router,
     private datePipe: DatePipe,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   medicalTreatment: MedicalTreatment;
   patientRelease: PatientRelease;
@@ -82,9 +82,9 @@ export class TreatmentViewComponent implements OnInit {
       .subscribe((response) => {
         this.toastr.success(
           'Medical treatment is successfully finished for patient ' +
-            response.patient.firstName +
-            ' ' +
-            response.patient.lastName
+          response.patient.firstName +
+          ' ' +
+          response.patient.lastName
         );
         this.medicalTreatment = response;
       });
@@ -120,7 +120,6 @@ export class TreatmentViewComponent implements OnInit {
   }
 
   openDialog(): void {
-    console.log('Okinula se metoda open dialog');
     const dialogRef = this.dialog
       .open(NewTherapyDialogComponent, {
         data: {

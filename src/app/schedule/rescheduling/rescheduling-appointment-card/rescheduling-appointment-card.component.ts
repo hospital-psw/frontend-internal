@@ -32,9 +32,9 @@ export class ReschedulingAppointmentCardComponent implements OnInit, OnChanges {
     private scheduleService: ScheduleService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnChanges(changes: SimpleChanges): void {}
+  ngOnChanges(changes: SimpleChanges): void { }
 
   ngOnInit(): void {
     this.examinationTypes = Object.values(ExaminationType);
@@ -56,7 +56,7 @@ export class ReschedulingAppointmentCardComponent implements OnInit, OnChanges {
           this.toastrService.success(
             'Selected appointment is successfully rescheduled!'
           );
-          this.router.navigate(['/appointments']);
+          this.router.navigate(['/app/appointments']);
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);

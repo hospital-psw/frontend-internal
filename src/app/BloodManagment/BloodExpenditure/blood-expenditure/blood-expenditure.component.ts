@@ -16,7 +16,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
     private bloodExpenditureService: BloodExpenditureService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   disabled = true;
   reason: string;
@@ -39,7 +39,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
       .subscribe(
         (response: CreateExpenditureDTO) => {
           this.toastrService.success('Created expenditure');
-          this.router.navigateByUrl('/doctorBloodRequests');
+          this.router.navigateByUrl('/app/doctorBloodRequests');
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);

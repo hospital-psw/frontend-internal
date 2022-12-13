@@ -22,7 +22,7 @@ export class AuthService {
     private toastr: ToastrService,
     private router: Router,
     private decoder: JwtService
-  ) {}
+  ) { }
 
   public showSuccess() {
     this.toastr.success(
@@ -68,6 +68,7 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.router.navigate(['/login']);
   }
 
   public autoLogin() {

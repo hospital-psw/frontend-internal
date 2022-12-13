@@ -20,7 +20,7 @@ export class ButtonSpaceComponent {
     private scheduleService: ScheduleService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   scheduleConsilium(): void {
     this.configureDateRange();
@@ -41,10 +41,10 @@ export class ButtonSpaceComponent {
     }
     this.scheduleService.scheduleConsilium(this.scheduleConsiliumDto).subscribe(
       (response: Consilium) => {
-        this.router.navigate(['/consiliums']);
+        this.router.navigate(['/app/consiliums']);
         this.toastrService.success(
           'Consilium is successfully scheduled. Date: ' +
-            response.dateTime.toString()
+          response.dateTime.toString()
         );
       },
       (error: HttpErrorResponse) => {

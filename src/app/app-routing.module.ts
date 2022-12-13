@@ -1,3 +1,4 @@
+import { ApplicationMainComponent } from './application-main/application-main.component';
 import { AllConsiliumsComponent } from './schedule/consilium/all-consiliums/all-consiliums.component';
 import { ScheduleConsiliumComponent } from './schedule/consilium/schedule-consilium/main-component/schedule-consilium.component';
 import { BaseComponentComponent } from './medical-treatment/show-treatments/base-component/base-component.component';
@@ -27,83 +28,16 @@ import { LoginPageComponent } from './login/components/login-page/login-page.com
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 const routes: Routes = [
   {
-    path: 'appointments',
-    component: AppointmentsComponent,
+    path: 'app',
+    component: ApplicationMainComponent,
+    loadChildren: () =>
+      import('./application-main/user-routing/user-routing.module').then(
+        (x) => x.UserRoutingModule
+      ),
   },
   {
-    path: 'patients',
-    component: PatientTableComponent,
-  },
-  {
-    path: 'display',
-    component: ViewRoomsComponent,
-  },
-  {
-    path: 'reschedule-appointment/:id',
-    component: ReschedulingAppointmentComponent,
-    resolve: {
-      appointment: AppointmentResolver,
-    },
-  },
-  {
-    path: 'feedback',
-    component: FeedbackViewComponent,
-  },
-  {
-    path: 'appointments/scheduling',
-    component: SchedulingComponent,
-  },
-  {
-    path: 'bloodAcquisition/create',
-    component: BloodAcquisitionComponent,
-  },
-  {
-    path: 'doctorBloodRequests',
-    component: DoctorRequestsComponent,
-  },
-  {
-    path: 'urgentBloodRequest/create',
-    component: UrgentBloodRequestComponent,
-  },
-  {
-    path: 'vacation-requests/doctor',
-    component: VacationRequestComponent,
-  },
-  {
-    path: 'treatment/:id',
-    component: TreatmentViewComponent,
-    title: 'Stationary treatment',
-    resolve: {
-      treatment: TreatmentResolver,
-    },
-  },
-  {
-    path: 'show-treatments',
-    component: BaseComponentComponent,
-  },
-  {
-    path: 'vacation-requests-display',
-    component: VacationRequestsComponent,
-  },
-  {
-    path: 'statistics',
-    component: StatisticsComponent,
-  },
-  {
-    path: 'reconsider-blood-request',
-    component: ReconsiderBloodRequestComponent,
-  },
-  {
-    path: 'bloodExpenditure/create',
-    component: BloodExpenditureComponent,
-  },
-  {
-    path: 'schedule-consilium',
-    component: ScheduleConsiliumComponent,
-  },
-  {
-    path: 'consiliums',
-    component: AllConsiliumsComponent,
+    path: 'login',
+    component: LoginPageComponent,
   },
 ];
 
@@ -111,4 +45,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

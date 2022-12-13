@@ -11,7 +11,7 @@ import { LoginResponseDTO } from 'src/app/common/auth/interface/LoginResponseDTO
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   hide = true;
   defaultRemember = false;
@@ -28,7 +28,7 @@ export class LoginFormComponent {
     this.authService.login(form.value).subscribe(
       (response: LoginResponseDTO) => {
         this.authService.showSuccess();
-        this.router.navigate(['appointments']);
+        this.router.navigate(['app']);
         this.isLogging = false;
       },
       (message) => {

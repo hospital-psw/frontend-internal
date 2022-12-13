@@ -13,7 +13,7 @@ export class DoctorRequestsComponent implements OnInit {
   constructor(
     private bloodAcquisitionService: BloodAcquisitionService,
     private router: Router
-  ) {}
+  ) { }
 
   dataSource: Object[];
   displayedColumns: string[] = [
@@ -33,13 +33,13 @@ export class DoctorRequestsComponent implements OnInit {
   }
 
   createAcquisitionPage() {
-    this.router.navigateByUrl('/bloodAcquisition/create');
+    this.router.navigateByUrl('/app/bloodAcquisition/create');
   }
   createExpenditurePage() {
-    this.router.navigateByUrl('/bloodExpenditure/create');
+    this.router.navigateByUrl('/app/bloodExpenditure/create');
   }
 
   createUrgentRequestPage() {
-    this.router.navigateByUrl('/urgentBloodRequest/create');
+    this.router.navigateByUrl('/app/urgentBloodRequest/create');
   }
 }

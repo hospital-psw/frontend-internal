@@ -19,7 +19,7 @@ import {
 })
 export class DoctorsListComponent implements OnInit, OnChanges {
   doctors: Doctor[];
-  selectedDoctors: number[];
+  selectedDoctors: number[] = [];
   disableList: boolean = false;
   @Input() selectedSpecializations: number[];
   @Output() outputDoctors = new EventEmitter<number[]>();
@@ -27,13 +27,16 @@ export class DoctorsListComponent implements OnInit, OnChanges {
   constructor(
     private doctorService: DoctorService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getDoctorsInSameShift();
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedSpecializations'].currentValue == undefined) {
+      changes['selectedSpecializations'].currentValue = [];
+    }
     if (changes['selectedSpecializations'].currentValue.length != 0) {
       this.disableList = true;
     } else {

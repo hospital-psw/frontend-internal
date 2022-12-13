@@ -55,7 +55,7 @@ export class BloodAcquisitionComponent implements OnInit, DoCheck {
       .subscribe(
         (response: CreateAcquisitionDTO) => {
           this.toastrService.success('Create acquisition');
-          this.router.navigateByUrl('/doctorBloodRequests');
+          this.router.navigateByUrl('/app/doctorBloodRequests');
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);
