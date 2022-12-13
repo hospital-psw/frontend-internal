@@ -13,9 +13,7 @@ export class AppComponent implements OnInit {
   isLogged = false;
   private userSub: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.router.navigate(['/login']);
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.autoLogin();
