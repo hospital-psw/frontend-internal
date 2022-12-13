@@ -66,4 +66,10 @@ export class RoomService {
   public getAvailableRooms(): Observable<IRoom[]> {
     return this.http.get<IRoom[]>(`${this.apiServerUrl}/available`);
   }
+
+  getRoomsWithWorkingHour(workingHourId: number): Observable<IRoom[]> {
+    return this.http.get<IRoom[]>(
+      `${this.apiServerUrl}/workhour-rooms/${workingHourId}`
+    );
+  }
 }

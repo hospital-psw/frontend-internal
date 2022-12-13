@@ -96,6 +96,6 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
   }
 
   onTableRowClick(medicalTreatment: MedicalTreatment): void {
-    this.router.navigate(['/treatment/', medicalTreatment.id]);
+    this.router.navigate(['/app/treatment/', medicalTreatment.id]);
   }
 }
