@@ -12,6 +12,31 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { ButtonSpaceComponent } from './schedule-consilium/button-space/button-space.component';
+import {
+  NgxUiLoaderConfig,
+  NgxUiLoaderHttpModule,
+  NgxUiLoaderModule,
+  POSITION,
+  SPINNER,
+} from 'ngx-ui-loader';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  fgsColor: '#1493ff',
+  fgsPosition: 'center-center',
+  fgsSize: 90,
+  fgsType: SPINNER.threeBounce,
+  gap: 24,
+  logoPosition: POSITION.centerCenter,
+  logoSize: 120,
+  logoUrl: '',
+  masterLoaderId: 'master',
+  overlayBorderRadius: '0',
+  overlayColor: 'rgba(40, 40, 40, 0.8)',
+  pbColor: '#1493ff',
+  pbDirection: 'ltr',
+  pbThickness: 3,
+  hasProgressBar: true,
+}
 
 @NgModule({
   declarations: [
@@ -30,6 +55,8 @@ import { ButtonSpaceComponent } from './schedule-consilium/button-space/button-s
     MatDatepickerModule,
     MatOptionModule,
     FormsModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
   ],
 })
-export class ScheduleModule {}
+export class ScheduleModule { }

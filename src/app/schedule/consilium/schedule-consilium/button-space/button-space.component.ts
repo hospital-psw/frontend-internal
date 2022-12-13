@@ -15,6 +15,7 @@ export class ButtonSpaceComponent {
   @Input() scheduleConsiliumDto: ScheduleConsilium;
   @Input() selectedDoctors: number[];
   @Input() selectedSpecializations: number[];
+  isScheduled: boolean = null as any;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -23,6 +24,7 @@ export class ButtonSpaceComponent {
   ) { }
 
   scheduleConsilium(): void {
+    this.isScheduled = false;
     this.configureDateRange();
     this.scheduleConsiliumDto.selectedDoctors = this.selectedDoctors;
     this.scheduleConsiliumDto.selectedSpecializations =
@@ -41,6 +43,7 @@ export class ButtonSpaceComponent {
     }
     this.scheduleService.scheduleConsilium(this.scheduleConsiliumDto).subscribe(
       (response: Consilium) => {
+        this.isScheduled = true;
         this.router.navigate(['/app/consiliums']);
         this.toastrService.success(
           'Consilium is successfully scheduled. Date: ' +
@@ -48,6 +51,7 @@ export class ButtonSpaceComponent {
         );
       },
       (error: HttpErrorResponse) => {
+        this.isScheduled = true;
         console.log(error);
         this.toastrService.error(error.error);
       }
