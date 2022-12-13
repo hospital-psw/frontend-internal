@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ITender } from '../model/tender.model';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { TenderService } from '../services/tender.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { TenderService } from '../services/tender.service';
 export class ShowTendersComponent {
   showOffers: boolean[] = [];
   tenders: ITender[];
-  constructor(private tenderService: TenderService) {}
+  constructor(
+    private tenderService: TenderService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.tenderService.getAll().subscribe((res) => {
@@ -29,5 +33,20 @@ export class ShowTendersComponent {
   getStatus(status: Number) {
     if (status === 0) return 'OPEN';
     else return '';
+  }
+
+  accept(tenderId: Number, i: Number) {
+    this.tenderService.finishedTender(tenderId, i).subscribe((res) => {
+      this.tenders = res;
+      this.toastr.success('Tender successful finished.');
+    });
+  }
+
+  calculateTenderOffers(offer: any) {
+    let sum = 0;
+    for (var item of offer.items) {
+      sum += item.money.amount;
+    }
+    return sum;
   }
 }

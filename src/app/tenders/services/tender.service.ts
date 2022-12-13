@@ -10,6 +10,12 @@ export class TenderService {
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<ITender[]> {
-    return this.http.get<ITender[]>(`http://localhost:45488/api/Tender/all`);
+    return this.http.get<ITender[]>(`http://localhost:45488/api/Tender/active`);
+  }
+
+  public finishedTender(tenderId: Number, offerIndex: Number) {
+    return this.http.get<ITender[]>(
+      `http://localhost:45488/api/Tender/finish/${tenderId}/${offerIndex}`
+    );
   }
 }

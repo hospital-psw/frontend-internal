@@ -15,15 +15,19 @@
         </div>
       </div>
       <div class="offers" *ngIf="showOffers[i]">
-        <div class="offers__elem">
-          <p>Offer number 1</p>
-          <p>Price</p>
-          <button class="acceptBtn">Accept</button>
+        <div *ngIf="tender.offers.length == 0">
+          <div class="offers__elem">
+            <p>Nema jos aktivnih ponuda za ovaj tender.</p>
+          </div>
         </div>
-        <div class="offers__elem">
-          <p>Offer number 1</p>
-          <p>Price</p>
-          <button class="acceptBtn">Accept</button>
+        <div *ngFor="let offer of tender.offers; let i = index">
+          <div class="offers__elem">
+            <p>Offer number #{{ offer.id }}</p>
+            <p>{{ calculateTenderOffers(offer) }}$</p>
+            <button class="acceptBtn" (click)="accept(tender.id, i)">
+              Accept
+            </button>
+          </div>
         </div>
       </div>
     </div>
