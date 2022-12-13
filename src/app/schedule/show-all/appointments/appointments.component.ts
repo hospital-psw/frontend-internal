@@ -79,7 +79,7 @@ export class AppointmentsComponent implements OnInit {
     private appointmentService: ScheduleService,
     private router: Router,
     private toaster: ToastrService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.canClick = false;

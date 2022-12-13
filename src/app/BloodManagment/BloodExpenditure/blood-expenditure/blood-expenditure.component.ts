@@ -16,7 +16,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
     private bloodExpenditureService: BloodExpenditureService,
     private toastrService: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   disabled = true;
   reason: string;

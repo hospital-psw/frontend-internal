@@ -31,7 +31,7 @@ export class CreateRequestFormComponent implements OnInit {
     private vacationRequestService: VacationRequestService,
     private toaster: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.vacationRequestStatus = Object.values(VacationRequestStatus);

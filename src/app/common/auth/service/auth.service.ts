@@ -22,7 +22,7 @@ export class AuthService {
     private toastr: ToastrService,
     private router: Router,
     private decoder: JwtService
-  ) { }
+  ) {}
 
   public showSuccess() {
     this.toastr.success(

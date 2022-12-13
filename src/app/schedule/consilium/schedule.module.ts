@@ -36,7 +36,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   pbDirection: 'ltr',
   pbThickness: 3,
   hasProgressBar: true,
-}
+};
 
 @NgModule({
   declarations: [
@@ -59,4 +59,4 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
   ],
 })
-export class ScheduleModule { }
+export class ScheduleModule {}

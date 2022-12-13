@@ -11,7 +11,7 @@ import { LoginResponseDTO } from 'src/app/common/auth/interface/LoginResponseDTO
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   hide = true;
   defaultRemember = false;

@@ -21,9 +21,9 @@ export class SchedulingAppointmentCardComponent implements OnInit {
     private scheduleService: ScheduleService,
     private toaster: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   createSchedulingAppointment(): void {
     this.appointmentData.date = this.cardInfo.date;

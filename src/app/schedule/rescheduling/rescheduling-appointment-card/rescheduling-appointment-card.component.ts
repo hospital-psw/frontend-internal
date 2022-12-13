@@ -32,9 +32,9 @@ export class ReschedulingAppointmentCardComponent implements OnInit, OnChanges {
     private scheduleService: ScheduleService,
     private toastrService: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnChanges(changes: SimpleChanges): void { }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   ngOnInit(): void {
     this.examinationTypes = Object.values(ExaminationType);

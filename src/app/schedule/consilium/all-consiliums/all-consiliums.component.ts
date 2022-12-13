@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./all-consiliums.component.scss'],
 })
 export class AllConsiliumsComponent {
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   scheduleConsilium(): void {
     this.router.navigate(['/app/schedule-consilium']);

@@ -21,7 +21,7 @@ export class ButtonSpaceComponent {
     private scheduleService: ScheduleService,
     private toastrService: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   scheduleConsilium(): void {
     this.isScheduled = false;
@@ -47,7 +47,7 @@ export class ButtonSpaceComponent {
         this.router.navigate(['/app/consiliums']);
         this.toastrService.success(
           'Consilium is successfully scheduled. Date: ' +
-          response.dateTime.toString()
+            response.dateTime.toString()
         );
       },
       (error: HttpErrorResponse) => {

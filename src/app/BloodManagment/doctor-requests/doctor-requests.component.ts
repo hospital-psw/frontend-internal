@@ -13,7 +13,7 @@ export class DoctorRequestsComponent implements OnInit {
   constructor(
     private bloodAcquisitionService: BloodAcquisitionService,
     private router: Router
-  ) { }
+  ) {}
 
   dataSource: Object[];
   displayedColumns: string[] = [
