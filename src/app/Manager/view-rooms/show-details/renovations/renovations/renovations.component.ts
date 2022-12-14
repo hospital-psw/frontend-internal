@@ -56,6 +56,6 @@ export class RenovationsComponent {
   }
 
   showSuccess() {
-    this.toastr.success('Successfully eddited room.', 'Success');
+    this.toastr.success('Successfully declined renovation.', 'Success');
   }
 }

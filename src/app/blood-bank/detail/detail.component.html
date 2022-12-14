@@ -10,6 +10,7 @@
       <mat-form-field appearance="fill" class="email">
         <mat-label>Email</mat-label>
         <input
+          id="email"
           matInput
           placeholder="pat@example.com"
           required
@@ -19,12 +20,13 @@
       <br />
       <mat-form-field appearance="fill" class="url">
         <mat-label>Url</mat-label>
-        <input matInput required [(ngModel)]="bloodBank.apiUrl" />
+        <input id="url" matInput required [(ngModel)]="bloodBank.apiUrl" />
       </mat-form-field>
       <br />
       <mat-form-field appearance="fill" class="key">
         <mat-label>Api Key</mat-label>
         <input
+          id="apikey"
           matInput
           required
           [(ngModel)]="bloodBank.apiKey"
@@ -48,6 +50,7 @@
             <mat-label>Select</mat-label>
             <mat-select [(ngModel)]="selected" (ngModelChange)="hideResponse()">
               <mat-option
+                id="bloodtype"
                 *ngFor="let type of bloodTypes; let i = index"
                 [value]="type"
                 >{{ bloodTypes[i] }}</mat-option
@@ -74,10 +77,16 @@
         <div class="row">
           <mat-form-field appearance="fill" class="amount">
             <mat-label>Blood Amount</mat-label>
-            <input matInput required [(ngModel)]="bloodBank.amount" />
+            <input
+              id="bloodamount"
+              matInput
+              required
+              [(ngModel)]="bloodBank.amount"
+            />
           </mat-form-field>
           <!-- <br /> -->
           <button
+            id="check"
             class="checkBlood"
             mat-raised-button
             (click)="checkBoodTypeAmount(bloodBank.id, bloodBank.amount)"
