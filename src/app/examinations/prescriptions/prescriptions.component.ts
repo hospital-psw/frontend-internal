@@ -2,7 +2,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { Medicament } from './../../medical-treatment/interface/Medicament';
 import { MedicineService } from './../../medical-treatment/service/medicine.service';
-/* eslint-disable prettier/prettier */
 import { ToastrService } from 'ngx-toastr';
 import {
   Component,
