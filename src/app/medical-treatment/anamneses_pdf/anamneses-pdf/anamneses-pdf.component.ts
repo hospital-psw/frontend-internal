@@ -6,53 +6,52 @@ import { AnamnesesPdfDTO } from '../../interface/AnamnesesPdfDTO';
 import { AnamnesisPdfService } from '../../service/anamnesis-pdf.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-anamneses-pdf',
   templateUrl: './anamneses-pdf.component.html',
-  styleUrls: ['./anamneses-pdf.component.scss']
+  styleUrls: ['./anamneses-pdf.component.scss'],
 })
 export class AnamnesesPdfComponent {
-  
-  selectedAppointmentId:string | null;
+  selectedAppointmentId: string | null;
   checked = true;
-  anamnesesPdfDto:AnamnesesPdfDTO;
-  descriptionSelected:boolean;
-  symptomsSelected:boolean;
-  prescriptionsSelected:boolean;
+  anamnesesPdfDto: AnamnesesPdfDTO;
+  descriptionSelected: boolean;
+  symptomsSelected: boolean;
+  prescriptionsSelected: boolean;
 
-  constructor(private route: ActivatedRoute,
-              private anamnesisPdfService: AnamnesisPdfService,
-              private toastService: ToastrService,)
-               {}
+  constructor(
+    private route: ActivatedRoute,
+    private anamnesisPdfService: AnamnesisPdfService,
+    private toastService: ToastrService,
+    private router: Router
+  ) {}
 
-  ngOnInit(){
-    this.selectedAppointmentId = this.route.snapshot.paramMap.get('id')
+  ngOnInit() {
+    this.selectedAppointmentId = this.route.snapshot.paramMap.get('id');
     this.anamnesesPdfDto = {
       appointmentId: -1,
-      areRecepiesSelected:false,
+      areRecepiesSelected: false,
       areSymptomsSelected: false,
       isDescriptionSelected: false,
     };
   }
 
-
-  confirm(){
-    this.anamnesesPdfDto.appointmentId =  +this.selectedAppointmentId!;
+  confirm() {
+    this.anamnesesPdfDto.appointmentId = +this.selectedAppointmentId!;
     this.anamnesesPdfDto.areRecepiesSelected = this.prescriptionsSelected;
     this.anamnesesPdfDto.areSymptomsSelected = this.symptomsSelected;
     this.anamnesesPdfDto.isDescriptionSelected = this.descriptionSelected;
-    
+
     this.anamnesisPdfService
       .generateAnamnesisPdf(this.anamnesesPdfDto)
-      .subscribe(
-        (response: AnamnesesPdfDTO) => {
-          this.toastService.success('Pdf created');
-        },
-        (error: HttpErrorResponse) => {
-          this.toastService.error(error.message);
-        }
-      );
-
+      .subscribe((response: any) => {
+        let fileName = 'anamnesis.pdf';
+        let blob: Blob = response.body as Blob;
+        let url = window.URL.createObjectURL(blob);
+        window.open(url);
+      });
+    //this.router.navigate(['app/appointments'])
   }
-} 
+}

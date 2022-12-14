@@ -5,15 +5,17 @@ import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AnamnesisPdfService {
-
   private apiServerUrl = environment.apiAnamnesisPdfUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public generateAnamnesisPdf(dto: AnamnesesPdfDTO): Observable<AnamnesesPdfDTO> {
-    return this.http.post<AnamnesesPdfDTO>(`${this.apiServerUrl}`,dto);
+  public generateAnamnesisPdf(dto: AnamnesesPdfDTO): any {
+    return this.http.post(`${this.apiServerUrl}`, dto, {
+      observe: 'response',
+      responseType: 'blob',
+    });
   }
 }

@@ -1,7 +1,7 @@
 import { MedicalTreatmentModule } from './medical-treatment/medical-treatment.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppointmentModule } from './schedule/appointment.module'; 
+import { AppointmentModule } from './schedule/appointment.module';
 import { HttpClientModule } from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -46,7 +46,6 @@ import { CreateTenderComponent } from './tenders/create-tender/create-tender.com
 import { DoctorSidebarComponent } from './common/doctor-sidebar/doctor-sidebar.component';
 import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sidebar.component';
 import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
-
 
 @NgModule({
   declarations: [
@@ -103,7 +102,6 @@ import { BlockPatientsModule } from './Manager/block-patients/block-patients.mod
     LoginModule,
     ExaminationsModule,
     BlockPatientsModule,
-
   ],
   bootstrap: [AppComponent],
   exports: [],

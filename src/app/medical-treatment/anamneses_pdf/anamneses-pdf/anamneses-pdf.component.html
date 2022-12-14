@@ -1,20 +1,23 @@
 <div class="outheres">
-    
-    <div class="gridies">
-        <div class="descriptiones">
-            <mat-label class="labelo">Please select parameters of interest</mat-label>
-            <mat-label>(Only selected parameters will be rendered in pdf)</mat-label>
-        </div>
-        
-        <div class="checkboxxes">
-            <mat-checkbox color="primary" [(ngModel)]="descriptionSelected">Description</mat-checkbox>
-            <mat-checkbox color="primary" [(ngModel)]="symptomsSelected">Symptoms</mat-checkbox>
-            <mat-checkbox color="primary" [(ngModel)]="prescriptionsSelected">Prescriptions</mat-checkbox>
-        </div>
-        <div class="button33">
-            <button class="buttonijos" (click)="confirm()">Confirm</button>
-        </div>
+  <div class="gridies">
+    <div class="descriptiones">
+      <mat-label class="labelo">Please select parameters of interest</mat-label>
+      <mat-label>(Only selected parameters will be rendered in pdf)</mat-label>
     </div>
-    
-    
+
+    <div class="checkboxxes">
+      <mat-checkbox color="primary" [(ngModel)]="descriptionSelected"
+        >Description</mat-checkbox
+      >
+      <mat-checkbox color="primary" [(ngModel)]="symptomsSelected"
+        >Symptoms</mat-checkbox
+      >
+      <mat-checkbox color="primary" [(ngModel)]="prescriptionsSelected"
+        >Prescriptions</mat-checkbox
+      >
+    </div>
+    <div class="button33">
+      <button class="buttonijos" (click)="confirm()">Confirm</button>
+    </div>
+  </div>
 </div>

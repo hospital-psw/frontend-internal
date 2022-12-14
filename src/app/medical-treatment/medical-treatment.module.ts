@@ -24,8 +24,7 @@ import { BloodUnitTherapyComponent } from './therapies/blood-unit-therapy/blood-
 import { TherapyTabsComponent } from './therapies/therapy-tabs/therapy-tabs.component';
 import { MatInput } from '@angular/material/input';
 import { AnamnesesPdfComponent } from './anamneses_pdf/anamneses-pdf/anamneses-pdf.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     BloodUnitTherapyComponent,
     TherapyTabsComponent,
     AnamnesesPdfComponent,
-
   ],
   imports: [
     CommonModule,
