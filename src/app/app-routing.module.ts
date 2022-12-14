@@ -28,6 +28,7 @@ import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.compon
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
+import { BlockPatientsViewComponent } from './Manager/block-patients/block-patients-view/block-patients-view.component';
 const routes: Routes = [
   {
     path: 'app',

@@ -42,6 +42,7 @@ import { JwtService } from './common/auth/service/jwt.service';
 import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
+import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
 
 @NgModule({
   declarations: [
@@ -94,6 +95,7 @@ import { CreateTenderComponent } from './tenders/create-tender/create-tender.com
     MatSliderModule,
     MatTableModule,
     LoginModule,
+    BlockPatientsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],
