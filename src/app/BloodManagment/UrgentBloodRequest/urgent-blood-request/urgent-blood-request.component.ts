@@ -19,19 +19,30 @@ export class UrgentBloodRequestComponent {
     this.urgentBloodRequest = {
       bloodType: 0,
       amount: 0,
+      http: false
     };
   }
 
   disabled = true;
   amount: number;
+  http: boolean;
   bloodType: BloodType;
   bloodTypes = Object.values(BloodType);
   bloodTypeString: number;
   urgentBloodRequest: CreateUrgentRequestDTO;
 
+  updateHttp() {
+    this.http = true;
+  }
+
+  updategRPC() {
+    this.http = false;
+  }
+
   createUrgentRequest() {
     this.urgentBloodRequest.bloodType = this.bloodTypes.indexOf(this.bloodType);
     this.urgentBloodRequest.amount = this.amount;
+    this.urgentBloodRequest.http = this.http;
     this.bloodAcquisitionService
       .createUrgentBloodRequest(this.urgentBloodRequest)
       .subscribe((res) => {
