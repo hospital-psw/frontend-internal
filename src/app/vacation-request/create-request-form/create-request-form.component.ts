@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 import { NewVacationRequestDTO } from '../model/enum/new-vacation-request-dto';
 import { VacationRequestStatus } from '../model/enum/vacation-request-status';
 import { VacationRequestService } from '../service/vacation-request.service';
@@ -23,18 +24,22 @@ export class CreateRequestFormComponent implements OnInit {
   comment: string;
   from: Date = new Date();
   to: Date = new Date();
-  doctorId = 8;
+  doctorId: number;
   newVacationRequest: NewVacationRequestDTO;
   vacationRequestStatus: VacationRequestStatus[];
 
   constructor(
     private vacationRequestService: VacationRequestService,
     private toaster: ToastrService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.vacationRequestStatus = Object.values(VacationRequestStatus);
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
   }
 
   onChange() {
@@ -68,7 +73,7 @@ export class CreateRequestFormComponent implements OnInit {
       .subscribe(
         (data) => {
           this.toaster.success('Successfully created request!');
-          this.router.navigate(['/vacation-requests/doctor']);
+          this.router.navigate(['/app/vacation-requests/doctor']);
         },
         (error: HttpErrorResponse) => {
           this.toaster.error(error.error);

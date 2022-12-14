@@ -37,7 +37,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.component';
+import { JwtService } from './common/auth/service/jwt.service';
+import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
+import { ExaminationsModule } from './examinations/examinations.module';
+import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
+import { DoctorSidebarComponent } from './common/doctor-sidebar/doctor-sidebar.component';
+import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sidebar.component';
+import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +56,11 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
     BloodAcquisitionComponent,
     DoctorRequestsComponent,
     BloodExpenditureComponent,
+    ShowTendersComponent,
     UrgentBloodRequestComponent,
+    CreateTenderComponent,
+    DoctorSidebarComponent,
+    ManagerSidebarComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -87,9 +99,16 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
     MatSelectModule,
     MatSliderModule,
     MatTableModule,
+    LoginModule,
+    ExaminationsModule,
+    BlockPatientsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],
-  providers: [DatePipe, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [
+    DatePipe,
+    JwtService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  ],
 })
 export class AppModule {}

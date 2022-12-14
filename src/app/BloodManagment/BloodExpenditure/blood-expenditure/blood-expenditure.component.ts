@@ -5,6 +5,7 @@ import { BloodExpenditureService } from '../../service/blood-expenditure.service
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 
 @Component({
   selector: 'app-blood-expenditure',
@@ -15,7 +16,8 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
   constructor(
     private bloodExpenditureService: BloodExpenditureService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   disabled = true;
@@ -25,6 +27,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
   amount: number;
   bloodType: BloodType;
   bloodTypeString: number;
+  doctorId: number;
 
   createExpenditure(): void {
     this.createExpenditureDTO.reason = this.reason;
@@ -32,14 +35,14 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
 
     this.bloodTypeString = this.bloodTypes.indexOf(this.bloodType);
     this.createExpenditureDTO.bloodType = this.bloodTypeString;
-    this.createExpenditureDTO.doctorId = 2;
+    this.createExpenditureDTO.doctorId = this.doctorId;
 
     this.bloodExpenditureService
       .createBloodExpenditure(this.createExpenditureDTO)
       .subscribe(
         (response: CreateExpenditureDTO) => {
           this.toastrService.success('Created expenditure');
-          this.router.navigateByUrl('/doctorBloodRequests');
+          this.router.navigateByUrl('/app/blood-request');
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);
@@ -48,8 +51,11 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
     this.createExpenditureDTO = {
-      doctorId: 2,
+      doctorId: this.doctorId,
       reason: '',
       amount: 20,
       bloodType: 0,

@@ -10,6 +10,8 @@ import {
 import { ReschedulingAppointmentDTO } from './../../interface/ReschedulingAppointmentDTO';
 import { Component, OnInit } from '@angular/core';
 import { IRoom } from '../../../Manager/Model/Room';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 
 @Component({
   selector: 'app-rescheduling-appointment',
@@ -18,13 +20,20 @@ import { IRoom } from '../../../Manager/Model/Room';
 })
 export class ReschedulingAppointmentComponent implements OnInit {
   recommendedDatesFromParent: RecommendedDatesDTO[];
+  private userSub: Subscription;
+  doctorId: number;
 
   constructor(
     private appointmentService: ScheduleService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
+  }
 
   storeFromChildForm(recommendedDates: RecommendedDatesDTO[]) {
     this.recommendedDatesFromParent = recommendedDates;

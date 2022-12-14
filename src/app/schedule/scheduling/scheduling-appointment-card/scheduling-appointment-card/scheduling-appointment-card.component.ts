@@ -36,7 +36,7 @@ export class SchedulingAppointmentCardComponent implements OnInit {
         this.toaster.success(
           'Appointment succesfully scheduled on date ' + response.date
         );
-        this.router.navigate(['/appointments']);
+        this.router.navigate(['/app/appointments']);
       },
       (error: HttpErrorResponse) => {
         this.toaster.error(error.error);

@@ -1,0 +1,40 @@
+<div class="TopBar">
+  <button class="createTenderButton" (click)="createTenderPage()">
+    Open Tender
+  </button>
+</div>
+<div class="container">
+  <div class="content">
+    <div class="title">
+      <h1>Active Tenders</h1>
+    </div>
+    <div *ngFor="let tender of tenders; let i = index">
+      <div class="content__elem">
+        <div>
+          <p class="tender__title">
+            Tender {{ tender.id }} #{{ getStatus(tender.status) }}
+          </p>
+        </div>
+        <div>
+          <button (click)="showOffersEvent(i)" class="showDown">v</button>
+        </div>
+      </div>
+      <div class="offers" *ngIf="showOffers[i]">
+        <div *ngIf="tender.offers.length === 0">
+          <div class="offers__elem">
+            <p>Nema jos aktivnih ponuda za ovaj tender.</p>
+          </div>
+        </div>
+        <div *ngFor="let offer of tender.offers; let i = index">
+          <div class="offers__elem">
+            <p>Offer number #{{ offer.id }}</p>
+            <p>{{ calculateTenderOffers(offer) }}$</p>
+            <button class="acceptBtn" (click)="accept(tender.id, i)">
+              Accept
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ export const environment = {
   apiAppointmentUrl: 'http://localhost:16177/api/Appointment',
   apiPatientUrl: 'http://localhost:16177/api/ApplicationPatient',
   apiVacationRequestUrl: 'http://localhost:16177/api/VacationRequests',
-  apiDoctorUrl: 'http://localhost:16177/api/Doctor',
+  apiDoctorUrl: 'http://localhost:16177/api/ApplicationDoctor',
   apiMedicalTreatment: 'http://localhost:16177/api/MedicalTreatment',
   apiMedicamentTherapy: 'http://localhost:16177/api/MedicamentTherapy',
   apiBloodUnitTherapy: 'http://localhost:16177/api/BloodUnitTherapy',
@@ -17,6 +17,11 @@ export const environment = {
   apiBloodUnit: 'http://localhost:16177/api/BloodUnit',
   apiMedicine: 'http://localhost:16177/api/Medicament',
   apiStatistics: 'http://localhost:16177/api/Statistical',
+  apiAuthUrl: 'http://localhost:16177/api/Auth/login',
+  apiSymptom: 'http://localhost:16177/api/Symptom',
+  apiAnamnesis: 'http://localhost:16177/api/Anamnesis',
+  apiConsiliumUrl: 'http://localhost:16177/api/Consilium',
+  apiApplicationPatient: 'http://localhost:16177/api/ApplicationPatient',
 };
 
 /*

@@ -9,6 +9,7 @@ import { BloodAcquisitionService } from '../../service/blood-acquisition.service
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 
 @Component({
   selector: 'app-blood-acquisition',
@@ -20,11 +21,13 @@ export class BloodAcquisitionComponent implements OnInit, DoCheck {
     private datePipe: DatePipe,
     private bloodAcquisitionService: BloodAcquisitionService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.minDate = new Date();
   }
 
+  doctorId: number;
   disabled = true;
   createAcquisitionDTO: CreateAcquisitionDTO;
   dateSelected: Date;
@@ -55,7 +58,7 @@ export class BloodAcquisitionComponent implements OnInit, DoCheck {
       .subscribe(
         (response: CreateAcquisitionDTO) => {
           this.toastrService.success('Create acquisition');
-          this.router.navigateByUrl('/doctorBloodRequests');
+          this.router.navigateByUrl('/app/blood-request');
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);
@@ -64,8 +67,11 @@ export class BloodAcquisitionComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
     this.createAcquisitionDTO = {
-      doctorId: 2,
+      doctorId: this.doctorId,
       reason: '',
       date: null as any,
       amount: 20,
