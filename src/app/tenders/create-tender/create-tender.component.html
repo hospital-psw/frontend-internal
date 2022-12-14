@@ -29,17 +29,11 @@
 
   <div class="single">
     <label>End date</label>
-    <mat-form-field class="dateField">
-      <input
-        id="date"
-        matInput
-        [(ngModel)]="dateSelected"
-        [matDatepicker]="picker"
-        name="date"
-        required
-      />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+    <mat-form-field appearance="fill" class="email">
+      <input matInput [matDatepicker]="picker1" [(ngModel)]="dateSelected" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
   </div>
 

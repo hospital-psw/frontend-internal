@@ -38,7 +38,7 @@ export class ShowTendersComponent {
   }
 
   createTenderPage() {
-    this.router.navigateByUrl('/create-tender');
+    this.router.navigateByUrl('/app/create-tender');
   }
 
   accept(tenderId: Number, i: Number) {
