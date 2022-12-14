@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TokenData } from 'src/app/login/interface/TokenData';
 import { LoginResponseDTO } from '../auth/interface/LoginResponseDTO';
 import { UserData } from '../auth/interface/UserData';
 import { User } from '../auth/model/user.model';
@@ -11,11 +12,14 @@ import { JwtService } from '../auth/service/jwt.service';
 })
 export class SidebarComponent implements OnInit {
   @Input() show: boolean;
-  loggedUser: UserData
+  @Input() role: string;
+  loggedUser: UserData;
+  tokenData: TokenData;
 
-  constructor(private authService: AuthService, private jwtService: JwtService) {}
+  constructor(
+    private authService: AuthService,
+    private jwtService: JwtService
+  ) {}
 
-  ngOnInit(): void {
-    this.loggedUser = JSON.parse(localStorage.getItem('userData') || '{}')
-  }
+  ngOnInit(): void {}
 }

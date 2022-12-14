@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { Appointment } from '../interface/Appointment';
 import { ReschedulingAppointmentDTO } from '../interface/ReschedulingAppointmentDTO';
 import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
+import { WorkHours } from '../interface/WorkHours';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,7 @@ import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
 export class ScheduleService {
   private apiAppointmentUrl = environment.apiAppointmentUrl;
   private apiConsiliumUrl = environment.apiConsiliumUrl;
+  private apiDoctorUrl = environment.apiDoctorUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -47,8 +49,16 @@ export class ScheduleService {
   }
 
   //???
-  public getAllAppointments(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiAppointmentUrl}/doctor/8`);
+  public getAllAppointments(doctorId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(
+      `${this.apiAppointmentUrl}/doctor/${doctorId}`
+    );
+  }
+
+  public getDoctorsWorkHours(doctorId: number): Observable<WorkHours> {
+    return this.http.get<WorkHours>(
+      `${this.apiDoctorUrl}/work-hours/${doctorId}`
+    );
   }
 
   public getAllRecommended(

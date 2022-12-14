@@ -1,3 +1,3 @@
 export interface TokenData {
-    role: string,
+  role: string;
 }

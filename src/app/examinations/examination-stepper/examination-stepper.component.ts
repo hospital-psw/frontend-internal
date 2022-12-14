@@ -22,6 +22,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Symptom } from '../interface/symptom';
 import { AnamnesisService } from '../services/anamnesis.service';
 import { NewPrescription } from '../interface/NewPrescription';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-examination-stepper',
@@ -47,6 +49,8 @@ export class ExaminationStepperComponent implements OnInit {
   appointment: Appointment;
   newPrescription: NewPrescription;
   prescriptions: NewPrescription[];
+  doctorId: number;
+  private userSub: Subscription;
 
   constructor(
     private medicineService: MedicineService,
@@ -55,7 +59,8 @@ export class ExaminationStepperComponent implements OnInit {
     private symptomService: SymptomService,
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +74,9 @@ export class ExaminationStepperComponent implements OnInit {
       newPrescriptions: [],
       description: '',
     };
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
   }
 
   getSymptoms(): void {

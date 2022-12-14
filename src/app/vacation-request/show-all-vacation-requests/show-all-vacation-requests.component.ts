@@ -6,6 +6,7 @@ import { VacationRequestService } from '../service/vacation-request.service';
 import { ToastrService } from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
 import { VacationRequestStatus } from '../model/enum/vacation-request-status';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 
 @Component({
   selector: 'app-show-all-vacation-requests',
@@ -26,13 +27,19 @@ export class ShowAllVacationRequestsComponent implements OnInit {
   public disableDeleteButton: boolean = true;
   vacationRequestStatus: VacationRequestStatus[];
   public selected: VacationRequest;
+  doctorId: number;
+
   constructor(
     private vacationRequestService: VacationRequestService,
     private router: Router,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
     this.refreshData();
   }
 
@@ -72,7 +79,7 @@ export class ShowAllVacationRequestsComponent implements OnInit {
   }
 
   public refreshData(): void {
-    this.vacationRequestService.getAllVacationRequests(8).subscribe(
+    this.vacationRequestService.getAllVacationRequests(this.doctorId).subscribe(
       (res) => {
         this.vacationRequests = res;
         this.dataSource.data = this.vacationRequests;

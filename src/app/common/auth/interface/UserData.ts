@@ -1,6 +1,6 @@
 export interface UserData {
-    id: number,
-    email: string,
-    token: string,
-    tokenExpirationDate: Date
+  id: number;
+  email: string;
+  token: string;
+  tokenExpirationDate: Date;
 }
