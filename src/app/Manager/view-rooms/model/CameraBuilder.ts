@@ -15,7 +15,7 @@ export class CameraBuilder {
       this.near,
       this.far
     );
-    this.camera.position.z = 5;
+    this.camera.position.z = 10;
   }
 
   getCamera() {
