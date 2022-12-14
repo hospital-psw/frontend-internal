@@ -1,3 +1,5 @@
+import { WorkHours } from './../../../interface/WorkHours';
+import { ScheduleService } from './../../../service/schedule.service';
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from './../../../../Statistics/statistics/Services/doctor.service';
 import { Specialization } from './../../../enum/Specialization.enum';
@@ -22,16 +24,29 @@ export class SpecializationsListComponent implements OnInit, OnChanges {
   selectedSpecializations: string[] = [];
   selectedSpecializationsNumbers: number[] = [];
   disableList: boolean = false;
+  @Input() doctorId: number = null as any;
   @Input() selectedDoctors: number[];
   @Output() outputSpecializations = new EventEmitter<number[]>();
 
   constructor(
     private doctorService: DoctorService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private scheduleService: ScheduleService
+  ) { }
 
   ngOnInit(): void {
-    this.getSpecializationsOfDoctorsInSameShift();
+    this.getDoctorsWorkingHour();
+  }
+
+  getDoctorsWorkingHour(): void {
+    this.scheduleService.getDoctorsWorkHours(this.doctorId).subscribe(
+      (response: WorkHours) => {
+        this.getSpecializationsOfDoctorsInSameShift(response.id);
+      },
+      (error: HttpErrorResponse) => {
+        this.toastrService.error(error.message);
+      }
+    );
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -45,18 +60,19 @@ export class SpecializationsListComponent implements OnInit, OnChanges {
     }
   }
 
-  getSpecializationsOfDoctorsInSameShift(): void {
-    //PROMENITI 8
-    this.doctorService.getSpecializationsOfDoctorsInSameShift(8).subscribe(
-      (response: number[]) => {
-        response.forEach((specNum) =>
-          this.specializations.push(Specialization[specNum])
-        );
-      },
-      (error: HttpErrorResponse) => {
-        this.toastrService.error(error.message);
-      }
-    );
+  getSpecializationsOfDoctorsInSameShift(workHourId: number): void {
+    this.doctorService
+      .getSpecializationsOfDoctorsInSameShift(workHourId)
+      .subscribe(
+        (response: number[]) => {
+          response.forEach((specNum) =>
+            this.specializations.push(Specialization[specNum])
+          );
+        },
+        (error: HttpErrorResponse) => {
+          this.toastrService.error(error.message);
+        }
+      );
   }
 
   showData(): void {

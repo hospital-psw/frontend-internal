@@ -1,3 +1,5 @@
+import { ScheduleService } from './../../../service/schedule.service';
+import { id } from 'date-fns/locale';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Doctor } from 'src/app/schedule/interface/Doctor';
 import { ToastrService } from 'ngx-toastr';
@@ -12,6 +14,7 @@ import {
   SimpleChanges,
   OnChanges,
 } from '@angular/core';
+import { WorkHours } from 'src/app/schedule/interface/WorkHours';
 
 @Component({
   selector: 'app-doctors-list',
@@ -22,16 +25,29 @@ export class DoctorsListComponent implements OnInit, OnChanges {
   doctors: Doctor[];
   selectedDoctors: number[] = [];
   disableList: boolean = false;
+  @Input() doctorId: number;
   @Input() selectedSpecializations: number[];
   @Output() outputDoctors = new EventEmitter<number[]>();
 
   constructor(
     private doctorService: DoctorService,
-    private toastrService: ToastrService
-  ) {}
+    private toastrService: ToastrService,
+    private scheduleService: ScheduleService
+  ) { }
 
   ngOnInit(): void {
-    this.getDoctorsInSameShift();
+    this.getDoctorsWorkingHour();
+  }
+
+  getDoctorsWorkingHour(): void {
+    this.scheduleService.getDoctorsWorkHours(this.doctorId).subscribe(
+      (response: WorkHours) => {
+        this.getDoctorsInSameShift(response.id);
+      },
+      (error: HttpErrorResponse) => {
+        this.toastrService.error(error.message);
+      }
+    );
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -45,9 +61,8 @@ export class DoctorsListComponent implements OnInit, OnChanges {
     }
   }
 
-  getDoctorsInSameShift(): void {
-    //PROMENITI 8
-    this.doctorService.getDoctorsInSameShift(8).subscribe(
+  getDoctorsInSameShift(workingHourId: number): void {
+    this.doctorService.getDoctorsInSameShift(workingHourId).subscribe(
       (response: Doctor[]) => {
         this.doctors = response;
       },
