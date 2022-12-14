@@ -28,7 +28,7 @@ export class LoginFormComponent {
     this.authService.login(form.value).subscribe(
       (response: LoginResponseDTO) => {
         this.authService.showSuccess();
-        this.router.navigate(['appointments']);
+        this.router.navigate(['app']);
         this.isLogging = false;
       },
       (message) => {

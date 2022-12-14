@@ -32,14 +32,14 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
 
     this.bloodTypeString = this.bloodTypes.indexOf(this.bloodType);
     this.createExpenditureDTO.bloodType = this.bloodTypeString;
-    this.createExpenditureDTO.doctorId = 2;
+    this.createExpenditureDTO.doctorId = 8;
 
     this.bloodExpenditureService
       .createBloodExpenditure(this.createExpenditureDTO)
       .subscribe(
         (response: CreateExpenditureDTO) => {
           this.toastrService.success('Created expenditure');
-          this.router.navigateByUrl('/doctorBloodRequests');
+          this.router.navigateByUrl('/app/doctorBloodRequests');
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);
@@ -49,7 +49,7 @@ export class BloodExpenditureComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.createExpenditureDTO = {
-      doctorId: 2,
+      doctorId: 8,
       reason: '',
       amount: 20,
       bloodType: 0,
