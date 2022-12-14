@@ -40,10 +40,6 @@ const routes: Routes = [
     path: '',
     component: LoginPageComponent,
   },
-  {
-    path: 'blockpatients',
-    component: BlockPatientsViewComponent,
-  },
 ];
 
 @NgModule({

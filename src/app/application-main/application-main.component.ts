@@ -65,6 +65,8 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Schedule consilium';
       } else if (this.router.url.includes('/app/consiliums')) {
         this.name = 'Consiliums';
+      } else if (this.router.url.includes('/app/blockpatients')) {
+        this.name = 'Blocked patients';
       }
     });
   }
