@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './common/auth/service/auth.service';
 import { Subscription } from 'rxjs';
@@ -12,13 +13,12 @@ export class AppComponent implements OnInit {
   isLogged = false;
   private userSub: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.autoLogin();
     this.userSub = this.authService.user.subscribe((user) => {
       this.isLogged = !!user;
-      console.log(this.isLogged);
     });
   }
 }

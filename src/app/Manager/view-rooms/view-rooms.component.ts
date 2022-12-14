@@ -216,7 +216,7 @@ export class ViewRoomsComponent
         -((event.pageY - rect.top - window.scrollY) / holder.clientHeight) * 2 +
         1;
     }
-
+    //console.log(event.pageX, event.pageY)
     mouse.x = x;
     mouse.y = y;
 

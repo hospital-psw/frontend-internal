@@ -1,3 +1,6 @@
+import { ApplicationMainComponent } from './application-main/application-main.component';
+import { AllConsiliumsComponent } from './schedule/consilium/all-consiliums/all-consiliums.component';
+import { ScheduleConsiliumComponent } from './schedule/consilium/schedule-consilium/main-component/schedule-consilium.component';
 import { BaseComponentComponent } from './medical-treatment/show-treatments/base-component/base-component.component';
 import { ReschedulingAppointmentComponent } from './schedule/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { NgModule } from '@angular/core';
@@ -21,13 +24,20 @@ import { ShowAllVacationRequestsComponent } from './vacation-request/show-all-va
 import { BloodAcquisitionComponent } from './BloodManagment/BloodAcquisition/blood-acquisition/blood-acquisition.component';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.component';
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 import { AnamnesesPdfComponent } from './medical-treatment/anamneses_pdf/anamneses-pdf/anamneses-pdf.component';
+import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
+
 const routes: Routes = [
   {
-    path: 'appointments',
-    component: AppointmentsComponent,
+    path: 'app',
+    component: ApplicationMainComponent,
+    loadChildren: () =>
+      import('./application-main/user-routing/user-routing.module').then(
+        (x) => x.UserRoutingModule
+      ),
   },
   {
     path: 'patients',
@@ -81,6 +91,10 @@ const routes: Routes = [
     component: BaseComponentComponent,
   },
   {
+    path: 'show-tenders',
+    component: ShowTendersComponent,
+  },
+  {
     path: 'vacation-requests-display',
     component: VacationRequestsComponent,
   },
@@ -99,6 +113,14 @@ const routes: Routes = [
   {
     path:'appointments/anamneses/:id',
     component: AnamnesesPdfComponent,
+  },
+  {
+    path: '',
+    component: LoginPageComponent,
+  },
+  {
+    path: 'create-tender',
+    component: CreateTenderComponent,
   },
 ];
 

@@ -1,7 +1,7 @@
 import { MedicalTreatmentModule } from './medical-treatment/medical-treatment.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppointmentModule } from './schedule/appointment.module';
+import { AppointmentModule } from './schedule/appointment.module'; 
 import { HttpClientModule } from '@angular/common/http';
 import { Route, RouterModule } from '@angular/router';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
@@ -37,9 +37,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.component';
 import { JwtService } from './common/auth/service/jwt.service';
 import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
+import { CreateTenderComponent } from './tenders/create-tender/create-tender.component'; 
+
 
 
 
@@ -52,7 +55,9 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
     BloodAcquisitionComponent,
     DoctorRequestsComponent,
     BloodExpenditureComponent,
-    UrgentBloodRequestComponent
+    ShowTendersComponent,
+    UrgentBloodRequestComponent,
+    CreateTenderComponent,
   ],
   imports: [
     MatDatepickerModule,

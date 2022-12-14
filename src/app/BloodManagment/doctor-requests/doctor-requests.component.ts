@@ -26,20 +26,20 @@ export class DoctorRequestsComponent implements OnInit {
 
   ngOnInit(): void {
     this.bloodAcquisitionService
-      .getBloodAcquisitionsForSpecificDoctor(2)
+      .getBloodAcquisitionsForSpecificDoctor(8)
       .subscribe((response: BloodAcquisition[]) => {
         this.dataSource = response;
       });
   }
 
   createAcquisitionPage() {
-    this.router.navigateByUrl('/bloodAcquisition/create');
+    this.router.navigateByUrl('/app/bloodAcquisition/create');
   }
   createExpenditurePage() {
-    this.router.navigateByUrl('/bloodExpenditure/create');
+    this.router.navigateByUrl('/app/bloodExpenditure/create');
   }
 
   createUrgentRequestPage() {
-    this.router.navigateByUrl('/urgentBloodRequest/create');
+    this.router.navigateByUrl('/app/urgentBloodRequest/create');
   }
 }
