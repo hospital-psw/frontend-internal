@@ -12,7 +12,7 @@ import { Injectable } from '@angular/core';
 export class MedicalTreatmentService {
   private apiServerUrl = environment.apiMedicalTreatment;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public createMedicalTreatment(
     medicalTreatment: CreateMedicalTreatment
@@ -53,7 +53,7 @@ export class MedicalTreatmentService {
   public getInactive(
     doctorId: number,
     pageSize: number,
-    pageNumber: number,
+    pageNumber: number
   ): Observable<MedicalTreatment[]> {
     return this.http.get<MedicalTreatment[]>(
       `${this.apiServerUrl}/inactive/${doctorId}/${pageSize}/${pageNumber}`

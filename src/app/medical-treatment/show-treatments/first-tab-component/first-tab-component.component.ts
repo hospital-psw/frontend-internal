@@ -57,7 +57,7 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
     private toastService: ToastrService,
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<MedicalTreatment>(

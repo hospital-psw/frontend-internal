@@ -27,7 +27,7 @@ export class ComponentButtonBarComponent implements OnInit {
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.authService.user.subscribe((user) => {
