@@ -1,3 +1,6 @@
+import { ApplicationMainComponent } from './application-main/application-main.component';
+import { AllConsiliumsComponent } from './schedule/consilium/all-consiliums/all-consiliums.component';
+import { ScheduleConsiliumComponent } from './schedule/consilium/schedule-consilium/main-component/schedule-consilium.component';
 import { BaseComponentComponent } from './medical-treatment/show-treatments/base-component/base-component.component';
 import { ReschedulingAppointmentComponent } from './schedule/rescheduling/rescheduling-appointment/rescheduling-appointment.component';
 import { NgModule } from '@angular/core';
@@ -27,8 +30,12 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
 import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
 const routes: Routes = [
   {
-    path: 'appointments',
-    component: AppointmentsComponent,
+    path: 'app',
+    component: ApplicationMainComponent,
+    loadChildren: () =>
+      import('./application-main/user-routing/user-routing.module').then(
+        (x) => x.UserRoutingModule
+      ),
   },
   {
     path: 'patients',
@@ -100,6 +107,10 @@ const routes: Routes = [
   {
     path: 'bloodExpenditure/create',
     component: BloodExpenditureComponent,
+  },
+  {
+    path: '',
+    component: LoginPageComponent,
   },
 
   {

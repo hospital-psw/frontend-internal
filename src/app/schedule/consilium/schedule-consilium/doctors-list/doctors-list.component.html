@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card__header">Doctors</div>
+  <div class="card__content">
+    <mat-selection-list
+      [(ngModel)]="selectedDoctors"
+      (selectionChange)="showData()"
+    >
+      <mat-list-option
+        class="mat-primary"
+        [ngClass]="{ 'mat-list-disabled-option': disableList }"
+        *ngFor="let d of doctors"
+        [value]="d.id"
+      >
+        {{ d.firstName | titlecase }} {{ d.lastName | titlecase }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

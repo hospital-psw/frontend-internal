@@ -36,7 +36,7 @@ export class UrgentBloodRequestComponent {
       .createUrgentBloodRequest(this.urgentBloodRequest)
       .subscribe((res) => {
         this.toastrService.success('Urgent request sent!');
-        this.router.navigate(['/doctorBloodRequests']);
+        this.router.navigate(['/app/doctorBloodRequests']);
       });
   }
 

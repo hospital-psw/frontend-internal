@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card__header">Specializations</div>
+  <div class="card__content">
+    <mat-selection-list
+      [(ngModel)]="selectedSpecializations"
+      (selectionChange)="showData()"
+    >
+      <mat-list-option
+        class="mat-primary"
+        [ngClass]="{ 'mat-list-disabled-option': disableList }"
+        *ngFor="let spec of specializations"
+        [value]="spec"
+      >
+        {{ spec | titlecase }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>
