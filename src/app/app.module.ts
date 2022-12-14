@@ -43,6 +43,7 @@ import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 import { ExaminationsModule } from './examinations/examinations.module';
 import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
+import { DoctorSidebarComponent } from './common/doctor-sidebar/doctor-sidebar.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CreateTenderComponent } from './tenders/create-tender/create-tender.com
     ShowTendersComponent,
     UrgentBloodRequestComponent,
     CreateTenderComponent,
+    DoctorSidebarComponent,
   ],
   imports: [
     MatDatepickerModule,

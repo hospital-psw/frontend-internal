@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/common/auth/service/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginResponseDTO } from 'src/app/common/auth/interface/LoginResponseDTO';
+import { JwtService } from 'src/app/common/auth/service/jwt.service';
+import { TokenData } from '../../interface/TokenData'
 
 @Component({
   selector: 'app-login-form',
@@ -11,13 +13,23 @@ import { LoginResponseDTO } from 'src/app/common/auth/interface/LoginResponseDTO
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private jwtService: JwtService) {}
 
   hide = true;
   defaultRemember = false;
   showError = false;
   errorMessage = '';
   isLogging = false;
+  tokenData : TokenData;
+
+  navigateByRole(token: string) : void {
+    this.tokenData = this.jwtService.decodeToken(token) as any;
+    if (this.tokenData.role === 'Doctor'){
+      this.router.navigate(['app/appointments'])
+    } else if (this.tokenData.role === 'Admin'){
+      this.router.navigate(['app/display'])
+    }
+  }
 
   onSubmit(form: NgForm) {
     this.showError = false;
@@ -28,7 +40,8 @@ export class LoginFormComponent {
     this.authService.login(form.value).subscribe(
       (response: LoginResponseDTO) => {
         this.authService.showSuccess();
-        this.router.navigate(['app']);
+        this.navigateByRole(response.token)
+        //this.router.navigate(['app']);
         this.isLogging = false;
       },
       (message) => {
