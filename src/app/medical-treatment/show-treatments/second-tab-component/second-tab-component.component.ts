@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -35,6 +36,8 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   pageSize: number = 5;
   pageNumber: number = 1;
   length: number;
+  doctorId: number;
+
   //number of data getting from backend (dataSize~pageSize in emitting)
   dataSize: number = 60;
   paginatorColor: ThemePalette = 'primary';
@@ -47,8 +50,9 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   constructor(
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.dataSource = new MatTableDataSource<MedicalTreatment>(
@@ -57,14 +61,17 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.getInactiveTreatment();
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+      this.getInactiveTreatment();
+    });
     this.pageSizeOutput.emit(this.dataSize);
     this.pageNumberOutput.emit(this.pageNumber);
   }
 
   getInactiveTreatment(): void {
     this.medicalTreatmentService
-      .getInactive(this.dataSize, this.pageNumber)
+      .getInactive(this.doctorId, this.dataSize, this.pageNumber)
       .subscribe(
         (response: MedicalTreatment[]) => {
           this.dataSource = new MatTableDataSource<MedicalTreatment>(response);

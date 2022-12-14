@@ -53,7 +53,7 @@ export class MedicalTreatmentService {
   public getInactive(
     doctorId: number,
     pageSize: number,
-    pageNumber: number
+    pageNumber: number,
   ): Observable<MedicalTreatment[]> {
     return this.http.get<MedicalTreatment[]>(
       `${this.apiServerUrl}/inactive/${doctorId}/${pageSize}/${pageNumber}`
