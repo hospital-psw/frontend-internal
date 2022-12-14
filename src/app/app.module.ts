@@ -37,10 +37,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor-requests.component';
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
+import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.component';
 import { JwtService } from './common/auth/service/jwt.service';
 import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 import { ExaminationsModule } from './examinations/examinations.module';
+import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { ExaminationsModule } from './examinations/examinations.module';
     BloodAcquisitionComponent,
     DoctorRequestsComponent,
     BloodExpenditureComponent,
+    ShowTendersComponent,
     UrgentBloodRequestComponent,
+    CreateTenderComponent,
   ],
   imports: [
     MatDatepickerModule,
