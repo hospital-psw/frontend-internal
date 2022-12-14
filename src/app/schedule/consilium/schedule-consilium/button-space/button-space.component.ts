@@ -24,11 +24,20 @@ export class ButtonSpaceComponent {
   ) {}
 
   scheduleConsilium(): void {
-    this.isScheduled = false;
-    this.configureDateRange();
     this.scheduleConsiliumDto.selectedDoctors = this.selectedDoctors;
     this.scheduleConsiliumDto.selectedSpecializations =
       this.selectedSpecializations;
+    if (
+      !this.scheduleConsiliumDto.topic ||
+      !this.scheduleConsiliumDto.dateRange.from ||
+      !this.scheduleConsiliumDto.dateRange.to ||
+      !this.scheduleConsiliumDto.roomId
+    ) {
+      this.toastrService.info('Please enter all required data.');
+      return;
+    }
+    this.configureDateRange();
+    this.isScheduled = false;
     if (
       this.scheduleConsiliumDto.selectedDoctors != null &&
       this.scheduleConsiliumDto.selectedSpecializations != null
@@ -57,6 +66,8 @@ export class ButtonSpaceComponent {
       }
     );
   }
+
+  dataValidation(): void {}
 
   configureDateRange(): void {
     this.scheduleConsiliumDto.dateRange.from.setHours(
