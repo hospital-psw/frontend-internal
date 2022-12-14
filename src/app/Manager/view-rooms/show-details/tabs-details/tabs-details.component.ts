@@ -1,3 +1,4 @@
+import { IConsiliumDisplay } from './../../../Model/ConsiliumDisplay';
 import { IRenovationRequestDisplay } from './../../../Model/RenovationRequestDisplay';
 import { Component } from '@angular/core';
 import { OnInit, Input, Output, EventEmitter } from '@angular/core';
@@ -23,6 +24,7 @@ export class TabsDetailsComponent {
   @Input() equipment: IEquipment[];
   @Input() room: IRoom;
   @Input() renovations: IRenovationRequestDisplay[];
+  @Input() consiliums: IConsiliumDisplay[];
 
   @Output() relocateNotify = new EventEmitter<any>();
   element: IEquipment;

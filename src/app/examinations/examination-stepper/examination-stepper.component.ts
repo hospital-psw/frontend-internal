@@ -102,7 +102,7 @@ export class ExaminationStepperComponent implements OnInit {
     this.anamnesisService.createAnamnesis(this.anamnesis).subscribe(
       (res) => {
         this.toastr.success('Succesfully finished examinaiton');
-        this.router.navigate(['appointments']);
+        this.router.navigate(['app/appointments']);
       },
       (error) => {
         this.toastr.error(error.error);

@@ -118,7 +118,7 @@ export class AppointmentsComponent implements OnInit {
   }
 
   scheduleView() {
-    this.router.navigate(['appointments/scheduling']);
+    this.router.navigate(['/app/appointments/scheduling']);
   }
 
   createTitle(appointment: Appointment): string {
@@ -161,7 +161,7 @@ export class AppointmentsComponent implements OnInit {
 
   rescheduleAppointment(event: any): void {
     this.router.navigate([
-      '/reschedule-appointment',
+      '/app/reschedule-appointment',
       this.selectedEvent.meta?.appointment.id,
     ]);
   }
