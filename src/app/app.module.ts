@@ -41,6 +41,8 @@ import { JwtService } from './common/auth/service/jwt.service';
 import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,7 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
     BloodAcquisitionComponent,
     DoctorRequestsComponent,
     BloodExpenditureComponent,
-    UrgentBloodRequestComponent,
+    UrgentBloodRequestComponent
   ],
   imports: [
     MatDatepickerModule,
@@ -89,7 +91,7 @@ import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest
     MatSelectModule,
     MatSliderModule,
     MatTableModule,
-    LoginModule,
+    LoginModule
   ],
   bootstrap: [AppComponent],
   exports: [],

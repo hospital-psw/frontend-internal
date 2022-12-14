@@ -23,6 +23,7 @@ import { DoctorRequestsComponent } from './BloodManagment/doctor-requests/doctor
 import { BloodExpenditureComponent } from './BloodManagment/BloodExpenditure/blood-expenditure/blood-expenditure.component';
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
+import { AnamnesesPdfComponent } from './medical-treatment/anamneses_pdf/anamneses-pdf/anamneses-pdf.component';
 const routes: Routes = [
   {
     path: 'appointments',
@@ -94,6 +95,10 @@ const routes: Routes = [
   {
     path: 'bloodExpenditure/create',
     component: BloodExpenditureComponent,
+  },
+  {
+    path:'appointments/anamneses/:id',
+    component: AnamnesesPdfComponent,
   },
 ];
 
