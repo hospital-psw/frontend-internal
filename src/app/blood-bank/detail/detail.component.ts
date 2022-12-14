@@ -87,14 +87,14 @@ export class DetailComponent implements OnInit {
   }
 
   public updateBloodBank() {
-    this.router.navigate(['/bloodbank/' + this.bloodBank.id + '/update']);
+    this.router.navigate(['/app/bloodbank/' + this.bloodBank.id + '/update']);
   }
 
   public deleteBloodBank() {
     this.bloodBankService
       .deleteBloodBank(this.bloodBank.id)
       .subscribe((res) => {
-        this.router.navigate(['/bloodbank']);
+        this.router.navigate(['/app/bloodbank']);
       });
   }
 

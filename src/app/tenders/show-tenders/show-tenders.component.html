@@ -10,13 +10,23 @@
     </div>
     <div *ngFor="let tender of tenders; let i = index">
       <div class="content__elem">
-        <div>
-          <p class="tender__title">
-            Tender {{ tender.id }} #{{ getStatus(tender.status) }}
-          </p>
+        <div class="content__elem-header">
+          <div>
+            <p class="tender__title">
+              Tender {{ tender.id }} #{{ getStatus(tender.status) }}
+            </p>
+          </div>
+          <div>
+            <button (click)="showOffersEvent(i)" class="showDown">v</button>
+          </div>
         </div>
-        <div>
-          <button (click)="showOffersEvent(i)" class="showDown">v</button>
+        <div *ngIf="showOffers[i]" class="showItems">
+          <div class="tenderItems-show">
+            <p *ngFor="let item of tender.items" class="tender-item">
+              {{ bloodTypes[item.bloodType] }}: {{ item.quantity }}
+            </p>
+          </div>
+          <p>Total price:{{ calculateTenderOffers(tender) }}</p>
         </div>
       </div>
       <div class="offers" *ngIf="showOffers[i]">
@@ -27,7 +37,9 @@
         </div>
         <div *ngFor="let offer of tender.offers; let i = index">
           <div class="offers__elem">
-            <p>Offer number #{{ offer.id }}</p>
+            <p>
+              Offer number #{{ offer.id }} by <b>{{ offer.offeror.name }}</b>
+            </p>
             <p>{{ calculateTenderOffers(offer) }}$</p>
             <button class="acceptBtn" (click)="accept(tender.id, i)">
               Accept
