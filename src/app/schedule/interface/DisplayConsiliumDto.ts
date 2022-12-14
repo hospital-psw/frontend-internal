@@ -1,7 +1,7 @@
-import { IRoom } from "src/app/Manager/Model/Room";
+import { IRoom } from 'src/app/Manager/Model/Room';
 
 export interface DisplayConsiliumDto {
-id: number;
+  id: number;
   dateTime: Date;
   topic: string;
   duration: number;

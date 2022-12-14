@@ -80,7 +80,7 @@ export class ScheduleService {
     );
   }
 
-  public getAllConsiliumsByDoctorId(doctorId: number){
+  public getAllConsiliumsByDoctorId(doctorId: number) {
     return this.http.get<DisplayConsiliumDto[]>(
       `${this.apiConsiliumUrl}/doctor/${doctorId}`
     );

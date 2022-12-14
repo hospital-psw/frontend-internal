@@ -62,7 +62,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
     MatTableModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
 })
 export class ScheduleModule {}

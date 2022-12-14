@@ -13,44 +13,38 @@ import { DisplayConsiliumDto } from '../../interface/DisplayConsiliumDto';
   templateUrl: './all-consiliums.component.html',
   styleUrls: ['./all-consiliums.component.scss'],
 })
-export class AllConsiliumsComponent implements OnInit{
-  public dataSource = new MatTableDataSource<DisplayConsiliumDto>()
-  public consiliums: DisplayConsiliumDto[] = []
-  public displayedColumns = [
-    'date',
-    'topic',
-    'duration',
-    'room'
-  ]
+export class AllConsiliumsComponent implements OnInit {
+  public dataSource = new MatTableDataSource<DisplayConsiliumDto>();
+  public consiliums: DisplayConsiliumDto[] = [];
+  public displayedColumns = ['date', 'topic', 'duration', 'room'];
 
-  public doctorId: number
+  public doctorId: number;
 
-  constructor(   
+  constructor(
     private router: Router,
     private toaster: ToastrService,
     private authService: AuthService,
     private scheduleService: ScheduleService
   ) {}
 
-
   ngOnInit(): void {
     this.authService.user.subscribe((user) => {
       this.doctorId = user.id;
     });
 
-    this.refreshData()
+    this.refreshData();
   }
 
   public refreshData(): void {
     this.scheduleService.getAllConsiliumsByDoctorId(this.doctorId).subscribe(
       (res) => {
         this.consiliums = res;
-        this.dataSource.data = this.consiliums
-      }, 
+        this.dataSource.data = this.consiliums;
+      },
       (error: HttpErrorResponse) => {
-        this.toaster.error(error.message)
+        this.toaster.error(error.message);
       }
-    )
+    );
   }
 
   scheduleConsilium(): void {
