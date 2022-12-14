@@ -120,7 +120,6 @@ export class TreatmentViewComponent implements OnInit {
   }
 
   openDialog(): void {
-    console.log('Okinula se metoda open dialog');
     const dialogRef = this.dialog
       .open(NewTherapyDialogComponent, {
         data: {

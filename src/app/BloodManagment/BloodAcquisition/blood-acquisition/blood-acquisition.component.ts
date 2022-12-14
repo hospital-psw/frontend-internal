@@ -55,7 +55,7 @@ export class BloodAcquisitionComponent implements OnInit, DoCheck {
       .subscribe(
         (response: CreateAcquisitionDTO) => {
           this.toastrService.success('Create acquisition');
-          this.router.navigateByUrl('/doctorBloodRequests');
+          this.router.navigateByUrl('/app/doctorBloodRequests');
         },
         (error: HttpErrorResponse) => {
           this.toastrService.error(error.error);
@@ -65,7 +65,7 @@ export class BloodAcquisitionComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     this.createAcquisitionDTO = {
-      doctorId: 2,
+      doctorId: 8,
       reason: '',
       date: null as any,
       amount: 20,

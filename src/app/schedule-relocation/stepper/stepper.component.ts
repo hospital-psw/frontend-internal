@@ -45,8 +45,8 @@ export class StepperComponent implements OnInit {
 
   @Input() equipment: IEquipment;
   destinationRooms: IRoomMap[] = [];
-  @Output() closed = new EventEmitter();
-  @Output() refreshedEquipment = new EventEmitter();
+  @Output() closeNotify = new EventEmitter();
+  @Output() refreshEquipmentNotify = new EventEmitter();
   constructor(
     private roomService: RoomService,
     private relocationService: RelocationService,
@@ -98,7 +98,7 @@ export class StepperComponent implements OnInit {
   }
 
   closeStepper() {
-    this.closed.emit();
+    this.closeNotify.emit();
   }
 
   finishRelocation() {
@@ -119,7 +119,7 @@ export class StepperComponent implements OnInit {
           this.showError();
         },
       });
-    this.refreshedEquipment.emit({
+    this.refreshEquipmentNotify.emit({
       reservedQuantity: this.quantityForm.controls.quantity.value,
       equipmentId: this.equipment.id,
     });
