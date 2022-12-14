@@ -3,6 +3,7 @@ import { parse } from 'date-fns';
 import { BloodAcquisition } from '../interface/BloodAcquisition';
 import { BloodAcquisitionService } from '../service/blood-acquisition.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 
 @Component({
   selector: 'app-doctor-requests',
@@ -12,9 +13,11 @@ import { Router } from '@angular/router';
 export class DoctorRequestsComponent implements OnInit {
   constructor(
     private bloodAcquisitionService: BloodAcquisitionService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
+  doctorId: number;
   dataSource: Object[];
   displayedColumns: string[] = [
     'date',
@@ -25,8 +28,11 @@ export class DoctorRequestsComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
     this.bloodAcquisitionService
-      .getBloodAcquisitionsForSpecificDoctor(8)
+      .getBloodAcquisitionsForSpecificDoctor(this.doctorId)
       .subscribe((response: BloodAcquisition[]) => {
         this.dataSource = response;
       });

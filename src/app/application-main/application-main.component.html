@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="sidebar" *ngIf="hamburger" [@openClose]>
-    <app-sidebar [show]="hamburger"></app-sidebar>
+    <app-sidebar [role]="role" [show]="hamburger"></app-sidebar>
   </div>
   <div class="main-panel">
     <app-navigation-bar

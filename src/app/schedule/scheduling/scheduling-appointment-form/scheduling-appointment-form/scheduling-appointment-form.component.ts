@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ExaminationType } from 'src/app/schedule/enum/ExaminationType.enum';
 import { RecommendedDatesDTO } from 'src/app/schedule/interface/RecommendedDatesDTO';
@@ -28,6 +28,7 @@ export class SchedulingAppointmentFormComponent implements OnInit {
 
   recommendedDto: RecommendedDTO;
 
+  @Input() doctorId: number;
   @Output() scheduleInfoEvent = new EventEmitter<ScheduleAppointmentDTO>();
   @Output() outputDates = new EventEmitter<RecommendedDatesDTO[]>();
 
@@ -50,12 +51,12 @@ export class SchedulingAppointmentFormComponent implements OnInit {
     );
     this.recommendedDto = {
       patientId: -1,
-      doctorId: 8,
+      doctorId: this.doctorId,
       date: null as any,
     };
     this.scheduleAppointment = {
       patientId: -1,
-      doctorId: 8,
+      doctorId: this.doctorId,
       date: null as any,
       examType: 1,
     };
@@ -77,7 +78,7 @@ export class SchedulingAppointmentFormComponent implements OnInit {
   getRecommendedAppointments(): void {
     let date = this.recommendedDto.date;
     this.scheduleAppointment.patientId = this.recommendedDto.patientId;
-    this.scheduleAppointment.doctorId = 8;
+    this.scheduleAppointment.doctorId = this.doctorId;
     this.scheduleAppointment.examType = parseInt(this.examinationType);
     this.recommendedDto.date = new Date(
       date?.getFullYear()!,
