@@ -16,43 +16,43 @@ export class FeedbackService {
 
   getAnonymous(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/AnonymousFeedback',
+      this.apiHost + 'api/Feedback/get/all/anonymous',
       { headers: this.headers }
     );
   }
   getApproved(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/AllAprovedFeedback',
+      this.apiHost + 'api/Feedback/get/all/approved',
       { headers: this.headers }
     );
   }
   getDenied(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/AllDeniedFeedback',
+      this.apiHost + 'api/Feedback/get/all/denied',
       { headers: this.headers }
     );
   }
   getPending(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/AllPendingFeedback',
+      this.apiHost + 'api/Feedback/get/all/pending',
       { headers: this.headers }
     );
   }
   getPublic(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/AllPublicFeedback',
+      this.apiHost + 'api/Feedback/get/all/public',
       { headers: this.headers }
     );
   }
   getPrivate(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/AllPrivateFeedback',
+      this.apiHost + 'api/Feedback/get/all/private',
       { headers: this.headers }
     );
   }
   getFeedback(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/managerfeedback',
+      this.apiHost + 'api/Feedback/get/manager/feedback',
       { headers: this.headers }
     );
   }
