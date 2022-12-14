@@ -6,12 +6,12 @@ export interface CreateTenderDTO {
 }
 
 export interface TenderItem {
-  money: Money,
-  bloodType: number,
-  quantity: number
+  money: Money;
+  bloodType: number;
+  quantity: number;
 }
 
 export interface Money {
-  amount: number,
-  currency: number
+  amount: number;
+  currency: number;
 }

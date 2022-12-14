@@ -51,16 +51,12 @@
 </div>
 -->
 <div>
-  <fieldset class="conf-area" >
+  <fieldset class="conf-area">
     <legend>Create tender</legend>
     <div class="row">
       <mat-form-field appearance="fill" class="email">
         <mat-label>Start date</mat-label>
-        <input
-          matInput
-          [matDatepicker]="picker2"
-          [(ngModel)]="dateSelected"
-        />
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="dateSelected" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matSuffix
