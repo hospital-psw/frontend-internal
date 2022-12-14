@@ -21,14 +21,23 @@ export class ButtonSpaceComponent {
     private scheduleService: ScheduleService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   scheduleConsilium(): void {
-    this.isScheduled = false;
-    this.configureDateRange();
     this.scheduleConsiliumDto.selectedDoctors = this.selectedDoctors;
     this.scheduleConsiliumDto.selectedSpecializations =
       this.selectedSpecializations;
+    if (
+      !this.scheduleConsiliumDto.topic ||
+      !this.scheduleConsiliumDto.dateRange.from ||
+      !this.scheduleConsiliumDto.dateRange.to ||
+      !this.scheduleConsiliumDto.roomId
+    ) {
+      this.toastrService.info('Please enter all required data.');
+      return;
+    }
+    this.configureDateRange();
+    this.isScheduled = false;
     if (
       this.scheduleConsiliumDto.selectedDoctors != null &&
       this.scheduleConsiliumDto.selectedSpecializations != null
@@ -47,7 +56,7 @@ export class ButtonSpaceComponent {
         this.router.navigate(['/app/consiliums']);
         this.toastrService.success(
           'Consilium is successfully scheduled. Date: ' +
-            response.dateTime.toString()
+          response.dateTime.toString()
         );
       },
       (error: HttpErrorResponse) => {
@@ -56,6 +65,10 @@ export class ButtonSpaceComponent {
         this.toastrService.error(error.error);
       }
     );
+  }
+
+  dataValidation(): void {
+
   }
 
   configureDateRange(): void {
