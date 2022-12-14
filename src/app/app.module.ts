@@ -43,7 +43,6 @@ import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

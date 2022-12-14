@@ -12,9 +12,11 @@ import { Router } from '@angular/router';
 export class ShowTendersComponent {
   showOffers: boolean[] = [];
   tenders: ITender[];
-  constructor(private tenderService: TenderService, 
-              private router: Router,
-              private toastr: ToastrService,) {}
+  constructor(
+    private tenderService: TenderService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.tenderService.getAll().subscribe((res) => {
