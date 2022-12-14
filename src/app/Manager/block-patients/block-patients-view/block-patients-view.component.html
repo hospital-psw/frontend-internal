@@ -1,5 +1,9 @@
 <div class="card">
-  <mat-tab-group [dynamicHeight]="true" class="space" (selectedTabChange)="onTabChanged($event)">
+  <mat-tab-group
+    [dynamicHeight]="true"
+    class="space"
+    (selectedTabChange)="onTabChanged($event)"
+  >
     <mat-tab label="Malicious Patients">
       <app-tab-malicious-patients> </app-tab-malicious-patients>
     </mat-tab>

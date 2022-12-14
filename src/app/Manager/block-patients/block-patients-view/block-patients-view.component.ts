@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,18 +19,16 @@ import { TabMaliciousPatientsComponent } from '../tab-malicious-patients/tab-mal
   styleUrls: ['./block-patients-view.component.scss'],
 })
 export class BlockPatientsViewComponent {
-  @ViewChild(TabBlockedPatientsComponent) private blockedPatientsComponent: TabBlockedPatientsComponent;
-  @ViewChild(TabMaliciousPatientsComponent) private maliciousPatientsComponent: TabMaliciousPatientsComponent;
-  @Output() selectedTabChange: EventEmitter<MatTabChangeEvent>
+  @ViewChild(TabBlockedPatientsComponent)
+  private blockedPatientsComponent: TabBlockedPatientsComponent;
+  @ViewChild(TabMaliciousPatientsComponent)
+  private maliciousPatientsComponent: TabMaliciousPatientsComponent;
+  @Output() selectedTabChange: EventEmitter<MatTabChangeEvent>;
 
-  onTabChanged(event: MatTabChangeEvent) 
-  {
-    if(event.index == 0)
-    {
-        this.maliciousPatientsComponent.getMaliciousPatients(); 
-    }
-    else
-    {
+  onTabChanged(event: MatTabChangeEvent) {
+    if (event.index == 0) {
+      this.maliciousPatientsComponent.getMaliciousPatients();
+    } else {
       this.blockedPatientsComponent.getBlockedPatients();
     }
   }
