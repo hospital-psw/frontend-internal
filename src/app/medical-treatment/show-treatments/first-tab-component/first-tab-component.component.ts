@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { MedicalTreatmentService } from './../../service/medical-treatment.service';
@@ -39,6 +40,7 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
   //number of data getting from backend (dataSize~pageSize in emitting)
   dataSize: number = 60;
   dataLoaded = false;
+  doctorId: number;
   paginatorColor: ThemePalette = 'primary';
   @Output() pageSizeOutput = new EventEmitter<number>();
   @Output() pageNumberOutput = new EventEmitter<number>();
@@ -53,7 +55,8 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
   constructor(
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -63,14 +66,17 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.getActiveTreatment();
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+      this.getActiveTreatment();
+    });
     this.pageSizeOutput.emit(this.dataSize);
     this.pageNumberOutput.emit(this.pageNumber);
   }
 
   getActiveTreatment(): void {
     this.medicalTreatmentService
-      .getActive(this.dataSize, this.pageNumber)
+      .getActive(this.doctorId, this.dataSize, this.pageNumber)
       .subscribe(
         (response: MedicalTreatment[]) => {
           this.dataSource = new MatTableDataSource<MedicalTreatment>(response);
