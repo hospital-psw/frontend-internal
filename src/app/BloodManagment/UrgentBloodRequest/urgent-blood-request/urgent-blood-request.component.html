@@ -29,6 +29,20 @@
           [(ngModel)]="amount"
         ></mat-slider>
       </div>
+
+      <div class="single">
+        <label>Http request</label>
+        <mat-radio-button
+          [(ngModel)]="http"
+          (click)="updateHttp()"
+        ></mat-radio-button>
+        <label>gRPC request</label>
+        <mat-radio-button
+          [(ngModel)]="http"
+          (click)="updategRPC()"
+        ></mat-radio-button>
+      </div>
+
       <div class="container">
         <button
           [disabled]="disabled"
