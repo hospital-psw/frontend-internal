@@ -114,6 +114,12 @@ export class ExaminationStepperComponent implements OnInit {
     this.prescriptions.push(prescription);
   }
 
+  removePrescription(prescription: NewPrescription): void {
+    console.log("stisnuto")
+    console.log(prescription)
+    this.prescriptions = this.prescriptions.filter(p => p.medicine.id != prescription.medicamentId)
+  }
+
   openDialog(): void {
     const dialogRef = this.dialog
       .open(PrescriptionsComponent, {

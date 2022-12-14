@@ -47,13 +47,13 @@
                             </div>
                         </div>
                         <div class="patient-col">
-                            <div class="patient-col__room">
+                            <div class="patient-col__name">
                                 <span class="label">SSN: </span>
                                 <span class="value">{{
                                     "2555827"
                                     }}</span>
                             </div>
-                            <div class="patient-col__room">
+                            <div class="patient-col__name">
                                 <span class="label">Room: </span>
                                 <span class="value">{{ appointment.room.number }} </span>
                             </div>
@@ -81,13 +81,24 @@
                     </div>
 
                     <div class="main-content" >
+                        <div class="no-prescriptions" *ngIf="prescriptions.length === 0">
+                            <div class="text-pres">Create prescription by clicking on new prescription button.</div> 
+                            <div class="medicament-img"></div>
+                        </div>
                         <div class="list-container" *ngIf="prescriptions.length > 0">
                         <div class="main-content__single" *ngFor="let p of prescriptions">
                             <div class="header-desc">
                                 <span class="main-content__single-header">{{p.medicine.name}}</span>
                                 <span class="main-content__single-description">{{p.description}}</span>
                             </div>
-                            <span class="main-content__single-daterange">{{p.from | date: "dd.MM.yyyy"}} - {{p.to | date: "dd.MM.yyyy"}}</span>
+                            <div class="datecancel">
+                                <span class="main-content__single-daterange">{{p.from | date: "dd.MM.yyyy"}} - {{p.to | date: "dd.MM.yyyy"}}</span>
+                                <div class="main-content__single-cancel" (click)="removePrescription(p)">
+                                    <svg>
+                                        <use class="main-content__single-cancel-svg" xlink:href="../../../assets/SVG/sprite.svg#icon-delete" />
+                                    </svg>
+                                </div>
+                            </div>     
                         </div>
                         </div>
                     </div>
@@ -120,13 +131,13 @@
                         </div>
                     </div>
                     <div class="patient-col">
-                        <div class="patient-col__room">
+                        <div class="patient-col__name">
                             <span class="label">SSN: </span>
                             <span class="value">{{
                                 "2555827"
                                 }}</span>
                         </div>
-                        <div class="patient-col__room">
+                        <div class="patient-col__name">
                             <span class="label">Room: </span>
                             <span class="value">{{ appointment.room.number }} </span>
                         </div>
@@ -136,11 +147,15 @@
                     <div class="description">
                         <span class="description-header">Report: </span>
                         <textarea name="description" class="description-text" cols="30" rows="10"
-                            disabled="true">{{anamnesis.description}}</textarea>
+                            disabled="true">{{anamnesis.description | titlecase }}</textarea>
                     </div>
                     <div class="summary__symptoms">
                         <span class="summary__symptoms-header">Symptoms: </span>
-                        <div class="summary__symptoms-symptom" *ngFor="let symp of selectedSymptoms">{{symp.name}}</div>
+                        <div class="summary__symptoms-symptom" *ngFor="let symp of selectedSymptoms">- {{symp.name | titlecase }}</div>
+                    </div>
+                    <div class="summary__symptoms">
+                        <span class="summary__symptoms-header">Prescriptions: </span>
+                        <div class="summary__symptoms-symptom" *ngFor="let p of prescriptions">- {{p.medicine.name | titlecase }}</div>
                     </div>
                 </div>  
             </div>
