@@ -19,7 +19,7 @@ export class UrgentBloodRequestComponent {
     this.urgentBloodRequest = {
       bloodType: 0,
       amount: 0,
-      http: false
+      http: false,
     };
   }
 
