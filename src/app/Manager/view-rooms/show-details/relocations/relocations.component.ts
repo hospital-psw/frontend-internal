@@ -63,6 +63,6 @@ export class RelocationsComponent {
   }
 
   showSuccess() {
-    this.toastr.success('Successfully declined request.', 'Success');
+    this.toastr.success('Successfully declined relocation.', 'Success');
   }
 }
