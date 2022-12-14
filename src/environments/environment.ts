@@ -19,6 +19,7 @@ export const environment = {
   apiStatistics: 'http://localhost:16177/api/Statistical',
   apiAuthUrl: 'http://localhost:16177/api/Auth/login',
   apiConsiliumUrl: 'http://localhost:16177/api/Consilium',
+  apiApplicationPatient: 'http://localhost:16177/api/ApplicationPatient',
 };
 
 /*

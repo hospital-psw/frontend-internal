@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Doctor } from 'src/app/schedule/interface/Doctor';
 import { ToastrService } from 'ngx-toastr';
 import { DoctorService } from './../../../../Statistics/statistics/Services/doctor.service';
+
 import {
   Component,
   OnInit,
