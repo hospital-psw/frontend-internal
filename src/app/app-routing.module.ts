@@ -28,6 +28,9 @@ import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.compon
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
 import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
+import { DetailComponent } from './blood-bank/detail/detail.component';
+import { UpdateComponent } from './blood-bank/update/update.component';
+import { CreateComponent } from './blood-bank/create/create.component';
 const routes: Routes = [
   {
     path: 'app',
@@ -111,6 +114,18 @@ const routes: Routes = [
   {
     path: '',
     component: LoginPageComponent,
+  },
+  {
+    path: 'bloodbank/:id/detail',
+    component: DetailComponent,
+  },
+  {
+    path: 'bloodbank/:id/update',
+    component: UpdateComponent,
+  },
+  {
+    path: 'bloodbank/add',
+    component: CreateComponent,
   },
 
   {

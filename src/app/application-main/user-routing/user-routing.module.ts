@@ -25,6 +25,9 @@ import { AppointmentsComponent } from 'src/app/schedule/show-all/appointments/ap
 import { CreateRequestFormComponent } from 'src/app/vacation-request/create-request-form/create-request-form.component';
 import { ShowTendersComponent } from 'src/app/tenders/show-tenders/show-tenders.component';
 import { CreateTenderComponent } from 'src/app/tenders/create-tender/create-tender.component';
+import { DetailComponent } from 'src/app/blood-bank/detail/detail.component';
+import { CreateComponent } from 'src/app/blood-bank/create/create.component';
+import { UpdateComponent } from 'src/app/blood-bank/update/update.component';
 
 const routes: Routes = [
   {
@@ -125,6 +128,18 @@ const routes: Routes = [
   {
     path: 'create-tender',
     component: CreateTenderComponent,
+  },
+  {
+    path: 'bloodbank/:id/detail',
+    component: DetailComponent,
+  },
+  {
+    path: 'bloodbank/:id/update',
+    component: UpdateComponent,
+  },
+  {
+    path: 'bloodbank/add',
+    component: CreateComponent,
   },
 ];
 
