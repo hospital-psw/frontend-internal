@@ -23,6 +23,7 @@ import { RelocationsComponent } from './show-details/relocations/relocations.com
 import { AppointmentsComponent } from './show-details/appointments/appointments.component';
 import { RenovationsComponent } from './show-details/renovations/renovations/renovations.component';
 import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/stepper.module';
+import { ConsiliumsComponent } from './show-details/consiliums/consiliums/consiliums.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/ste
     RelocationsComponent,
     AppointmentsComponent,
     RenovationsComponent,
+    ConsiliumsComponent,
   ],
   imports: [
     CommonModule,

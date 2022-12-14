@@ -1,3 +1,5 @@
+import { Consilium } from './../interface/Consilium';
+import { ScheduleConsilium } from './../interface/ScheduleConsilium';
 import { RecommendedDatesDTO } from './../interface/RecommendedDatesDTO';
 import { RecommendedDTO } from '../interface/RecommendedDTO';
 import { HttpClient } from '@angular/common/http';
@@ -12,7 +14,8 @@ import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
   providedIn: 'root',
 })
 export class ScheduleService {
-  private apiServerUrl = environment.apiAppointmentUrl;
+  private apiAppointmentUrl = environment.apiAppointmentUrl;
+  private apiConsiliumUrl = environment.apiConsiliumUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +23,7 @@ export class ScheduleService {
     appointment: ScheduleAppointmentDTO
   ): Observable<Appointment> {
     return this.http.post<Appointment>(
-      `${this.apiServerUrl}/create`,
+      `${this.apiAppointmentUrl}/create`,
       appointment
     );
   }
@@ -28,30 +31,41 @@ export class ScheduleService {
   public rescheduleAppointment(
     appointment: ReschedulingAppointmentDTO
   ): Observable<Appointment> {
-    return this.http.put<Appointment>(`${this.apiServerUrl}`, appointment);
+    return this.http.put<Appointment>(`${this.apiAppointmentUrl}`, appointment);
   }
 
   public getAppointment(appointmentId: number): Observable<Appointment> {
-    return this.http.get<Appointment>(`${this.apiServerUrl}/${appointmentId}`);
+    return this.http.get<Appointment>(
+      `${this.apiAppointmentUrl}/${appointmentId}`
+    );
   }
 
   public deleteAppointment(appointmentId: number): Observable<void> {
     return this.http.delete<void>(
-      `${this.apiServerUrl}/cancel/${appointmentId}`
+      `${this.apiAppointmentUrl}/cancel/${appointmentId}`
     );
   }
 
   //???
   public getAllAppointments(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiServerUrl}/doctor/8`);
+    return this.http.get<Appointment[]>(`${this.apiAppointmentUrl}/doctor/8`);
   }
 
   public getAllRecommended(
     recommendedDto: RecommendedDTO
   ): Observable<RecommendedDatesDTO[]> {
     return this.http.post<RecommendedDatesDTO[]>(
-      `${this.apiServerUrl}/recommend`,
+      `${this.apiAppointmentUrl}/recommend`,
       recommendedDto
+    );
+  }
+
+  public scheduleConsilium(
+    scheduleConsiliumDto: ScheduleConsilium
+  ): Observable<Consilium> {
+    return this.http.post<Consilium>(
+      `${this.apiConsiliumUrl}`,
+      scheduleConsiliumDto
     );
   }
 }

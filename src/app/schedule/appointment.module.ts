@@ -1,3 +1,4 @@
+import { ScheduleModule } from './consilium/schedule.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -51,6 +52,7 @@ import { BloodAcquisitionComponent } from '../BloodManagment/BloodAcquisition/bl
     MatTableModule,
     MatPaginatorModule,
     MatDividerModule,
+    ScheduleModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
