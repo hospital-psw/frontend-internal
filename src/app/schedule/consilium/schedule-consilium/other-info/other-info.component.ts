@@ -32,8 +32,8 @@ export class OtherInfoComponent implements OnInit {
     this.getWorkingHoursForDoctor(this.doctorId);
 
     this.selectedDateRange = {
-      from: Date.now as any,
-      to: Date.now as any,
+      from: null as any,
+      to: null as any,
     };
 
     this.scheduleConsiliumDto = {

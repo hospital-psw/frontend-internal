@@ -21,6 +21,7 @@ export const environment = {
   apiSymptom: 'http://localhost:16177/api/Symptom',
   apiAnamnesis: 'http://localhost:16177/api/Anamnesis',
   apiConsiliumUrl: 'http://localhost:16177/api/Consilium',
+  apiApplicationPatient: 'http://localhost:16177/api/ApplicationPatient',
 };
 
 /*

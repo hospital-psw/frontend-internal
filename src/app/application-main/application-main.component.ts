@@ -79,6 +79,8 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Blood expenditures';
       } else if (this.router.url.includes('/app/bloodAcquisition/create')) {
         this.name = 'Blood acquisition';
+      } else if (this.router.url.includes('/app/blockpatients')) {
+        this.name = 'Blocked patients';
       }
     });
   }

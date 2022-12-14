@@ -45,6 +45,7 @@ import { ExaminationsModule } from './examinations/examinations.module';
 import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
 import { DoctorSidebarComponent } from './common/doctor-sidebar/doctor-sidebar.component';
 import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sidebar.component';
+import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sideba
     MatTableModule,
     LoginModule,
     ExaminationsModule,
+    BlockPatientsModule,
   ],
   bootstrap: [AppComponent],
   exports: [],

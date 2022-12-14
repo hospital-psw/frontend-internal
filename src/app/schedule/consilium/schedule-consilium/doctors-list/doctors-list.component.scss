@@ -39,9 +39,12 @@
 }
 
 .mat-list-option {
-  border-bottom: 0.1rem solid #0E4C92;
   color: #0E4C92;
   font-size: 1.4rem;
+
+  &:not(:last-child) {
+    border-bottom: 0.1rem solid #0E4C92;
+  }
 }
 
 .mat-list-disabled-option {
