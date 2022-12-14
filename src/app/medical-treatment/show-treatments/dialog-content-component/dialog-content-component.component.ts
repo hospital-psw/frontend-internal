@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 import { CreateMedicalTreatment } from '../../interface/CreateMedicalTreatment';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CreateDialogComponentComponent } from '../create-dialog-component/create-dialog-component.component';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 
 @Component({
   selector: 'app-dialog-content-component',
@@ -20,24 +21,29 @@ export class DialogContentComponentComponent implements OnInit {
   rooms: IRoom[];
   patients: Patient[];
   newMedicalTreatment: CreateMedicalTreatment;
+  doctorId: number;
 
   constructor(
     private patientService: PatientService,
     private roomService: RoomService,
     private toastService: ToastrService,
     private medicalTreatmentService: MedicalTreatmentService,
-    private dialogRef: MatDialogRef<CreateDialogComponentComponent>
+    private dialogRef: MatDialogRef<CreateDialogComponentComponent>,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.getAvailableRooms();
     this.getNonHospitalizedPatients();
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
 
     this.newMedicalTreatment = {
       patientId: null as any,
       roomId: null as any,
       //fiksno, posle promeniti
-      doctorId: 8,
+      doctorId: this.doctorId,
       admittanceReason: '',
     };
   }
