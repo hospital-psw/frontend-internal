@@ -19,6 +19,9 @@ import {
   POSITION,
   SPINNER,
 } from 'ngx-ui-loader';
+import { MatTableModule } from '@angular/material/table';
+import { MaterialModule } from 'src/app/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#1493ff',
@@ -57,6 +60,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FormsModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
+    MatTableModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
 })
 export class ScheduleModule {}

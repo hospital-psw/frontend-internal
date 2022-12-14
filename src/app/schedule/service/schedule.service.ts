@@ -10,6 +10,7 @@ import { Appointment } from '../interface/Appointment';
 import { ReschedulingAppointmentDTO } from '../interface/ReschedulingAppointmentDTO';
 import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
 import { WorkHours } from '../interface/WorkHours';
+import { DisplayConsiliumDto } from '../interface/DisplayConsiliumDto';
 
 @Injectable({
   providedIn: 'root',
@@ -76,6 +77,12 @@ export class ScheduleService {
     return this.http.post<Consilium>(
       `${this.apiConsiliumUrl}`,
       scheduleConsiliumDto
+    );
+  }
+
+  public getAllConsiliumsByDoctorId(doctorId: number){
+    return this.http.get<DisplayConsiliumDto[]>(
+      `${this.apiConsiliumUrl}/doctor/${doctorId}`
     );
   }
 }
