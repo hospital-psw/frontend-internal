@@ -1,8 +1,17 @@
 import { BloodType } from './BloodType.enum';
 
 export interface CreateTenderDTO {
-  bloodType: number;
-  moneyAmount: number;
-  quantity: number;
-  endDate: Date;
+  items: TenderItem[];
+  dueDate: Date;
+}
+
+export interface TenderItem {
+  money: Money,
+  bloodType: number,
+  quantity: number
+}
+
+export interface Money {
+  amount: number,
+  currency: number
 }
