@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TenderService } from '../services/tender.service';
 import { Router } from '@angular/router';
 import { BloodType } from '../interface/BloodType.enum';
-import { CreateTenderDTO } from '../interface/CreateTenderDTO';
+import { CreateTenderDTO, TenderItem } from '../interface/CreateTenderDTO';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
@@ -19,6 +19,17 @@ export class CreateTenderComponent implements OnInit {
   moneyAmount: number;
   dateSelected: Date;
   createTenderDTO: CreateTenderDTO;
+  tenderItem: TenderItem;
+
+  dateTime: Date;
+  aPlus: number = 0;
+  aMinus: number = 0;
+  bPlus: number = 0;
+  bMinus: number = 0;
+  aBPlus: number = 0;
+  aBMinus: number = 0;
+  oPlus: number = 0;
+  oMinus: number = 0;
 
   constructor(
     private tenderService: TenderService,
@@ -26,22 +37,76 @@ export class CreateTenderComponent implements OnInit {
     private router: Router
   ) {
     this.createTenderDTO = {
-      bloodType: 0,
-      moneyAmount: 50,
-      quantity: 5,
-      endDate: new Date(),
+      items: [],
+      dueDate: new Date(),
     };
   }
 
   createTender() {
-    let endDate = this.dateSelected;
-    this.createTenderDTO.endDate = this.dateSelected;
-    this.createTenderDTO.quantity = this.quantity;
-    this.createTenderDTO.moneyAmount = this.moneyAmount;
+    let items: TenderItem[] = [];
+    if (this.aPlus != 0) {
+      items.push({
+        bloodType: 0,
+        quantity: this.aPlus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
+    if (this.aMinus != 0) {
+      items.push({
+        bloodType: 1,
+        quantity: this.aMinus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
+    if (this.bPlus != 0) {
+      items.push({
+        bloodType: 2,
+        quantity: this.bPlus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
+    if (this.bMinus != 0) {
+      items.push({
+        bloodType: 3,
+        quantity: this.bMinus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
+    if (this.oPlus != 0) {
+      items.push({
+        bloodType: 4,
+        quantity: this.oPlus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
+    if (this.oMinus != 0) {
+      items.push({
+        bloodType: 5,
+        quantity: this.oMinus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
+    if (this.aBPlus != 0) {
+      items.push({
+        bloodType: 6,
+        quantity: this.aBPlus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
+    if (this.aBMinus != 0) {
+      items.push({
+        bloodType: 7,
+        quantity: this.aBMinus,
+        money: { amount: 0, currency: 0 },
+      });
+    }
 
-    this.bloodTypeString = this.bloodTypes.indexOf(this.bloodType);
+    this.createTenderDTO.dueDate = this.dateSelected;
+    this.createTenderDTO.items = items;
 
-    this.createTenderDTO.bloodType = this.bloodTypeString;
+    // this.bloodTypeString = this.bloodTypes.indexOf(this.bloodType);
+
+    //this.tenderItem.bloodType = this.bloodTypeString;
 
     this.tenderService.createTender(this.createTenderDTO).subscribe(
       (response: CreateTenderDTO) => {
