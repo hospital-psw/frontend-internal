@@ -19,7 +19,10 @@ export const environment = {
   apiStatistics: 'http://localhost:16177/api/Statistical',
   apiAuthUrl: 'http://localhost:16177/api/Auth/login',
   apiAnamnesisPdfUrl: 'http://localhost:16177/api/Anamnesis/pdf',
+  apiSymptom: 'http://localhost:16177/api/Symptom',
+  apiAnamnesis: 'http://localhost:16177/api/Anamnesis',
   apiConsiliumUrl: 'http://localhost:16177/api/Consilium',
+  apiApplicationPatient: 'http://localhost:16177/api/ApplicationPatient',
 };
 
 /*

@@ -9,6 +9,8 @@ import {
   style,
 } from '@angular/animations';
 import { AuthService } from '../common/auth/service/auth.service';
+import { JwtService } from '../common/auth/service/jwt.service';
+import { TokenData } from '../login/interface/TokenData';
 
 @Component({
   selector: 'app-application-main',
@@ -32,11 +34,13 @@ export class ApplicationMainComponent implements OnInit {
   hamburger: boolean;
   private userSub: Subscription;
   isLogged = false;
+  role: string;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private jwtService: JwtService
   ) {
     this.router.events.subscribe(() => {
       if (this.router.url == '/app/appointments') {
@@ -65,6 +69,18 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Schedule consilium';
       } else if (this.router.url.includes('/app/consiliums')) {
         this.name = 'Consiliums';
+      } else if (this.router.url.includes('/app/examination')) {
+        this.name = 'Examination';
+      } else if (this.router.url.includes('/app/blood-request')) {
+        this.name = 'Blood management';
+      } else if (this.router.url.includes('/app/urgentBloodRequest/create')) {
+        this.name = 'Urgent blood request';
+      } else if (this.router.url.includes('/app/bloodExpenditure/create')) {
+        this.name = 'Blood expenditures';
+      } else if (this.router.url.includes('/app/bloodAcquisition/create')) {
+        this.name = 'Blood acquisition';
+      } else if (this.router.url.includes('/app/blockpatients')) {
+        this.name = 'Blocked patients';
       }
     });
   }
@@ -75,6 +91,9 @@ export class ApplicationMainComponent implements OnInit {
     this.hamburger = true;
     this.authService.autoLogin();
     this.userSub = this.authService.user.subscribe((user) => {
+      this.role = (
+        this.jwtService.decodeToken(user.token as string) as TokenData
+      ).role;
       this.isLogged = !!user;
     });
   }

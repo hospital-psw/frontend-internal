@@ -5,6 +5,7 @@ import { DateRange } from './../../../interface/DateRange';
 import { RoomService } from 'src/app/Manager/service/room-service.service';
 import { IRoom } from 'src/app/Manager/Model/Room';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ScheduleService } from 'src/app/schedule/service/schedule.service';
 
 @Component({
   selector: 'app-other-info',
@@ -12,8 +13,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./other-info.component.scss'],
 })
 export class OtherInfoComponent implements OnInit {
-  //ISKORISTI
-  @Input() doctorWorkingHourId: number;
+  doctorWorkingHourId: number;
+  @Input() doctorId: number;
   meetingRooms: IRoom[];
   selectedRoomId: number;
   selectedDateRange: DateRange;
@@ -23,14 +24,16 @@ export class OtherInfoComponent implements OnInit {
 
   constructor(
     private roomService: RoomService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private scheduleService: ScheduleService
   ) {}
 
   ngOnInit(): void {
-    this.getMeetingRooms();
+    this.getWorkingHoursForDoctor(this.doctorId);
+
     this.selectedDateRange = {
-      from: Date.now as any,
-      to: Date.now as any,
+      from: null as any,
+      to: null as any,
     };
 
     this.scheduleConsiliumDto = {
@@ -40,20 +43,29 @@ export class OtherInfoComponent implements OnInit {
       roomId: null as any,
       selectedDoctors: null as any,
       selectedSpecializations: null as any,
-      doctorId: 8, //treba promeniti
+      doctorId: this.doctorId,
     };
   }
 
+  getWorkingHoursForDoctor(doctorId: number) {
+    this.scheduleService.getDoctorsWorkHours(doctorId).subscribe((result) => {
+      console.log(result);
+      this.doctorWorkingHourId = result.id;
+      this.getMeetingRooms();
+    });
+  }
+
   getMeetingRooms(): void {
-    //ZAKUCAN WORKING HOUR
-    this.roomService.getRoomsWithWorkingHour(8).subscribe(
-      (response: IRoom[]) => {
-        this.meetingRooms = response;
-      },
-      (error: HttpErrorResponse) => {
-        this.toastrService.error(error.message);
-      }
-    );
+    this.roomService
+      .getRoomsWithWorkingHour(this.doctorWorkingHourId)
+      .subscribe(
+        (response: IRoom[]) => {
+          this.meetingRooms = response;
+        },
+        (error: HttpErrorResponse) => {
+          this.toastrService.error(error.message);
+        }
+      );
   }
 
   showData(): void {
@@ -64,7 +76,7 @@ export class OtherInfoComponent implements OnInit {
       roomId: this.selectedRoomId,
       selectedDoctors: null as any,
       selectedSpecializations: null as any,
-      doctorId: 8, //treba promeniti
+      doctorId: this.doctorId,
     };
 
     this.outputData.emit(this.scheduleConsiliumDto);

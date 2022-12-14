@@ -20,12 +20,14 @@
         <div class="card__content__datepicker__elements">
           <mat-date-range-input [rangePicker]="picker">
             <input
+              id="date1"
               matStartDate
               placeholder="Start date"
               [(ngModel)]="selectedDateRange.from"
               (dateChange)="showData()"
             />
             <input
+              id="date2"
               matEndDate
               placeholder="End date"
               [(ngModel)]="selectedDateRange.to"

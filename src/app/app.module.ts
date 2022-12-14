@@ -41,9 +41,11 @@ import { ShowTendersComponent } from './tenders/show-tenders/show-tenders.compon
 import { JwtService } from './common/auth/service/jwt.service';
 import { LoginModule } from './login/login.module';
 import { UrgentBloodRequestComponent } from './BloodManagment/UrgentBloodRequest/urgent-blood-request/urgent-blood-request.component';
-import { CreateTenderComponent } from './tenders/create-tender/create-tender.component'; 
-
-
+import { ExaminationsModule } from './examinations/examinations.module';
+import { CreateTenderComponent } from './tenders/create-tender/create-tender.component';
+import { DoctorSidebarComponent } from './common/doctor-sidebar/doctor-sidebar.component';
+import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sidebar.component';
+import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { CreateTenderComponent } from './tenders/create-tender/create-tender.com
     ShowTendersComponent,
     UrgentBloodRequestComponent,
     CreateTenderComponent,
+    DoctorSidebarComponent,
+    ManagerSidebarComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -96,7 +100,10 @@ import { CreateTenderComponent } from './tenders/create-tender/create-tender.com
     MatSelectModule,
     MatSliderModule,
     MatTableModule,
-    LoginModule
+    LoginModule,
+    ExaminationsModule,
+    BlockPatientsModule,
+
   ],
   bootstrap: [AppComponent],
   exports: [],

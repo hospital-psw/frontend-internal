@@ -20,7 +20,5 @@ export class NewTherapyDialogComponent implements OnInit {
     this.treatmentId = data.treatmentId;
   }
 
-  ngOnInit(): void {
-    console.log('On Init dijalog roditelj', this.patient);
-  }
+  ngOnInit(): void {}
 }

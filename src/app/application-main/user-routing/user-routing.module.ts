@@ -23,8 +23,10 @@ import { ViewRoomsComponent } from 'src/app/Manager/view-rooms/view-rooms.compon
 import { PatientTableComponent } from 'src/app/schedule/patients/patient-table/patient-table.component';
 import { AppointmentsComponent } from 'src/app/schedule/show-all/appointments/appointments.component';
 import { CreateRequestFormComponent } from 'src/app/vacation-request/create-request-form/create-request-form.component';
+import { ExaminationStepperComponent } from 'src/app/examinations/examination-stepper/examination-stepper.component';
 import { ShowTendersComponent } from 'src/app/tenders/show-tenders/show-tenders.component';
 import { CreateTenderComponent } from 'src/app/tenders/create-tender/create-tender.component';
+import { BlockPatientsViewComponent } from 'src/app/Manager/block-patients/block-patients-view/block-patients-view.component';
 
 const routes: Routes = [
   {
@@ -119,12 +121,23 @@ const routes: Routes = [
     component: CreateRequestFormComponent,
   },
   {
+    path: 'examination/:id',
+    resolve: {
+      appointment: AppointmentResolver,
+    },
+    component: ExaminationStepperComponent,
+  },
+  {
     path: 'show-tenders',
     component: ShowTendersComponent,
   },
   {
     path: 'create-tender',
     component: CreateTenderComponent,
+  },
+  {
+    path: 'blockpatients',
+    component: BlockPatientsViewComponent,
   },
 ];
 

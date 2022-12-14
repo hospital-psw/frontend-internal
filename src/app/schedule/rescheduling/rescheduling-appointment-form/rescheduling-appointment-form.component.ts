@@ -9,7 +9,7 @@ import { ExaminationType } from '../../enum/ExaminationType.enum';
 import { IRoom } from '../../../Manager/Model/Room';
 import { ScheduleService } from '../../service/schedule.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Output, EventEmitter } from '@angular/core';
+import { Output, EventEmitter, Input } from '@angular/core';
 import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-rescheduling-appointment-form',
@@ -18,6 +18,7 @@ import { DatePipe } from '@angular/common';
 })
 export class ReschedulingAppointmentFormComponent implements OnInit {
   @Output() outputDates = new EventEmitter<RecommendedDatesDTO[]>();
+  @Input() doctorId: number;
   appointment: Appointment;
   rooms: IRoom[];
   recommendedDto: RecommendedDTO;
@@ -39,7 +40,7 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
 
     this.recommendedDto = {
       patientId: this.appointment.patient.id,
-      doctorId: 8,
+      doctorId: this.doctorId,
       date: null as any,
     };
 

@@ -17,13 +17,15 @@ import {
   setDay,
   subDays,
 } from 'date-fns';
-import { map, Subject, Observable } from 'rxjs';
+import { map, Subject, Observable, Subscription } from 'rxjs';
 import { EventColor } from 'calendar-utils';
 import { Appointment } from './../../interface/Appointment';
 import { ScheduleService } from './../../service/schedule.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ExaminationType } from './../../enum/ExaminationType.enum';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
+import { WorkHours } from '../../interface/WorkHours';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -56,16 +58,19 @@ export class AppointmentsComponent implements OnInit {
   viewDate: Date;
   viewDateEnd: Date;
 
-  dayStartHour = 8;
-  dayEndHour = 12;
+  dayStartHour: number;
+  dayEndHour: number;
   hourSegmentHeight = 80;
 
   daysInWeek = 7;
+  workHours: WorkHours;
 
   //================================================================
 
   appointments: CalendarEvent<{ appointment: Appointment }>[];
   examinationTypes: ExaminationType[];
+  doctorId: number;
+  private userSub: Subscription;
 
   canClick: boolean = false;
   selectedEvent: CalendarEvent<{ appointment: Appointment }> = {
@@ -80,20 +85,37 @@ export class AppointmentsComponent implements OnInit {
   constructor(
     private appointmentService: ScheduleService,
     private router: Router,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.canClick = false;
-    this.viewDate = new Date('2022-10-27');
+    this.viewDate = new Date();
     this.viewDateEnd = addDays(this.viewDate, 6);
     this.examinationTypes = Object.values(ExaminationType);
-    this.getAllAppointments();
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
+    this.getDoctorsWorkHours(this.doctorId);
+    this.getAllAppointments(this.doctorId);
   }
 
-  getAllAppointments(): void {
+  getDoctorsWorkHours(doctorId: number) {
     this.appointmentService
-      .getAllAppointments()
+      .getDoctorsWorkHours(doctorId)
+      .subscribe((result) => {
+        this.workHours = result;
+        let startDate = new Date(this.workHours.start);
+        let endDate = new Date(this.workHours.end);
+        this.dayStartHour = startDate.getHours();
+        this.dayEndHour = endDate.getHours();
+      });
+  }
+
+  getAllAppointments(doctorId: number): void {
+    this.appointmentService
+      .getAllAppointments(doctorId)
       .pipe(
         map((results: Appointment[]) => {
           return results.map((appointment: Appointment) => {
