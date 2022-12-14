@@ -6,6 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
 
 @Component({
   selector: 'app-schedule-consilium',
@@ -16,10 +17,16 @@ export class ScheduleConsiliumComponent implements OnInit {
   scheduleConsiliumDto: ScheduleConsilium;
   selectedSpecializations: number[];
   selectedDoctors: number[];
+  doctorId: number;
+
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.authService.user.subscribe((user) => {
+      this.doctorId = user.id;
+    });
     this.scheduleConsiliumDto = {
-      doctorId: null as any,
+      doctorId: this.doctorId,
       selectedDoctors: null as any,
       selectedSpecializations: null as any,
       roomId: null as any,

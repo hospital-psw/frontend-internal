@@ -15,4 +15,10 @@ export class MedicineService {
   public getMedicines(): Observable<Medicament[]> {
     return this.http.get<Medicament[]>(`${this.apiServerUrl}`);
   }
+
+  public getAcceptable(patientId: number): Observable<Medicament[]> {
+    return this.http.get<Medicament[]>(
+      `${this.apiServerUrl}/acceptable/${patientId}`
+    );
+  }
 }

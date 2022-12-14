@@ -9,6 +9,8 @@ import { Appointment } from 'src/app/schedule/interface/Appointment';
 import { ExaminationType } from 'src/app/schedule/enum/ExaminationType.enum';
 import { ActivatedRoute } from '@angular/router';
 import { MatPaginator } from '@angular/material/paginator';
+import { AuthService } from 'src/app/common/auth/service/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-rescheduling-appointment-table',

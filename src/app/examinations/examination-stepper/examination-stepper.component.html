@@ -1,0 +1,253 @@
+<div class="examinations-wrapper">
+  <mat-stepper orientation="horizontal" class="exam-stepper" [linear]="true">
+    <mat-step class="step">
+      <ng-template matStepLabel>Symptom selection</ng-template>
+      <h1>Select symptoms</h1>
+      <div class="drag-drop">
+        <div class="symptom-container">
+          <h2>Available symptoms</h2>
+
+          <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="symptoms"
+            [cdkDropListConnectedTo]="[doneList]"
+            class="symptom-container__list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="symptom-container__list-element"
+              *ngFor="let item of symptoms"
+              cdkDrag
+            >
+              {{ item.name }}
+            </div>
+          </div>
+        </div>
+
+        <div class="symptom-container">
+          <h2>Selected sypmtoms</h2>
+
+          <div
+            cdkDropList
+            #doneList="cdkDropList"
+            [cdkDropListData]="selectedSymptoms"
+            [cdkDropListConnectedTo]="[todoList]"
+            class="symptom-container__list"
+            (cdkDropListDropped)="drop($event)"
+          >
+            <div
+              class="symptom-container__list-element"
+              *ngFor="let item of selectedSymptoms"
+              cdkDrag
+            >
+              {{ item.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button mat-button matStepperPrevious class="button" disabled="true">
+          Previous
+        </button>
+        <button
+          mat-button
+          matStepperNext
+          class="button"
+          [disabled]="selectedSymptoms.length === 0"
+        >
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step class="step">
+      <ng-template matStepLabel>General anamnesis</ng-template>
+      <div class="anamnesis">
+        <div class="patient">
+          <div class="patient-col">
+            <div class="patient-col__name">
+              <span class="label">Patient Name: </span>
+              <span class="value"
+                >{{ appointment.patient.firstName }}
+                {{ appointment.patient.lastName }}</span
+              >
+            </div>
+            <div class="patient-col__name">
+              <span class="label">Examination date: </span>
+              <span class="value">{{
+                appointment.date | date: "dd.MM.yyyy."
+              }}</span>
+            </div>
+          </div>
+          <div class="patient-col">
+            <div class="patient-col__name">
+              <span class="label">SSN: </span>
+              <span class="value">{{ "2555827" }}</span>
+            </div>
+            <div class="patient-col__name">
+              <span class="label">Room: </span>
+              <span class="value">{{ appointment.room.number }} </span>
+            </div>
+          </div>
+        </div>
+        <div class="description">
+          <span class="description-header">Report: </span>
+          <textarea
+            name="description"
+            class="description-text"
+            cols="30"
+            rows="10"
+            placeholder="Please enter anamnesis and epicrisis..."
+            [(ngModel)]="anamnesis.description"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button mat-button matStepperPrevious class="button">Previous</button>
+        <button
+          mat-button
+          matStepperNext
+          class="button"
+          [disabled]="anamnesis.description.length === 0"
+        >
+          Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="prescriptionForm" class="step">
+      <form [formGroup]="prescriptionForm">
+        <ng-template matStepLabel>Prescriptions</ng-template>
+        <div class="prescriptions-tab">
+          <div class="header">
+            <button (click)="openDialog()" class="button pres-button">
+              New prescription
+            </button>
+          </div>
+
+          <div class="main-content">
+            <div class="no-prescriptions" *ngIf="prescriptions.length === 0">
+              <div class="text-pres">
+                Create prescription by clicking on new prescription button.
+              </div>
+              <div class="medicament-img"></div>
+            </div>
+            <div class="list-container" *ngIf="prescriptions.length > 0">
+              <div class="main-content__single" *ngFor="let p of prescriptions">
+                <div class="header-desc">
+                  <span class="main-content__single-header">{{
+                    p.medicine.name
+                  }}</span>
+                  <span class="main-content__single-description">{{
+                    p.description
+                  }}</span>
+                </div>
+                <div class="datecancel">
+                  <span class="main-content__single-daterange"
+                    >{{ p.from | date: "dd.MM.yyyy" }} -
+                    {{ p.to | date: "dd.MM.yyyy" }}</span
+                  >
+                  <div
+                    class="main-content__single-cancel"
+                    (click)="removePrescription(p)"
+                  >
+                    <svg>
+                      <use
+                        class="main-content__single-cancel-svg"
+                        xlink:href="../../../assets/SVG/sprite.svg#icon-delete"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="button-container">
+              <button mat-button matStepperPrevious class="button">
+                Previous
+              </button>
+              <button mat-button matStepperNext class="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step class="step">
+      <ng-template matStepLabel>Finish examination</ng-template>
+      <div class="finish">
+        <div class="patient">
+          <div class="patient-col">
+            <div class="patient-col__name">
+              <span class="label">Patient Name: </span>
+              <span class="value"
+                >{{ appointment.patient.firstName }}
+                {{ appointment.patient.lastName }}</span
+              >
+            </div>
+            <div class="patient-col__name">
+              <span class="label">Examination date: </span>
+              <span class="value">{{
+                appointment.date | date: "dd.MM.yyyy."
+              }}</span>
+            </div>
+          </div>
+          <div class="patient-col">
+            <div class="patient-col__name">
+              <span class="label">SSN: </span>
+              <span class="value">{{ "2555827" }}</span>
+            </div>
+            <div class="patient-col__name">
+              <span class="label">Room: </span>
+              <span class="value">{{ appointment.room.number }} </span>
+            </div>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="description">
+            <span class="description-header">Report: </span>
+            <textarea
+              name="description"
+              class="description-text"
+              cols="30"
+              rows="10"
+              disabled="true"
+              >{{ anamnesis.description | titlecase }}</textarea
+            >
+          </div>
+          <div class="summary__symptoms">
+            <span class="summary__symptoms-header">Symptoms: </span>
+            <div
+              class="summary__symptoms-symptom"
+              *ngFor="let symp of selectedSymptoms"
+            >
+              - {{ symp.name | titlecase }}
+            </div>
+          </div>
+          <div class="summary__symptoms">
+            <span class="summary__symptoms-header">Prescriptions: </span>
+            <div
+              class="summary__symptoms-symptom"
+              *ngFor="let p of prescriptions"
+            >
+              - {{ p.medicine.name | titlecase }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button mat-button matStepperPrevious class="button">Previous</button>
+        <button
+          mat-button
+          matStepperNext
+          class="button"
+          (click)="createAnamnesis()"
+        >
+          Finish
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

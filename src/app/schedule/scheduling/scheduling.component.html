@@ -2,6 +2,7 @@
   <app-scheduling-appointment-form
     (scheduleInfoEvent)="acceptData($event)"
     (outputDates)="acceptDates($event)"
+    [doctorId]="doctorId"
   ></app-scheduling-appointment-form>
   <app-scheduling-appointment-table
     [appointmentData]="redirectAppointment"
