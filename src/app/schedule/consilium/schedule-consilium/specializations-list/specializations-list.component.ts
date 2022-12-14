@@ -32,7 +32,7 @@ export class SpecializationsListComponent implements OnInit, OnChanges {
     private doctorService: DoctorService,
     private toastrService: ToastrService,
     private scheduleService: ScheduleService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getDoctorsWorkingHour();
