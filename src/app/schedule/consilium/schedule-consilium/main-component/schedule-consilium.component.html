@@ -10,11 +10,13 @@
     <app-doctors-list
       (outputDoctors)="storeFromChildDoctorsList($event)"
       [selectedSpecializations]="selectedSpecializations"
+      [doctorId]="doctorId"
       class="component__list__element"
     ></app-doctors-list>
     <app-specializations-list
       (outputSpecializations)="storeFromChildSpecializations($event)"
       [selectedDoctors]="selectedDoctors"
+      [doctorId]="doctorId"
       class="component__list__element"
     ></app-specializations-list>
     <app-button-space
