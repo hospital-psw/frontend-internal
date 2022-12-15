@@ -3,6 +3,7 @@ import { ITender } from '../model/tender.model';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { TenderService } from '../services/tender.service';
 import { Router } from '@angular/router';
+import { BloodType } from '../../blood-bank/model/blood-type.model';
 
 @Component({
   selector: 'app-show-tenders',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class ShowTendersComponent {
   showOffers: boolean[] = [];
   tenders: ITender[];
+  bloodTypes = Object.values(BloodType).splice(0, 8);
   constructor(
     private tenderService: TenderService,
     private router: Router,

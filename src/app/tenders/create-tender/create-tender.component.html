@@ -1,3 +1,4 @@
+<!--
 <div class="grid-container">
   <div class="single">
     <label>BloodType</label>
@@ -47,4 +48,114 @@
   </div>
 
   <button (click)="createTender()" class="buttonConf">Confirm</button>
+</div>
+-->
+<div>
+  <fieldset class="conf-area">
+    <legend>Create tender</legend>
+    <div class="row">
+      <mat-form-field appearance="fill" class="email">
+        <mat-label>Start date</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="dateSelected" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="wrapper">
+      <div class="wrapper__elem">
+        <div class="wrapper__elem-el">
+          <label class="number__label">A+ </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="aPlus"
+          />
+        </div>
+        <div class="wrapper__elem-el">
+          <label class="number__label">B+ </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="bPlus"
+          />
+        </div>
+        <div class="wrapper__elem-el">
+          <label class="number__label">AB+ </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="aBPlus"
+          />
+        </div>
+        <div class="wrapper__elem-el">
+          <label class="number__label">O+ </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="oPlus"
+          />
+        </div>
+      </div>
+      <div class="wrapper__elem">
+        <div class="wrapper__elem-el">
+          <label class="number__label">A- </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="aMinus"
+          />
+        </div>
+        <div class="wrapper__elem-el">
+          <label class="number__label">B- </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="bMinus"
+          />
+        </div>
+        <div class="wrapper__elem-el">
+          <label class="number__label">AB- </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="aBMinus"
+          />
+        </div>
+        <div class="wrapper__elem-el">
+          <label class="number__label">O- </label>
+          <input
+            type="number"
+            min="0"
+            class="number__area"
+            placeholder="0"
+            [(ngModel)]="oMinus"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="saveBtn">
+      <button mat-raised-button color="primary" (click)="createTender()">
+        <!--TODO binduj na klik-->
+        Save
+      </button>
+    </div>
+  </fieldset>
 </div>

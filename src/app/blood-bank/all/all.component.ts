@@ -41,15 +41,15 @@ export class AllComponent implements OnInit {
   }
 
   public chooseBloodBank(id: number) {
-    this.router.navigate(['/bloodbank', id]);
+    this.router.navigate(['/app/bloodbank', id]);
   }
 
   public updateBloodBank(id: number) {
-    this.router.navigate(['/bloodbank/' + id + '/update']);
+    this.router.navigate(['/app/bloodbank/' + id + '/update']);
   }
 
   public detailBloodBank(id: number) {
-    this.router.navigate(['/bloodbank/' + id + '/detail']);
+    this.router.navigate(['/app/bloodbank/' + id + '/detail']);
   }
 
   public deleteBloodBank(id: number) {
@@ -62,6 +62,6 @@ export class AllComponent implements OnInit {
   }
 
   public addBloodBank() {
-    this.router.navigate(['/bloodbank/add']);
+    this.router.navigate(['/app/bloodbank/add']);
   }
 }
