@@ -148,7 +148,7 @@ const routes: Routes = [
     path: 'anamneses-pdf/:id',
     component: AnamnesesPdfComponent,
   },
-  }
+  {
     path: 'bloodbank/:id/detail',
     component: DetailComponent,
   },
@@ -166,4 +166,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserRoutingModule {}
+export class UserRoutingModule { }
