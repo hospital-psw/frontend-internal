@@ -23,6 +23,8 @@ import { MedicamentTherapyComponent } from './therapies/medicament-therapy/medic
 import { BloodUnitTherapyComponent } from './therapies/blood-unit-therapy/blood-unit-therapy.component';
 import { TherapyTabsComponent } from './therapies/therapy-tabs/therapy-tabs.component';
 import { MatInput } from '@angular/material/input';
+import { AnamnesesPdfComponent } from './anamneses_pdf/anamneses-pdf/anamneses-pdf.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { MatInput } from '@angular/material/input';
     MedicamentTherapyComponent,
     BloodUnitTherapyComponent,
     TherapyTabsComponent,
+    AnamnesesPdfComponent,
   ],
   imports: [
     CommonModule,
@@ -50,6 +53,7 @@ import { MatInput } from '@angular/material/input';
     MatInputModule,
     FormsModule,
     MatProgressSpinnerModule,
+    MatCheckboxModule,
   ],
 })
 export class MedicalTreatmentModule {}

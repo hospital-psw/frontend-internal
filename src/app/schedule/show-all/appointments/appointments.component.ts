@@ -78,6 +78,7 @@ export class AppointmentsComponent implements OnInit {
     color: { ...colors['blue'] },
     end: null as any,
     meta: null as any,
+    id: null as any,
   };
 
   constructor(
@@ -195,5 +196,13 @@ export class AppointmentsComponent implements OnInit {
       .subscribe((data) => {
         this.toaster.success('Successfuly canceled appointment');
       });
+  }
+
+  doubleClick(event: any): void {
+    var url =
+      'app/anamneses-pdf/' + this.selectedEvent.meta?.appointment.id.toString();
+    if (this.selectedEvent.meta?.appointment.isDone) {
+      this.router.navigate([url]);
+    }
   }
 }
