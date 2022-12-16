@@ -1,10 +1,21 @@
 <div class="sidebar-wrapper">
   <div class="logo">
     <div class="logo__icon-box">
-      <svg class="logo__icon-hospital">
-        <use xlink:href="../../../assets/SVG/sprite.svg#icon-apartment"></use>
-      </svg>
-      <a routerLink="/" class="logo__simple-text"> Hospital </a>
+      <img src="../../../assets/SVG/Hp.svg" class="logo__icon-hospital" />
+      <a
+        routerLink="/app/appointments"
+        class="logo__simple-text"
+        *ngIf="role === 'Doctor'"
+      >
+        Hospital
+      </a>
+      <a
+        routerLink="/app/display"
+        class="logo__simple-text"
+        *ngIf="role === 'Admin'"
+      >
+        Hospital
+      </a>
     </div>
   </div>
   <ul class="nav responsive-nav">
