@@ -27,8 +27,11 @@
     ></textarea>
   </div>
   <div class="content__actions">
-    <div class="content__actions__button" (click)="closeDialog()">Back</div>
+    <div #back class="content__actions__button" (click)="closeDialog()">
+      Back
+    </div>
     <div
+      #create
       class="content__actions__button margin-left"
       (click)="createTreatment()"
     >

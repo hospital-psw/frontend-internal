@@ -32,7 +32,6 @@ import { DetailComponent } from 'src/app/blood-bank/detail/detail.component';
 import { UpdateComponent } from 'src/app/blood-bank/update/update.component';
 import { CreateComponent } from 'src/app/blood-bank/create/create.component';
 
-
 const routes: Routes = [
   {
     path: 'appointments',
@@ -166,4 +165,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}
