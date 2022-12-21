@@ -28,5 +28,26 @@
     <div class="size" *ngIf="vacationsChart">
       <canvas class="segment" id="chart5"></canvas>
     </div>
+    <div class="combo">
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Choose doctor</mat-label>
+        <mat-select (selectionChange)="saveDoctor($event)">
+          <mat-option *ngFor="let d of doctors" [value]="d.id">{{
+            d.firstName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="years" appearance="fill">
+        <mat-label>Choose year</mat-label>
+        <mat-select (selectionChange)="saveYear($event)">
+          <mat-option value="2021">2021</mat-option>
+          <mat-option value="2022">2022</mat-option>
+          <mat-option value="2023">2023</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="size" [hidden]="!doctorYearlyBookingChart">
+      <canvas class="segment" id="chart6"></canvas>
+    </div>
   </div>
 </div>
