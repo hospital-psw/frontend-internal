@@ -49,5 +49,31 @@
     <div class="size" [hidden]="!doctorYearlyBookingChart">
       <canvas class="segment" id="chart6"></canvas>
     </div>
+    <div class="combo">
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Choose blood type</mat-label>
+        <mat-select (selectionChange)="saveBloodType($event)">
+          <mat-option value="0">A_POSITIVE</mat-option>
+          <mat-option value="1">A_NEGATIVE</mat-option>
+          <mat-option value="2">B_POSITIVE</mat-option>
+          <mat-option value="3">B_NEGATIVE</mat-option>
+          <mat-option value="4">O_POSITIVE</mat-option>
+          <mat-option value="5">O_NEGATIVE</mat-option>
+          <mat-option value="6">AB_POSITIVE</mat-option>
+          <mat-option value="7">AB_NEGATIVE</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="years" appearance="fill">
+        <mat-label>Choose year</mat-label>
+        <mat-select (selectionChange)="saveYear($event)">
+          <mat-option value="2021">2021</mat-option>
+          <mat-option value="2022">2022</mat-option>
+          <mat-option value="2023">2023</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="size" [hidden]="!tenderBloodQuantityChart">
+      <canvas class="segment" id="chart7"></canvas>
+    </div>
   </div>
 </div>
