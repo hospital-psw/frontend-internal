@@ -18,6 +18,9 @@ export class StatisticsComponent implements OnInit {
   max: number = 0;
   tableData: DataTableItem[] = [];
   chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  vacationsChart : any
+  /*
+  chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   vacationsChart: Chart = new Chart('chart5', {
     type: 'line',
     data: {
@@ -78,7 +81,74 @@ export class StatisticsComponent implements OnInit {
       },
     },
   });
+  */
   doctors: any = [];
+
+  chartTenderMoneyData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  //tenderMoneyChart: any
+  //yearTenderMoney: number
+  
+  tenderMoneyCharts: Chart = new Chart('tenderMoneyChart', {
+    type: 'line',
+    data: {
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
+      datasets: [
+        {
+          label: 'Days of vacation per month',
+          data: this.chartTenderMoneyData,
+          backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+          ],
+          borderWidth: 3,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          color: 'gray',
+          display: true,
+          font: {
+            size: 20,
+          },
+          text: 'Money on tenders per month',
+          padding: {
+            top: 10,
+          },
+        },
+      },
+    },
+  });
+  
 
   constructor(
     private service: StatisticsService,
@@ -394,7 +464,131 @@ export class StatisticsComponent implements OnInit {
         },
       });
     });
+    /*
+    this.vacationsChart = new Chart('chart5', {
+      type: 'line',
+      data: {
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ],
+        datasets: [
+          {
+            label: 'Days of vacation per month',
+            data: this.chart5_data,
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            color: 'gray',
+            display: true,
+            font: {
+              size: 20,
+            },
+            text: 'Days of vacation per month',
+            padding: {
+              top: 10,
+            },
+          },
+        },
+      },
+    });
+    this.tenderMoneyChart = new Chart('tenderMoneyChart', {
+    type: 'line',
+    data: {
+      labels: [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ],
+      datasets: [
+        {
+          label: 'Days of vacation per month',
+          data: this.chartTenderMoneyData,
+          backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+          ],
+          borderWidth: 3,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        title: {
+          color: 'gray',
+          display: true,
+          font: {
+            size: 20,
+          },
+          text: 'Money on tenders per month',
+          padding: {
+            top: 10,
+          },
+        },
+      },
+    },
+  });
+  */
+  
   }
+  
   getVacationStatistic(event: any) {
     //pozvati funkciju za dobijanje podataka i proslediti event.value
     console.log('doktor id:');
@@ -456,6 +650,80 @@ export class StatisticsComponent implements OnInit {
                 size: 20,
               },
               text: 'Days of vacation per month',
+              padding: {
+                top: 10,
+              },
+            },
+          },
+        },
+      });
+    });
+  }
+  /*
+  changeYearSelect(event: any){
+    this.yearTenderMoney = parseInt(event.value)
+    this.changeYear()
+  }*/
+  changeYear(event: any) { /*event: any*/
+    //pozvati funkciju za dobijanje podataka i proslediti event.value
+    console.log(event.value);
+    this.tenderMoneyCharts.destroy();
+    this.service.getMoneyPerMonth(event.value).subscribe((data) => {
+      this.chartTenderMoneyData = data;
+      console.log(this.chartTenderMoneyData);
+      this.tenderMoneyCharts = new Chart('tenderMoneyChart', {
+        type: 'line',
+        data: {
+          labels: [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+          ],
+          datasets: [
+            {
+              label: 'Money on tenders per month',
+              data: this.chartTenderMoneyData,
+              backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+              ],
+              borderWidth: 3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          plugins: {
+            legend: {
+              display: false,
+            },
+            title: {
+              color: 'gray',
+              display: true,
+              font: {
+                size: 20,
+              },
+              text: 'Money on tenders per month',
               padding: {
                 top: 10,
               },

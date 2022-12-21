@@ -15,6 +15,7 @@
     <div class="size pie" *ngIf="usersChart">
       <canvas class="segment" id="chart4"></canvas>
     </div>
+    <!--
     <div class="combo">
       <mat-form-field class="search-doctors" appearance="fill">
         <mat-label>Choose doctor</mat-label>
@@ -27,6 +28,20 @@
     </div>
     <div class="size" *ngIf="vacationsChart">
       <canvas class="segment" id="chart5"></canvas>
+    </div>
+    -->
+    <div class="combo">
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Choose year</mat-label>
+        <mat-select (selectionChange)="changeYear($event)">
+          <mat-option value='2021'>2021</mat-option>
+          <mat-option value='2022'>2022</mat-option>
+          <mat-option value='2023'>2023</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="size" *ngIf="tenderMoneyCharts">
+      <canvas class="segment" id="tenderMoneyChart"></canvas>
     </div>
   </div>
 </div>
