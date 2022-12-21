@@ -4,7 +4,7 @@ import { Chart, registerables } from 'chart.js';
 import { DataTableItem } from '../data-table/data-table-datasource';
 import { DoctorService } from '../../Services/doctor.service';
 import { ax } from 'chart.js/dist/chunks/helpers.core';
-import { isThisISOWeek } from 'date-fns';
+import { isThisISOWeek, parse } from 'date-fns';
 
 @Component({
   selector: 'app-statistics',
@@ -536,6 +536,8 @@ export class StatisticsComponent implements OnInit {
 
   year : any = null
   doctor : any = null
+  month: any = null
+
   saveYear(event: any){
     this.year = parseInt(event.value)
     this.getDoctorYearlyBookingStatistic()
@@ -543,6 +545,83 @@ export class StatisticsComponent implements OnInit {
   saveDoctor(event: any) {
     this.doctor = event.value
     this.getDoctorYearlyBookingStatistic()
+  }
+  saveMonth(event: any){
+    this.month = parseInt(event.value)
+    this.getDoctorMonthlyBookingStatistic()
+  }
+
+  getLabelsBasedOnMonth(month: number){
+    switch(month){
+      case 1: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      case 2: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]
+      case 3: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      case 4: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+      case 5: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      case 6: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+      case 7: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      case 8: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      case 9: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+      case 10: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+      case 11: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+      case 12: return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]
+    }
+    return []
+  }
+
+  getDoctorMonthlyBookingStatistic(){
+    if (this.year == null || this.doctor == null || this.month == null) return 
+    this.doctorYearlyBookingChart.destroy();
+    this.service.getDoctorMonthlyBookingStatistics(this.doctor, this.month, this.year).subscribe((data) => {
+      this.chart6_data = data;
+      this.doctorYearlyBookingChart = new Chart('chart6', {
+        type: 'line',
+        data: {
+          labels: this.getLabelsBasedOnMonth(this.month),
+          datasets: [
+            {
+              label: 'Number of appointments per month',
+              data: this.chart6_data,
+              backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+              borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+              ],
+              borderWidth: 3,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+          plugins: {
+            legend: {
+              display: false,
+            },
+            title: {
+              color: 'gray',
+              display: true,
+              font: {
+                size: 20,
+              },
+              text: 'Number of appointments per month',
+              padding: {
+                top: 10,
+              },
+            },
+          },
+        },
+      });
+    });
   }
 
   getDoctorYearlyBookingStatistic() {
