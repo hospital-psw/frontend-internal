@@ -27,6 +27,10 @@ import { ExaminationStepperComponent } from 'src/app/examinations/examination-st
 import { ShowTendersComponent } from 'src/app/tenders/show-tenders/show-tenders.component';
 import { CreateTenderComponent } from 'src/app/tenders/create-tender/create-tender.component';
 import { BlockPatientsViewComponent } from 'src/app/Manager/block-patients/block-patients-view/block-patients-view.component';
+import { AnamnesesPdfComponent } from 'src/app/medical-treatment/anamneses_pdf/anamneses-pdf/anamneses-pdf.component';
+import { DetailComponent } from 'src/app/blood-bank/detail/detail.component';
+import { UpdateComponent } from 'src/app/blood-bank/update/update.component';
+import { CreateComponent } from 'src/app/blood-bank/create/create.component';
 
 const routes: Routes = [
   {
@@ -138,6 +142,22 @@ const routes: Routes = [
   {
     path: 'blockpatients',
     component: BlockPatientsViewComponent,
+  },
+  {
+    path: 'anamneses-pdf/:id',
+    component: AnamnesesPdfComponent,
+  },
+  {
+    path: 'bloodbank/:id/detail',
+    component: DetailComponent,
+  },
+  {
+    path: 'bloodbank/:id/update',
+    component: UpdateComponent,
+  },
+  {
+    path: 'bloodbank/add',
+    component: CreateComponent,
   },
 ];
 

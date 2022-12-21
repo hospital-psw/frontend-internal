@@ -77,3 +77,98 @@
 }
 
 
+.header{
+    border-bottom: 1px solid #3f51b5;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  h1{
+    display: inline;
+  }
+  .container {
+    margin-top:2rem;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .response__pos{
+    color: green;
+  }
+  
+  .response__neg{
+    color: red;
+  }
+  
+  .email,.key,.url{
+    width: 25rem;
+  }
+  
+  .specialType,.amount{
+    width: 18rem;
+  }
+  .checkBlood{
+    width: 7rem;
+    height: 4.4rem;
+  }
+  
+  .row{
+    display: flex;
+    align-items: stretch;
+  }
+  
+  a{
+    display: inline;
+    text-align: center;
+  }
+  
+  .configuration{
+    color: #3f51b5;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .conf-area{
+    border-radius: 5px;
+    border: 1px solid rgb(186, 184, 184);
+  }
+  
+  legend{
+    color: #3f51b5;
+  }
+  
+  .saveBtn{
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .wrapper{
+    margin: 0.5rem;
+    width: 24rem;
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .wrapper__elem{
+    display: flex;
+    flex-direction: column;
+  }
+  .wrapper__elem-el{
+    display: flex;
+    justify-content: space-between;
+    width: 10rem;
+    margin-bottom: 1rem;
+  }
+  
+  .number__area{
+    width: 4rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+  .number__label{
+    font-size: medium;
+  }
+

@@ -16,7 +16,7 @@ export class NewsfeedService {
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   getAll(): Observable<News[]> {
-    return this.http.get<News[]>(this.apiHost + 'api/News/all', {
+    return this.http.get<News[]>('integration/News/all', {
       headers: this.headers,
     });
   }

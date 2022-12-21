@@ -19,14 +19,18 @@
   
   .content__elem {
     width: 40rem;
-    height: 4rem;
     background: lightgray;
     border: 1px solid gray;
     border-radius: 10px;
     margin-top: 1rem;
     display: flex;
+    flex-direction: column;
+    
+  }
+  .content__elem-header{
+    width: 100%;
+    display: flex;
     justify-content: space-between;
-    align-items: center;
   }
   
   .showDown {
@@ -93,7 +97,6 @@
 
 .content__elem {
   width: 70rem;
-  height: 6rem;
   background: rgb(240, 238, 238);
   border: 1px solid gray;
   border-radius: 10px;
@@ -131,4 +134,16 @@
 .acceptBtn:hover {
   background-color: white;
   color: green;
+}
+.showItems{
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+.tenderItems-show{
+  display: flex;
+  flex-direction: column;
+}
+.tender-item{
+  padding-left: 0.3rem;
 }
