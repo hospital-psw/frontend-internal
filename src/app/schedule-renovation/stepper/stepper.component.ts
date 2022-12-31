@@ -5,6 +5,7 @@ import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
 import { RoomService } from 'src/app/Manager/service/room-service.service';
 import { IRenovationDetails } from 'src/app/schedule-relocation/model/RenovationDetails';
 import { IRenovationRequest } from 'src/app/schedule-relocation/model/RenovationRequest';
+import { EventService } from 'src/app/schedule-relocation/services/event.service';
 import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 
 @Component({
@@ -59,7 +60,8 @@ export class StepperComponent implements OnInit {
   constructor(
     private roomService: RoomService,
     private renovationService: RenovationService,
-    private toastr: ToastrService
+    private toastr: ToastrService, 
+    private eventService: EventService
   ) {}
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class StepperComponent implements OnInit {
   decideRenovationType() {
     if (this.renovationTypeForm.value.type == 1)
       this.findPossibleRoomsForSplitRenovation();
+    this.createEvent(0)
   }
 
   findRoomById(id: number) {
@@ -262,5 +265,19 @@ export class StepperComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success('Successfully scheduled relocation.', 'Success');
+  }
+
+  aggregateId : number = -1
+  createEvent(renovationEventType: number){
+    this.eventService.createEvent({AggregateId: this.aggregateId, EventType: renovationEventType, Type: parseInt(this.renovationTypeForm.controls.type.value)})
+                      .subscribe({
+                        next: (res) => {
+                          console.log(res)
+                          this.aggregateId = res
+                        }, 
+                        error: (e) => {
+
+                        }
+                      })
   }
 }
