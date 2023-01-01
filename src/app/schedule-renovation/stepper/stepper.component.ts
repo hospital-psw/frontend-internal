@@ -163,6 +163,7 @@ export class StepperComponent implements OnInit {
         this.dateTimes = data;
         console.log(data);
       });
+      this.createEvent(3)
   }
 
   doesNewRoomNameExists(number: string): boolean {
@@ -206,6 +207,7 @@ export class StepperComponent implements OnInit {
   }
 
   schedule() {
+
     var renovationDetails: IRenovationDetails[] = [];
     var roomsId: number[] = [];
     if (this.renovationTypeForm.controls.type.value == 0) {
@@ -240,22 +242,36 @@ export class StepperComponent implements OnInit {
         newCapacity: newCapacity2,
       });
     }
-    this.renovationService
-      .createRenovationRequest({
-        renovationType: parseInt(this.renovationTypeForm.controls.type.value),
-        roomsId: roomsId,
-        startTime: this.startTimeForm.controls.startTime.value?.at(0),
-        duration: this.durationForm.controls.duration.value,
-        renovationDetails: renovationDetails,
-      })
-      .subscribe({
-        next: (res) => {
-          this.showSuccess();
-        },
-        error: (e) => {
-          this.showError();
-        },
-      });
+
+
+    this.eventService.createEvent({AggregateId: this.aggregateId, EventType: 5, Type: parseInt(this.renovationTypeForm.controls.type.value)})
+                      .subscribe({
+                        next: (res) => {
+                          console.log(res)
+                          this.aggregateId = res
+                          this.renovationService
+                        .createRenovationRequest({
+                          id: this.aggregateId,
+                          renovationType: parseInt(this.renovationTypeForm.controls.type.value),
+                          roomsId: roomsId,
+                          startTime: this.startTimeForm.controls.startTime.value?.at(0),
+                          duration: this.durationForm.controls.duration.value,
+                          renovationDetails: renovationDetails,
+                        })
+                        .subscribe({
+                          next: (res) => {
+                            this.showSuccess();
+                          },
+                          error: (e) => {
+                            this.showError();
+                          },
+                        });
+                        }, 
+                        error: (e) => {
+
+                        }
+                      })
+    
     this.closeStepper();
   }
 

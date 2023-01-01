@@ -73,7 +73,7 @@
           </mat-form-field>
 
           <div>
-            <button mat-button matStepperPrevious>Previous</button>
+            <button mat-button matStepperPrevious (click)="createEvent(6)">Back</button>
             <button mat-button matStepperNext id="next2" (click)="createEvent(1)">Next</button>
           </div>
         </form>
@@ -104,8 +104,8 @@
           </mat-form-field>
 
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext id="next3">Next</button>
+            <button mat-button matStepperPrevious (click)="createEvent(6)">Back</button>
+            <button mat-button matStepperNext id="next3" (click)="createEvent(2)">Next</button>
           </div>
         </form>
       </mat-step>
@@ -123,7 +123,7 @@
             />
           </mat-form-field>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperPrevious (click)="createEvent(6)">Back</button>
             <button mat-button matStepperNext (click)="recommend()" id="next4">
               Next
             </button>
@@ -143,8 +143,8 @@
             </mat-list-option>
           </mat-selection-list>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext id="next5">Next</button>
+            <button mat-button matStepperPrevious (click)="createEvent(6)">Back</button>
+            <button mat-button matStepperNext id="next5" (click)="createEvent(4)">Next</button>
           </div>
         </form>
       </mat-step>
@@ -233,7 +233,7 @@
             </mat-form-field>
             <div></div>
 
-            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperPrevious (click)="createEvent(6)">Back</button>
             <button
               mat-button
               matStepperNext
