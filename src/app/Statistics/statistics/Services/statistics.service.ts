@@ -17,4 +17,8 @@ export class StatisticsService {
       `${environment.apiStatistics}/getVacationStats/${doctorId}`
     );
   }
+
+  getAverageRenovationSchedulingDuration(){
+    return this._http.get(`${environment.apiStatistics}/getRenovationStats/duration`)
+  }
 }
