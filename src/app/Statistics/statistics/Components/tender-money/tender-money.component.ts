@@ -6,9 +6,9 @@ import { StatisticsService } from '../../Services/statistics.service';
 @Component({
   selector: 'app-tender-money',
   templateUrl: './tender-money.component.html',
-  styleUrls: ['./tender-money.component.scss']
+  styleUrls: ['./tender-money.component.scss'],
 })
-export class TenderMoneyComponent implements OnInit{
+export class TenderMoneyComponent implements OnInit {
   chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   vacationsChart: Chart = new Chart('chart5', {
     type: 'line',
@@ -70,14 +70,12 @@ export class TenderMoneyComponent implements OnInit{
       },
     },
   });
-  
+
   constructor(
     private service: StatisticsService,
     private doctorService: DoctorService
   ) {
     Chart.register(...registerables);
   }
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 }

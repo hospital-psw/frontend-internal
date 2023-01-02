@@ -21,7 +21,7 @@ export class StatisticsComponent implements OnInit {
   tableData: DataTableItem[] = [];
   chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   chartTenderMoneyData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  tenderMoneyChart: any = []
+  tenderMoneyChart: any = [];
   vacationsChart: any;
 
   chart6_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -805,7 +805,8 @@ export class StatisticsComponent implements OnInit {
         });
       });
   }
-  changeYear(event: any) { /*event: any*/
+  changeYear(event: any) {
+    /*event: any*/
     //pozvati funkciju za dobijanje podataka i proslediti event.value
     console.log(event.value);
     this.tenderMoneyChart.destroy();
@@ -874,5 +875,4 @@ export class StatisticsComponent implements OnInit {
       });
     });
   }
-  
 }

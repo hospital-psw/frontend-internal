@@ -20,7 +20,7 @@ export class RenovationStatisticsComponent implements OnInit {
   averageSchedulingDurationByGroups: any = [];
   averageDurationAccordingToRenovationType: any = [];
 
-  averageStepsOfRenovation: any = []
+  averageStepsOfRenovation: any = [];
 
   numberOfViewsForEachStepChartData: any = [];
   numberOfViewsForEachStepChart: any = [];
@@ -61,7 +61,7 @@ export class RenovationStatisticsComponent implements OnInit {
         this.averageNumberOfStepsAccordingToRenovationTypeChartData = data;
         this.createAverageNumberOfStepsAccordingToRenovationTypeChart();
       });
-      /*
+    /*
     this.statisticsService
       .getAverageAccordingToRenovationType()
       .subscribe((data) => {
@@ -69,9 +69,9 @@ export class RenovationStatisticsComponent implements OnInit {
         this.createAverageDurationAccordingToRenovationTypeChart();
       });
       */
-    this.statisticsService.getAverageRenovationSteps().subscribe(data => {
-      this.averageStepsOfRenovationChartData = data
-      this.createAverageStepsOfRenovation()
+    this.statisticsService.getAverageRenovationSteps().subscribe((data) => {
+      this.averageStepsOfRenovationChartData = data;
+      this.createAverageStepsOfRenovation();
     });
   }
 
@@ -392,23 +392,17 @@ export class RenovationStatisticsComponent implements OnInit {
     );
   }
 
-  createAverageStepsOfRenovation(){
+  createAverageStepsOfRenovation() {
     let htmlRef = this.elementRef.nativeElement.querySelector(`#chart6`);
     this.averageStepsOfRenovation = new Chart(htmlRef, {
       type: 'bar',
       data: {
-        labels: [
-          '2022',
-          '2023'
-        ],
+        labels: ['2022', '2023'],
         datasets: [
           {
             label: 'Average steps for renovation',
             data: this.averageStepsOfRenovationChartData,
-            backgroundColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-            ],
+            backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
             borderColor: [
               'rgba(255, 99, 132, 1)',
               'rgba(54, 162, 235, 1)',

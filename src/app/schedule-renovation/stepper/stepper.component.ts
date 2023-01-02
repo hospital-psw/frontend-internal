@@ -207,7 +207,6 @@ export class StepperComponent implements OnInit {
   }
 
   schedule() {
-
     var renovationDetails: IRenovationDetails[] = [];
     var roomsId: number[] = [];
     if (this.renovationTypeForm.controls.type.value == 0) {
