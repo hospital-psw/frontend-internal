@@ -162,7 +162,7 @@ const routes: Routes = [
   },
   {
     path: 'renovation/statistics',
-    component: RenovationStatisticsComponent
+    component: RenovationStatisticsComponent,
   },
 ];
 
