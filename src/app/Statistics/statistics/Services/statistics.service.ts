@@ -53,4 +53,9 @@ export class StatisticsService {
       `${environment.apiStatistics}/getAverageDurationAccordingToRenovationType`
     );
   }
+  getAverageRenovationSteps() {
+    return this._http.get(
+      `${environment.apiStatistics}/getAverageNumberOfRenovationSteps`
+    );
+  }
 }
