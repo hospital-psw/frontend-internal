@@ -58,4 +58,9 @@ export class StatisticsService {
       `${environment.apiStatistics}/getAverageNumberOfRenovationSteps`
     );
   }
+  getMoneyPerMonth(year: number) {
+    return this._http.get<number[]>(
+      `http://localhost:16177/api/tender/money/${year}`
+    );
+  }
 }

@@ -75,57 +75,61 @@
         </button>
       </div>
     </div>
-    <div id="canvas-holder">
-      <canvas class="canvas" height="300px" width="300px"></canvas>
-    </div>
+    <div id="canvas-holder" class="canvas-window">
+      <div class="canvas-div">
+        <canvas class="canvas"></canvas>
+      </div>
   </div>
-
-  <div ngSwitch="switchDetails">
-    <button
-      class="renovation-btn"
-      *ngIf="floor !== -1 && building !== -1"
-      (click)="renovate()"
-      id="renovation-button"
-    >
-      Renovation
-    </button>
-    <app-show-building-details
-      (notify)="updateBuildingInfo()"
-      *ngIf="this.showBuildingDetails"
-      [room]="clickedRoom"
-    ></app-show-building-details>
-    <app-show-floor-details
-      *ngIf="this.showFloorDetails"
-      [room]="clickedRoom"
-    ></app-show-floor-details>
-    <app-show-room-details
-      (relocateNotify)="relocate($event)"
-      (notify)="updateView()"
-      *ngIf="this.showRoomDetails"
-      [room]="clickedRoom"
-      [relocationRequests]="relocationRequests"
-      [appointments]="appointments"
-      [equipment]="equipments"
-      [renovations]="renovations"
-      [consiliums]="consiliums"
-    ></app-show-room-details>
-    <app-show-searched-rooms
-      (newItemEvent)="sendRoomId($event)"
-      *ngIf="this.showSearchedRooms"
-      [searchedRooms]="searchedRooms"
-    ></app-show-searched-rooms>
-  </div>
-  <app-renovation-stepper
-    *ngIf="doRenovate"
-    (closeNotify)="doRenovate = false"
-    [floor]="floor"
-    [building]="building"
-  >
-  </app-renovation-stepper>
-  <app-stepper
-    *ngIf="doRelocate"
-    [equipment]="element"
-    (closeNotify)="closeStepper()"
-    (refreshEquipmentNotify)="refreshEquipment($event)"
-  ></app-stepper>
 </div>
+<div class="details" ngSwitch="switchDetails">
+  <button
+    class="renovation-btn"
+    *ngIf="floor !== -1 && building !== -1"
+    (click)="renovate()"
+    id="renovation-button"
+  >
+    Renovation
+  </button>
+  <app-show-building-details
+    (notify)="updateBuildingInfo()"
+    *ngIf="this.showBuildingDetails"
+    [room]="clickedRoom"
+    class="details"
+  ></app-show-building-details>
+  <app-show-floor-details
+    *ngIf="this.showFloorDetails"
+    [room]="clickedRoom"
+    class="details"
+  ></app-show-floor-details>
+  <app-show-room-details
+    (relocateNotify)="relocate($event)"
+    (notify)="updateView()"
+    *ngIf="this.showRoomDetails"
+    [room]="clickedRoom"
+    [relocationRequests]="relocationRequests"
+    [appointments]="appointments"
+    [equipment]="equipments"
+    [renovations]="renovations"
+    [consiliums]="consiliums"
+    class="details"
+  ></app-show-room-details>
+  <app-show-searched-rooms
+    (newItemEvent)="sendRoomId($event)"
+    *ngIf="this.showSearchedRooms"
+    [searchedRooms]="searchedRooms"
+    class="details"
+  ></app-show-searched-rooms>
+</div>
+<app-renovation-stepper
+  *ngIf="doRenovate"
+  (closeNotify)="doRenovate = false"
+  [floor]="floor"
+  [building]="building"
+>
+</app-renovation-stepper>
+<app-stepper
+  *ngIf="doRelocate"
+  [equipment]="element"
+  (closeNotify)="closeStepper()"
+  (refreshEquipmentNotify)="refreshEquipment($event)"
+></app-stepper>
