@@ -31,4 +31,10 @@ export class StatisticsService {
   getDoctorMonthlyBookingStatistics(doctorId: number, month: number, year: number){
     return this._http.get(`${environment.apiStatistics}/stats/doctor/month/${doctorId}/${month}/${year}`)
   }
+
+  getNumberOfViewsForEachStep() {
+    return this._http.get(
+      `${environment.apiStatistics}/getNumberOfViewsForEachStep`
+    );
+  }
 }
