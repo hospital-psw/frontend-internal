@@ -18,22 +18,32 @@ export class StatisticsService {
     );
   }
 
-  getAverageRenovationSchedulingDurationByGroups(){
-    return this._http.get(`${environment.apiStatistics}/getRenovationStats/duration/groups`)
+  getAverageRenovationSchedulingDurationByGroups() {
+    return this._http.get(
+      `${environment.apiStatistics}/getRenovationStats/duration/groups`
+    );
   }
 
-  getAverageRenovationSchedulingDuration(){
-    return this._http.get(`${environment.apiStatistics}/getRenovationStats/duration`)
+  getAverageRenovationSchedulingDuration() {
+    return this._http.get(
+      `${environment.apiStatistics}/getRenovationStats/duration`
+    );
   }
 
-  getDoctorYearlyBookingStatistics(doctorId: number, year: number){
+  getDoctorYearlyBookingStatistics(doctorId: number, year: number) {
     return this._http.get(
       `${environment.apiStatistics}/getYearlyDoctorAppointmentsStats/${doctorId}/${year}`
     );
   }
 
-  getDoctorMonthlyBookingStatistics(doctorId: number, month: number, year: number){
-    return this._http.get(`${environment.apiStatistics}/stats/doctor/month/${doctorId}/${month}/${year}`)
+  getDoctorMonthlyBookingStatistics(
+    doctorId: number,
+    month: number,
+    year: number
+  ) {
+    return this._http.get(
+      `${environment.apiStatistics}/stats/doctor/month/${doctorId}/${month}/${year}`
+    );
   }
 
   getNumberOfViewsForEachStep() {

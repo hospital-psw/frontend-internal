@@ -14,10 +14,7 @@ export class EventService {
   constructor(private http: HttpClient) {}
 
   createEvent(evt: IRenovationEvent) {
-    console.log(evt)
-    return this.http.post<number>(
-      `hospital/event`,
-      evt
-    );
+    console.log(evt);
+    return this.http.post<number>(`hospital/event`, evt);
   }
 }
