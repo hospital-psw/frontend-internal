@@ -37,4 +37,10 @@ export class StatisticsService {
       `${environment.apiStatistics}/getNumberOfViewsForEachStep`
     );
   }
+
+  getNumberOfStepsAccordingToRenovationType() {
+    return this._http.get(
+      `${environment.apiStatistics}/getNumberOfStepsAccordingToRenovationType`
+    );
+  }
 }

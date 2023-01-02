@@ -13,6 +13,8 @@ export class RenovationStatisticsComponent implements OnInit {
   averageDurationChart: any  = [];
   numberOfViewsForEachStepChartData: any = []
   numberOfViewsForEachStepChart: any  = [];
+  averageNumberOfStepsAccordingToRenovationTypeChartData: any = []
+  averageNumberOfStepsAccordingToRenovationTypeChart: any  = [];
   constructor(private statisticsService: StatisticsService, private elementRef: ElementRef){
     Chart.register(...registerables);
   }
@@ -26,9 +28,14 @@ export class RenovationStatisticsComponent implements OnInit {
       this.numberOfViewsForEachStepChartData = data
       this.createNumberOfViewsForEachStepChart()
     })
+    this.statisticsService.getNumberOfStepsAccordingToRenovationType().subscribe(data => {
+      this.averageNumberOfStepsAccordingToRenovationTypeChartData = data
+      this.createAverageNumberOfStepsAccordingToRenovationTypeChart()
+    })
   }
   averageSchedulingDuration: any = [];
   numberOfViewsForEachStep: any = []
+  averageNumberOfStepsAccordingToRenovationType : any = []
 
   createAverageScheduleDurationChart(){
     let htmlRef = this.elementRef.nativeElement.querySelector(`#chart1`);
@@ -144,6 +151,65 @@ export class RenovationStatisticsComponent implements OnInit {
             color: 'gray',
             display: true,
             text: 'Number of views for each step',
+            font: {
+              size: 20,
+            },
+            padding: {
+              top: 10,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  createAverageNumberOfStepsAccordingToRenovationTypeChart(){
+    let htmlRef = this.elementRef.nativeElement.querySelector(`#chart3`);
+    this.averageNumberOfStepsAccordingToRenovationTypeChart = new Chart(htmlRef, {
+      type: 'bar',
+      data: {
+        labels: [
+          'MERGE',
+          'SPLIT'
+        ],
+        datasets: [
+          {
+            label: 'Average number of steps',
+            data: this.averageNumberOfStepsAccordingToRenovationTypeChartData,
+            backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+            ],
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            color: 'gray',
+            display: true,
+            text: 'Average number of steps',
             font: {
               size: 20,
             },
