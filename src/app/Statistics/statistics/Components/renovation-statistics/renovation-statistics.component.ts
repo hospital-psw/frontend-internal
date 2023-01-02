@@ -10,23 +10,36 @@ import annotationPlugin from 'chartjs-plugin-annotation';
 })
 export class RenovationStatisticsComponent implements OnInit {
   
+  averageScheduleDurationByGroupsChartData: any = []
   averageScheduleDurationChartData: any = []
+  averageScheduleDurationAccordingToRenovationTypeChartData: any = []
+
+  averageDurationByGroupsChart: any  = [];
   averageDurationChart: any  = [];
 
+  averageSchedulingDuration: any = [];
+  averageSchedulingDurationByGroups: any = [];
+  averageDurationAccordingToRenovationType: any = []
 
   numberOfViewsForEachStepChartData: any = []
   numberOfViewsForEachStepChart: any  = [];
   averageNumberOfStepsAccordingToRenovationTypeChartData: any = []
   averageNumberOfStepsAccordingToRenovationTypeChart: any  = [];
+  averageDurationAccordingToRenovationTypeChart: any  = [];
+
   constructor(private statisticsService: StatisticsService, private elementRef: ElementRef){
     Chart.register(...registerables);
     Chart.register(annotationPlugin);
   }
   
   ngOnInit(): void {
+    this.statisticsService.getAverageRenovationSchedulingDurationByGroups().subscribe(data => {
+      this.averageScheduleDurationByGroupsChartData = data
+      this.createAverageScheduleDurationChartByGroups()
+    })
     this.statisticsService.getAverageRenovationSchedulingDuration().subscribe(data => {
       this.averageScheduleDurationChartData = data
-      this.createAverageScheduleDurationChartByGroups()
+      this.createAverageScheduleDurationChart()
     })
     this.statisticsService.getNumberOfViewsForEachStep().subscribe(data => {
       this.numberOfViewsForEachStepChartData = data
@@ -36,8 +49,13 @@ export class RenovationStatisticsComponent implements OnInit {
       this.averageNumberOfStepsAccordingToRenovationTypeChartData = data
       this.createAverageNumberOfStepsAccordingToRenovationTypeChart()
     })
+    this.statisticsService.getAverageAccordingToRenovationType().subscribe(data => {
+      this.averageScheduleDurationAccordingToRenovationTypeChartData = data
+      this.createAverageDurationAccordingToRenovationTypeChart()
+    })
   }
-  averageSchedulingDuration: any = [];
+
+
 
   average() {
     let average = 0
@@ -67,7 +85,7 @@ export class RenovationStatisticsComponent implements OnInit {
 
   createAverageScheduleDurationChartByGroups(){
     let htmlRef = this.elementRef.nativeElement.querySelector(`#chart1`);
-    this.averageDurationChart = new Chart(htmlRef, {
+    this.averageDurationByGroupsChart = new Chart(htmlRef, {
       type: 'bar',
       data: {
         labels: [
@@ -79,8 +97,8 @@ export class RenovationStatisticsComponent implements OnInit {
         ],
         datasets: [
           {
-            label: 'Average scheduling duration',
-            data: this.averageScheduleDurationChartData,
+            label: 'Renovations',
+            data: this.averageScheduleDurationByGroupsChartData,
             backgroundColor: [
               'rgba(255, 99, 132, 1)',
               'rgba(54, 162, 235, 1)',
@@ -107,7 +125,62 @@ export class RenovationStatisticsComponent implements OnInit {
           title: {
             color: 'gray',
             display: true,
-            text: 'Average scheduling duration',
+            text: 'Average scheduling duration: ' + Math.round(this.average()) + 's',
+            font: {
+              size: 20,
+            },
+            padding: {
+              top: 10,
+            },
+          },
+        },
+      } as ChartOptions,
+    });
+  }
+
+  createDynamicLabels(){
+    let labels = []
+    for(let i = 0; i < this.averageScheduleDurationChartData.length; i++){
+      labels.push('Renovation')
+    }
+    return labels
+  }
+
+
+  createAverageScheduleDurationChart(){
+    let htmlRef = this.elementRef.nativeElement.querySelector(`#chart4`);
+    this.averageDurationChart = new Chart(htmlRef, {
+      type: 'bar',
+      data: {
+        labels: this.createDynamicLabels(),
+        datasets: [
+          {
+            label: 'Scheduling duration',
+            data: this.averageScheduleDurationChartData,
+            backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+              
+            ],
+            borderWidth: 3,
+          }
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            color: 'gray',
+            display: true,
+            text: 'Average scheduling duration: ' + Math.round(this.average()) + 's',
             font: {
               size: 20,
             },
@@ -135,7 +208,7 @@ export class RenovationStatisticsComponent implements OnInit {
 
   createNumberOfViewsForEachStepChart(){
     let htmlRef = this.elementRef.nativeElement.querySelector(`#chart2`);
-    this.averageDurationChart = new Chart(htmlRef, {
+    this.averageDurationByGroupsChart = new Chart(htmlRef, {
       type: 'bar',
       data: {
         labels: [
@@ -243,6 +316,62 @@ export class RenovationStatisticsComponent implements OnInit {
             color: 'gray',
             display: true,
             text: 'Average number of steps',
+            font: {
+              size: 20,
+            },
+            padding: {
+              top: 10,
+            },
+          },
+        },
+      },
+    });
+  }
+
+  createAverageDurationAccordingToRenovationTypeChart(){
+    let htmlRef = this.elementRef.nativeElement.querySelector(`#chart5`);
+    this.averageNumberOfStepsAccordingToRenovationTypeChart = new Chart(htmlRef, {
+      type: 'bar',
+      data: {
+        labels: [
+          'MERGE',
+          'SPLIT'
+        ],
+        datasets: [
+          {
+            label: 'Average schedule duration',
+            data: this.averageScheduleDurationAccordingToRenovationTypeChartData,
+            backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+            ],
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            color: 'gray',
+            display: true,
+            text: 'Average schedule duration',
             font: {
               size: 20,
             },
