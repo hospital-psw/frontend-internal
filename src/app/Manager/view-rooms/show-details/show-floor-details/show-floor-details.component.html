@@ -1,28 +1,28 @@
 <form class="details-form" (submit)="editFloor(purpose.value, $event)">
   <div class="blocks">
     <div class="details">
-      <mat-form-field>
-        <mat-label>Floor number</mat-label>
-        <input
-          class="inputText"
-          matInput
-          disabled="isDisabled"
-          value="{{ this.room.floor.number }}"
-        />
-      </mat-form-field>
-    </div>
-    <div class="details">
-      <mat-form-field>
-        <mat-label>Floor purpose</mat-label>
-        <input
-          required
-          class="inputText"
-          matInput
-          [disabled]="isDisabled"
-          value="{{ this.room.floor.purpose }}"
-          #purpose
-        />
-      </mat-form-field>
+      <div class="input-fields">
+        <mat-form-field>
+          <mat-label>Floor number</mat-label>
+          <input
+            class="inputText"
+            matInput
+            disabled="isDisabled"
+            value="{{ this.room.floor.number }}"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Floor purpose</mat-label>
+          <input
+            required
+            class="inputText"
+            matInput
+            [disabled]="isDisabled"
+            value="{{ this.room.floor.purpose }}"
+            #purpose
+          />
+        </mat-form-field>
+      </div>
     </div>
     <div class="button1">
       <button class="button-30" (click)="enableFields()" type="button">
