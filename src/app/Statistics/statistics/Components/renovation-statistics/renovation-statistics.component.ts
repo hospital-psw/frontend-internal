@@ -61,14 +61,14 @@ export class RenovationStatisticsComponent implements OnInit {
         this.averageNumberOfStepsAccordingToRenovationTypeChartData = data;
         this.createAverageNumberOfStepsAccordingToRenovationTypeChart();
       });
-    /*
+    
     this.statisticsService
       .getAverageAccordingToRenovationType()
       .subscribe((data) => {
         this.averageScheduleDurationAccordingToRenovationTypeChartData = data;
         this.createAverageDurationAccordingToRenovationTypeChart();
       });
-      */
+      
     this.statisticsService.getAverageRenovationSteps().subscribe((data) => {
       this.averageStepsOfRenovationChartData = data;
       this.createAverageStepsOfRenovation();
