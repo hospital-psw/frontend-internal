@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TestComponent } from './Components/test/test.component';
+import { RenovationStatisticsComponent } from './Components/renovation-statistics/renovation-statistics.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TestComponent } from './Components/test/test.component';
     StatisticsNavigationComponent,
     DataTableComponent,
     TestComponent,
+    RenovationStatisticsComponent,
   ],
   imports: [
     CommonModule,

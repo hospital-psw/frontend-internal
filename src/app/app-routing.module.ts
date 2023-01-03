@@ -23,6 +23,7 @@ import { ReschedulingAppointmentComponent } from './schedule/rescheduling/resche
 import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
 import { AppointmentResolver } from './schedule/resolver/appointment-resolver';
 import { PatientTableComponent } from './schedule/patients/patient-table/patient-table.component';
+import { RenovationStatisticsComponent } from './Statistics/statistics/Components/renovation-statistics/renovation-statistics.component';
 
 const routes: Routes = [
   {
@@ -115,6 +116,10 @@ const routes: Routes = [
   {
     path: 'create-tender',
     component: CreateTenderComponent,
+  },
+  {
+    path: 'renovation/statistics',
+    component: RenovationStatisticsComponent,
   },
 ];
 

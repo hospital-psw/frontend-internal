@@ -75,12 +75,13 @@
         </button>
       </div>
     </div>
-    <div id="canvas-holder">
-      <canvas class="canvas" height="300px" width="300px"></canvas>
+    <div id="canvas-holder" class="canvas-window">
+      <div class="canvas-div">
+        <canvas class="canvas"></canvas>
+      </div>
     </div>
   </div>
-
-  <div ngSwitch="switchDetails">
+  <div class="details" ngSwitch="switchDetails">
     <button
       class="renovation-btn"
       *ngIf="floor !== -1 && building !== -1"
@@ -93,10 +94,12 @@
       (notify)="updateBuildingInfo()"
       *ngIf="this.showBuildingDetails"
       [room]="clickedRoom"
+      class="details"
     ></app-show-building-details>
     <app-show-floor-details
       *ngIf="this.showFloorDetails"
       [room]="clickedRoom"
+      class="details"
     ></app-show-floor-details>
     <app-show-room-details
       (relocateNotify)="relocate($event)"
@@ -108,11 +111,13 @@
       [equipment]="equipments"
       [renovations]="renovations"
       [consiliums]="consiliums"
+      class="details"
     ></app-show-room-details>
     <app-show-searched-rooms
       (newItemEvent)="sendRoomId($event)"
       *ngIf="this.showSearchedRooms"
       [searchedRooms]="searchedRooms"
+      class="details"
     ></app-show-searched-rooms>
   </div>
   <app-renovation-stepper
