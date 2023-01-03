@@ -686,13 +686,16 @@ export class StatisticsComponent implements OnInit {
     this.bloodType = parseInt(event.value)
     this.getQuantityOfBloodPerMonth()
   } 
+  year1 : any = null
+  saveYear1(event: any){
+    this.year1 = parseInt(event.value)
+    this.getQuantityOfBloodPerMonth()
+  }
 
   getQuantityOfBloodPerMonth() {
-    console.log(this.year)
-    console.log(this.doctor)
-    if (this.year == null || this.bloodType == null) return 
+    if (this.year1 == null || this.bloodType == null) return 
     this.tenderBloodQuantityChart.destroy();
-    this.tenderService.getQuantityOfBloodPerMonth(this.year, this.bloodType).subscribe((data) => {
+    this.tenderService.getQuantityOfBloodPerMonth(this.year1, this.bloodType).subscribe((data) => {
       this.chart7_data = data;
       this.tenderBloodQuantityChart = new Chart('chart7', {
         type: 'line',
