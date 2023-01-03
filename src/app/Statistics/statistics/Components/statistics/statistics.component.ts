@@ -588,7 +588,6 @@ export class StatisticsComponent implements OnInit {
         },
       },
     });
-
   }
   getVacationStatistic(event: any) {
     //pozvati funkciju za dobijanje podataka i proslediti event.value
@@ -942,82 +941,84 @@ export class StatisticsComponent implements OnInit {
     });
   }
 
-  bloodType : any = null
-  saveBloodType(event: any){
-    this.bloodType = parseInt(event.value)
-    this.getQuantityOfBloodPerMonth()
-  } 
-  year1 : any = null
-  saveYear1(event: any){
-    this.year1 = parseInt(event.value)
-    this.getQuantityOfBloodPerMonth()
+  bloodType: any = null;
+  saveBloodType(event: any) {
+    this.bloodType = parseInt(event.value);
+    this.getQuantityOfBloodPerMonth();
+  }
+  year1: any = null;
+  saveYear1(event: any) {
+    this.year1 = parseInt(event.value);
+    this.getQuantityOfBloodPerMonth();
   }
 
   getQuantityOfBloodPerMonth() {
-    if (this.year1 == null || this.bloodType == null) return 
+    if (this.year1 == null || this.bloodType == null) return;
     this.tenderBloodQuantityChart.destroy();
-    this.tenderService.getQuantityOfBloodPerMonth(this.year1, this.bloodType).subscribe((data) => {
-      this.chart7_data = data;
-      this.tenderBloodQuantityChart = new Chart('chart7', {
-        type: 'line',
-        data: {
-          labels: [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-          ],
-          datasets: [
-            {
-              label: 'Quantity of blood per month',
-              data: this.chart7_data,
-              backgroundColor: ['rgba(255, 99, 132, 0.2)'],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-              ],
-              borderWidth: 3,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: {
-            y: {
-              beginAtZero: true,
-            },
-          },
-          plugins: {
-            legend: {
-              display: false,
-            },
-            title: {
-              color: 'gray',
-              display: true,
-              font: {
-                size: 20,
+    this.tenderService
+      .getQuantityOfBloodPerMonth(this.year1, this.bloodType)
+      .subscribe((data) => {
+        this.chart7_data = data;
+        this.tenderBloodQuantityChart = new Chart('chart7', {
+          type: 'line',
+          data: {
+            labels: [
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+              'July',
+              'August',
+              'September',
+              'October',
+              'November',
+              'December',
+            ],
+            datasets: [
+              {
+                label: 'Quantity of blood per month',
+                data: this.chart7_data,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 3,
               },
-              text: 'Quantity of blood per month',
-              padding: {
-                top: 10,
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
               },
             },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              title: {
+                color: 'gray',
+                display: true,
+                font: {
+                  size: 20,
+                },
+                text: 'Quantity of blood per month',
+                padding: {
+                  top: 10,
+                },
+              },
+            },
           },
-        },
+        });
       });
-  });
   }
 }
