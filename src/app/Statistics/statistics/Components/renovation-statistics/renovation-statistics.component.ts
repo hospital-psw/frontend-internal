@@ -38,7 +38,7 @@ export class RenovationStatisticsComponent implements OnInit {
     'Step3',
     'Step4',
     'Step5',
-    'Step6'
+    'Step6',
   ];
 
   renovations: RenovationStatisticDto[];
