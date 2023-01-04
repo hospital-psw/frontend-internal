@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { Chart, ChartOptions, registerables } from 'chart.js';
 import { StatisticsService } from '../../Services/statistics.service';
 import annotationPlugin from 'chartjs-plugin-annotation';
+import { RenovationStatisticDto } from 'src/app/Manager/Model/Dto/RenovationStatisticDto';
 
 @Component({
   selector: 'app-renovation-statistics',
@@ -29,6 +30,18 @@ export class RenovationStatisticsComponent implements OnInit {
   averageDurationAccordingToRenovationTypeChart: any = [];
 
   averageStepsOfRenovationChartData: any = [];
+
+  displayedColumns: string[] = [
+    'Date',
+    'Step1',
+    'Step2',
+    'Step3',
+    'Step4',
+    'Step5',
+    'Step6'
+  ];
+
+  renovations: RenovationStatisticDto[];
 
   constructor(
     private statisticsService: StatisticsService,
@@ -72,6 +85,10 @@ export class RenovationStatisticsComponent implements OnInit {
     this.statisticsService.getAverageRenovationSteps().subscribe((data) => {
       this.averageStepsOfRenovationChartData = data;
       this.createAverageStepsOfRenovation();
+    });
+
+    this.statisticsService.getTimeSpentPerStep().subscribe((data) => {
+      this.renovations = data;
     });
   }
 
