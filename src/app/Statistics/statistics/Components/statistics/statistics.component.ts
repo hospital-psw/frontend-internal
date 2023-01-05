@@ -743,6 +743,10 @@ export class StatisticsComponent implements OnInit {
     this.getDoctorMonthlyBookingStatistic();
   }
 
+  saveDate(event: any){
+    this.getDoctorOptionalBookingStatistic();
+  }
+
   getLabelsBasedOnMonth(month: number) {
     switch (month) {
       case 1:
@@ -1089,12 +1093,6 @@ export class StatisticsComponent implements OnInit {
       });
   }
 
-  doctor1: any = null;
-  saveDoctor1(event: any) {
-    this.doctor1 = event.value;
-    this.getDoctorOptionalBookingStatistic();
-  }
-
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
@@ -1106,23 +1104,23 @@ export class StatisticsComponent implements OnInit {
     //console.log(this.doctor1);
     //console.log(this.range.value.start)
     //console.log(this.range.value.end)
-    if (this.doctor1 == null || this.range.value.start == null || this.range.value.end == null) return;
+    if (this.doctor == null || this.range.value.start == null || this.range.value.end == null) return;
     //console.log('nije returnovao')
     //let v = this.range.value.start.getDate();
     //console.log(v)
     //let labels = this.createLabels(this.range.value.start, this.range.value.end);
     //console.log(labels);
-    this.dto = {doctorId: this.doctor1,
+    this.dto = {doctorId: this.doctor,
             start: new Date(
               this.range.value.start.getTime() - this.range.value.start.getTimezoneOffset() * 60000),
             end:new Date(
               this.range.value.end.getTime() - this.range.value.end.getTimezoneOffset() * 60000)}
-    this.doctorOptionalBookingChart.destroy();
+    this.doctorYearlyBookingChart.destroy();
     this.service
       .getDoctorOptionalBookingStatistics(this.dto)
       .subscribe((data) => {
         this.doctorOptionalBookingData = data;
-        this.doctorYearlyBookingChart = new Chart('chart9', {
+        this.doctorYearlyBookingChart = new Chart('chart6', {
           type: 'line',
           data: {
             labels: this.createLabels(this.range.value.start, this.range.value.end),
