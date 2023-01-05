@@ -16,4 +16,16 @@ export class AnamnesisService {
   public createAnamnesis(newAnamnesis: NewAnamnesis): Observable<Anamnesis> {
     return this.http.post<Anamnesis>(`${this.apiServerUrl}/`, newAnamnesis);
   }
+
+  public getAnamnesis(): Observable<Anamnesis[]> {
+    return this.http.get<Anamnesis[]>(`${this.apiServerUrl}/`);
+  }
+
+  public searchAnamnesis(input: string): Observable<Anamnesis[]> {
+    return this.http.get<Anamnesis[]>(`${this.apiServerUrl}/search`, {
+      params: {
+        input: input,
+      },
+    });
+  }
 }
