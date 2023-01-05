@@ -106,5 +106,31 @@
     <div class="size" [hidden]="!tenderBloodQuantityChart">
       <canvas class="segment" id="chart7"></canvas>
     </div>
+
+    <div class="combo">
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Choose doctor</mat-label>
+        <mat-select (selectionChange)="saveDoctor1($event)">
+          <mat-option *ngFor="let d of doctors" [value]="d.id">{{
+            d.firstName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+          <input matStartDate formControlName="start" placeholder="Start date">
+          <input matEndDate formControlName="end" placeholder="End date">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+    <div class="size" [hidden]="!doctorOptionalBookingChart">
+      <canvas class="segment" id="chart9"></canvas>
+    </div>
+
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DoctorOptionalStatisticDto } from 'src/app/Manager/Model/Dto/DoctorOptionalStatisticDto';
 import { RenovationStatisticDto } from 'src/app/Manager/Model/Dto/RenovationStatisticDto';
 import { environment } from 'src/environments/environment';
 
@@ -77,6 +78,12 @@ export class StatisticsService {
   getTimeSpentPerStep() {
     return this._http.get<RenovationStatisticDto[]>(
       `${environment.apiStatistics}/getTimeSpentPerStep`
+    );
+  }
+
+  getDoctorOptionalBookingStatistics(dto: DoctorOptionalStatisticDto) {
+    return this._http.post(
+      `${environment.apiStatistics}/getOptionalDoctorStats`, dto
     );
   }
 }
