@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { RenovationStatisticDto } from 'src/app/Manager/Model/Dto/RenovationStatisticDto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -71,6 +72,11 @@ export class StatisticsService {
   getMoneyPerMonth(year: number) {
     return this._http.get<number[]>(
       `http://localhost:16177/api/tender/money/${year}`
+    );
+  }
+  getTimeSpentPerStep() {
+    return this._http.get<RenovationStatisticDto[]>(
+      `${environment.apiStatistics}/getTimeSpentPerStep`
     );
   }
 }
