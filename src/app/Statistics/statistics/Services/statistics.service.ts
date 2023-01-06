@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
 import { DoctorOptionalStatisticDto } from 'src/app/Manager/Model/Dto/DoctorOptionalStatisticDto';
-=======
->>>>>>> develop
 import { RenovationStatisticDto } from 'src/app/Manager/Model/Dto/RenovationStatisticDto';
 import { environment } from 'src/environments/environment';
 
