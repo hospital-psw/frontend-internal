@@ -5,6 +5,7 @@ import { IRoomMap } from 'src/app/Manager/Model/RoomMap';
 import { RoomService } from 'src/app/Manager/service/room-service.service';
 import { IRenovationDetails } from 'src/app/schedule-relocation/model/RenovationDetails';
 import { IRenovationRequest } from 'src/app/schedule-relocation/model/RenovationRequest';
+import { EventService } from 'src/app/schedule-relocation/services/event.service';
 import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 
 @Component({
@@ -59,7 +60,8 @@ export class StepperComponent implements OnInit {
   constructor(
     private roomService: RoomService,
     private renovationService: RenovationService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private eventService: EventService
   ) {}
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class StepperComponent implements OnInit {
   decideRenovationType() {
     if (this.renovationTypeForm.value.type == 1)
       this.findPossibleRoomsForSplitRenovation();
+    this.createEvent(0);
   }
 
   findRoomById(id: number) {
@@ -160,6 +163,7 @@ export class StepperComponent implements OnInit {
         this.dateTimes = data;
         console.log(data);
       });
+    this.createEvent(3);
   }
 
   doesNewRoomNameExists(number: string): boolean {
@@ -237,22 +241,40 @@ export class StepperComponent implements OnInit {
         newCapacity: newCapacity2,
       });
     }
-    this.renovationService
-      .createRenovationRequest({
-        renovationType: parseInt(this.renovationTypeForm.controls.type.value),
-        roomsId: roomsId,
-        startTime: this.startTimeForm.controls.startTime.value?.at(0),
-        duration: this.durationForm.controls.duration.value,
-        renovationDetails: renovationDetails,
+
+    this.eventService
+      .createEvent({
+        AggregateId: this.aggregateId,
+        EventType: 5,
+        Type: parseInt(this.renovationTypeForm.controls.type.value),
       })
       .subscribe({
         next: (res) => {
-          this.showSuccess();
+          console.log(res);
+          this.aggregateId = res;
+          this.renovationService
+            .createRenovationRequest({
+              id: this.aggregateId,
+              renovationType: parseInt(
+                this.renovationTypeForm.controls.type.value
+              ),
+              roomsId: roomsId,
+              startTime: this.startTimeForm.controls.startTime.value?.at(0),
+              duration: this.durationForm.controls.duration.value,
+              renovationDetails: renovationDetails,
+            })
+            .subscribe({
+              next: (res) => {
+                this.showSuccess();
+              },
+              error: (e) => {
+                this.showError();
+              },
+            });
         },
-        error: (e) => {
-          this.showError();
-        },
+        error: (e) => {},
       });
+
     this.closeStepper();
   }
 
@@ -262,5 +284,22 @@ export class StepperComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success('Successfully scheduled relocation.', 'Success');
+  }
+
+  aggregateId: number = -1;
+  createEvent(renovationEventType: number) {
+    this.eventService
+      .createEvent({
+        AggregateId: this.aggregateId,
+        EventType: renovationEventType,
+        Type: parseInt(this.renovationTypeForm.controls.type.value),
+      })
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.aggregateId = res;
+        },
+        error: (e) => {},
+      });
   }
 }

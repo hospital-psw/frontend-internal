@@ -1,23 +1,29 @@
-.details{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #537895;
-  padding: 10px 0;
-  min-height: 100%;
-  .inputText{
-    color: white;
-  }
-}
 .blocks{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10%;
+  padding-right: 10%;
   background-color: #537895;
   border-radius: 10px;
+  .details{
+    //display: inline;
+    //float: left;
+    //justify-content: center;
+    //align-items: center;
+    //flex-direction: column;
+    background-color: #537895;
+    padding: 4% 0;
+    min-height: 100%;
+    .inputText{
+      color: white;
+      //width: 100%;
+    }
+    .input-fields{
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
 .details-form {

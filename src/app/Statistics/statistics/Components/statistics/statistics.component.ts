@@ -5,6 +5,7 @@ import { DataTableItem } from '../data-table/data-table-datasource';
 import { DoctorService } from '../../Services/doctor.service';
 import { ax } from 'chart.js/dist/chunks/helpers.core';
 import { isThisISOWeek, parse } from 'date-fns';
+import { TenderService } from '../../Services/tender.service';
 
 @Component({
   selector: 'app-statistics',
@@ -32,9 +33,16 @@ export class StatisticsComponent implements OnInit {
   optionalView = false
 
 
+  chartTenderMoneyData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  tenderMoneyChart: any = [];
+
+
+  tenderBloodQuantityChart: any;
+  chart7_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   constructor(
     private service: StatisticsService,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private tenderService: TenderService
   ) {
     Chart.register(...registerables);
   }
@@ -469,6 +477,126 @@ export class StatisticsComponent implements OnInit {
       },
     });
 
+    this.tenderMoneyChart = new Chart('chart8', {
+      type: 'line',
+      data: {
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ],
+        datasets: [
+          {
+            label: 'Quantity of blood per month',
+            data: this.chartTenderMoneyData,
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            color: 'gray',
+            display: true,
+            font: {
+              size: 20,
+            },
+            text: 'Quantity of blood per month',
+            padding: {
+              top: 10,
+            },
+          },
+        },
+      },
+    });
+    this.tenderBloodQuantityChart = new Chart('chart7', {
+      type: 'line',
+      data: {
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ],
+        datasets: [
+          {
+            label: 'Quantity of blood per month',
+            data: this.chart7_data,
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            color: 'gray',
+            display: true,
+            font: {
+              size: 20,
+            },
+            text: 'Quantity of blood per month',
+            padding: {
+              top: 10,
+            },
+          },
+        },
+      },
+    });
   }
   getVacationStatistic(event: any) {
     //pozvati funkciju za dobijanje podataka i proslediti event.value
@@ -650,13 +778,85 @@ export class StatisticsComponent implements OnInit {
   }
 
   getDoctorYearlyBookingStatistic() {
-    console.log(this.year)
-    console.log(this.doctor)
-    if (this.year == null || this.doctor == null) return 
+    console.log(this.year);
+    console.log(this.doctor);
+    if (this.year == null || this.doctor == null) return;
     this.doctorYearlyBookingChart.destroy();
-    this.service.getDoctorYearlyBookingStatistics(this.doctor, this.year).subscribe((data) => {
-      this.chart6_data = data;
-      this.doctorYearlyBookingChart = new Chart('chart6', {
+    this.service
+      .getDoctorYearlyBookingStatistics(this.doctor, this.year)
+      .subscribe((data) => {
+        this.chart6_data = data;
+        this.doctorYearlyBookingChart = new Chart('chart6', {
+          type: 'line',
+          data: {
+            labels: [
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+              'July',
+              'August',
+              'September',
+              'October',
+              'November',
+              'December',
+            ],
+            datasets: [
+              {
+                label: 'Number of appointments per month',
+                data: this.chart6_data,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 3,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              title: {
+                color: 'gray',
+                display: true,
+                font: {
+                  size: 20,
+                },
+                text: 'Number of appointments per month',
+                padding: {
+                  top: 10,
+                },
+              },
+            },
+          },
+        });
+      });
+  }
+  changeYear(event: any) {
+    /*event: any*/
+    //pozvati funkciju za dobijanje podataka i proslediti event.value
+    console.log(event.value);
+    this.tenderMoneyChart.destroy();
+    this.service.getMoneyPerMonth(event.value).subscribe((data) => {
+      this.chartTenderMoneyData = data;
+      console.log(this.chartTenderMoneyData);
+      this.tenderMoneyChart = new Chart('chart8', {
         type: 'line',
         data: {
           labels: [
@@ -675,8 +875,8 @@ export class StatisticsComponent implements OnInit {
           ],
           datasets: [
             {
-              label: 'Number of appointments per month',
-              data: this.chart6_data,
+              label: 'Money on tenders per month',
+              data: this.chartTenderMoneyData,
               backgroundColor: ['rgba(255, 99, 132, 0.2)'],
               borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -708,7 +908,7 @@ export class StatisticsComponent implements OnInit {
               font: {
                 size: 20,
               },
-              text: 'Number of appointments per month',
+              text: 'Money on tenders per month',
               padding: {
                 top: 10,
               },
@@ -716,6 +916,87 @@ export class StatisticsComponent implements OnInit {
           },
         },
       });
-  });
+    });
+  }
+
+  bloodType: any = null;
+  saveBloodType(event: any) {
+    this.bloodType = parseInt(event.value);
+    this.getQuantityOfBloodPerMonth();
+  }
+  year1: any = null;
+  saveYear1(event: any) {
+    this.year1 = parseInt(event.value);
+    this.getQuantityOfBloodPerMonth();
+  }
+
+  getQuantityOfBloodPerMonth() {
+    if (this.year1 == null || this.bloodType == null) return;
+    this.tenderBloodQuantityChart.destroy();
+    this.tenderService
+      .getQuantityOfBloodPerMonth(this.year1, this.bloodType)
+      .subscribe((data) => {
+        this.chart7_data = data;
+        this.tenderBloodQuantityChart = new Chart('chart7', {
+          type: 'line',
+          data: {
+            labels: [
+              'January',
+              'February',
+              'March',
+              'April',
+              'May',
+              'June',
+              'July',
+              'August',
+              'September',
+              'October',
+              'November',
+              'December',
+            ],
+            datasets: [
+              {
+                label: 'Quantity of blood per month',
+                data: this.chart7_data,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 3,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              title: {
+                color: 'gray',
+                display: true,
+                font: {
+                  size: 20,
+                },
+                text: 'Quantity of blood per month',
+                padding: {
+                  top: 10,
+                },
+              },
+            },
+          },
+        });
+      });
   }
 }
