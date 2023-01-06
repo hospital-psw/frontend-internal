@@ -38,7 +38,11 @@
           <mat-option value="OPTIONAL">OPTIONAL</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="search-doctors" appearance="fill" *ngIf="yearView || monthlyView || optionalView">
+      <mat-form-field
+        class="search-doctors"
+        appearance="fill"
+        *ngIf="yearView || monthlyView || optionalView"
+      >
         <mat-label>Choose doctor</mat-label>
         <mat-select (selectionChange)="saveDoctor($event)">
           <mat-option *ngFor="let d of doctors" [value]="d.id">{{
@@ -46,7 +50,11 @@
           }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="years" appearance="fill" *ngIf="yearView || monthlyView">
+      <mat-form-field
+        class="years"
+        appearance="fill"
+        *ngIf="yearView || monthlyView"
+      >
         <mat-label>Choose year</mat-label>
         <mat-select (selectionChange)="saveYear($event)">
           <mat-option value="2021">2021</mat-option>
