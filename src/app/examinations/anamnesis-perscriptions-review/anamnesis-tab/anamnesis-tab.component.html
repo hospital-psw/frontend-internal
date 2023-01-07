@@ -20,12 +20,12 @@
             >{{
               selectedAnamnesis.appointment === null
                 ? ""
-                : selectedAnamnesis.appointment.patient.firstName
+                : (selectedAnamnesis.appointment.patient.firstName | titlecase)
             }}
             {{
               selectedAnamnesis.appointment === null
                 ? ""
-                : selectedAnamnesis.appointment.patient.lastName
+                : (selectedAnamnesis.appointment.patient.lastName | titlecase)
             }}
           </span>
         </div>
@@ -46,11 +46,22 @@
         </div>
         <div class="content__line">
           <span>Examination type: </span>
-          <span>{{
+          <!-- <span>{{
             selectedAnamnesis.appointment === null
               ? ""
               : selectedAnamnesis.appointment.examType
-          }}</span>
+          }}</span> -->
+          <div *ngIf="selectedAnamnesis.appointment !== null">
+            <span *ngIf="selectedAnamnesis.appointment.examType === 0">
+              Operation
+            </span>
+            <span *ngIf="selectedAnamnesis.appointment.examType === 1">
+              General
+            </span>
+            <span *ngIf="selectedAnamnesis.appointment.examType === 2"
+              >Imaging</span
+            >
+          </div>
         </div>
         <div class="content__line">
           <span>Date: </span>
