@@ -32,6 +32,7 @@ import { DetailComponent } from 'src/app/blood-bank/detail/detail.component';
 import { UpdateComponent } from 'src/app/blood-bank/update/update.component';
 import { CreateComponent } from 'src/app/blood-bank/create/create.component';
 import { RenovationStatisticsComponent } from 'src/app/Statistics/statistics/Components/renovation-statistics/renovation-statistics.component';
+import { BaseComponent } from 'src/app/examinations/anamnesis-perscriptions-review/base/base.component';
 
 const routes: Routes = [
   {
@@ -163,6 +164,10 @@ const routes: Routes = [
   {
     path: 'renovation/statistics',
     component: RenovationStatisticsComponent,
+  },
+  {
+    path: 'anamnesis-perscriptions-review',
+    component: BaseComponent,
   },
 ];
 
