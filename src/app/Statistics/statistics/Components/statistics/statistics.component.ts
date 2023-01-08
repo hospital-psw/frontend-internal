@@ -3,7 +3,6 @@ import { StatisticsService } from '../../Services/statistics.service';
 import { Chart, registerables } from 'chart.js';
 import { DataTableItem } from '../data-table/data-table-datasource';
 import { DoctorService } from '../../Services/doctor.service';
-import { ax } from 'chart.js/dist/chunks/helpers.core';
 import { isThisISOWeek, parse } from 'date-fns';
 import { TenderService } from '../../Services/tender.service';
 import { FormGroup, FormControl } from '@angular/forms';
