@@ -21,6 +21,7 @@ export const environment = {
   apiAnamnesisPdfUrl: 'hospital/Anamnesis/pdf',
   apiSymptom: 'hospital/Symptom',
   apiAnamnesis: 'hospital/Anamnesis',
+  apiPerscription: 'hospital/Prescription',
   apiConsiliumUrl: 'hospital/Consilium',
   apiApplicationPatient: 'hospital/ApplicationPatient',
 };
