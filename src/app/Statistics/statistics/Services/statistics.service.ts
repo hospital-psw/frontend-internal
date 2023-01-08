@@ -83,7 +83,8 @@ export class StatisticsService {
 
   getDoctorOptionalBookingStatistics(dto: DoctorOptionalStatisticDto) {
     return this._http.post(
-      `${environment.apiStatistics}/getOptionalDoctorStats`, dto
+      `${environment.apiStatistics}/getOptionalDoctorStats`,
+      dto
     );
   }
 }
