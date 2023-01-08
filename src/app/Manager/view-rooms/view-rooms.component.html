@@ -1,20 +1,12 @@
 <div class="all">
   <div class="info">
     <div class="display-rooms-wrapper">
-      <div>
-      <button mat-button [matMenuTriggerFor]="menu">
-        <img src="assets/img/filter1.png" alt="filter" width="30" height="30">
-      </button>
-      <mat-menu #menu="matMenu" class="menu-expander" >
-        <div class="input-wrapper" (click) = "$event.stopPropagation()">
-          <div class="hospital-info">
-        
-          <mat-form-field class="search-hospital" appearance="fill" (click) = "$event.stopPropagation()">
+      <div class="header">
+        <mat-form-field class="search-hospital" appearance="fill" (click) = "$event.stopPropagation()">
           <mat-label>Choose hospital</mat-label>
           <mat-select
             id="buildingSelect"
             (selectionChange)="selectHospital($event)"
-            (click) = "$event.stopPropagation()"
           >
             <mat-option id="mat-option-building" value="4">{{
               buildings[0]?.name
@@ -25,15 +17,19 @@
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose floor</mat-label>
             
-            <mat-select id="floorSelect" (selectionChange)="selectFloor($event)" (click) = "$event.stopPropagation()">
+            <mat-select id="floorSelect" (selectionChange)="selectFloor($event)">
             <mat-option id="mat-option-floor" value="0">0</mat-option>
             <mat-option value="1">1</mat-option>
             <mat-option value="2">2</mat-option>
             <mat-option value="3">3</mat-option>
           </mat-select>
         </mat-form-field>
-        </div>
-        <mat-divider></mat-divider>
+      <button mat-button [matMenuTriggerFor]="menu" class="menu-btn">
+        <img src="assets/img/filter1.png" alt="filter" width="30" height="30">
+      </button>
+      <mat-menu #menu="matMenu" class="menu-expander" >
+        
+        <div class="input-wrapper" (click) = "$event.stopPropagation()">
         <div class="hospital-info">
         <mat-form-field class="search">
           <mat-label>Number</mat-label>
