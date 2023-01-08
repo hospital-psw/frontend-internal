@@ -1,15 +1,34 @@
-<div class="outher">
-  <div class="inner">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="widest">
+  <div class="acquisitionsTable">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tble">
       <!--- Note that these columns can be defined in any order.
-                        The actual rendered columns are set as a property on the row definition" -->
+                    The actual rendered columns are set as a property on the row definition" -->
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="BloodType">
-        <th mat-header-cell *matHeaderCellDef>BloodType</th>
-        <td mat-cell *matCellDef="let element">{{ element.bloodType }}</td>
+      <!-- Name Column -->
+      <ng-container matColumnDef="bloodType">
+        <th mat-header-cell *matHeaderCellDef>Blood Type</th>
+        <td mat-cell *matCellDef="let element">
+          {{
+            element.bloodType === 0
+              ? "A+"
+              : element.bloodType === 1
+              ? "A-"
+              : element.bloodType === 2
+              ? "B+"
+              : element.bloodType === 3
+              ? "B-"
+              : element.bloodType === 4
+              ? "AB+"
+              : element.bloodType === 5
+              ? "AB-"
+              : element.bloodType === 6
+              ? "O+"
+              : "O-"
+          }}
+        </td>
       </ng-container>
 
+      <!-- Weight Column -->
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef>Amount</th>
         <td mat-cell *matCellDef="let element">{{ element.amount }}</td>

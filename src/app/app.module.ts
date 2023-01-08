@@ -46,6 +46,7 @@ import { CreateTenderComponent } from './tenders/create-tender/create-tender.com
 import { DoctorSidebarComponent } from './common/doctor-sidebar/doctor-sidebar.component';
 import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sidebar.component';
 import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
+import { BloodUnitsOverviewComponent } from './BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { BlockPatientsModule } from './Manager/block-patients/block-patients.mod
     CreateTenderComponent,
     DoctorSidebarComponent,
     ManagerSidebarComponent,
+    BloodUnitsOverviewComponent,
   ],
   imports: [
     MatDatepickerModule,
