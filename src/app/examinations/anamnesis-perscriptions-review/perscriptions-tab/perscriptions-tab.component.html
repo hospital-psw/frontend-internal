@@ -1,0 +1,77 @@
+<div class="tab">
+  <div class="tab__search">
+    <div class="tab__search__input">
+      <input
+        type="text"
+        class="tab__search__input__text"
+        placeholder="Search"
+        maxlength="50"
+        (keyup)="onInputChange($event)"
+      />
+    </div>
+  </div>
+  <div class="tab-all">
+    <div class="tab-all-card-info">
+      <div class="header">Perscription informations</div>
+      <div class="content">
+        <div class="content__line">
+          <span>Medicament name: </span>
+          <span>{{
+            selectedPerscription.medicament === null
+              ? ""
+              : selectedPerscription.medicament.name
+          }}</span>
+        </div>
+        <div class="content__line">
+          <span>Date: </span>
+          <span
+            >{{
+              selectedPerscription.dateRange === null
+                ? ""
+                : (selectedPerscription.dateRange.from | date: "dd.MM.yyyy.")
+            }}
+            -
+            {{
+              selectedPerscription.dateRange === null
+                ? ""
+                : (selectedPerscription.dateRange.to | date: "dd.MM.yyyy.")
+            }}</span
+          >
+        </div>
+        <div class="content__description">
+          <h5 class="header">Description:</h5>
+          <textarea class="topic">{{
+            selectedPerscription.description
+          }}</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-all-main-content">
+      <div class="no-prescriptions" *ngIf="perscriptions.length === 0">
+        <div class="text-pres">No anamnesis found.</div>
+      </div>
+      <div class="list-container" *ngIf="perscriptions.length > 0">
+        <div
+          class="tab-all-main-content__single"
+          *ngFor="let p of perscriptions"
+          (click)="onSelect(p)"
+        >
+          <div class="header-desc">
+            <span class="tab-all-main-content__single-header">
+              Medicament name:
+              {{ p.medicament.name | titlecase }}
+            </span>
+          </div>
+          <div class="datecancel">
+            <span class="tab-all-main-content__single-daterange">
+              Date:
+              {{ p.dateRange.from | date: "dd.MM.yyyy." }} -
+              {{ p.dateRange.to | date: "dd.MM.yyyy." }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -48,8 +48,7 @@ export class DoctorRequestsComponent implements OnInit {
   createUrgentRequestPage() {
     this.router.navigateByUrl('/app/urgentBloodRequest/create');
   }
-  goToBloodStorage(){
-    this.router.navigateByUrl('/app/blood-storage')
+  goToBloodStorage() {
+    this.router.navigateByUrl('/app/blood-storage');
   }
-
 }

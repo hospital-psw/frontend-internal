@@ -1,0 +1,16 @@
+{
+    "/hospital/*": {
+        "target": "http://localhost:16177",
+        "secure": false,
+        "pathRewrite": {
+            "^/hospital": "/api"
+        }
+    },
+   "/integration/*": {
+        "target": "http://localhost:45488",
+        "secure": false,
+        "pathRewrite": {
+            "^/integration": "/api"
+        }
+   }
+}

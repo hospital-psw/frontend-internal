@@ -15,6 +15,7 @@
     <div class="size pie" *ngIf="usersChart">
       <canvas class="segment" id="chart4"></canvas>
     </div>
+
     <div class="combo">
       <mat-form-field class="search-doctors" appearance="fill">
         <mat-label>Choose doctor</mat-label>
@@ -25,8 +26,128 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="size" *ngIf="vacationsChart">
+    <div class="size" [hidden]="!vacationsChart">
       <canvas class="segment" id="chart5"></canvas>
+    </div>
+    <div class="combo">
+      <mat-form-field class="search-options" appearance="fill">
+        <mat-label>Choose view</mat-label>
+        <mat-select (selectionChange)="saveOption($event)">
+          <mat-option value="YEARLY">YEARLY</mat-option>
+          <mat-option value="MONTHLY">MONTHLY</mat-option>
+          <mat-option value="OPTIONAL">OPTIONAL</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field
+        class="search-doctors"
+        appearance="fill"
+        *ngIf="yearView || monthlyView || optionalView"
+      >
+        <mat-label>Choose doctor</mat-label>
+        <mat-select (selectionChange)="saveDoctor($event)">
+          <mat-option *ngFor="let d of doctors" [value]="d.id">{{
+            d.firstName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field
+        class="years"
+        appearance="fill"
+        *ngIf="yearView || monthlyView"
+      >
+        <mat-label>Choose year</mat-label>
+        <mat-select (selectionChange)="saveYear($event)">
+          <mat-option value="2021">2021</mat-option>
+          <mat-option value="2022">2022</mat-option>
+          <mat-option value="2023">2023</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="months" appearance="fill" *ngIf="monthlyView">
+        <mat-label>Choose month</mat-label>
+        <mat-select (selectionChange)="saveMonth($event)">
+          <mat-option value="1">January</mat-option>
+          <mat-option value="2">February</mat-option>
+          <mat-option value="3">March</mat-option>
+          <mat-option value="4">April</mat-option>
+          <mat-option value="5">May</mat-option>
+          <mat-option value="6">June</mat-option>
+          <mat-option value="7">July</mat-option>
+          <mat-option value="8">August</mat-option>
+          <mat-option value="9">September</mat-option>
+          <mat-option value="10">October</mat-option>
+          <mat-option value="11">November</mat-option>
+          <mat-option value="12">December</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        class="search-doctors"
+        appearance="fill"
+        *ngIf="optionalView"
+      >
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+          <input
+            matStartDate
+            formControlName="start"
+            placeholder="Start date"
+          />
+          <input
+            (dateChange)="saveDate($event)"
+            matEndDate
+            formControlName="end"
+            placeholder="End date"
+          />
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+    <div class="size" [hidden]="!doctorYearlyBookingChart">
+      <canvas class="segment" id="chart6"></canvas>
+    </div>
+    <div class="combo">
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Choose year</mat-label>
+        <mat-select (selectionChange)="changeYear($event)">
+          <mat-option value="2021">2021</mat-option>
+          <mat-option value="2022">2022</mat-option>
+          <mat-option value="2023">2023</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="size" [hidden]="!tenderMoneyChart">
+      <canvas class="segment" id="chart8"></canvas>
+    </div>
+    <div class="combo">
+      <mat-form-field class="search-doctors" appearance="fill">
+        <mat-label>Choose blood type</mat-label>
+        <mat-select (selectionChange)="saveBloodType($event)">
+          <mat-option value="0">A_POSITIVE</mat-option>
+          <mat-option value="1">A_NEGATIVE</mat-option>
+          <mat-option value="2">B_POSITIVE</mat-option>
+          <mat-option value="3">B_NEGATIVE</mat-option>
+          <mat-option value="4">O_POSITIVE</mat-option>
+          <mat-option value="5">O_NEGATIVE</mat-option>
+          <mat-option value="6">AB_POSITIVE</mat-option>
+          <mat-option value="7">AB_NEGATIVE</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="years" appearance="fill">
+        <mat-label>Choose year</mat-label>
+        <mat-select (selectionChange)="saveYear1($event)">
+          <mat-option value="2021">2021</mat-option>
+          <mat-option value="2022">2022</mat-option>
+          <mat-option value="2023">2023</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="size" [hidden]="!tenderBloodQuantityChart">
+      <canvas class="segment" id="chart7"></canvas>
     </div>
   </div>
 </div>

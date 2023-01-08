@@ -4,16 +4,12 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BloodStorageService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-
-  public GetBloodUnits(
-  ): Observable<BloodUnit[]> {
-    return this.http.get<BloodUnit[]>(
-      'http://localhost:16177/api/BloodUnit');
+  public GetBloodUnits(): Observable<BloodUnit[]> {
+    return this.http.get<BloodUnit[]>('http://localhost:16177/api/BloodUnit');
   }
 }

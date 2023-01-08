@@ -9,6 +9,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TestComponent } from './Components/test/test.component';
+import { RenovationStatisticsComponent } from './Components/renovation-statistics/renovation-statistics.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -16,6 +21,7 @@ import { TestComponent } from './Components/test/test.component';
     StatisticsNavigationComponent,
     DataTableComponent,
     TestComponent,
+    RenovationStatisticsComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +30,9 @@ import { TestComponent } from './Components/test/test.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
 })
 export class StatisticsModule {}

@@ -1,6 +1,7 @@
 import { IRenovationDetails } from './RenovationDetails';
 
 export interface IRenovationRequest {
+  id: number;
   renovationType: number;
   roomsId: number[];
   startTime?: Date;
