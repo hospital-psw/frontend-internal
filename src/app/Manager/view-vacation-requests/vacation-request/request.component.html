@@ -6,8 +6,8 @@
           {{ request.doctor.firstName }} {{ request.doctor.lastName }}
         </mat-panel-title>
         <mat-panel-description>
-          {{ request.from | date: "dd/MM/yyyy" }}-{{
-            request.to | date: "dd/MM/yyyy"
+          {{ request.from | date : "dd/MM/yyyy" }}-{{
+            request.to | date : "dd/MM/yyyy"
           }}
           <button
             mat-icon-button
