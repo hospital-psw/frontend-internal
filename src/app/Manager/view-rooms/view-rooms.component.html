@@ -1,12 +1,20 @@
 <div class="all">
   <div class="info">
     <div class="display-rooms-wrapper">
-      <div class="input-wrapper">
-        <mat-form-field class="search-hospital" appearance="fill">
+      <div>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <img src="assets/img/filter1.png" alt="filter" width="30" height="30">
+      </button>
+      <mat-menu #menu="matMenu" class="menu-expander" >
+        <div class="input-wrapper" (click) = "$event.stopPropagation()">
+          <div class="hospital-info">
+        
+          <mat-form-field class="search-hospital" appearance="fill" (click) = "$event.stopPropagation()">
           <mat-label>Choose hospital</mat-label>
           <mat-select
             id="buildingSelect"
             (selectionChange)="selectHospital($event)"
+            (click) = "$event.stopPropagation()"
           >
             <mat-option id="mat-option-building" value="4">{{
               buildings[0]?.name
@@ -16,32 +24,41 @@
         </mat-form-field>
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose floor</mat-label>
-          <mat-select id="floorSelect" (selectionChange)="selectFloor($event)">
+            
+            <mat-select id="floorSelect" (selectionChange)="selectFloor($event)" (click) = "$event.stopPropagation()">
             <mat-option id="mat-option-floor" value="0">0</mat-option>
             <mat-option value="1">1</mat-option>
             <mat-option value="2">2</mat-option>
             <mat-option value="3">3</mat-option>
           </mat-select>
         </mat-form-field>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="hospital-info">
         <mat-form-field class="search">
           <mat-label>Number</mat-label>
-          <input matInput #number />
+          <input matInput #number (click) = "$event.stopPropagation()"/>
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Purpose</mat-label>
-          <input matInput #purpose />
+          <input matInput #purpose (click) = "$event.stopPropagation()"/>
         </mat-form-field>
+      </div>
+      <div class="hospital-info1">
         <mat-form-field class="search">
           <mat-label>Start</mat-label>
-          <input matInput #start placeholder="hh:mm" />
+          <input matInput #start placeholder="hh:mm" (click) = "$event.stopPropagation()"/>
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>End</mat-label>
-          <input matInput #end placeholder="hh:mm" />
+          <input matInput #end placeholder="hh:mm" (click) = "$event.stopPropagation()"/>
         </mat-form-field>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="hospital-info">
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose equipment</mat-label>
-          <mat-select (selectionChange)="selectEquipment($event)">
+          <mat-select (selectionChange)="selectEquipment($event)" (click) = "$event.stopPropagation()">
             <mat-option value="0">Beds</mat-option>
             <mat-option value="1">Scissors</mat-option>
             <mat-option value="2">Needles</mat-option>
@@ -54,12 +71,15 @@
         </mat-form-field>
         <mat-form-field class="search">
           <mat-label>Quantity</mat-label>
-          <input type="number" matInput ngModel #quantity />
+          <input type="number" matInput ngModel #quantity (click) = "$event.stopPropagation()"/>
         </mat-form-field>
+      </div>
+      </div>
         <button
+          mat-button
           mat-stroked-button
           color="primary"
-          class=""
+          class="btn-search"
           (click)="
             searchRooms(
               number.value,
@@ -73,8 +93,9 @@
         >
           Search
         </button>
+      </mat-menu>
       </div>
-    </div>
+ 
     <div id="canvas-holder" class="canvas-window">
       <div class="canvas-div">
         <canvas class="canvas"></canvas>

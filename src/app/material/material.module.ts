@@ -17,6 +17,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDividerModule} from '@angular/material/divider';
 
 @NgModule({
   declarations: [],
@@ -39,6 +41,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatDialogModule,
     MatButtonModule,
     MatRadioModule,
+    MatMenuModule,
+    MatDividerModule
   ],
   exports: [
     CommonModule,
@@ -59,6 +63,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatExpansionModule,
     MatDialogModule,
     MatRadioModule,
+    MatMenuModule,
+    MatDividerModule
   ],
 })
 export class MaterialModule {}

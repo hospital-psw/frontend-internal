@@ -24,6 +24,7 @@ import { AppointmentsComponent } from './show-details/appointments/appointments.
 import { RenovationsComponent } from './show-details/renovations/renovations/renovations.component';
 import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/stepper.module';
 import { ConsiliumsComponent } from './show-details/consiliums/consiliums/consiliums.component';
+import { MaterialModule } from 'src/app/material/material.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { ConsiliumsComponent } from './show-details/consiliums/consiliums/consil
     AppointmentsComponent,
     RenovationsComponent,
     ConsiliumsComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -51,6 +53,7 @@ import { ConsiliumsComponent } from './show-details/consiliums/consiliums/consil
     StepperModule,
     MatTabsModule,
     RenovationStepperModule,
+    MaterialModule
   ],
   exports: [ViewRoomsComponent],
 })

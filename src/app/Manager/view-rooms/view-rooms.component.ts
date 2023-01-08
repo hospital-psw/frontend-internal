@@ -5,6 +5,7 @@ import {
   ChangeDetectorRef,
   OnDestroy,
   AfterContentChecked,
+  ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
@@ -31,6 +32,7 @@ import { IRenovationRequestDisplay } from '../Model/RenovationRequestDisplay';
 import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 import { IConsiliumDisplay } from '../Model/ConsiliumDisplay';
 import { ConsiliumService } from '../service/consilium.service';
+import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-view-rooms',
@@ -40,6 +42,7 @@ import { ConsiliumService } from '../service/consilium.service';
 export class ViewRoomsComponent
   implements OnInit, OnDestroy, AfterContentChecked
 {
+
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
