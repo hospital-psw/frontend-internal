@@ -1,0 +1,109 @@
+<div class="tab">
+  <div class="tab__search">
+    <div class="tab__search__input">
+      <input
+        type="text"
+        class="tab__search__input__text"
+        placeholder="Search"
+        maxlength="50"
+        (keyup)="onInputChange($event)"
+      />
+    </div>
+  </div>
+  <div class="tab-all">
+    <div class="tab-all-card-info">
+      <div class="header">Anamnesis informations</div>
+      <div class="content">
+        <div class="content__line">
+          <span>Patient: </span>
+          <span
+            >{{
+              selectedAnamnesis.appointment === null
+                ? ""
+                : (selectedAnamnesis.appointment.patient.firstName | titlecase)
+            }}
+            {{
+              selectedAnamnesis.appointment === null
+                ? ""
+                : (selectedAnamnesis.appointment.patient.lastName | titlecase)
+            }}
+          </span>
+        </div>
+        <div class="content__line">
+          <span>Doctor: </span>
+          <span
+            >{{
+              selectedAnamnesis.appointment === null
+                ? ""
+                : selectedAnamnesis.appointment.doctor.firstName
+            }}
+            {{
+              selectedAnamnesis.appointment === null
+                ? ""
+                : selectedAnamnesis.appointment.doctor.lastName
+            }}</span
+          >
+        </div>
+        <div class="content__line">
+          <span>Examination type: </span>
+          <!-- <span>{{
+            selectedAnamnesis.appointment === null
+              ? ""
+              : selectedAnamnesis.appointment.examType
+          }}</span> -->
+          <div *ngIf="selectedAnamnesis.appointment !== null">
+            <span *ngIf="selectedAnamnesis.appointment.examType === 0">
+              Operation
+            </span>
+            <span *ngIf="selectedAnamnesis.appointment.examType === 1">
+              General
+            </span>
+            <span *ngIf="selectedAnamnesis.appointment.examType === 2"
+              >Imaging</span
+            >
+          </div>
+        </div>
+        <div class="content__line">
+          <span>Date: </span>
+          <span>{{
+            selectedAnamnesis.appointment === null
+              ? ""
+              : (selectedAnamnesis.appointment.date | date: "dd.MM.yyyy.")
+          }}</span>
+        </div>
+        <div class="content__description">
+          <h5 class="header">Description:</h5>
+          <textarea class="topic">{{ selectedAnamnesis.description }}</textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-all-main-content">
+      <div class="no-prescriptions" *ngIf="anamnesis.length === 0">
+        <div class="text-pres">No anamnesis found.</div>
+      </div>
+      <div class="list-container" *ngIf="anamnesis.length > 0">
+        <div
+          class="tab-all-main-content__single"
+          *ngFor="let a of anamnesis"
+          (click)="onSelect(a)"
+        >
+          <div class="header-desc">
+            <span class="tab-all-main-content__single-header">
+              Patient:
+              {{ a.appointment.patient.firstName | titlecase }}
+              {{ a.appointment.patient.lastName | titlecase }}
+            </span>
+            <!-- <span class="tab-all-main-content__single-description"></span> -->
+          </div>
+          <div class="datecancel">
+            <span class="tab-all-main-content__single-daterange">
+              Date:
+              {{ a.appointment.date | date: "dd.MM.yyyy." }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
