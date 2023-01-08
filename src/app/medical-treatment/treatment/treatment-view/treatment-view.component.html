@@ -33,7 +33,7 @@
           <div class="treatment__info-patient-col__name">
             <span class="label">Admittance date: </span>
             <span class="value">{{
-              medicalTreatment.start | date : "dd.MM.yyyy."
+              medicalTreatment.start | date: "dd.MM.yyyy."
             }}</span>
           </div>
         </div>
@@ -57,7 +57,7 @@
           >
             <span class="label">Release date: </span>
             <span class="value">{{
-              medicalTreatment.end | date : "dd.MM.yyyy."
+              medicalTreatment.end | date: "dd.MM.yyyy."
             }}</span>
           </div>
         </div>
@@ -109,7 +109,7 @@
             >{{ getBloodType(bloodTherapy) }} :
             {{ bloodTherapy.amount }} units</span
           >
-          <span>Given at {{ bloodTherapy.start | date : "dd.MM.yyyy" }}</span>
+          <span>Given at {{ bloodTherapy.start | date: "dd.MM.yyyy" }}</span>
         </div>
         <div class="treatment__therapies-blood-about">
           {{ bloodTherapy.about }}

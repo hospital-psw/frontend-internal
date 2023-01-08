@@ -28,13 +28,13 @@
             >{{
               selectedPerscription.dateRange === null
                 ? ""
-                : (selectedPerscription.dateRange.from | date : "dd.MM.yyyy.")
+                : (selectedPerscription.dateRange.from | date: "dd.MM.yyyy.")
             }}
             -
             {{
               selectedPerscription.dateRange === null
                 ? ""
-                : (selectedPerscription.dateRange.to | date : "dd.MM.yyyy.")
+                : (selectedPerscription.dateRange.to | date: "dd.MM.yyyy.")
             }}</span
           >
         </div>
@@ -66,8 +66,8 @@
           <div class="datecancel">
             <span class="tab-all-main-content__single-daterange">
               Date:
-              {{ p.dateRange.from | date : "dd.MM.yyyy." }} -
-              {{ p.dateRange.to | date : "dd.MM.yyyy." }}
+              {{ p.dateRange.from | date: "dd.MM.yyyy." }} -
+              {{ p.dateRange.to | date: "dd.MM.yyyy." }}
             </span>
           </div>
         </div>
