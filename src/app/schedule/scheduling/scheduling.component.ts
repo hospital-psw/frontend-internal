@@ -14,6 +14,7 @@ export class SchedulingComponent implements OnInit {
   recommendedDates: RecommendedDatesDTO[];
   private userSub: Subscription;
   doctorId: number;
+  isFinished: boolean;
 
   constructor(private authService: AuthService) {}
 

@@ -55,6 +55,7 @@
               background-color: #0E4C92;
               border: none;
               transition: 0.5s;
+              cursor: pointer;
           }
 
           &:active {
@@ -66,5 +67,6 @@
   &:hover {
       transform: scale(1.05);
       transition: .3s;
+      cursor: default;
   }
 }

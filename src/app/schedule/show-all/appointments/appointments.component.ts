@@ -26,6 +26,8 @@ import { ExaminationType } from './../../enum/ExaminationType.enum';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/common/auth/service/auth.service';
 import { WorkHours } from '../../interface/WorkHours';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -70,6 +72,7 @@ export class AppointmentsComponent implements OnInit {
   examinationTypes: ExaminationType[];
   doctorId: number;
   private userSub: Subscription;
+  isLoading: boolean = false;
 
   canClick: boolean = false;
   selectedEvent: CalendarEvent<{ appointment: Appointment }> = {
@@ -85,7 +88,8 @@ export class AppointmentsComponent implements OnInit {
     private appointmentService: ScheduleService,
     private router: Router,
     private toaster: ToastrService,
-    private authService: AuthService
+    private authService: AuthService,
+    private bottomSheet: MatBottomSheet
   ) {}
 
   ngOnInit(): void {
@@ -96,11 +100,13 @@ export class AppointmentsComponent implements OnInit {
     this.userSub = this.authService.user.subscribe((user) => {
       this.doctorId = user.id;
     });
+
     this.getDoctorsWorkHours(this.doctorId);
     this.getAllAppointments(this.doctorId);
   }
 
   getDoctorsWorkHours(doctorId: number) {
+    this.isLoading = true;
     this.appointmentService
       .getDoctorsWorkHours(doctorId)
       .subscribe((result) => {
@@ -109,10 +115,12 @@ export class AppointmentsComponent implements OnInit {
         let endDate = new Date(this.workHours.end);
         this.dayStartHour = startDate.getHours();
         this.dayEndHour = endDate.getHours();
+        this.isLoading = false;
       });
   }
 
   getAllAppointments(doctorId: number): void {
+    this.isLoading = true;
     this.appointmentService
       .getAllAppointments(doctorId)
       .pipe(
@@ -133,9 +141,11 @@ export class AppointmentsComponent implements OnInit {
       .subscribe(
         (response: CalendarEvent<{ appointment: Appointment }>[]) => {
           this.appointments = response;
+          this.isLoading = false;
         },
         (error: HttpErrorResponse) => {
-          console.log(error.message);
+          this.toaster.error(error.error);
+          this.isLoading = false;
         }
       );
   }
@@ -204,5 +214,15 @@ export class AppointmentsComponent implements OnInit {
     if (this.selectedEvent.meta?.appointment.isDone) {
       this.router.navigate([url]);
     }
+  }
+
+  openBottomSheet(event: any): void {
+    this.canClick = true;
+    this.selectedEvent.color = colors['blue'];
+    this.selectedEvent = event.event;
+    this.selectedEvent.color = colors['green'];
+    this.bottomSheet.open(BottomSheetComponent, {
+      data: { appointmentId: this.selectedEvent.meta?.appointment.id },
+    });
   }
 }

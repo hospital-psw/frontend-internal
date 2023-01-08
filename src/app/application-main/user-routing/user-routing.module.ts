@@ -37,30 +37,37 @@ import { BaseComponent } from 'src/app/examinations/anamnesis-perscriptions-revi
 const routes: Routes = [
   {
     path: 'appointments',
+    title: 'Appointments | Care Connect',
     component: AppointmentsComponent,
   },
   {
     path: 'newsfeed',
+    title: 'Newsfeed | Care Connect',
     component: FeedComponent,
   },
   {
     path: 'patients',
+    title: 'Patients | Care Connect',
     component: PatientTableComponent,
   },
   {
     path: 'bloodbank',
+    title: 'Blood Bank | Care Connect',
     component: AllComponent,
   },
   {
     path: 'blood-request',
+    title: 'Blood Acquisitions | Care Connect',
     component: DoctorRequestsComponent,
   },
   {
     path: 'display',
+    title: 'Rooms | Care Conncect',
     component: ViewRoomsComponent,
   },
   {
     path: 'reschedule-appointment/:id',
+    title: 'Appointment Rescheduling | Care Connect',
     component: ReschedulingAppointmentComponent,
     resolve: {
       appointment: AppointmentResolver,
@@ -68,66 +75,80 @@ const routes: Routes = [
   },
   {
     path: 'feedback',
+    title: 'Feedbacks | Care Connect',
     component: FeedbackViewComponent,
   },
   {
     path: 'appointments/scheduling',
+    title: 'Appointment Scheduling | Care Connect',
     component: SchedulingComponent,
   },
   {
     path: 'bloodAcquisition/create',
+    title: 'Blood Acquisition Create | Care Connect',
     component: BloodAcquisitionComponent,
   },
   {
     path: 'urgentBloodRequest/create',
+    title: 'Urgent Blood Requests | Care Connect',
     component: UrgentBloodRequestComponent,
   },
   {
     path: 'vacation-requests/doctor',
+    title: 'My Vacation Requests | Care Connect',
     component: VacationRequestComponent,
   },
   {
     path: 'treatment/:id',
     component: TreatmentViewComponent,
-    title: 'Stationary treatment',
+    title: 'Stationary treatment | Care Connect',
     resolve: {
       treatment: TreatmentResolver,
     },
   },
   {
     path: 'show-treatments',
+    title: 'Treatments | Care Connect',
     component: BaseComponentComponent,
   },
   {
     path: 'vacation-requests-display',
+    title: 'Vacation Requests | Care Connect',
     component: VacationRequestsComponent,
   },
   {
     path: 'statistics',
+    title: 'Statistics | Care Connect',
     component: StatisticsComponent,
   },
   {
     path: 'reconsider-blood-request',
+    title: 'Reconsideration | Care Connect',
     component: ReconsiderBloodRequestComponent,
   },
   {
     path: 'bloodExpenditure/create',
+    title: 'Blood Expenditures | Care Connect',
     component: BloodExpenditureComponent,
   },
   {
     path: 'schedule-consilium',
+    title: 'Consilium Scheduling | Care Connect',
     component: ScheduleConsiliumComponent,
   },
   {
     path: 'consiliums',
+    title: 'Consiliums | Care Connect',
     component: AllConsiliumsComponent,
   },
   {
     path: 'vacation-requests/doctor/create',
+    title: 'Vacation Request Creation | Care Connect',
     component: CreateRequestFormComponent,
   },
   {
     path: 'examination/:id',
+    title: 'Examination | Care Connect',
     resolve: {
       appointment: AppointmentResolver,
     },
@@ -135,38 +156,47 @@ const routes: Routes = [
   },
   {
     path: 'show-tenders',
+    title: 'Tenders | Care Connect',
     component: ShowTendersComponent,
   },
   {
     path: 'create-tender',
+    title: 'New Tender | Care Connect',
     component: CreateTenderComponent,
   },
   {
     path: 'blockpatients',
+    title: 'Block Patient | Care Connect',
     component: BlockPatientsViewComponent,
   },
   {
     path: 'anamneses-pdf/:id',
+    title: 'PDF Generation | Care Connect',
     component: AnamnesesPdfComponent,
   },
   {
     path: 'bloodbank/:id/detail',
+    title: 'Blood Bank Details | Care Connect',
     component: DetailComponent,
   },
   {
     path: 'bloodbank/:id/update',
+    title: 'Blood Bank Update | Care Connect',
     component: UpdateComponent,
   },
   {
     path: 'bloodbank/add',
+    title: 'Add New Blood Bank | Care Connect',
     component: CreateComponent,
   },
   {
     path: 'renovation/statistics',
+    title: 'Renovation Statistics | Care Connect',
     component: RenovationStatisticsComponent,
   },
   {
     path: 'anamnesis-perscriptions-review',
+    title: 'Search Engine | Care Connect',
     component: BaseComponent,
   },
 ];

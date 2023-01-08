@@ -3,10 +3,18 @@
     (scheduleInfoEvent)="acceptData($event)"
     (outputDates)="acceptDates($event)"
     [doctorId]="doctorId"
+    class="recommended"
   ></app-scheduling-appointment-form>
   <app-scheduling-appointment-table
+    *ngIf="recommendedDates"
     [appointmentData]="redirectAppointment"
     [recommendedDates]="recommendedDates"
-    class="recommended"
+    class="recommended2"
   ></app-scheduling-appointment-table>
+  <div class="schedule" *ngIf="!recommendedDates">
+    <div class="schedule__image"></div>
+    <div class="schedule__text">
+      Fill out the form to generate the most suitable appointments
+    </div>
+  </div>
 </div>

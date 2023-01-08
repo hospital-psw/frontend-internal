@@ -17,6 +17,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [],
@@ -59,6 +60,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatExpansionModule,
     MatDialogModule,
     MatRadioModule,
+    MatBottomSheetModule,
   ],
 })
 export class MaterialModule {}

@@ -69,6 +69,7 @@
       justify-content: space-between;
       align-items: center;
       width: 60%;
+      color: $sidebar-color-secondary;
 
       & * {
         border-radius: 1rem;
@@ -150,7 +151,8 @@
           border: 0 none;
           outline: none;
           height: 100%;
-          font-size: 1.4rem;
+          font-size: 1.5rem;
+          color: $sidebar-color-secondary;
         }
       }
     }

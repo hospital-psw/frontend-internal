@@ -13,11 +13,15 @@
     &__simple-text {
         text-transform: uppercase;
         padding: .5rem 0 .5rem 1.5rem;
-        font-size: 2.5rem;
-        line-height: 3rem;
+        font-size: 2rem;
+        line-height: 1.5rem;
         letter-spacing: .5rem;
         font-weight: 400;
         color: #fff;
+
+        .modo {
+            font-size: 1.4rem;
+        }
     }
 
     a {

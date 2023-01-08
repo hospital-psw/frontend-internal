@@ -31,6 +31,7 @@ export class TreatmentViewComponent implements OnInit {
   medicalTreatment: MedicalTreatment;
   patientRelease: PatientRelease;
   bloodTypes: BloodType[];
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.medicalTreatment = this.route.snapshot.data['treatment'];
@@ -91,12 +92,14 @@ export class TreatmentViewComponent implements OnInit {
   }
 
   downloadPdf(): void {
+    this.isLoading = true;
     this.medicalTreatmentService
       .getPdf(this.medicalTreatment.id)
       .subscribe((response: any) => {
         let fileName = 'treatment.pdf';
         let blob: Blob = response.body as Blob;
         let url = window.URL.createObjectURL(blob);
+        this.isLoading = false;
         window.open(url);
       });
   }
