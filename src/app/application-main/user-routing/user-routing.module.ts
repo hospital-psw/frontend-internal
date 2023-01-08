@@ -31,6 +31,7 @@ import { AnamnesesPdfComponent } from 'src/app/medical-treatment/anamneses_pdf/a
 import { DetailComponent } from 'src/app/blood-bank/detail/detail.component';
 import { UpdateComponent } from 'src/app/blood-bank/update/update.component';
 import { CreateComponent } from 'src/app/blood-bank/create/create.component';
+import { BloodUnitsOverviewComponent } from 'src/app/BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
 
 
 const routes: Routes = [
@@ -148,7 +149,7 @@ const routes: Routes = [
     path: 'anamneses-pdf/:id',
     component: AnamnesesPdfComponent,
   },
-  }
+  {
     path: 'bloodbank/:id/detail',
     component: DetailComponent,
   },
@@ -159,6 +160,10 @@ const routes: Routes = [
   {
     path: 'bloodbank/add',
     component: CreateComponent,
+  },
+  {
+    path:'blood-storage',
+    component : BloodUnitsOverviewComponent,
   },
 ];
 
