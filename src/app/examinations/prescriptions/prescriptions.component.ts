@@ -14,6 +14,9 @@ import {
 import { NewPrescription } from '../interface/NewPrescription';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { isReturnStatement } from 'typescript';
+import { EventService } from '../services/event.service';
+import { PrescriptionCreated } from '../interface/events/PrescriptionCreated';
+import { Anamnesis } from '../interface/Anamnesis';
 
 @Component({
   selector: 'app-prescriptions',
@@ -32,12 +35,15 @@ export class PrescriptionsComponent implements OnInit {
   selectedMedicament: Medicament;
   patientId: number;
   modalState: boolean;
+  prescriptionCreated: PrescriptionCreated;
+  anamnesis: Anamnesis;
 
   constructor(
     private toastrService: ToastrService,
     private medicamentService: MedicineService,
     @Inject(MAT_DIALOG_DATA) private data: any,
-    private dialogRef: MatDialogRef<PrescriptionsComponent>
+    private dialogRef: MatDialogRef<PrescriptionsComponent>,
+    private eventService: EventService
   ) {
     console.log(data.patientId);
     this.patientId = data.patientId;
@@ -86,12 +92,26 @@ export class PrescriptionsComponent implements OnInit {
       this.toastrService.warning('Please select valid date range');
       return;
     }
-    this.toastrService.success('Succesfully created prescription');
-    this.modalState = true;
-    this.dialogRef.close({
+    this.prescriptionCreated = {
+      userId: this.data.doctorId,
+      aggregateId: this.data.aggregateId,
+      timeStamp: new Date(),
+      eventType: 4,
       newPrescription: this.newPrescription,
-      modalState: this.modalState,
-    });
+    };
+    this.eventService.addPrescription(this.prescriptionCreated).subscribe(
+      (response) => {
+        this.toastrService.success('Succesfully created prescription');
+        this.modalState = true;
+        this.dialogRef.close({
+          anamnesis: response,
+          modalState: this.modalState,
+        });
+      },
+      (error) => {
+        this.toastrService.error(error.error);
+      }
+    );
   }
 
   closeDialog(): void {

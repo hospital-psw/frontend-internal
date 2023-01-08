@@ -18,6 +18,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { JwtService } from 'src/app/common/auth/service/jwt.service';
 
 @Component({
   selector: 'app-first-tab-component',
@@ -37,6 +38,7 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
   pageSize: number = 5;
   pageNumber: number = 1;
   length: number;
+  isLoading: boolean = false;
   //number of data getting from backend (dataSize~pageSize in emitting)
   dataSize: number = 60;
   dataLoaded = false;
@@ -56,7 +58,8 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private jwtService: JwtService
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -68,13 +71,14 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.authService.user.subscribe((user) => {
       this.doctorId = user.id;
-      this.getActiveTreatment();
     });
+    this.getActiveTreatment();
     this.pageSizeOutput.emit(this.dataSize);
     this.pageNumberOutput.emit(this.pageNumber);
   }
 
   getActiveTreatment(): void {
+    this.isLoading = true;
     this.medicalTreatmentService
       .getActive(this.doctorId, this.dataSize, this.pageNumber)
       .subscribe(
@@ -85,9 +89,11 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
           //pageSize data 0 not acceptable on backend, but required on front
           this.pageNumber = 0;
           this.length = response.length;
+          this.isLoading = false;
         },
         (error: HttpErrorResponse) => {
           this.toastService.error(error.message);
+          this.isLoading = false;
         }
       );
   }

@@ -25,6 +25,8 @@ export class AnamnesisTabComponent implements OnInit {
       id: null as any,
       appointment: null as any,
       description: '',
+      symptoms: [],
+      prescriptions: [],
     };
   }
 
@@ -51,6 +53,8 @@ export class AnamnesisTabComponent implements OnInit {
       id: null as any,
       appointment: null as any,
       description: '',
+      symptoms: [],
+      prescriptions: [],
     };
     this.anamnesisService.searchAnamnesis(event.target.value).subscribe(
       (response: Anamnesis[]) => {
