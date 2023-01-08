@@ -30,7 +30,19 @@
       <canvas class="segment" id="chart5"></canvas>
     </div>
     <div class="combo">
-      <mat-form-field class="search-doctors" appearance="fill">
+      <mat-form-field class="search-options" appearance="fill">
+        <mat-label>Choose view</mat-label>
+        <mat-select (selectionChange)="saveOption($event)">
+          <mat-option value="YEARLY">YEARLY</mat-option>
+          <mat-option value="MONTHLY">MONTHLY</mat-option>
+          <mat-option value="OPTIONAL">OPTIONAL</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field
+        class="search-doctors"
+        appearance="fill"
+        *ngIf="yearView || monthlyView || optionalView"
+      >
         <mat-label>Choose doctor</mat-label>
         <mat-select (selectionChange)="saveDoctor($event)">
           <mat-option *ngFor="let d of doctors" [value]="d.id">{{
@@ -38,7 +50,11 @@
           }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="years" appearance="fill">
+      <mat-form-field
+        class="years"
+        appearance="fill"
+        *ngIf="yearView || monthlyView"
+      >
         <mat-label>Choose year</mat-label>
         <mat-select (selectionChange)="saveYear($event)">
           <mat-option value="2021">2021</mat-option>
@@ -46,7 +62,7 @@
           <mat-option value="2023">2023</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-form-field class="months" appearance="fill">
+      <mat-form-field class="months" appearance="fill" *ngIf="monthlyView">
         <mat-label>Choose month</mat-label>
         <mat-select (selectionChange)="saveMonth($event)">
           <mat-option value="1">January</mat-option>

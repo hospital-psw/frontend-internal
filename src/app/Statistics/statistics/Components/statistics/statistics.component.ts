@@ -24,13 +24,18 @@ export class StatisticsComponent implements OnInit {
   max: number = 0;
   tableData: DataTableItem[] = [];
   chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  chartTenderMoneyData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  tenderMoneyChart: any = [];
   vacationsChart: any;
 
   chart6_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   doctorYearlyBookingChart: any = [];
   doctors: any = [];
+
+  yearView = false;
+  monthlyView = false;
+  optionalView = false;
+
+  chartTenderMoneyData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  tenderMoneyChart: any = [];
 
   tenderBloodQuantityChart: any;
   chart7_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -475,6 +480,7 @@ export class StatisticsComponent implements OnInit {
         },
       },
     });
+
     this.tenderMoneyChart = new Chart('chart8', {
       type: 'line',
       data: {
@@ -726,6 +732,7 @@ export class StatisticsComponent implements OnInit {
       });
     });
   }
+
   year: any = null;
   doctor: any = null;
   month: any = null;
@@ -868,6 +875,22 @@ export class StatisticsComponent implements OnInit {
           },
         });
       });
+  }
+
+  saveOption(evt: any) {
+    if (evt.value === 'YEARLY') {
+      this.yearView = true;
+      this.monthlyView = false;
+      this.optionalView = false;
+    } else if (evt.value === 'MONTHLY') {
+      this.yearView = false;
+      this.monthlyView = true;
+      this.optionalView = false;
+    } else if (evt.value === 'OPTIONAL') {
+      this.yearView = false;
+      this.monthlyView = false;
+      this.optionalView = true;
+    }
   }
 
   getDoctorYearlyBookingStatistic() {
