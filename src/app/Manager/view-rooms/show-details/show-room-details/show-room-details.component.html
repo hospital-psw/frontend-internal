@@ -40,7 +40,7 @@
             class="inputText"
             matInput
             [disabled]="isDisabled"
-            value="{{ this.room.workingHours.start | date: 'hh:mm' }}"
+            value="{{ this.room.workingHours.start | date : 'hh:mm' }}"
             #start
           />
         </mat-form-field>
@@ -51,7 +51,7 @@
             class="inputText"
             matInput
             [disabled]="isDisabled"
-            value="{{ this.room.workingHours.end | date: 'hh:mm' }}"
+            value="{{ this.room.workingHours.end | date : 'hh:mm' }}"
             #end
           />
         </mat-form-field>
