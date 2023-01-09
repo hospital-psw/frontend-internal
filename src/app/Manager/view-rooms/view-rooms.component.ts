@@ -411,7 +411,7 @@ export class ViewRoomsComponent
   }
 
   relocate(element: IEquipment) {
-    this.doRelocate = true;
+    //this.doRelocate = true;
     this.element = element;
   }
 
@@ -423,7 +423,7 @@ export class ViewRoomsComponent
   }
 
   closeStepper() {
-    this.doRelocate = false;
+    //this.doRelocate = false;
   }
 
   renovate() {
