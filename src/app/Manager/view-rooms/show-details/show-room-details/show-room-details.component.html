@@ -17,16 +17,18 @@
             #number
           />
         </mat-form-field>
-        <mat-form-field class="detail">
+        <mat-form-field class="detail" appearance="fill">
           <mat-label>Room purpose</mat-label>
-          <input
-            required
-            class="inputText"
-            matInput
-            [disabled]="isDisabled"
-            value="{{ this.room.purpose }}"
-            #purpose
-          />
+            
+            <mat-select required [disabled]="isDisabled" value="{{ this.room.purpose }}"
+            #purpose>
+            <mat-option value="operaciona sala">operaciona sala</mat-option>
+            <mat-option value="sala za sastanke">sala za sastanke</mat-option>
+            <mat-option value="ordinacija">ordinacija</mat-option>
+            <mat-option value="kafeterija">kafeterija</mat-option>
+            <mat-option value="zubna ordinacija">zubna ordinacija</mat-option>
+            <mat-option value="laboratorija">laboratorija</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div
