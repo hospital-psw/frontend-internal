@@ -24,8 +24,18 @@
             <mat-option value="3">3</mat-option>
           </mat-select>
         </mat-form-field>
-      <button mat-button [matMenuTriggerFor]="menu" class="menu-btn">
+      <button mat-button [matMenuTriggerFor]="menu" class="menu-btn" matTooltip="Filters">
         <img src="assets/img/filter1.png" alt="filter" width="30" height="30">
+      </button>
+      <button
+        class="menu-btn"
+        mat-button
+        *ngIf="floor !== -1 && building !== -1"
+        (click)="renovate()"
+        matTooltip="Schedule renovation"
+        id="renovation-button"
+      >
+        <img src="assets/img/renovation.png" alt="renovation">
       </button>
       <mat-menu #menu="matMenu" class="menu-expander" >
         
@@ -99,14 +109,7 @@
     </div>
   </div>
   <div class="details" ngSwitch="switchDetails">
-    <button
-      class="renovation-btn"
-      *ngIf="floor !== -1 && building !== -1"
-      (click)="renovate()"
-      id="renovation-button"
-    >
-      Renovation
-    </button>
+ 
     <app-show-building-details
       (notify)="updateBuildingInfo()"
       *ngIf="this.showBuildingDetails"
