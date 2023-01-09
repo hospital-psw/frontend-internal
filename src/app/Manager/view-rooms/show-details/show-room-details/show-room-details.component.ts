@@ -37,6 +37,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
+  showTabs: boolean = false;
 
   ngOnInit(): void {}
 
@@ -124,5 +125,8 @@ export class ShowRoomDetailsComponent implements OnInit {
 
   relocate(element: IEquipment) {
     this.relocateNotify.emit(element);
+  }
+  tabs(){
+    this.showTabs = true;
   }
 }

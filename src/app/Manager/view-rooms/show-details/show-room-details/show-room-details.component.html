@@ -78,13 +78,17 @@
       </div>
     </div>
   </form>
+  <button (click)="tabs()" mat-button class="menu-btn" matTooltip="Filters">
+    <img src="assets\img\information.png" alt="filter" width="30" height="30">
+  </button>
+  
   <!--
   <app-show-equipment
     (notifyRelocation)="relocate($event)"
     [equipment]="equipment"
   ></app-show-equipment>
   -->
-
+  <!--
   <app-tabs-details
     [relocationRequests]="relocationRequests"
     [appointments]="appointments"
@@ -93,4 +97,15 @@
     [room]="room"
     [consiliums]="consiliums"
   ></app-tabs-details>
+  -->
 </div>
+<app-tab-details-modal
+  *ngIf="showTabs"
+  (closeNotify)="showTabs = false"
+  [relocationRequests]="relocationRequests"
+        [appointments]="appointments"
+        [equipment]="equipment"
+        [renovations]="renovations"
+        [room]="room"
+        [consiliums]="consiliums">
+</app-tab-details-modal>

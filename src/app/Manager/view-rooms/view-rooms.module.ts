@@ -25,6 +25,7 @@ import { RenovationsComponent } from './show-details/renovations/renovations/ren
 import { RenovationStepperModule } from 'src/app/schedule-renovation/stepper/stepper.module';
 import { ConsiliumsComponent } from './show-details/consiliums/consiliums/consiliums.component';
 import { MaterialModule } from 'src/app/material/material.module';
+import { TabDetailsModalComponent } from './show-details/tab-details-modal/tab-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { MaterialModule } from 'src/app/material/material.module';
     AppointmentsComponent,
     RenovationsComponent,
     ConsiliumsComponent,
+    TabDetailsModalComponent,
     
   ],
   imports: [

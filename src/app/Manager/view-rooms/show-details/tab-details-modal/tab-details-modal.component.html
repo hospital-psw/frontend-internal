@@ -1,0 +1,14 @@
+<div class="stepper-container">
+    <div class="stepper-wrapper">
+      <mat-icon class="close-icon" (click)="closeTabs()">close</mat-icon>
+        <app-tabs-details
+        [relocationRequests]="relocationRequests"
+        [appointments]="appointments"
+        [equipment]="equipment"
+        [renovations]="renovations"
+        [room]="room"
+        [consiliums]="consiliums"></app-tabs-details>
+      
+    </div>
+  </div>
+  

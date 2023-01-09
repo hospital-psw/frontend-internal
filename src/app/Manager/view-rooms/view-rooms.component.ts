@@ -65,6 +65,7 @@ export class ViewRoomsComponent
   element: IEquipment;
   doRelocate: boolean = false;
   doRenovate: boolean = false;
+  showTabs: boolean = false;
   rooms: IRoomMap[] = [];
   equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
@@ -427,5 +428,9 @@ export class ViewRoomsComponent
 
   renovate() {
     this.doRenovate = true;
+  }
+
+  tabs(){
+    this.showTabs = true;
   }
 }
