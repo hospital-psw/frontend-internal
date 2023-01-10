@@ -25,6 +25,7 @@ export const environment = {
   apiConsiliumUrl: 'hospital/Consilium',
   apiApplicationPatient: 'hospital/ApplicationPatient',
   apiExaminationEvent: 'hospital/ExaminationEvent',
+  apiDoctorSchedule: 'hospital/DoctorSchedule',
 };
 
 /*
