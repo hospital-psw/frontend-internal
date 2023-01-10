@@ -8,9 +8,8 @@ describe('BottomSheetScheduleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BottomSheetScheduleComponent ]
-    })
-    .compileComponents();
+      declarations: [BottomSheetScheduleComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(BottomSheetScheduleComponent);
     component = fixture.componentInstance;
