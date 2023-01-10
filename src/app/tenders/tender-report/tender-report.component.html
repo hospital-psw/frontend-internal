@@ -1,0 +1,46 @@
+<div>
+  <h1 class="title">Tender report</h1>
+  <div class="container">
+    <div class="elem">
+      <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Choose a start date</mat-label>
+        <input matInput [matDatepicker]="datepicker1" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datepicker1>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>
+              Apply
+            </button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="elem">
+      <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Choose a end date</mat-label>
+        <input matInput [matDatepicker]="datepicker" />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>
+              Apply
+            </button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="btn">
+      <button class="generate_btn">Generate</button>
+    </div>
+  </div>
+</div>
