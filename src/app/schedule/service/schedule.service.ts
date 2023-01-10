@@ -11,6 +11,7 @@ import { ReschedulingAppointmentDTO } from '../interface/ReschedulingAppointment
 import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
 import { WorkHours } from '../interface/WorkHours';
 import { DisplayConsiliumDto } from '../interface/DisplayConsiliumDto';
+import { DoctorSchedule } from '../interface/DoctorSchedule';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ export class ScheduleService {
   private apiAppointmentUrl = environment.apiAppointmentUrl;
   private apiConsiliumUrl = environment.apiConsiliumUrl;
   private apiDoctorUrl = environment.apiDoctorUrl;
+  private apiScheduleUrl = environment.apiDoctorSchedule;
 
   constructor(private http: HttpClient) {}
 
@@ -83,6 +85,12 @@ export class ScheduleService {
   public getAllConsiliumsByDoctorId(doctorId: number) {
     return this.http.get<DisplayConsiliumDto[]>(
       `${this.apiConsiliumUrl}/doctor/${doctorId}`
+    );
+  }
+
+  public getDoctorsSchedule(doctorId: number) {
+    return this.http.get<DoctorSchedule>(
+      `${this.apiScheduleUrl}/doctor/${doctorId}`
     );
   }
 }

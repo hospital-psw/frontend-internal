@@ -144,7 +144,7 @@ const routes: Routes = [
   },
   {
     path: 'vacation-requests/doctor/create',
-    title: 'Vacation Request Creation | Care Connect',
+    title: 'New Vacation Request | Care Connect',
     component: CreateRequestFormComponent,
   },
   {
@@ -192,6 +192,7 @@ const routes: Routes = [
   },
   {
     path: 'blood-storage',
+    title: 'Blood Storage | Care Connect',
     component: BloodUnitsOverviewComponent,
   },
   {

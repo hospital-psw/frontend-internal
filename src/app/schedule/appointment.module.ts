@@ -35,6 +35,7 @@ import {
   POSITION,
   SPINNER,
 } from 'ngx-ui-loader';
+import { BottomSheetScheduleComponent } from './show-all/bottom-sheet-schedule/bottom-sheet-schedule.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   fgsColor: '#1493ff',
@@ -65,6 +66,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SchedulingAppointmentTableComponent,
     SchedulingAppointmentCardComponent,
     BottomSheetComponent,
+    BottomSheetScheduleComponent,
   ],
   imports: [
     CommonModule,
