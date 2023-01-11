@@ -1,5 +1,9 @@
 <div class="container">
+  
   <div class="background">
+    <button class="button" (click)="goToUrgentBloodTransferPage()">
+      Urgent blood transfer report
+    </button>
     <div class="size" *ngIf="appointmentChart">
       <canvas class="segment" id="chart1"></canvas>
     </div>
