@@ -45,9 +45,18 @@
           <mat-label>Number</mat-label>
           <input matInput #number (click) = "$event.stopPropagation()"/>
         </mat-form-field>
-        <mat-form-field class="search">
+        <mat-form-field class="search" appearance="fill">
           <mat-label>Purpose</mat-label>
-          <input matInput #purpose (click) = "$event.stopPropagation()"/>
+            
+            <mat-select (click) = "$event.stopPropagation()"
+            #purpose>
+            <mat-option value="operaciona sala">operaciona sala</mat-option>
+            <mat-option value="sala za sastanke">sala za sastanke</mat-option>
+            <mat-option value="ordinacija">ordinacija</mat-option>
+            <mat-option value="kafeterija">kafeterija</mat-option>
+            <mat-option value="zubna ordinacija">zubna ordinacija</mat-option>
+            <mat-option value="laboratorija">laboratorija</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
       <div class="hospital-info1">
