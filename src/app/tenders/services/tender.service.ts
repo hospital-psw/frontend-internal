@@ -29,9 +29,13 @@ export class TenderService {
   }
 
   public generateReport(start: Date | null, end: Date | null) {
-    return this.http.post(`http://localhost:45488/api/Tender/generate-report`, {
-      start,
-      end,
-    });
+    return this.http.post(
+      `http://localhost:45488/api/Tender/generate-report`,
+      {
+        start,
+        end,
+      },
+      { responseType: 'blob' }
+    );
   }
 }

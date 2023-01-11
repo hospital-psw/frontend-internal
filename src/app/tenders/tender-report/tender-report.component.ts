@@ -21,6 +21,10 @@ export class TenderReportComponent {
         this.range.controls.start.value,
         this.range.controls.end.value
       )
-      .subscribe((res) => this.toast.success('Report generated.'));
+      .subscribe((blob: Blob): void => {
+        const file = new Blob([blob], { type: 'application/pdf' });
+        const fileURL = URL.createObjectURL(file);
+        window.open(fileURL, '_blank', 'width=1000, height=800');
+      });
   }
 }
