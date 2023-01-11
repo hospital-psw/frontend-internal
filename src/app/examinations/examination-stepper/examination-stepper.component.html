@@ -1,3 +1,4 @@
+<ngx-ui-loader *ngIf="isLoading"></ngx-ui-loader>
 <div class="examinations-wrapper">
   <mat-stepper orientation="horizontal" class="exam-stepper" [linear]="true">
     <mat-step class="step">
@@ -98,18 +99,26 @@
             cols="30"
             rows="10"
             placeholder="Please enter anamnesis and epicrisis..."
-            [(ngModel)]="anamnesis.description"
+            [(ngModel)]="description"
           ></textarea>
         </div>
       </div>
 
       <div class="button-container">
-        <button mat-button matStepperPrevious class="button">Previous</button>
+        <button
+          mat-button
+          matStepperPrevious
+          class="button"
+          (click)="executeBasicEvent(7)"
+        >
+          Previous
+        </button>
         <button
           mat-button
           matStepperNext
           class="button"
-          [disabled]="anamnesis.description.length === 0"
+          [disabled]="!description"
+          (click)="createDescription()"
         >
           Next
         </button>
@@ -126,17 +135,17 @@
           </div>
 
           <div class="main-content">
-            <div class="no-prescriptions" *ngIf="prescriptions.length === 0">
+            <div class="no-prescriptions" *ngIf="perscriptions.length === 0">
               <div class="text-pres">
                 Create prescription by clicking on new prescription button.
               </div>
               <div class="medicament-img"></div>
             </div>
-            <div class="list-container" *ngIf="prescriptions.length > 0">
-              <div class="main-content__single" *ngFor="let p of prescriptions">
+            <div class="list-container" *ngIf="perscriptions.length > 0">
+              <div class="main-content__single" *ngFor="let p of perscriptions">
                 <div class="header-desc">
                   <span class="main-content__single-header">{{
-                    p.medicine.name
+                    p.medicament.name
                   }}</span>
                   <span class="main-content__single-description">{{
                     p.description
@@ -144,8 +153,8 @@
                 </div>
                 <div class="datecancel">
                   <span class="main-content__single-daterange"
-                    >{{ p.from | date: "dd.MM.yyyy" }} -
-                    {{ p.to | date: "dd.MM.yyyy" }}</span
+                    >{{ p.dateRange.from | date: "dd.MM.yyyy" }} -
+                    {{ p.dateRange.to | date: "dd.MM.yyyy" }}</span
                   >
                   <div
                     class="main-content__single-cancel"
@@ -165,7 +174,12 @@
 
           <div class="footer">
             <div class="button-container">
-              <button mat-button matStepperPrevious class="button">
+              <button
+                mat-button
+                matStepperPrevious
+                class="button"
+                (click)="executeBasicEvent(8)"
+              >
                 Previous
               </button>
               <button mat-button matStepperNext class="button">Next</button>
@@ -229,21 +243,28 @@
             <span class="summary__symptoms-header">Prescriptions: </span>
             <div
               class="summary__symptoms-symptom"
-              *ngFor="let p of prescriptions"
+              *ngFor="let p of perscriptions"
             >
-              - {{ p.medicine.name | titlecase }}
+              - {{ p.medicament.name | titlecase }}
             </div>
           </div>
         </div>
       </div>
 
       <div class="button-container">
-        <button mat-button matStepperPrevious class="button">Previous</button>
+        <button
+          mat-button
+          matStepperPrevious
+          class="button"
+          (click)="executeBasicEvent(9)"
+        >
+          Previous
+        </button>
         <button
           mat-button
           matStepperNext
           class="button"
-          (click)="createAnamnesis()"
+          (click)="finishExamination()"
         >
           Finish
         </button>

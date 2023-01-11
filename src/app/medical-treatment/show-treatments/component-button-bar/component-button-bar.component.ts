@@ -7,6 +7,8 @@ import { CreateDialogComponentComponent } from './../create-dialog-component/cre
 import { Router } from '@angular/router';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { JwtService } from 'src/app/common/auth/service/jwt.service';
+import { TokenData } from 'src/app/login/interface/TokenData';
 
 @Component({
   selector: 'app-component-button-bar',
@@ -21,17 +23,23 @@ export class ComponentButtonBarComponent implements OnInit {
   @Input() pageSizeSecond: number;
   @Input() pageNumberSecond: number;
   doctorId: number;
+  role: string;
+  isLoading: boolean;
 
   constructor(
     private dialog: MatDialog,
     private medicalTreatmentService: MedicalTreatmentService,
     private toastService: ToastrService,
-    private authService: AuthService
+    private authService: AuthService,
+    private jwtService: JwtService
   ) {}
 
   ngOnInit(): void {
     this.authService.user.subscribe((user) => {
       this.doctorId = user.id;
+      this.role = (
+        this.jwtService.decodeToken(user.token as string) as TokenData
+      ).role;
     });
   }
 
@@ -40,12 +48,17 @@ export class ComponentButtonBarComponent implements OnInit {
       .open(CreateDialogComponentComponent)
       .afterClosed()
       .subscribe((res) => {
+        this.isLoading = true;
         this.getActiveTreatment();
         this.getInactiveTreatment();
+        this.isLoading = false;
       });
   }
 
   getActiveTreatment(): void {
+    if (this.role !== 'DOCTOR') {
+      return;
+    }
     this.medicalTreatmentService
       .getActive(this.doctorId, this.pageSizeFirst, this.pageNumberFirst)
       .subscribe(
@@ -59,6 +72,9 @@ export class ComponentButtonBarComponent implements OnInit {
   }
 
   getInactiveTreatment(): void {
+    if (this.role !== 'DOCTOR') {
+      return;
+    }
     this.medicalTreatmentService
       .getInactive(this.doctorId, this.pageSizeSecond, this.pageNumberSecond)
       .subscribe(

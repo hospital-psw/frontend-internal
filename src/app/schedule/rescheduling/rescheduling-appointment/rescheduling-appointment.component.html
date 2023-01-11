@@ -1,10 +1,18 @@
 <div class="parentForm">
   <app-rescheduling-appointment-form
+    class="recommended"
     (outputDates)="storeFromChildForm($event)"
     [doctorId]="doctorId"
   ></app-rescheduling-appointment-form>
   <app-rescheduling-appointment-table
-    class="recommended"
+    *ngIf="recommendedDatesFromParent.length"
+    class="recommended2"
     [recommendedDates]="recommendedDatesFromParent"
   ></app-rescheduling-appointment-table>
+  <div class="schedule" *ngIf="!recommendedDatesFromParent.length">
+    <div class="schedule__image"></div>
+    <div class="schedule__text">
+      Fill out the form to generate the most suitable appointments
+    </div>
+  </div>
 </div>

@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDividerModule} from '@angular/material/divider';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
   declarations: [],
@@ -64,7 +65,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDialogModule,
     MatRadioModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatBottomSheetModule,
   ],
 })
 export class MaterialModule {}

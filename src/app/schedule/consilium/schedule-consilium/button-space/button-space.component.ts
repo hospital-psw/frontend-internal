@@ -56,7 +56,7 @@ export class ButtonSpaceComponent {
         this.router.navigate(['/app/consiliums']);
         this.toastrService.success(
           'Consilium is successfully scheduled. Date: ' +
-            response.dateTime.toString()
+            response.startDateTime.toString()
         );
       },
       (error: HttpErrorResponse) => {

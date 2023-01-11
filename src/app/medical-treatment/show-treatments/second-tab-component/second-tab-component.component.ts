@@ -63,8 +63,8 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.authService.user.subscribe((user) => {
       this.doctorId = user.id;
-      this.getInactiveTreatment();
     });
+    this.getInactiveTreatment();
     this.pageSizeOutput.emit(this.dataSize);
     this.pageNumberOutput.emit(this.pageNumber);
   }

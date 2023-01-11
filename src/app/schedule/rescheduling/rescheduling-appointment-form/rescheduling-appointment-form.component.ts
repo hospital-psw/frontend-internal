@@ -25,6 +25,7 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
   examinationTypes: ExaminationType[];
   num: any;
   recommendedDates: Date[];
+  isFinished: boolean;
 
   constructor(
     private appointmentService: ScheduleService,
@@ -37,6 +38,7 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
   ngOnInit(): void {
     this.appointment = this.route.snapshot.data['appointment'];
     this.examinationTypes = Object.values(ExaminationType);
+    this.isFinished = true;
 
     this.recommendedDto = {
       patientId: this.appointment.patient.id,
@@ -61,6 +63,7 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
   }
 
   getRecommendedAppointments(): void {
+    this.isFinished = false;
     let date = this.recommendedDto.date;
     this.recommendedDto.date = new Date(
       date?.getFullYear()!,
@@ -71,9 +74,11 @@ export class ReschedulingAppointmentFormComponent implements OnInit {
     this.appointmentService.getAllRecommended(this.recommendedDto).subscribe(
       (response: RecommendedDatesDTO[]) => {
         this.outputDates.emit(response);
+        this.isFinished = true;
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
+        this.isFinished = true;
       }
     );
   }

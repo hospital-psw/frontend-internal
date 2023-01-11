@@ -6,8 +6,43 @@
     padding: 0rem 5rem;
   }
   
-  .recommended {
-    caret-color: transparent;
-    height: 100%;
+.recommended {
+  caret-color: transparent;
+  height: 100%;
+  width: 70%;
+}
+
+.recommended2 {
+  caret-color: transparent;
+  height: 100%;
+  width: 50%;
+}
+
+.schedule {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+
+  &__image {
+    margin-bottom: 5rem;
+    background-image: url('../../../assets/img/Scheduling.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80%;
+    height: 70%;
   }
+
+  &__text {
+    color: #0070B5;
+    font-size: 1.7rem;
+    font-weight: 500;
+    width: 50%;
+    text-align: center;
+  }
+}
   
