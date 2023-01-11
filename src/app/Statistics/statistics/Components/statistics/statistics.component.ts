@@ -47,7 +47,7 @@ export class StatisticsComponent implements OnInit {
     private service: StatisticsService,
     private doctorService: DoctorService,
     private tenderService: TenderService,
-    private router: Router,
+    private router: Router
   ) {
     Chart.register(...registerables);
   }
