@@ -10,7 +10,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { TestComponent } from './Components/test/test.component';
 import { RenovationStatisticsComponent } from './Components/renovation-statistics/renovation-statistics.component';
-import { FormsModule } from '@angular/forms';
+import { UrgentBloodTransferStatisticsComponent } from './Components/urgent-blood-transfer-statistics/urgent-blood-transfer-statistics.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -22,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     DataTableComponent,
     TestComponent,
     RenovationStatisticsComponent,
+    UrgentBloodTransferStatisticsComponent,
   ],
   imports: [
     CommonModule,
@@ -30,9 +33,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    ReactiveFormsModule,
+    MatSlideToggleModule,
+    PdfViewerModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
   ],
 })
 export class StatisticsModule {}
