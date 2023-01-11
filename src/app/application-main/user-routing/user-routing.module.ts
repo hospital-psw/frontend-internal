@@ -37,7 +37,6 @@ import { BaseComponent } from 'src/app/examinations/anamnesis-perscriptions-revi
 import { BloodRequestViewComponent } from 'src/app/Manager/blood-request/blood-request-view/blood-request-view.component';
 import { UrgentBloodTransferStatisticsComponent } from 'src/app/Statistics/statistics/Components/urgent-blood-transfer-statistics/urgent-blood-transfer-statistics.component';
 
-
 const routes: Routes = [
   {
     path: 'appointments',
