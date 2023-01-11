@@ -1,9 +1,15 @@
 <div class="details-form">
+  <div class="info-btn-wrapper">
+    <button (click)="tabs()" mat-button class="menu-btn" matTooltip="Room information" class="info-btn">
+      <img src="assets\img\information.png" alt="filter" width="24" height="24">
+    </button>
+  </div>
   <form
     (submit)="
       editRoom(purpose.value, start.value, end.value, number.value, $event)
     "
   >
+ 
     <div class="blocks">
       <div class="details">
         <mat-form-field class="detail">
@@ -80,9 +86,7 @@
       </div>
     </div>
   </form>
-  <button (click)="tabs()" mat-button class="menu-btn" matTooltip="Filters">
-    <img src="assets\img\information.png" alt="filter" width="30" height="30">
-  </button>
+  
   
   <!--
   <app-show-equipment
