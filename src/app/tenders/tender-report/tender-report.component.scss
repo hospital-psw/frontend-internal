@@ -1,0 +1,31 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 10rem;
+}
+
+.title{
+text-align: center;
+}
+
+.elem{
+    margin-bottom: 4rem;
+}
+
+.generate_btn{
+    background-color:#0E4C92;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 1rem 2rem;
+}
+.btn{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+.generate_btn:hover{
+    background-color: white;
+    color: #0E4C92;
+    border: 1px solid #0E4C92;
+}
