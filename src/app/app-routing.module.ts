@@ -126,7 +126,7 @@ const routes: Routes = [
   {
     path: 'blood-request-view',
     component: BloodRequestViewComponent,
-  }
+  },
 ];
 
 @NgModule({

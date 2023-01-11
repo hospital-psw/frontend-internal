@@ -48,7 +48,11 @@
         <div class="row">
           <mat-form-field appearance="fill" class="specialType">
             <mat-label>Select</mat-label>
-            <mat-select id="bloodtype" [(ngModel)]="selected" (ngModelChange)="hideResponse()">
+            <mat-select
+              id="bloodtype"
+              [(ngModel)]="selected"
+              (ngModelChange)="hideResponse()"
+            >
               <mat-option
                 *ngFor="let type of bloodTypes; let i = index"
                 [value]="type"
