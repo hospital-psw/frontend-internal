@@ -209,8 +209,8 @@ const routes: Routes = [
   {
     path: 'blood-additions/:bt',
     title: 'Blood Additions | Care Connect',
-    component : BloodAdditionsOverviewComponent,
-  }
+    component: BloodAdditionsOverviewComponent,
+  },
 ];
 
 @NgModule({

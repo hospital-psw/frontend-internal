@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./blood-units-overview.component.scss'],
 })
 export class BloodUnitsOverviewComponent {
-  constructor(private bloodStorageService: BloodStorageService,
-              private router:Router,
-    ) {}
+  constructor(
+    private bloodStorageService: BloodStorageService,
+    private router: Router
+  ) {}
 
   dataSource: BloodUnit[];
   displayedColumns: string[] = ['bloodType', 'amount'];
@@ -57,9 +58,7 @@ export class BloodUnitsOverviewComponent {
     return sum;
   }
 
-  previewAdditions(unit: any){
-    
-    this.router.navigateByUrl("app/blood-additions/"+unit);
-    
+  previewAdditions(unit: any) {
+    this.router.navigateByUrl('app/blood-additions/' + unit);
   }
 }
