@@ -24,22 +24,10 @@
     >
   </div>
   <div class="button-group">
+    <div class="button-group__button-app" style="opacity: 0"></div>
+    <div class="button-group__button-app" style="opacity: 0"></div>
     <button class="button-group__button-app" (click)="scheduleView()">
       SCHEDULE
-    </button>
-    <button
-      [disabled]="!canClick"
-      class="button-group__button-app"
-      (click)="rescheduleAppointment($event)"
-    >
-      RESCHEDULE
-    </button>
-    <button
-      [disabled]="!canClick"
-      class="button-group__button-app"
-      (click)="cancelAppointment($event)"
-    >
-      CANCEL
     </button>
   </div>
 </div>
@@ -50,9 +38,10 @@
     [dayStartHour]="dayStartHour"
     [dayEndHour]="dayEndHour"
     [hourSegmentHeight]="hourSegmentHeight"
-    [events]="appointments"
+    [events]="calendarEvents"
     [eventTitleTemplate]="customTemplate"
-    (eventClicked)="onEventClick($event)"
+    (eventClicked)="openBottomSheet($event)"
     (dblclick)="doubleClick($event)"
   ></mwl-calendar-week-view>
 </div>
+<ngx-ui-loader *ngIf="isLoading"></ngx-ui-loader>

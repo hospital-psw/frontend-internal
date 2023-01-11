@@ -3,9 +3,11 @@ import { StatisticsService } from '../../Services/statistics.service';
 import { Chart, registerables } from 'chart.js';
 import { DataTableItem } from '../data-table/data-table-datasource';
 import { DoctorService } from '../../Services/doctor.service';
-import { ax } from 'chart.js/dist/chunks/helpers.core';
 import { isThisISOWeek, parse } from 'date-fns';
 import { TenderService } from '../../Services/tender.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { AdditiveBlending } from 'three';
+import { DoctorOptionalStatisticDto } from 'src/app/Manager/Model/Dto/DoctorOptionalStatisticDto';
 
 @Component({
   selector: 'app-statistics',
@@ -21,16 +23,25 @@ export class StatisticsComponent implements OnInit {
   max: number = 0;
   tableData: DataTableItem[] = [];
   chart5_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  chartTenderMoneyData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  tenderMoneyChart: any = [];
   vacationsChart: any;
 
   chart6_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   doctorYearlyBookingChart: any = [];
   doctors: any = [];
 
+  yearView = false;
+  monthlyView = false;
+  optionalView = false;
+
+  chartTenderMoneyData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  tenderMoneyChart: any = [];
+
   tenderBloodQuantityChart: any;
   chart7_data: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  doctorOptionalBookingChart: any = [];
+  doctorOptionalBookingData: any = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
   constructor(
     private service: StatisticsService,
     private doctorService: DoctorService,
@@ -468,6 +479,7 @@ export class StatisticsComponent implements OnInit {
         },
       },
     });
+
     this.tenderMoneyChart = new Chart('chart8', {
       type: 'line',
       data: {
@@ -588,6 +600,66 @@ export class StatisticsComponent implements OnInit {
         },
       },
     });
+    this.doctorOptionalBookingChart = new Chart('chart9', {
+      type: 'line',
+      data: {
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ],
+        datasets: [
+          {
+            label: 'Number of appointments per year',
+            data: this.doctorOptionalBookingData,
+            backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)',
+            ],
+            borderWidth: 3,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          title: {
+            color: 'gray',
+            display: true,
+            font: {
+              size: 20,
+            },
+            text: 'Number of appointments per year',
+            padding: {
+              top: 10,
+            },
+          },
+        },
+      },
+    });
   }
   getVacationStatistic(event: any) {
     //pozvati funkciju za dobijanje podataka i proslediti event.value
@@ -659,6 +731,7 @@ export class StatisticsComponent implements OnInit {
       });
     });
   }
+
   year: any = null;
   doctor: any = null;
   month: any = null;
@@ -674,6 +747,10 @@ export class StatisticsComponent implements OnInit {
   saveMonth(event: any) {
     this.month = parseInt(event.value);
     this.getDoctorMonthlyBookingStatistic();
+  }
+
+  saveDate(event: any) {
+    this.getDoctorOptionalBookingStatistic();
   }
 
   getLabelsBasedOnMonth(month: number) {
@@ -797,6 +874,22 @@ export class StatisticsComponent implements OnInit {
           },
         });
       });
+  }
+
+  saveOption(evt: any) {
+    if (evt.value === 'YEARLY') {
+      this.yearView = true;
+      this.monthlyView = false;
+      this.optionalView = false;
+    } else if (evt.value === 'MONTHLY') {
+      this.yearView = false;
+      this.monthlyView = true;
+      this.optionalView = false;
+    } else if (evt.value === 'OPTIONAL') {
+      this.yearView = false;
+      this.monthlyView = false;
+      this.optionalView = true;
+    }
   }
 
   getDoctorYearlyBookingStatistic() {
@@ -1020,5 +1113,166 @@ export class StatisticsComponent implements OnInit {
           },
         });
       });
+  }
+
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
+  dto: DoctorOptionalStatisticDto;
+
+  getDoctorOptionalBookingStatistic() {
+    //console.log(this.doctor1);
+    //console.log(this.range.value.start)
+    //console.log(this.range.value.end)
+    if (
+      this.doctor == null ||
+      this.range.value.start == null ||
+      this.range.value.end == null
+    )
+      return;
+    //console.log('nije returnovao')
+    //let v = this.range.value.start.getDate();
+    //console.log(v)
+    //let labels = this.createLabels(this.range.value.start, this.range.value.end);
+    //console.log(labels);
+    this.dto = {
+      doctorId: this.doctor,
+      start: new Date(
+        this.range.value.start.getTime() -
+          this.range.value.start.getTimezoneOffset() * 60000
+      ),
+      end: new Date(
+        this.range.value.end.getTime() -
+          this.range.value.end.getTimezoneOffset() * 60000
+      ),
+    };
+    this.doctorYearlyBookingChart.destroy();
+    this.service
+      .getDoctorOptionalBookingStatistics(this.dto)
+      .subscribe((data) => {
+        this.doctorOptionalBookingData = data;
+        this.doctorYearlyBookingChart = new Chart('chart6', {
+          type: 'line',
+          data: {
+            labels: this.createLabels(
+              this.range.value.start,
+              this.range.value.end
+            ),
+            datasets: [
+              {
+                label: this.createTitle(
+                  this.range.value.start,
+                  this.range.value.end
+                ),
+                data: this.doctorOptionalBookingData,
+                backgroundColor: ['rgba(255, 99, 132, 0.2)'],
+                borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 3,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              title: {
+                color: 'gray',
+                display: true,
+                font: {
+                  size: 20,
+                },
+                text: this.createTitle(
+                  this.range.value.start,
+                  this.range.value.end
+                ),
+                padding: {
+                  top: 10,
+                },
+              },
+            },
+          },
+        });
+      });
+  }
+
+  createLabels(start: Date | null | undefined, end: Date | null | undefined) {
+    if (start != null && end != null) {
+      if ((end.getTime() - start.getTime()) / (1000 * 3600 * 24) < 32) {
+        let label = [];
+        let j = start.getDate();
+        for (
+          let i = 0;
+          i <= (end.getTime() - start.getTime()) / (1000 * 3600 * 24);
+          i++
+        ) {
+          label.push(j);
+          if (
+            (start.getMonth() % 2 === 0 && start.getMonth() < 7) ||
+            (start.getMonth() % 2 != 0 && start.getMonth() > 6)
+          ) {
+            if (j < 31) {
+              j++;
+            } else {
+              j = 1;
+            }
+          } else {
+            if (
+              (j < 28 && start.getMonth() === 1) ||
+              (start.getMonth() != 1 && j < 30)
+            ) {
+              j++;
+            } else {
+              j = 1;
+            }
+          }
+        }
+        return label;
+      } else {
+        let label = [];
+        let months = (end.getFullYear() - start.getFullYear()) * 12;
+        months -= start.getMonth();
+        months += end.getMonth();
+
+        let j = start.getMonth() + 1;
+        for (let i = 0; i <= months; i++) {
+          label.push(j);
+          if (j < 12) {
+            j++;
+          } else {
+            j = 1;
+          }
+        }
+        return label;
+      }
+    }
+    return [];
+  }
+
+  createTitle(start: Date | null | undefined, end: Date | null | undefined) {
+    if (start != null && end != null) {
+      if ((end.getTime() - start.getTime()) / (1000 * 3600 * 24) < 32) {
+        return 'Number of appointments per days';
+      } else {
+        return 'number of appointments per months';
+      }
+    }
+    return '';
   }
 }

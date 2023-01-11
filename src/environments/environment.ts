@@ -24,7 +24,9 @@ export const environment = {
   apiPerscription: 'hospital/Prescription',
   apiConsiliumUrl: 'hospital/Consilium',
   apiApplicationPatient: 'hospital/ApplicationPatient',
-  apiUrgentBloodTransfer: 'integration/UrgentBloodTransfer'
+  apiUrgentBloodTransfer: 'integration/UrgentBloodTransfer',
+  apiExaminationEvent: 'hospital/ExaminationEvent',
+  apiDoctorSchedule: 'hospital/DoctorSchedule',
 };
 
 /*

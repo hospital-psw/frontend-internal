@@ -23,6 +23,7 @@ export class SchedulingAppointmentFormComponent implements OnInit {
   selectedPatient: number;
   scheduleAppointment: ScheduleAppointmentDTO;
   minDate: Date;
+  isFinished: boolean;
 
   recommendedDates: Date[];
 
@@ -41,6 +42,7 @@ export class SchedulingAppointmentFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isFinished = true;
     this.patientService.getAllPatients().subscribe(
       (response: Patient[]) => {
         this.patients = response;
@@ -86,12 +88,15 @@ export class SchedulingAppointmentFormComponent implements OnInit {
       date?.getDate(),
       date?.getHours()! + 5
     );
+    this.isFinished = false;
     this.appointmentService.getAllRecommended(this.recommendedDto).subscribe(
       (response: RecommendedDatesDTO[]) => {
+        this.isFinished = true;
         this.outputDates.emit(response);
         this.scheduleInfoEvent.emit(this.scheduleAppointment);
       },
       (error: HttpErrorResponse) => {
+        this.isFinished = true;
         this.toastService.error(error.error);
       }
     );

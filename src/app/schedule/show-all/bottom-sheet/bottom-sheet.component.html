@@ -1,0 +1,21 @@
+<mat-nav-list class="list">
+  <button mat-list-item class="list__start" (click)="startExamination($event)">
+    <span matListItemTitle>Start examination</span>
+  </button>
+
+  <button
+    mat-list-item
+    class="list__reschedule"
+    (click)="rescheduleAppointment($event)"
+  >
+    <span matListItemTitle>Reschedule appointment</span>
+  </button>
+
+  <button
+    mat-list-item
+    class="list__cancel"
+    (click)="cancelAppointment($event)"
+  >
+    <span matListItemTitle>Cancel appointment</span>
+  </button>
+</mat-nav-list>

@@ -11,10 +11,11 @@ import { MatSortModule } from '@angular/material/sort';
 import { TestComponent } from './Components/test/test.component';
 import { RenovationStatisticsComponent } from './Components/renovation-statistics/renovation-statistics.component';
 import { UrgentBloodTransferStatisticsComponent } from './Components/urgent-blood-transfer-statistics/urgent-blood-transfer-statistics.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { ReactiveFormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -33,9 +34,10 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     MatPaginatorModule,
     MatSortModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
     MatSlideToggleModule,
     PdfViewerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
 })
 export class StatisticsModule {}

@@ -111,6 +111,7 @@ const routes: Routes = [
   },
   {
     path: '',
+    title: 'Welcome | Care Connect',
     component: LoginPageComponent,
   },
   {

@@ -25,6 +25,31 @@ import { TherapyTabsComponent } from './therapies/therapy-tabs/therapy-tabs.comp
 import { MatInput } from '@angular/material/input';
 import { AnamnesesPdfComponent } from './anamneses_pdf/anamneses-pdf/anamneses-pdf.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {
+  NgxUiLoaderConfig,
+  NgxUiLoaderHttpModule,
+  NgxUiLoaderModule,
+  POSITION,
+  SPINNER,
+} from 'ngx-ui-loader';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  fgsColor: '#1493ff',
+  fgsPosition: 'center-center',
+  fgsSize: 90,
+  fgsType: SPINNER.threeBounce,
+  gap: 24,
+  logoPosition: POSITION.centerCenter,
+  logoSize: 120,
+  logoUrl: '',
+  masterLoaderId: 'master',
+  overlayBorderRadius: '0',
+  overlayColor: 'rgba(40, 40, 40, 0.8)',
+  pbColor: '#1493ff',
+  pbDirection: 'ltr',
+  pbThickness: 3,
+  hasProgressBar: true,
+};
 
 @NgModule({
   declarations: [
@@ -54,6 +79,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     FormsModule,
     MatProgressSpinnerModule,
     MatCheckboxModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
   ],
 })
 export class MedicalTreatmentModule {}
