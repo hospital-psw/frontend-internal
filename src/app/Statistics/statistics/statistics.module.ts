@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { PatientSchedulingStatisticsComponent } from './Components/patient-scheduling-statistics/patient-scheduling-statistics.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     DataTableComponent,
     TestComponent,
     RenovationStatisticsComponent,
+    PatientSchedulingStatisticsComponent,
   ],
   imports: [
     CommonModule,

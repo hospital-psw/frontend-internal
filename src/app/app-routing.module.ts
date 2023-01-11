@@ -24,6 +24,7 @@ import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
 import { AppointmentResolver } from './schedule/resolver/appointment-resolver';
 import { PatientTableComponent } from './schedule/patients/patient-table/patient-table.component';
 import { RenovationStatisticsComponent } from './Statistics/statistics/Components/renovation-statistics/renovation-statistics.component';
+import { PatientSchedulingStatisticsComponent } from './Statistics/statistics/Components/patient-scheduling-statistics/patient-scheduling-statistics.component';
 
 const routes: Routes = [
   {
@@ -121,6 +122,10 @@ const routes: Routes = [
   {
     path: 'renovation/statistics',
     component: RenovationStatisticsComponent,
+  },
+  {
+    path: 'scheduling/statistics',
+    component: PatientSchedulingStatisticsComponent,
   },
 ];
 

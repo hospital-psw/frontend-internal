@@ -87,4 +87,14 @@ export class StatisticsService {
       dto
     );
   }
+  getAverageAppointmentSchedulingDuration() {
+    return this._http.get(
+      `${environment.apiAppointmentSchedulingEvent}/getAverageTimeSpent`
+    );
+  }
+  getNumOfTimesSpentOnEachStepOfSchedulingAppointment() {
+    return this._http.get(
+      `${environment.apiAppointmentSchedulingEvent}/getTimesOnSteps`
+    );
+  }
 }

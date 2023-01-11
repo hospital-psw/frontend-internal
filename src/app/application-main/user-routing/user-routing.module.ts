@@ -34,6 +34,7 @@ import { CreateComponent } from 'src/app/blood-bank/create/create.component';
 import { BloodUnitsOverviewComponent } from 'src/app/BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
 import { RenovationStatisticsComponent } from 'src/app/Statistics/statistics/Components/renovation-statistics/renovation-statistics.component';
 import { BaseComponent } from 'src/app/examinations/anamnesis-perscriptions-review/base/base.component';
+import { PatientSchedulingStatisticsComponent } from 'src/app/Statistics/statistics/Components/patient-scheduling-statistics/patient-scheduling-statistics.component';
 
 const routes: Routes = [
   {
@@ -204,6 +205,11 @@ const routes: Routes = [
     path: 'anamnesis-perscriptions-review',
     title: 'Search Engine | Care Connect',
     component: BaseComponent,
+  },
+  {
+    path: 'scheduling/statistics',
+    title: 'Appointment Scheduling Statistics | Care Connect',
+    component: PatientSchedulingStatisticsComponent,
   },
 ];
 
