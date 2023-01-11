@@ -24,6 +24,7 @@ import { ViewRoomsComponent } from './Manager/view-rooms/view-rooms.component';
 import { AppointmentResolver } from './schedule/resolver/appointment-resolver';
 import { PatientTableComponent } from './schedule/patients/patient-table/patient-table.component';
 import { RenovationStatisticsComponent } from './Statistics/statistics/Components/renovation-statistics/renovation-statistics.component';
+import { BloodRequestViewComponent } from './Manager/blood-request/blood-request-view/blood-request-view.component';
 
 const routes: Routes = [
   {
@@ -121,6 +122,10 @@ const routes: Routes = [
   {
     path: 'renovation/statistics',
     component: RenovationStatisticsComponent,
+  },
+  {
+    path: 'blood-request-view',
+    component: BloodRequestViewComponent,
   },
 ];
 

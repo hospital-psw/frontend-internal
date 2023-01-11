@@ -5,6 +5,7 @@ import {
   ChangeDetectorRef,
   OnDestroy,
   AfterContentChecked,
+  ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as THREE from 'three';
@@ -31,6 +32,7 @@ import { IRenovationRequestDisplay } from '../Model/RenovationRequestDisplay';
 import { RenovationService } from 'src/app/schedule-relocation/services/renovation.service';
 import { IConsiliumDisplay } from '../Model/ConsiliumDisplay';
 import { ConsiliumService } from '../service/consilium.service';
+import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-view-rooms',
@@ -62,6 +64,7 @@ export class ViewRoomsComponent
   element: IEquipment;
   doRelocate: boolean = false;
   doRenovate: boolean = false;
+  showTabs: boolean = false;
   rooms: IRoomMap[] = [];
   equipments: IEquipment[] = [];
   buildings: IBuilding[] = [];
@@ -232,6 +235,7 @@ export class ViewRoomsComponent
           this.clickedRoom = room.getRoomData().room;
           roomFound = true;
           this.showDetails = roomFound;
+          this.scene?.display(this.floor, this.building, this.clickedRoom.id);
           //get details for room
           this.roomService
             .getEquipment(this.clickedRoom.id)
@@ -407,7 +411,7 @@ export class ViewRoomsComponent
   }
 
   relocate(element: IEquipment) {
-    this.doRelocate = true;
+    //this.doRelocate = true;
     this.element = element;
   }
 
@@ -419,10 +423,14 @@ export class ViewRoomsComponent
   }
 
   closeStepper() {
-    this.doRelocate = false;
+    //this.doRelocate = false;
   }
 
   renovate() {
     this.doRenovate = true;
+  }
+
+  tabs() {
+    this.showTabs = true;
   }
 }

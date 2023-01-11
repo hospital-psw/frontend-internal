@@ -1,5 +1,8 @@
 <div class="container">
   <div class="background">
+    <button class="button" (click)="goToUrgentBloodTransferPage()">
+      Urgent blood transfer report
+    </button>
     <div class="size" *ngIf="appointmentChart">
       <canvas class="segment" id="chart1"></canvas>
     </div>
@@ -100,10 +103,7 @@
           />
         </mat-date-range-input>
         <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle
-          matIconSuffix
-          [for]="picker"
-        ></mat-datepicker-toggle>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
     </div>

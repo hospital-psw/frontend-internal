@@ -4,6 +4,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { TenderService } from '../services/tender.service';
 import { Router } from '@angular/router';
 import { BloodType } from '../../blood-bank/model/blood-type.model';
+import { MatDialog } from '@angular/material/dialog';
+import { TenderReportComponent } from '../tender-report/tender-report.component';
 
 @Component({
   selector: 'app-show-tenders',
@@ -17,7 +19,8 @@ export class ShowTendersComponent {
   constructor(
     private tenderService: TenderService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialogRef: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -56,5 +59,9 @@ export class ShowTendersComponent {
       sum += item.money.amount;
     }
     return sum;
+  }
+
+  openDialog() {
+    this.dialogRef.open(TenderReportComponent);
   }
 }
