@@ -209,7 +209,7 @@ const routes: Routes = [
   {
     path: 'statistics/urgent-blood-transfer',
     title: 'Urgent blood transfer report | Care Connect',
-    component: UrgentBloodTransferStatisticsComponent
+    component: UrgentBloodTransferStatisticsComponent,
   },
 ];
 
