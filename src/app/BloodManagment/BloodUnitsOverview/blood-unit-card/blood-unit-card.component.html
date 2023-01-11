@@ -1,0 +1,31 @@
+<div class="bu-card">
+  <div class="bu-card__circle">
+    <div class="bu-card__circle-bar"></div>
+    <div class="bu-card__circle-box">
+      <circle-progress
+        [percent]="getPercentage()"
+        [radius]="150"
+        [outerStrokeWidth]="20"
+        [innerStrokeWidth]="0"
+        [outerStrokeColor]="'#FFF'"
+        [innerStrokeColor]="'#FFF'"
+        [animation]="true"
+        [animationDuration]="300"
+        [showInnerStroke]="false"
+        [animateSubtitle]="true"
+        [animateTitle]="true"
+        [showUnits]="false"
+        [title]="units.toString()"
+        [titleFontSize]="'7rem'"
+        [titleColor]="'#fff'"
+        [subtitleFontSize]="'4rem'"
+        [subtitle]="'units'"
+        [subtitleColor]="'#fff'"
+      ></circle-progress>
+    </div>
+  </div>
+  <div class="bu-card__text">
+    <span class="header">{{ title }}</span>
+    <span class="percentage">{{ getPercentage() | number: "1.2-2" }} %</span>
+  </div>
+</div>

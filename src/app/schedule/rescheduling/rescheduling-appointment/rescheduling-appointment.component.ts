@@ -30,6 +30,7 @@ export class ReschedulingAppointmentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.recommendedDatesFromParent = [];
     this.userSub = this.authService.user.subscribe((user) => {
       this.doctorId = user.id;
     });

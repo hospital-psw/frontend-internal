@@ -2,7 +2,8 @@ import { IRoom } from 'src/app/Manager/Model/Room';
 
 export interface DisplayConsiliumDto {
   id: number;
-  dateTime: Date;
+  startDateTime: Date;
+  endDateTime: Date;
   topic: string;
   duration: number;
   room: IRoom;

@@ -16,6 +16,7 @@ import { ScheduleService } from 'src/app/schedule/service/schedule.service';
 export class SchedulingAppointmentCardComponent implements OnInit {
   @Input() appointmentData: ScheduleAppointmentDTO;
   @Input() cardInfo: RecommendedDatesDTO;
+  isFinished: boolean;
 
   constructor(
     private scheduleService: ScheduleService,
@@ -23,7 +24,9 @@ export class SchedulingAppointmentCardComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isFinished = true;
+  }
 
   createSchedulingAppointment(): void {
     this.appointmentData.date = this.cardInfo.date;
@@ -31,14 +34,17 @@ export class SchedulingAppointmentCardComponent implements OnInit {
 
   createAppointment(): void {
     this.createSchedulingAppointment();
+    this.isFinished = false;
     this.scheduleService.scheduleAppointment(this.appointmentData).subscribe(
       (response: Appointment) => {
+        this.isFinished = true;
         this.toaster.success(
           'Appointment succesfully scheduled on date ' + response.date
         );
         this.router.navigate(['/app/appointments']);
       },
       (error: HttpErrorResponse) => {
+        this.isFinished = true;
         this.toaster.error(error.error);
       }
     );

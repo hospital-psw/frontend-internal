@@ -3,7 +3,8 @@ import { Doctor } from './Doctor';
 
 export interface Consilium {
   id: number;
-  dateTime: Date;
+  startDateTime: Date;
+  endDateTime: Date;
   topic: string;
   duration: number;
   room: IRoom;
