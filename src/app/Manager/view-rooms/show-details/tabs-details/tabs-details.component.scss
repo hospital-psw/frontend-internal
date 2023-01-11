@@ -13,3 +13,9 @@
     padding: 3px!important;
     margin: 3px!important;
    }
+
+::ng-deep .mat-tab-list{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
