@@ -28,6 +28,6 @@
 <app-stepper
   *ngIf="doRelocate"
   [equipment]="element"
-  (close)="closeStepper()"
+  (closeNotify)="closeStepper()"
   (refreshEquipment)="refreshEquipment($event)"
 ></app-stepper>
