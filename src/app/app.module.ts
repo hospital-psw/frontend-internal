@@ -49,6 +49,8 @@ import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sideba
 import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
 import { BloodUnitsOverviewComponent } from './BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
 import { TenderReportComponent } from './tenders/tender-report/tender-report.component';
+import { BloodUnitCardComponent } from './BloodManagment/BloodUnitsOverview/blood-unit-card/blood-unit-card.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import { TenderReportComponent } from './tenders/tender-report/tender-report.com
     ManagerSidebarComponent,
     BloodUnitsOverviewComponent,
     TenderReportComponent,
+    BloodUnitCardComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -108,6 +111,19 @@ import { TenderReportComponent } from './tenders/tender-report/tender-report.com
     LoginModule,
     ExaminationsModule,
     BlockPatientsModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      percent: 85,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: '#CC0000',
+      innerStrokeColor: '#C7E596',
+      animationDuration: 300,
+      animation: false,
+      responsive: true,
+      renderOnClick: false,
+    }),
   ],
   bootstrap: [AppComponent],
   exports: [],

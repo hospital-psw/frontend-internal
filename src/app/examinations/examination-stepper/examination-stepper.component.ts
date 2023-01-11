@@ -214,7 +214,7 @@ export class ExaminationStepperComponent implements OnInit {
         event.currentIndex
       );
     } else {
-      if (event.previousContainer.id === 'cdk-drop-list-0') {
+      if (this.getIdParity(event.previousContainer.id)) {
         this.handleSymptomChange(
           event.previousContainer.data.at(event.previousIndex) as Symptom,
           0
@@ -234,21 +234,11 @@ export class ExaminationStepperComponent implements OnInit {
     }
   }
 
-  /*createAnamnesis(): void {
-    this.selectedSymptoms.map((item) =>
-      this.anamnesis.symptomIds.push(item.id)
-    );
-    this.anamnesis.newPrescriptions = this.prescriptions;
-    this.anamnesisService.createAnamnesis(this.anamnesis).subscribe(
-      (res) => {
-        this.toastr.success('Succesfully finished examinaiton');
-        this.router.navigate(['app/appointments']);
-      },
-      (error) => {
-        this.toastr.error(error.error);
-      }
-    );
-  }*/
+  getIdParity(id: string): boolean {
+    let idString = id.split('-');
+    let parityNumber = parseInt(idString[3]);
+    return parityNumber % 2 === 0;
+  }
 
   removePrescription(prescription: Perscription): void {
     this.prescriptionRemoved = {
