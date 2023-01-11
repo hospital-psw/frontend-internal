@@ -44,4 +44,7 @@ export class ReconsiderBloodRequestComponent implements OnInit {
       this.dataSource.data = this.bloodRequests;
     });
   }
+
+
+
 }
