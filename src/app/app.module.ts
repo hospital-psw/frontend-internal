@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { FeedbackModule } from './../app/Manager/feedback/feedback.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BloodBankModule } from './blood-bank/blood-bank.module';
 import { ToastrModule } from 'ngx-toastr';
@@ -47,6 +48,7 @@ import { DoctorSidebarComponent } from './common/doctor-sidebar/doctor-sidebar.c
 import { ManagerSidebarComponent } from './common/manager-sidebar/manager-sidebar.component';
 import { BlockPatientsModule } from './Manager/block-patients/block-patients.module';
 import { BloodUnitsOverviewComponent } from './BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
+import { TenderReportComponent } from './tenders/tender-report/tender-report.component';
 import { BloodUnitCardComponent } from './BloodManagment/BloodUnitsOverview/blood-unit-card/blood-unit-card.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 
@@ -65,6 +67,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     DoctorSidebarComponent,
     ManagerSidebarComponent,
     BloodUnitsOverviewComponent,
+    TenderReportComponent,
     BloodUnitCardComponent,
   ],
   imports: [
@@ -94,6 +97,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MaterialModule,
     VacationRequestModule,
     MatInputModule,
+    MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',

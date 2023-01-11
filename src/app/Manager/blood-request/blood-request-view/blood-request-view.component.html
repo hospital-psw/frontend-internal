@@ -62,13 +62,13 @@
               Reconsider
             </button>
           </div>
-          <div *ngIf="element.status === 1">
+          <div id="declined" *ngIf="element.status === 1">
             <div style="color: red">DECLINED</div>
           </div>
-          <div *ngIf="element.status === 0">
+          <div id="accepted" *ngIf="element.status === 0">
             <div style="color: green">ACCEPTED</div>
           </div>
-          <div *ngIf="element.status === 3">
+          <div id="reconsidering" *ngIf="element.status === 3">
             <div style="color: orange">RECONSIDERING</div>
           </div>
         </td>

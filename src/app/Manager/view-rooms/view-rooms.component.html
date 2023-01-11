@@ -1,8 +1,12 @@
 <div class="all">
   <div class="info">
     <div class="display-rooms-wrapper">
-      <div class="input-wrapper">
-        <mat-form-field class="search-hospital" appearance="fill">
+      <div class="header">
+        <mat-form-field
+          class="search-hospital"
+          appearance="fill"
+          (click)="$event.stopPropagation()"
+        >
           <mat-label>Choose hospital</mat-label>
           <mat-select
             id="buildingSelect"
@@ -16,6 +20,7 @@
         </mat-form-field>
         <mat-form-field class="search-hospital" appearance="fill">
           <mat-label>Choose floor</mat-label>
+
           <mat-select id="floorSelect" (selectionChange)="selectFloor($event)">
             <mat-option id="mat-option-floor" value="0">0</mat-option>
             <mat-option value="1">1</mat-option>
@@ -23,114 +28,175 @@
             <mat-option value="3">3</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field class="search">
-          <mat-label>Number</mat-label>
-          <input matInput #number />
-        </mat-form-field>
-        <mat-form-field class="search">
-          <mat-label>Purpose</mat-label>
-          <input matInput #purpose />
-        </mat-form-field>
-        <mat-form-field class="search">
-          <mat-label>Start</mat-label>
-          <input matInput #start placeholder="hh:mm" />
-        </mat-form-field>
-        <mat-form-field class="search">
-          <mat-label>End</mat-label>
-          <input matInput #end placeholder="hh:mm" />
-        </mat-form-field>
-        <mat-form-field class="search-hospital" appearance="fill">
-          <mat-label>Choose equipment</mat-label>
-          <mat-select (selectionChange)="selectEquipment($event)">
-            <mat-option value="0">Beds</mat-option>
-            <mat-option value="1">Scissors</mat-option>
-            <mat-option value="2">Needles</mat-option>
-            <mat-option value="3">Bandages</mat-option>
-            <mat-option value="4">Respirator</mat-option>
-            <mat-option value="5">Stethoscope</mat-option>
-            <mat-option value="6">Xray</mat-option>
-            <mat-option value="7">Plaster</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="search">
-          <mat-label>Quantity</mat-label>
-          <input type="number" matInput ngModel #quantity />
-        </mat-form-field>
         <button
-          mat-stroked-button
-          color="primary"
-          class=""
-          (click)="
-            searchRooms(
-              number.value,
-              purpose.value,
-              start.value,
-              end.value,
-              quantity.value
-            )
-          "
-          type="button"
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="menu-btn"
+          matTooltip="Filters"
         >
-          Search
+          <img
+            src="assets/img/filter1.png"
+            alt="filter"
+            width="30"
+            height="30"
+          />
         </button>
+        <button
+          class="menu-btn"
+          mat-button
+          *ngIf="floor !== -1 && building !== -1"
+          (click)="renovate()"
+          matTooltip="Schedule renovation"
+          id="renovation-button"
+        >
+          <img src="assets/img/renovation.png" alt="renovation" />
+        </button>
+        <mat-menu #menu="matMenu" class="menu-expander">
+          <div class="input-wrapper" (click)="$event.stopPropagation()">
+            <div class="hospital-info">
+              <mat-form-field class="search">
+                <mat-label>Number</mat-label>
+                <input matInput #number (click)="$event.stopPropagation()" />
+              </mat-form-field>
+              <mat-form-field class="search" appearance="fill">
+                <mat-label>Purpose</mat-label>
+
+                <mat-select (click)="$event.stopPropagation()" #purpose>
+                  <mat-option value="operaciona sala"
+                    >operaciona sala</mat-option
+                  >
+                  <mat-option value="sala za sastanke"
+                    >sala za sastanke</mat-option
+                  >
+                  <mat-option value="ordinacija">ordinacija</mat-option>
+                  <mat-option value="kafeterija">kafeterija</mat-option>
+                  <mat-option value="zubna ordinacija"
+                    >zubna ordinacija</mat-option
+                  >
+                  <mat-option value="laboratorija">laboratorija</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="hospital-info1">
+              <mat-form-field class="search">
+                <mat-label>Start</mat-label>
+                <input
+                  matInput
+                  #start
+                  placeholder="hh:mm"
+                  (click)="$event.stopPropagation()"
+                />
+              </mat-form-field>
+              <mat-form-field class="search">
+                <mat-label>End</mat-label>
+                <input
+                  matInput
+                  #end
+                  placeholder="hh:mm"
+                  (click)="$event.stopPropagation()"
+                />
+              </mat-form-field>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="hospital-info">
+              <mat-form-field class="search-hospital" appearance="fill">
+                <mat-label>Choose equipment</mat-label>
+                <mat-select
+                  (selectionChange)="selectEquipment($event)"
+                  (click)="$event.stopPropagation()"
+                >
+                  <mat-option value="0">Beds</mat-option>
+                  <mat-option value="1">Scissors</mat-option>
+                  <mat-option value="2">Needles</mat-option>
+                  <mat-option value="3">Bandages</mat-option>
+                  <mat-option value="4">Respirator</mat-option>
+                  <mat-option value="5">Stethoscope</mat-option>
+                  <mat-option value="6">Xray</mat-option>
+                  <mat-option value="7">Plaster</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="search">
+                <mat-label>Quantity</mat-label>
+                <input
+                  type="number"
+                  matInput
+                  ngModel
+                  #quantity
+                  (click)="$event.stopPropagation()"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <button
+            mat-button
+            mat-stroked-button
+            color="primary"
+            class="btn-search"
+            (click)="
+              searchRooms(
+                number.value,
+                purpose.value,
+                start.value,
+                end.value,
+                quantity.value
+              )
+            "
+            type="button"
+          >
+            Search
+          </button>
+        </mat-menu>
+      </div>
+
+      <div id="canvas-holder" class="canvas-window">
+        <div class="canvas-div">
+          <canvas class="canvas"></canvas>
+        </div>
       </div>
     </div>
-    <div id="canvas-holder" class="canvas-window">
-      <div class="canvas-div">
-        <canvas class="canvas"></canvas>
-      </div>
+    <div class="details" ngSwitch="switchDetails">
+      <app-show-building-details
+        (notify)="updateBuildingInfo()"
+        *ngIf="this.showBuildingDetails"
+        [room]="clickedRoom"
+        class="details"
+      ></app-show-building-details>
+      <app-show-floor-details
+        *ngIf="this.showFloorDetails"
+        [room]="clickedRoom"
+        class="details"
+      ></app-show-floor-details>
+      <app-show-room-details
+        (relocateNotify)="relocate($event)"
+        (notify)="updateView()"
+        *ngIf="this.showRoomDetails"
+        [room]="clickedRoom"
+        [relocationRequests]="relocationRequests"
+        [appointments]="appointments"
+        [equipment]="equipments"
+        [renovations]="renovations"
+        [consiliums]="consiliums"
+        class="details"
+      ></app-show-room-details>
+      <app-show-searched-rooms
+        (newItemEvent)="sendRoomId($event)"
+        *ngIf="this.showSearchedRooms"
+        [searchedRooms]="searchedRooms"
+        class="details"
+      ></app-show-searched-rooms>
     </div>
-  </div>
-  <div class="details" ngSwitch="switchDetails">
-    <button
-      class="renovation-btn"
-      *ngIf="floor !== -1 && building !== -1"
-      (click)="renovate()"
-      id="renovation-button"
+    <app-renovation-stepper
+      *ngIf="doRenovate"
+      (closeNotify)="doRenovate = false"
+      [floor]="floor"
+      [building]="building"
     >
-      Renovation
-    </button>
-    <app-show-building-details
-      (notify)="updateBuildingInfo()"
-      *ngIf="this.showBuildingDetails"
-      [room]="clickedRoom"
-      class="details"
-    ></app-show-building-details>
-    <app-show-floor-details
-      *ngIf="this.showFloorDetails"
-      [room]="clickedRoom"
-      class="details"
-    ></app-show-floor-details>
-    <app-show-room-details
-      (relocateNotify)="relocate($event)"
-      (notify)="updateView()"
-      *ngIf="this.showRoomDetails"
-      [room]="clickedRoom"
-      [relocationRequests]="relocationRequests"
-      [appointments]="appointments"
-      [equipment]="equipments"
-      [renovations]="renovations"
-      [consiliums]="consiliums"
-      class="details"
-    ></app-show-room-details>
-    <app-show-searched-rooms
-      (newItemEvent)="sendRoomId($event)"
-      *ngIf="this.showSearchedRooms"
-      [searchedRooms]="searchedRooms"
-      class="details"
-    ></app-show-searched-rooms>
-  </div>
-  <app-renovation-stepper
-    *ngIf="doRenovate"
-    (closeNotify)="doRenovate = false"
-    [floor]="floor"
-    [building]="building"
-  >
-  </app-renovation-stepper>
-  <app-stepper
+    </app-renovation-stepper>
+    <!-- <app-stepper
     *ngIf="doRelocate"
     [equipment]="element"
     (closeNotify)="closeStepper()"
     (refreshEquipmentNotify)="refreshEquipment($event)"
-  ></app-stepper>
+  ></app-stepper> -->
+  </div>
 </div>

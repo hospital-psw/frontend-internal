@@ -8,6 +8,7 @@ import { TenderService } from '../../Services/tender.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AdditiveBlending } from 'three';
 import { DoctorOptionalStatisticDto } from 'src/app/Manager/Model/Dto/DoctorOptionalStatisticDto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-statistics',
@@ -45,9 +46,14 @@ export class StatisticsComponent implements OnInit {
   constructor(
     private service: StatisticsService,
     private doctorService: DoctorService,
-    private tenderService: TenderService
+    private tenderService: TenderService,
+    private router: Router
   ) {
     Chart.register(...registerables);
+  }
+
+  goToUrgentBloodTransferPage() {
+    this.router.navigate(['app/statistics/urgent-blood-transfer']);
   }
 
   getMax(data: [], data1: []) {

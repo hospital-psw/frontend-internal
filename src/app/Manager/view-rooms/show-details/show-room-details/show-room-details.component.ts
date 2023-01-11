@@ -37,6 +37,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   @Output() relocateNotify = new EventEmitter<any>();
   showWorkingHours: boolean = false;
   isDisabled: boolean = true;
+  showTabs: boolean = false;
 
   ngOnInit(): void {}
 
@@ -104,9 +105,11 @@ export class ShowRoomDetailsComponent implements OnInit {
         next: (res) => {
           this.notify.emit();
           this.showSuccess();
+          this.isDisabled = true;
         },
         error: (e) => {
           this.showError();
+          this.isDisabled = true;
         },
       });
     } else {
@@ -124,5 +127,8 @@ export class ShowRoomDetailsComponent implements OnInit {
 
   relocate(element: IEquipment) {
     this.relocateNotify.emit(element);
+  }
+  tabs() {
+    this.showTabs = true;
   }
 }

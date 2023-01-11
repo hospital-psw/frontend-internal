@@ -48,9 +48,12 @@
         <div class="row">
           <mat-form-field appearance="fill" class="specialType">
             <mat-label>Select</mat-label>
-            <mat-select [(ngModel)]="selected" (ngModelChange)="hideResponse()">
+            <mat-select
+              id="bloodtype"
+              [(ngModel)]="selected"
+              (ngModelChange)="hideResponse()"
+            >
               <mat-option
-                id="bloodtype"
                 *ngFor="let type of bloodTypes; let i = index"
                 [value]="type"
                 >{{ bloodTypes[i] }}</mat-option
@@ -110,9 +113,17 @@
         <div class="row">
           <mat-form-field appearance="fill" class="email">
             <mat-label>Frequency (in days)</mat-label>
-            <input matInput required [(ngModel)]="bloodBank.frequently" />
+            <input
+              matInput
+              required
+              [(ngModel)]="bloodBank.frequently"
+              (ngModelChange)="checkFrequency()"
+            />
           </mat-form-field>
         </div>
+        <label id="error404hilton" class="response__neg" *ngIf="errFreq"
+          >Frequency can't be negative !</label
+        >
         <div class="row">
           <mat-form-field appearance="fill" class="email">
             <mat-label>Start date</mat-label>
