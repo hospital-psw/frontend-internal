@@ -236,6 +236,7 @@ export class ViewRoomsComponent
           this.clickedRoom = room.getRoomData().room;
           roomFound = true;
           this.showDetails = roomFound;
+          this.scene?.display(this.floor, this.building, this.clickedRoom.id);
           //get details for room
           this.roomService
             .getEquipment(this.clickedRoom.id)

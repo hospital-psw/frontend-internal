@@ -105,9 +105,11 @@ export class ShowRoomDetailsComponent implements OnInit {
         next: (res) => {
           this.notify.emit();
           this.showSuccess();
+          this.isDisabled = true;
         },
         error: (e) => {
           this.showError();
+          this.isDisabled = true;
         },
       });
     } else {
