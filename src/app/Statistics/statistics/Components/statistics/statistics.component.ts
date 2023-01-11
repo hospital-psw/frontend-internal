@@ -213,6 +213,7 @@ export class StatisticsComponent implements OnInit {
               },
               padding: {
                 top: 10,
+                bottom: 10,
               },
             },
           },
