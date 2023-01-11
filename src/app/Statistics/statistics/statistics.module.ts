@@ -16,6 +16,13 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MainComponentComponent } from './Components/examination-statistics/main-component/main-component.component';
+import { TableComponentComponent } from './Components/examination-statistics/table-component/table-component.component';
+import { DurationTabComponent } from './Components/examination-statistics/duration-tab/duration-tab.component';
+import { StepsTabComponent } from './Components/examination-statistics/steps-tab/steps-tab.component';
+import { PrescriptionsTabComponent } from './Components/examination-statistics/prescriptions-tab/prescriptions-tab.component';
+import { SymptomsTabComponent } from './Components/examination-statistics/symptoms-tab/symptoms-tab.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -24,6 +31,12 @@ import { MatNativeDateModule } from '@angular/material/core';
     DataTableComponent,
     TestComponent,
     RenovationStatisticsComponent,
+    MainComponentComponent,
+    TableComponentComponent,
+    DurationTabComponent,
+    StepsTabComponent,
+    PrescriptionsTabComponent,
+    SymptomsTabComponent,
     UrgentBloodTransferStatisticsComponent,
   ],
   imports: [
@@ -38,6 +51,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     PdfViewerModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ReactiveFormsModule,
+    MatTabsModule,
   ],
 })
 export class StatisticsModule {}
