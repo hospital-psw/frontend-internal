@@ -113,9 +113,17 @@
         <div class="row">
           <mat-form-field appearance="fill" class="email">
             <mat-label>Frequency (in days)</mat-label>
-            <input matInput required [(ngModel)]="bloodBank.frequently" />
+            <input
+              matInput
+              required
+              [(ngModel)]="bloodBank.frequently"
+              (ngModelChange)="checkFrequency()"
+            />
           </mat-form-field>
         </div>
+        <label id="error404hilton" class="response__neg" *ngIf="errFreq"
+          >Frequency can't be negative !</label
+        >
         <div class="row">
           <mat-form-field appearance="fill" class="email">
             <mat-label>Start date</mat-label>
