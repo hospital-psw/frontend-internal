@@ -128,7 +128,7 @@ export class ShowRoomDetailsComponent implements OnInit {
   relocate(element: IEquipment) {
     this.relocateNotify.emit(element);
   }
-  tabs(){
+  tabs() {
     this.showTabs = true;
   }
 }

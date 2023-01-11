@@ -42,7 +42,6 @@ import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 export class ViewRoomsComponent
   implements OnInit, OnDestroy, AfterContentChecked
 {
-
   constructor(
     private roomService: RoomService,
     private cdRef: ChangeDetectorRef,
@@ -431,7 +430,7 @@ export class ViewRoomsComponent
     this.doRenovate = true;
   }
 
-  tabs(){
+  tabs() {
     this.showTabs = true;
   }
 }

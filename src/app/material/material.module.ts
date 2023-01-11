@@ -17,8 +17,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 @NgModule({
@@ -43,7 +43,7 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatButtonModule,
     MatRadioModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   exports: [
     CommonModule,

@@ -8,9 +8,9 @@ import { IRenovationRequestDisplay } from 'src/app/Manager/Model/RenovationReque
 @Component({
   selector: 'app-tab-details-modal',
   templateUrl: './tab-details-modal.component.html',
-  styleUrls: ['./tab-details-modal.component.scss']
+  styleUrls: ['./tab-details-modal.component.scss'],
 })
-export class TabDetailsModalComponent implements OnInit{
+export class TabDetailsModalComponent implements OnInit {
   @Input() room: any;
   @Input() equipment: IEquipment[];
   @Input() relocationRequests: IRelocationRequestDisplay[];
@@ -19,10 +19,9 @@ export class TabDetailsModalComponent implements OnInit{
   @Input() consiliums: IConsiliumDisplay[];
   @Output() closeNotify = new EventEmitter();
   ngOnInit(): void {
-    console.log(this.room)
+    console.log(this.room);
   }
   closeTabs() {
     this.closeNotify.emit();
   }
-
 }

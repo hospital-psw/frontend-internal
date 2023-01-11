@@ -42,7 +42,6 @@ import { TabDetailsModalComponent } from './show-details/tab-details-modal/tab-d
     RenovationsComponent,
     ConsiliumsComponent,
     TabDetailsModalComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -55,7 +54,7 @@ import { TabDetailsModalComponent } from './show-details/tab-details-modal/tab-d
     StepperModule,
     MatTabsModule,
     RenovationStepperModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [ViewRoomsComponent],
 })

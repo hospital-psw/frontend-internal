@@ -1,7 +1,18 @@
 <div class="details-form">
   <div class="info-btn-wrapper">
-    <button (click)="tabs()" mat-button class="menu-btn" matTooltip="Room information" class="info-btn">
-      <img src="assets\img\information.png" alt="filter" width="24" height="24">
+    <button
+      (click)="tabs()"
+      mat-button
+      class="menu-btn"
+      matTooltip="Room information"
+      class="info-btn"
+    >
+      <img
+        src="assets\img\information.png"
+        alt="filter"
+        width="24"
+        height="24"
+      />
     </button>
   </div>
   <form
@@ -9,7 +20,6 @@
       editRoom(purpose.value, start.value, end.value, number.value, $event)
     "
   >
- 
     <div class="blocks">
       <div class="details">
         <mat-form-field class="detail">
@@ -25,9 +35,13 @@
         </mat-form-field>
         <mat-form-field class="detail" appearance="fill">
           <mat-label>Room purpose</mat-label>
-            
-            <mat-select required [disabled]="isDisabled" value="{{ this.room.purpose }}"
-            #purpose>
+
+          <mat-select
+            required
+            [disabled]="isDisabled"
+            value="{{ this.room.purpose }}"
+            #purpose
+          >
             <mat-option value="operaciona sala">operaciona sala</mat-option>
             <mat-option value="sala za sastanke">sala za sastanke</mat-option>
             <mat-option value="ordinacija">ordinacija</mat-option>
@@ -86,8 +100,7 @@
       </div>
     </div>
   </form>
-  
-  
+
   <!--
   <app-show-equipment
     (notifyRelocation)="relocate($event)"
@@ -109,9 +122,10 @@
   *ngIf="showTabs"
   (closeNotify)="showTabs = false"
   [relocationRequests]="relocationRequests"
-        [appointments]="appointments"
-        [equipment]="equipment"
-        [renovations]="renovations"
-        [room]="room"
-        [consiliums]="consiliums">
+  [appointments]="appointments"
+  [equipment]="equipment"
+  [renovations]="renovations"
+  [room]="room"
+  [consiliums]="consiliums"
+>
 </app-tab-details-modal>
