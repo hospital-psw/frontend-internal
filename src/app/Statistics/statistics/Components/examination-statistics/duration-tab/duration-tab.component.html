@@ -1,8 +1,9 @@
 <div class="flex-container">
-  <div class="steps1">
-    <canvas class="steps1__canvas" id="duration1"></canvas>
+  <div class="chart">
+    <canvas class="chart__canvas" id="duration1"></canvas>
   </div>
   <div class="steps2">
-    <canvas class="steps2__canvas" id="duration2"></canvas>
+    <canvas class="chart__canvas" id="duration2"></canvas>
   </div>
 </div>
+<ngx-ui-loader *ngIf="isLoading"></ngx-ui-loader>

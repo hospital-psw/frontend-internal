@@ -36,7 +36,8 @@ export class StepsTabComponent implements OnInit {
         this.stepsChart = this.createStepsChart(
           this.stepsData.steps,
           `#steps1`,
-          'Average steps: ' + this.stepsData.averageSteps
+          'Average steps: ' + this.stepsData.averageSteps,
+          this.stepsData.averageSteps
         );
       },
       (error) => {
@@ -50,7 +51,8 @@ export class StepsTabComponent implements OnInit {
         this.backStepsChart = this.createStepsChart(
           this.getValues(this.backStepsData),
           `#steps2`,
-          'Average back steps: ' + this.backStepsData.averageBackStepsNumber
+          'Average back steps: ' + this.backStepsData.averageBackStepsNumber,
+          this.backStepsData.averageBackStepsNumber
         );
       },
       (error) => {
@@ -67,7 +69,12 @@ export class StepsTabComponent implements OnInit {
     return values;
   }
 
-  createStepsChart(stepsData: any, refString: string, title: string): any {
+  createStepsChart(
+    stepsData: any,
+    refString: string,
+    title: string,
+    average: number
+  ): any {
     console.log('RefString: ', refString);
     console.log('ChartData: ', stepsData);
     let htmlRef = this.elementRef.nativeElement.querySelector(refString);
@@ -82,6 +89,7 @@ export class StepsTabComponent implements OnInit {
             backgroundColor: ['rgba(51, 184, 100, 1)'],
             borderColor: ['rgba(51, 184, 100, 1)'],
             borderWidth: 2,
+            minBarLength: 2,
           },
         ],
       },
@@ -110,6 +118,17 @@ export class StepsTabComponent implements OnInit {
             padding: {
               top: 10,
               bottom: 10,
+            },
+          },
+          annotation: {
+            annotations: {
+              line1: {
+                type: 'line',
+                yMin: average,
+                yMax: average,
+                borderColor: 'rgb(0, 255, 0)',
+                borderWidth: 2,
+              },
             },
           },
         },
