@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { CreateTenderDTO } from '../interface/CreateTenderDTO';
 import { ITender } from '../model/tender.model';
@@ -25,5 +26,12 @@ export class TenderService {
       `http://localhost:45488/api/Tender`,
       tender
     );
+  }
+
+  public generateReport(start: Date | null, end: Date | null) {
+    return this.http.post(`http://localhost:45488/api/Tender/generate-report`, {
+      start,
+      end,
+    });
   }
 }
