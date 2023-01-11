@@ -34,6 +34,7 @@ import { CreateComponent } from 'src/app/blood-bank/create/create.component';
 import { BloodUnitsOverviewComponent } from 'src/app/BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
 import { RenovationStatisticsComponent } from 'src/app/Statistics/statistics/Components/renovation-statistics/renovation-statistics.component';
 import { BaseComponent } from 'src/app/examinations/anamnesis-perscriptions-review/base/base.component';
+import { BloodAdditionsOverviewComponent } from 'src/app/BloodManagment/BloodAdditionsOverview/blood-additions-overview/blood-additions-overview.component';
 
 const routes: Routes = [
   {
@@ -205,6 +206,11 @@ const routes: Routes = [
     title: 'Search Engine | Care Connect',
     component: BaseComponent,
   },
+  {
+    path: 'blood-additions/:bt',
+    title: 'Blood Additions | Care Connect',
+    component : BloodAdditionsOverviewComponent,
+  }
 ];
 
 @NgModule({

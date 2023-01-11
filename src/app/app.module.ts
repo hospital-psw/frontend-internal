@@ -49,6 +49,7 @@ import { BlockPatientsModule } from './Manager/block-patients/block-patients.mod
 import { BloodUnitsOverviewComponent } from './BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
 import { BloodUnitCardComponent } from './BloodManagment/BloodUnitsOverview/blood-unit-card/blood-unit-card.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { BloodAdditionsOverviewComponent } from './BloodManagment/BloodAdditionsOverview/blood-additions-overview/blood-additions-overview.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     ManagerSidebarComponent,
     BloodUnitsOverviewComponent,
     BloodUnitCardComponent,
+    BloodAdditionsOverviewComponent,
   ],
   imports: [
     MatDatepickerModule,

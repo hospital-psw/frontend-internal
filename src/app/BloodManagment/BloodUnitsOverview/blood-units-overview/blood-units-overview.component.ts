@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BloodType } from 'src/app/medical-treatment/enum/BloodType.enum';
 import { BloodUnit } from 'src/app/medical-treatment/interface/BloodUnit';
 import { BloodStorageService } from '../../service/blood-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blood-units-overview',
@@ -9,7 +10,9 @@ import { BloodStorageService } from '../../service/blood-storage.service';
   styleUrls: ['./blood-units-overview.component.scss'],
 })
 export class BloodUnitsOverviewComponent {
-  constructor(private bloodStorageService: BloodStorageService) {}
+  constructor(private bloodStorageService: BloodStorageService,
+              private router:Router,
+    ) {}
 
   dataSource: BloodUnit[];
   displayedColumns: string[] = ['bloodType', 'amount'];
@@ -52,5 +55,11 @@ export class BloodUnitsOverviewComponent {
       sum += el.amount;
     });
     return sum;
+  }
+
+  previewAdditions(unit: any){
+    
+    this.router.navigateByUrl("app/blood-additions/"+unit);
+    
   }
 }
