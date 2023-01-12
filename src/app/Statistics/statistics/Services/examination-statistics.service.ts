@@ -1,3 +1,5 @@
+import { ExaminationData } from './../Interface/ExaminationData';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
@@ -33,6 +35,15 @@ export class ExaminationStatisticsService {
   getAverageSpecializationDuration() {
     return this.http.get(
       `${this.apiUrl}/examination/specialization/average-duration`
+    );
+  }
+
+  getExamData(
+    pageSize: number,
+    pageNumber: number
+  ): Observable<ExaminationData[]> {
+    return this.http.get<ExaminationData[]>(
+      `${this.apiUrl}/examination/data/${pageSize}/${pageNumber}`
     );
   }
 }

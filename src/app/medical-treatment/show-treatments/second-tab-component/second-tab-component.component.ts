@@ -34,7 +34,7 @@ export class SecondTabComponentComponent implements OnInit, OnChanges {
   dataSource = new MatTableDataSource<MedicalTreatment>();
   //dataSize = pageSize
   pageSize: number = 5;
-  pageNumber: number = 1;
+  pageNumber: number = 0;
   length: number;
   doctorId: number;
 
