@@ -23,6 +23,31 @@ import { StepsTabComponent } from './Components/examination-statistics/steps-tab
 import { PrescriptionsTabComponent } from './Components/examination-statistics/prescriptions-tab/prescriptions-tab.component';
 import { SymptomsTabComponent } from './Components/examination-statistics/symptoms-tab/symptoms-tab.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import {
+  NgxUiLoaderConfig,
+  NgxUiLoaderHttpModule,
+  NgxUiLoaderModule,
+  POSITION,
+  SPINNER,
+} from 'ngx-ui-loader';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  fgsColor: '#1493ff',
+  fgsPosition: 'center-center',
+  fgsSize: 90,
+  fgsType: SPINNER.threeBounce,
+  gap: 24,
+  logoPosition: POSITION.centerCenter,
+  logoSize: 120,
+  logoUrl: '',
+  masterLoaderId: 'master',
+  overlayBorderRadius: '0',
+  overlayColor: 'rgba(40, 40, 40, 0.8)',
+  pbColor: '#1493ff',
+  pbDirection: 'ltr',
+  pbThickness: 3,
+  hasProgressBar: true,
+};
 
 @NgModule({
   declarations: [
@@ -53,6 +78,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatTabsModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
   ],
 })
 export class StatisticsModule {}
