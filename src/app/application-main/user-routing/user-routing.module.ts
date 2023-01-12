@@ -34,6 +34,7 @@ import { CreateComponent } from 'src/app/blood-bank/create/create.component';
 import { BloodUnitsOverviewComponent } from 'src/app/BloodManagment/BloodUnitsOverview/blood-units-overview/blood-units-overview.component';
 import { RenovationStatisticsComponent } from 'src/app/Statistics/statistics/Components/renovation-statistics/renovation-statistics.component';
 import { BaseComponent } from 'src/app/examinations/anamnesis-perscriptions-review/base/base.component';
+import { BloodAdditionsOverviewComponent } from 'src/app/BloodManagment/BloodAdditionsOverview/blood-additions-overview/blood-additions-overview.component';
 import { MainComponentComponent } from 'src/app/Statistics/statistics/Components/examination-statistics/main-component/main-component.component';
 import { BloodRequestViewComponent } from 'src/app/Manager/blood-request/blood-request-view/blood-request-view.component';
 import { UrgentBloodTransferStatisticsComponent } from 'src/app/Statistics/statistics/Components/urgent-blood-transfer-statistics/urgent-blood-transfer-statistics.component';
@@ -212,6 +213,11 @@ const routes: Routes = [
     path: 'anamnesis-perscriptions-review',
     title: 'Search Engine | Care Connect',
     component: BaseComponent,
+  },
+  {
+    path: 'blood-additions/:bt',
+    title: 'Blood Additions | Care Connect',
+    component: BloodAdditionsOverviewComponent,
   },
   {
     path: 'examination-statistics',

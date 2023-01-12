@@ -7,6 +7,7 @@
           [title]="getTitle(bloodUnit)"
           [units]="bloodUnit.amount"
           [totalUnits]="totalUnits"
+          (click)="previewAdditions(bloodUnit.bloodType)"
         ></app-blood-unit-card>
       </div>
     </div>
