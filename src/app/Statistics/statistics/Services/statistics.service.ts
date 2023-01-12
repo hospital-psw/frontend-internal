@@ -97,4 +97,24 @@ export class StatisticsService {
       `${environment.apiAppointmentSchedulingEvent}/getTimesOnSteps`
     );
   }
+  GetAverageTimePerStep() {
+    return this._http.get(
+      `${environment.apiAppointmentSchedulingEvent}/getAverageTimePerStep`
+    );
+  }
+  getNumberOfStepsByAgeGroup(){
+    return this._http.get(
+      `${environment.apiAppointmentSchedulingEvent}/getNumberOfStepsToCreateAppointmentByAgeGroup`
+    );
+  }
+  getAverageNumberOfStepsForSchedulingAppointment() {
+    return this._http.get(
+      `${environment.apiAppointmentSchedulingEvent}/getAverageSteps`
+    );
+  }
+  getTimeToCreateAppointmentByAge() {
+    return this._http.get(
+      `${environment.apiAppointmentSchedulingEvent}/getTimeToCreateAppointmentByAgeGroup`
+    );
+  }
 }
