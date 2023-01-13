@@ -15,8 +15,10 @@ export class BloodUnitCardComponent {
   }
 
   getPercentage() {
-    console.log(this.units);
-    console.log(this.units / this.totalUnits);
+    return (this.units / 200) * 100;
+  }
+
+  getTotalPercentage() {
     return (this.units / this.totalUnits) * 100;
   }
 }

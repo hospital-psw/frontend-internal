@@ -38,6 +38,7 @@ import { BloodAdditionsOverviewComponent } from 'src/app/BloodManagment/BloodAdd
 import { MainComponentComponent } from 'src/app/Statistics/statistics/Components/examination-statistics/main-component/main-component.component';
 import { BloodRequestViewComponent } from 'src/app/Manager/blood-request/blood-request-view/blood-request-view.component';
 import { UrgentBloodTransferStatisticsComponent } from 'src/app/Statistics/statistics/Components/urgent-blood-transfer-statistics/urgent-blood-transfer-statistics.component';
+import { DisplayComponent } from 'src/app/EXAMPLE/display/display.component';
 
 const routes: Routes = [
   {
@@ -228,6 +229,11 @@ const routes: Routes = [
     path: 'statistics/urgent-blood-transfer',
     title: 'Urgent blood transfer report | Care Connect',
     component: UrgentBloodTransferStatisticsComponent,
+  },
+  {
+    path: 'example',
+    title: 'EXAMPLE | Care Connect',
+    component: DisplayComponent,
   },
 ];
 

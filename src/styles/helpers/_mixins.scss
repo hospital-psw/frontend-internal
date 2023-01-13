@@ -14,3 +14,13 @@
         @media (min-width: 2560px) { @content };
     }
 }
+
+@mixin card-dynamic($width, $height) {
+    height: $height;
+    width: $width;
+    background-color: $color-white;
+    box-shadow: $wrapper-card-box-shadow;
+    padding: 2rem 3rem;
+    box-sizing: border-box;
+    border-radius: 1rem;
+}
