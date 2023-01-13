@@ -1,3 +1,4 @@
+@import "../../../styles/helpers/variables";
 .container {
     border: 1px solid gray;
     border-radius: 10px;
@@ -168,3 +169,34 @@
 .tender-item{
   padding-left: 0.3rem;
 }
+-------
+.btn-top{
+  margin-right: 3rem;
+}
+.btn-group{
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-group{
+  display: flex;
+  flex-direction: row;
+}
+
+.card-header{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.title{
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #0E4C92;
+}
+
+.mat-tab-label{
+  font-size: 20px !important;
+} 

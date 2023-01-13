@@ -15,6 +15,7 @@ import { TenderReportComponent } from '../tender-report/tender-report.component'
 export class ShowTendersComponent {
   showOffers: boolean[] = [];
   tenders: ITender[];
+  panelOpenState = false;
   bloodTypes = Object.values(BloodType).splice(0, 8);
   constructor(
     private tenderService: TenderService,

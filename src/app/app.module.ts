@@ -53,6 +53,8 @@ import { BloodUnitCardComponent } from './BloodManagment/BloodUnitsOverview/bloo
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { BloodAdditionsOverviewComponent } from './BloodManagment/BloodAdditionsOverview/blood-additions-overview/blood-additions-overview.component';
 import { DisplayComponent } from './EXAMPLE/display/display.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { DisplayComponent } from './EXAMPLE/display/display.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     ViewRoomsModule,
+    MatExpansionModule,
     MatTableModule,
     FeedbackModule,
     BloodRequestModule,
@@ -99,6 +102,7 @@ import { DisplayComponent } from './EXAMPLE/display/display.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatTabsModule,
     VacationRequestModule,
     MatInputModule,
     MatDialogModule,

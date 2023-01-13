@@ -1,4 +1,41 @@
-<div class="TopBar">
+<div class="wrapper-card">
+  <div class="card-header">
+    <label class="title">TENDER</label>
+    <div class="btn-group">
+      <button
+        class="theme-button btn-bg-blue btn-top"
+        (click)="createTenderPage()"
+      >
+        OPEN TENDER
+      </button>
+      <button class="theme-button btn-bg-blue btn-top" (click)="openDialog()">
+        TENDER REPORT
+      </button>
+    </div>
+  </div>
+  <div class="card-content">
+    <mat-tab-group>
+      <mat-tab label="Open tenders" class="tab">
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> Self aware panel </mat-panel-title>
+              <mat-panel-description>
+                Currently I am {{ panelOpenState ? "open" : "closed" }}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>I'm visible because I am open</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-tab>
+      <mat-tab label="Closed tenders" class="tab"> Content 2 </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<!-- <div class="TopBar">
   <label for="tender" class="tender">Tender</label>
   <button class="createTenderButton" (click)="createTenderPage()">
     Open Tender
@@ -53,4 +90,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
