@@ -1,7 +1,15 @@
 @import './../../../../../../styles/helpers/variables';
 
+.all {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
 .container {
-  height: 45rem;
+  height: 85%;
   width: 100%;
   padding: 1rem 3rem;
   margin-top: 3rem;
@@ -36,7 +44,7 @@
 
 .mat-paginator-sticky {
   bottom: 0px;
-  position: sticky;
+  //position: sticky;
   z-index: 10;
 }
 

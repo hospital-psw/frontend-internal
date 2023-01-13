@@ -52,6 +52,7 @@ import { TenderReportComponent } from './tenders/tender-report/tender-report.com
 import { BloodUnitCardComponent } from './BloodManagment/BloodUnitsOverview/blood-unit-card/blood-unit-card.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { BloodAdditionsOverviewComponent } from './BloodManagment/BloodAdditionsOverview/blood-additions-overview/blood-additions-overview.component';
+import { DisplayComponent } from './EXAMPLE/display/display.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { BloodAdditionsOverviewComponent } from './BloodManagment/BloodAdditions
     TenderReportComponent,
     BloodUnitCardComponent,
     BloodAdditionsOverviewComponent,
+    DisplayComponent,
   ],
   imports: [
     MatDatepickerModule,

@@ -70,8 +70,6 @@ export class DurationTabComponent implements OnInit {
     average: number,
     labels: string[]
   ): any {
-    console.log('RefString: ', refString);
-    console.log('ChartData: ', stepsData);
     let htmlRef = this.elementRef.nativeElement.querySelector(refString);
     let stepsChart = new Chart(htmlRef, {
       type: 'bar',

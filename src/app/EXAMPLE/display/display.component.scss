@@ -1,0 +1,53 @@
+@import './../../../styles/helpers/mixins';
+@import './../../../styles/helpers/variables';
+
+.card {
+    @include card-dynamic(100%, 100%);
+    width: 100%;
+}
+
+.example-card-1 {
+    @include card-dynamic(50%, 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.7rem;
+    color: $button-color-primary;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+}
+
+.example-card-2 {
+    @include card-dynamic(30%, 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: $button-color-primary;
+    word-wrap: break-word;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.example-card-3{
+    @include card-dynamic(100%, 37%);
+    display: flex;
+    justify-content: center;
+    padding: 5rem, 0rem;
+    align-items: center;
+    font-size: 1.4rem;
+    color: $button-color-primary;
+    font-weight: 500
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-dim {
+    width: 10rem;
+    height: 3rem;
+    margin-right: 2rem;
+}

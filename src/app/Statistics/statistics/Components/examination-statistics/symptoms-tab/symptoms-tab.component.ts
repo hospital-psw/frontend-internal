@@ -32,8 +32,6 @@ export class SymptomsTabComponent implements OnInit {
         this.chartData = response as any[];
         this.getValues();
         this.getLabels();
-        console.log(this.symptomNames);
-        console.log(this.symptomValues);
         this.createChart(this.symptomNames, this.symptomValues);
       },
       (error) => {

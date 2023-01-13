@@ -10,7 +10,7 @@
         [outerStrokeColor]="'#FFF'"
         [innerStrokeColor]="'#FFF'"
         [animation]="true"
-        [animationDuration]="300"
+        [animationDuration]="100"
         [showInnerStroke]="false"
         [animateSubtitle]="true"
         [animateTitle]="true"
@@ -26,6 +26,8 @@
   </div>
   <div class="bu-card__text">
     <span class="header">{{ title }}</span>
-    <span class="percentage">{{ getPercentage() | number: "1.2-2" }} %</span>
+    <span class="percentage"
+      >{{ getTotalPercentage() | number: "1.2-2" }} %</span
+    >
   </div>
 </div>
