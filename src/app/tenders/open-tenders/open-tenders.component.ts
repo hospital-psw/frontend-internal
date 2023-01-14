@@ -15,6 +15,7 @@ export class OpenTendersComponent {
   panelOpenState = false;
   showOffers: boolean[] = [];
   tenders: ITender[];
+  isLoading = false;
 
   constructor(
     private tenderService: TenderService,
@@ -29,6 +30,7 @@ export class OpenTendersComponent {
       for (let i in this.tenders) {
         this.showOffers.push(false);
       }
+      this.isLoading = true;
     });
   }
   createTenderPage() {
@@ -50,9 +52,9 @@ export class OpenTendersComponent {
     return sum;
   }
 
-  openDialog(i:number) {
-    this.dialogRef.open(TenderOfferComponent,{
-      data:this.tenders[i]
+  openDialog(i: number) {
+    this.dialogRef.open(TenderOfferComponent, {
+      data: this.tenders[i],
     });
   }
 }

@@ -57,6 +57,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { OpenTendersComponent } from './tenders/open-tenders/open-tenders.component';
 import { TenderOfferComponent } from './tenders/tender-offer/tender-offer.component';
+import { ClosedTendersComponent } from './tenders/closed-tenders/closed-tenders.component';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -79,6 +81,7 @@ import { TenderOfferComponent } from './tenders/tender-offer/tender-offer.compon
     DisplayComponent,
     OpenTendersComponent,
     TenderOfferComponent,
+    ClosedTendersComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -109,6 +112,7 @@ import { TenderOfferComponent } from './tenders/tender-offer/tender-offer.compon
     MatTabsModule,
     VacationRequestModule,
     MatInputModule,
+    NgxUiLoaderModule,
     MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,
