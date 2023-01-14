@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { IRecommendedRelocationRequest } from '../model/RecommendedRelocationRequest';
 import { IRelocationRequest } from '../model/RelocationRequest';
 
@@ -14,14 +15,14 @@ export class RelocationService {
     recommendedRelocationRequest: IRecommendedRelocationRequest
   ): Observable<Date[]> {
     return this.http.put<Date[]>(
-      `hospital/relocation/recommend`,
+      `${environment.apiRelocation}/recommend`,
       recommendedRelocationRequest
     );
   }
 
   createRelocationRequest(request: IRelocationRequest) {
     return this.http.post<IRelocationRequest>(
-      `hospital/relocation/createRelocationRequest`,
+      `${environment.apiRelocation}/createRelocationRequest`,
       request
     );
   }

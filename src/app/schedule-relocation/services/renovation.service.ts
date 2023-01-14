@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IRenovationRequestDisplay } from 'src/app/Manager/Model/RenovationRequestDisplay';
+import { environment } from 'src/environments/environment';
 import { IRecommendedRelocationRequest } from '../model/RecommendedRelocationRequest';
 import { IRelocationRequest } from '../model/RelocationRequest';
 import { IRenovationRequest } from '../model/RenovationRequest';
@@ -16,7 +17,7 @@ export class RenovationService {
     recommendedRequest: IRecommendedRelocationRequest
   ): Observable<Date[]> {
     return this.http.put<Date[]>(
-      `hospital/renovation/recommend`,
+      `${environment.apiRenovation}/recommend`,
       recommendedRequest
     );
   }
@@ -24,20 +25,20 @@ export class RenovationService {
   createRenovationRequest(request: IRenovationRequest) {
     console.log(request);
     return this.http.post<IRenovationRequest>(
-      `hospital/renovation/createRenovationRequest`,
+      `${environment.apiRenovation}/createRenovationRequest`,
       request
     );
   }
 
   getRenovations(roomId: number): Observable<IRenovationRequestDisplay[]> {
     return this.http.get<IRenovationRequestDisplay[]>(
-      `hospital/renovation/${roomId}`
+      `${environment.apiRenovation}/${roomId}`
     );
   }
 
   decline(requestId: number): Observable<any> {
     return this.http.post<IRenovationRequestDisplay[]>(
-      `hospital/Renovation/decline`,
+      `${environment.apiRenovation}/decline`,
       requestId
     );
   }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ export class TenderService {
 
   getQuantityOfBloodPerMonth(year: number, bloodType: number) {
     return this._http.get(
-      `hospital/Tender/blood/${year}/${bloodType}`
+      `${environment.apiTenderHospital}/blood/${year}/${bloodType}`
     );
   }
 }

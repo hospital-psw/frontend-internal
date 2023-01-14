@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IRenovationRequestDisplay } from 'src/app/Manager/Model/RenovationRequestDisplay';
+import { environment } from 'src/environments/environment';
 import { IRecommendedRelocationRequest } from '../model/RecommendedRelocationRequest';
 import { IRelocationRequest } from '../model/RelocationRequest';
 import { IRenovationEvent } from '../model/RenovationEvent';
@@ -15,6 +16,6 @@ export class EventService {
 
   createEvent(evt: IRenovationEvent) {
     console.log(evt);
-    return this.http.post<number>(`hospital/event`, evt);
+    return this.http.post<number>(`${environment.apiEvent}`, evt);
   }
 }
