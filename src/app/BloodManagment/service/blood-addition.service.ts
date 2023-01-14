@@ -12,7 +12,7 @@ export class BloodAdditionService {
 
   public GetByBloodType(bt: string): Observable<BloodAddition[]> {
     return this.http.get<BloodAddition[]>(
-      environment.apiBloodAddition + bt
+      environment.apiBloodAddition + '/' + bt
     );
   }
 }

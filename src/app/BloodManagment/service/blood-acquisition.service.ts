@@ -28,7 +28,7 @@ export class BloodAcquisitionService {
     id: number
   ): Observable<BloodAcquisition[]> {
     return this.http.get<BloodAcquisition[]>(
-      'http://localhost:16177/doctorAcquisitions/'.concat(id.toString())
+      this.apiServerUrl + '/doctorAcquisitions/'.concat(id.toString())
     );
   }
 

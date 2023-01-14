@@ -16,7 +16,7 @@ export class BloodRequestService {
   constructor(private http: HttpClient) {}
 
   getBloodRequest(): Observable<BloodRequest[]> {
-    return this.http.get<BloodRequest[]>(this.apiHost + 'pending', {
+    return this.http.get<BloodRequest[]>(this.apiHost + '/' + 'pending', {
       headers: this.headers,
     });
   }
@@ -52,19 +52,19 @@ export class BloodRequestService {
   }
 
   MakeAccepted(id: number): Observable<BloodRequest> {
-    return this.http.put<BloodRequest>(this.apiHost + 'accept/' + id, {
+    return this.http.put<BloodRequest>(this.apiHost + '/accept/' + id, {
       headers: this.headers,
     });
   }
 
   MakeDeclined(id: number): Observable<BloodRequest> {
-    return this.http.put<BloodRequest>(this.apiHost + 'decline/' + id, {
+    return this.http.put<BloodRequest>(this.apiHost + '/decline/' + id, {
       headers: this.headers,
     });
   }
 
   reconsiderRequest(id: number, managerComment: string) {
-    return this.http.patch<BloodRequest>(this.apiHost + 'handle/', {
+    return this.http.patch<BloodRequest>(this.apiHost + '/handle/', {
       Id: id,
       Status: 3,
       ManagerComment: managerComment,
@@ -72,7 +72,7 @@ export class BloodRequestService {
   }
 
   editRequest(bloodRequests: BloodRequest) {
-    return this.http.put<BloodRequest>(this.apiHost + 'edit/', bloodRequests, {
+    return this.http.put<BloodRequest>(this.apiHost + '/edit/', bloodRequests, {
       headers: this.headers,
     });
   }
