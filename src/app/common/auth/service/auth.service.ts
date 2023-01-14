@@ -41,7 +41,7 @@ export class AuthService {
 
   public login(data: LoginDTO) {
     return this.http
-      .post<LoginResponseDTO>('https://hospitalapiserver.azurewebsites.net/api/Auth/login', data) // this.api
+      .post<LoginResponseDTO>(this.api, data)
       .pipe(
         tap((response) => {
           this.handleLogin(response);
