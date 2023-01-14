@@ -1,0 +1,41 @@
+<div class="wrapper-card">
+  <div class="card-header flex-container">
+    <button class="theme-button btn-bg-blue btn-dim">PLAVO</button>
+    <button class="theme-button btn-bg-green btn-dim">ACCEPT</button>
+    <button class="theme-button btn-bg-red btn-dim">DENY</button>
+    <button class="theme-button btn-bg-red btn-dim" disabled>DISABLED</button>
+  </div>
+  <div class="card-content">
+    <div class="example-card-1">
+      <span>
+        <p>DINAMICKA KARTICA (50%, 30%)</p>
+        <p>@import './../../../styles/helpers/mixins'</p>
+        @include card-dynamic(50%, 50%);
+      </span>
+    </div>
+    <div class="example-card-2">
+      <span>
+        <p>DINAMICKA KARTICA (30%, 30%)</p>
+        <p>@import './../../../styles/helpers/mixins'</p>
+        @include card-dynamic(30%, 40%);
+      </span>
+    </div>
+    <div class="example-card-3">
+      <span>
+        <p>Za stilizovanje dugmeta iskoristite <b>theme-button</b> klasu</p>
+        <p>
+          Da biste dodali boju na dugme iskoristie
+          <b>btn-bg-[blue/red/green]</b> klasu
+        </p>
+        <p>
+          Da biste postavili karticu na ekran iskoristite
+          <b>card-wrapper</b> klasu koja ima 100% width 100% height
+        </p>
+        <p>
+          Ako zelite da postavite dinamicku visinu kartice gore je pojasnjeno
+        </p>
+        <p>Primer dugmeta <b>button class = "theme-button btn-bg-blue"</b></p>
+      </span>
+    </div>
+  </div>
+</div>

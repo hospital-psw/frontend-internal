@@ -1,4 +1,4 @@
-<div>
+<div class="all">
   <div class="space">
     <table mat-table [dataSource]="dataSource" class="space__table">
       <ng-container matColumnDef="room">
@@ -38,6 +38,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr
         mat-row
+        class="tableRow"
         *matRowDef="let row; columns: displayedColumns"
         (click)="onTableRowClick(row)"
       ></tr>
@@ -54,6 +55,7 @@
     aria-label="Select page of active medical treatments"
     (page)="onPaginateChange($event)"
     [color]="paginatorColor"
+    class="mat-paginator-sticky"
   >
   </mat-paginator>
 </div>

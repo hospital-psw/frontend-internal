@@ -21,6 +21,7 @@ export class DetailComponent implements OnInit {
   showAnwser = false;
   showResponse1 = false;
   showAnwser1 = false;
+  errFreq = false;
   showConf = false;
   monthlyTransfer = new MonthlyTransfer();
 
@@ -118,6 +119,14 @@ export class DetailComponent implements OnInit {
         this.showConf = false;
         this.bloodBankService.success('Saved configuration successfully.');
       });
+  }
+
+  public checkFrequency() {
+    if (this.bloodBank.frequently < 0) {
+      this.errFreq = true;
+    } else {
+      this.errFreq = false;
+    }
   }
   public updateMonthly() {
     this.monthlyTransfer.dateTime = this.bloodBank.monthlyTransfer.dateTime;

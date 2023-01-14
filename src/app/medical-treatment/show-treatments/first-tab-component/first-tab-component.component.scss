@@ -1,7 +1,15 @@
 @import './../../../../styles/helpers/variables';
 
+.all {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .space {
-  height: 38rem;
+  height: 85%;
   width: 100%;
   padding: 1rem 3rem;
   margin: 0;
@@ -9,6 +17,22 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 .6rem rgba(0, 0, 0, 0.3);
+    background-color: rgba($sidebar-color-secondary, 0.35);
+    border-radius: .5rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: .5rem;
+    -webkit-box-shadow: inset 0 0 .6rem rgba(0, 0, 0, 0.5);
+    background-color: rgba($sidebar-color-secondary, 1);
+  }
 
   &__table {
     width: 100%;
@@ -18,8 +42,15 @@
   }
 }
 
+.mat-paginator-sticky {
+  bottom: 0px;
+  height: 15%;
+  z-index: 10;
+}
+
 .tableRow {
   min-height: 7rem !important;
+  max-height: 7rem !important;
 }
 
 .mat-column {

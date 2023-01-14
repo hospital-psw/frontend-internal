@@ -104,7 +104,6 @@ export class FirstTabComponentComponent implements OnInit, OnChanges {
     this.length = event.lenght;
     this.pageSizeOutput.emit(this.pageSize);
     this.pageNumberOutput.emit(this.pageNumber);
-    console.log(this.pageSize, this.pageNumber);
   }
 
   onTableRowClick(medicalTreatment: MedicalTreatment): void {

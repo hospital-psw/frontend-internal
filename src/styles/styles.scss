@@ -96,3 +96,127 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .text-white {
   color: white;
 }
+
+md-tab-group {
+  height: 100%;
+  width: 100%;
+}
+
+.mat-tab-body-content{
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.mat-tab-body.mat-tab-body-active {
+  overflow: hidden !important;
+  width: 100% !important;
+}
+
+.mat-tab-body-wrapper {
+  height: 100% !important;
+}
+
+
+.wrapper-card {
+  height: 100%;
+  width: 100%;
+  background-color: $color-white;
+  box-shadow: $wrapper-card-box-shadow;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+  border-radius: 1rem;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.card-header {
+  height: 8%;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.card-content {
+  height: calc(92% - 1rem);
+  width: 100%;
+}
+
+.theme-button {
+  border: 1px solid $button-color-primary;
+  font-weight: 600;
+  border-radius: .5rem;
+  padding: .7rem .7rem;
+  transition: all .3s;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: .3s;
+    cursor: pointer;
+    background-color: $button-color-primary;
+    color: white;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+    transform: none;
+    background-color: white;
+    
+    color: $button-color-primary;
+  }
+}
+
+.btn-bg-blue {
+  background-color: $color-white;
+  color: $button-color-primary;
+  border: 1px solid $button-color-primary;
+
+  &:hover {
+    background-color: $button-color-primary;
+    color: white;
+  }
+
+  &:disabled {
+    background-color: $color-white;
+    color: $button-color-primary;
+  }
+}
+
+.btn-bg-green {
+  background-color: $color-white;
+  color: $button-color-green;
+  border: 1px solid $button-color-green;
+
+  &:hover {
+    background-color: $button-color-green;
+    color: $color-white;
+  }
+
+  &:disabled {
+    background-color: $color-white;
+    color: $button-color-green;
+  }
+}
+
+.btn-bg-red {
+  background-color: $color-white;
+  color: $button-color-red;
+  border: 1px solid $button-color-red;
+  
+  &:hover {
+    background-color: $button-color-red;
+    color: $color-white;
+  }
+
+  &:disabled {
+    background-color: $color-white;
+    color: $button-color-red;
+  }
+}
