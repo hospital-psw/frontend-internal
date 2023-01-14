@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { BloodType } from '../../blood-bank/model/blood-type.model';
 import { MatDialog } from '@angular/material/dialog';
 import { TenderReportComponent } from '../tender-report/tender-report.component';
+import { CreateTenderComponent } from '../create-tender/create-tender.component';
 
 @Component({
   selector: 'app-show-tenders',
@@ -15,6 +16,7 @@ import { TenderReportComponent } from '../tender-report/tender-report.component'
 export class ShowTendersComponent {
   showOffers: boolean[] = [];
   tenders: ITender[];
+  panelOpenState = false;
   bloodTypes = Object.values(BloodType).splice(0, 8);
   constructor(
     private tenderService: TenderService,
@@ -43,7 +45,7 @@ export class ShowTendersComponent {
   }
 
   createTenderPage() {
-    this.router.navigateByUrl('/app/create-tender');
+    this.dialogRef.open(CreateTenderComponent);
   }
 
   accept(tenderId: Number, i: Number) {
