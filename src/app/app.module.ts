@@ -55,6 +55,8 @@ import { BloodAdditionsOverviewComponent } from './BloodManagment/BloodAdditions
 import { DisplayComponent } from './EXAMPLE/display/display.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { OpenTendersComponent } from './tenders/open-tenders/open-tenders.component';
+import { TenderOfferComponent } from './tenders/tender-offer/tender-offer.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     BloodUnitCardComponent,
     BloodAdditionsOverviewComponent,
     DisplayComponent,
+    OpenTendersComponent,
+    TenderOfferComponent,
   ],
   imports: [
     MatDatepickerModule,

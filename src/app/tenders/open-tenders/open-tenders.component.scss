@@ -1,0 +1,31 @@
+@import './../../../styles/helpers/mixins';
+@import './../../../styles/helpers/variables';
+
+.tender-card{
+    @include card-dynamic(100%, 20%);
+    background-color: aqua;
+}
+
+.offer{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.offer-wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 50%;
+}
+mat-panel-description{
+    display: flex; 
+    justify-content: space-around;
+}
+.content{
+    padding-top: 2rem;
+}
+
+.offer-footer{
+    display: flex;
+    justify-content: flex-end;
+}

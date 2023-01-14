@@ -87,6 +87,8 @@ export class ApplicationMainComponent implements OnInit {
         this.name = 'Anamnesis and perscriptions review';
       } else if (this.router.url.includes('/app/blood-storage')) {
         this.name = 'Blood Storage';
+      } else if (this.router.url.includes('/app/show-tenders')) {
+        this.name = 'Tenders';
       }
     });
   }
