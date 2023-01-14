@@ -4,7 +4,8 @@ export interface ITender {
   id: Number;
   status: Number;
   dueDate: Date;
-  tenderWinner: BloodBank;
+  tenderWinner: any;
   offers: any;
   items: any;
+  dateUpdated: Date;
 }

@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DisplayComponent } from './display.component';
+import { ClosedTendersComponent } from './closed-tenders.component';
 
-describe('DisplayComponent', () => {
-  let component: DisplayComponent;
-  let fixture: ComponentFixture<DisplayComponent>;
+describe('ClosedTendersComponent', () => {
+  let component: ClosedTendersComponent;
+  let fixture: ComponentFixture<ClosedTendersComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DisplayComponent],
+      declarations: [ClosedTendersComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(DisplayComponent);
+    fixture = TestBed.createComponent(ClosedTendersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,24 @@
+<div class="content">
+  <div *ngFor="let tender of tenders; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="showWinners[i] = true"
+        (closed)="showWinners[i] = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Tender {{ tender.id }} </mat-panel-title>
+          <mat-panel-description>
+            <p>Finished: {{ tender.dateUpdated.toString().split("T")[0] }}</p>
+            <span> </span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>
+          <b>{{ tender.tenderWinner.offeror.name }}</b> is the winner of the
+          tender with a winning bid of
+          {{ calculateTenderOffers(tender.tenderWinner.items) }}$.
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<ngx-ui-loader *ngIf="!isLoading"></ngx-ui-loader>

@@ -1,0 +1,46 @@
+.content{
+    min-width: 100rem;
+    min-height: 50rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: relative;
+}
+.hospital-icon{
+    width: 10rem;
+    height: 10rem;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.name{
+    font-weight: 500;
+}
+.items{
+    margin-top: 2rem;
+    background-color: aquamarine;
+}
+.table{
+    margin-top: 3rem;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+  .footer{
+    font-weight: 800;
+    position: absolute;
+    bottom: 0;
+  }

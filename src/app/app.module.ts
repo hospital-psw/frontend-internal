@@ -53,6 +53,12 @@ import { BloodUnitCardComponent } from './BloodManagment/BloodUnitsOverview/bloo
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { BloodAdditionsOverviewComponent } from './BloodManagment/BloodAdditionsOverview/blood-additions-overview/blood-additions-overview.component';
 import { DisplayComponent } from './EXAMPLE/display/display.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { OpenTendersComponent } from './tenders/open-tenders/open-tenders.component';
+import { TenderOfferComponent } from './tenders/tender-offer/tender-offer.component';
+import { ClosedTendersComponent } from './tenders/closed-tenders/closed-tenders.component';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -73,6 +79,9 @@ import { DisplayComponent } from './EXAMPLE/display/display.component';
     BloodUnitCardComponent,
     BloodAdditionsOverviewComponent,
     DisplayComponent,
+    OpenTendersComponent,
+    TenderOfferComponent,
+    ClosedTendersComponent,
   ],
   imports: [
     MatDatepickerModule,
@@ -85,6 +94,7 @@ import { DisplayComponent } from './EXAMPLE/display/display.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     ViewRoomsModule,
+    MatExpansionModule,
     MatTableModule,
     FeedbackModule,
     BloodRequestModule,
@@ -99,8 +109,10 @@ import { DisplayComponent } from './EXAMPLE/display/display.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatTabsModule,
     VacationRequestModule,
     MatInputModule,
+    NgxUiLoaderModule,
     MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,

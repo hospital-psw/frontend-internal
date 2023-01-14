@@ -1,4 +1,30 @@
-<div class="TopBar">
+<div class="wrapper-card">
+  <div class="card-header">
+    <!-- <label class="title">TENDER</label> -->
+    <div class="btn-group">
+      <button
+        class="theme-button btn-bg-blue btn-top"
+        (click)="createTenderPage()"
+      >
+        OPEN TENDER
+      </button>
+      <button class="theme-button btn-bg-blue btn-top" (click)="openDialog()">
+        TENDER REPORT
+      </button>
+    </div>
+  </div>
+  <div class="card-content">
+    <mat-tab-group>
+      <mat-tab label="Open tenders" class="tab">
+        <app-open-tenders></app-open-tenders>
+      </mat-tab>
+      <mat-tab label="Closed tenders" class="tab">
+        <app-closed-tenders></app-closed-tenders>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<!-- <div class="TopBar">
   <label for="tender" class="tender">Tender</label>
   <button class="createTenderButton" (click)="createTenderPage()">
     Open Tender
@@ -53,4 +79,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

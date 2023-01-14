@@ -1,0 +1,44 @@
+<div class="content">
+  <div *ngFor="let tender of tenders; let i = index">
+    <mat-accordion>
+      <mat-expansion-panel
+        (opened)="showOffers[i] = true"
+        (closed)="showOffers[i] = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> Tender {{ tender.id }} </mat-panel-title>
+          <mat-panel-description>
+            <p>Deadline: {{ tender.dueDate.toString().split("T")[0] }}</p>
+            <span> </span>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngIf="tender.offers.length === 0">
+          <p>There are no active bids for this tender yet.</p>
+        </div>
+        <div *ngFor="let offer of tender.offers; let i = index">
+          <div class="offer">
+            <p>
+              Offer by <b>{{ offer.offeror.name }}</b>
+            </p>
+            <div class="offer-wrap">
+              <p>Price: {{ calculateTenderOffers(offer) }}$</p>
+              <button
+                class="theme-button btn-bg-green"
+                (click)="accept(tender.id, i)"
+              >
+                Accept
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="offer-footer">
+          <button class="theme-button btn-bg-blue" (click)="openDialog(i)">
+            Show details
+          </button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
+<ngx-ui-loader *ngIf="!isLoading"></ngx-ui-loader>

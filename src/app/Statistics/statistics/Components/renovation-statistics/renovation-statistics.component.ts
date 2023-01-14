@@ -53,17 +53,19 @@ export class RenovationStatisticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.statisticsService
-      .getAverageRenovationSchedulingDurationByGroups()
-      .subscribe((data) => {
-        this.averageScheduleDurationByGroupsChartData = data;
-        this.createAverageScheduleDurationChartByGroups();
-      });
-    this.statisticsService
       .getAverageRenovationSchedulingDuration()
       .subscribe((data) => {
         this.averageScheduleDurationChartData = data;
+        this.average = this.calcAverage();
         this.createAverageScheduleDurationChart();
+        this.statisticsService
+          .getAverageRenovationSchedulingDurationByGroups()
+          .subscribe((data) => {
+            this.averageScheduleDurationByGroupsChartData = data;
+            this.createAverageScheduleDurationChartByGroups();
+          });
       });
+
     this.statisticsService.getNumberOfViewsForEachStep().subscribe((data) => {
       this.numberOfViewsForEachStepChartData = data;
       this.createNumberOfViewsForEachStepChart();
@@ -92,14 +94,14 @@ export class RenovationStatisticsComponent implements OnInit {
     });
   }
 
-  average() {
+  calcAverage() {
     let average = 0;
     for (let i = 0; i < this.averageScheduleDurationChartData.length; i++) {
       average += this.averageScheduleDurationChartData[i];
     }
     return average / this.averageScheduleDurationChartData.length;
   }
-
+  average: number;
   numberOfViewsForEachStep: any = [];
   averageNumberOfStepsAccordingToRenovationType: any = [];
 
@@ -157,7 +159,9 @@ export class RenovationStatisticsComponent implements OnInit {
             display: true,
             text:
               'Average scheduling duration: ' +
-              Math.round(this.average()) +
+              Math.round(
+                Number.isNaN(this.average) ? this.calcAverage() : this.average
+              ) +
               's',
             font: {
               size: 20,
@@ -210,9 +214,7 @@ export class RenovationStatisticsComponent implements OnInit {
             color: 'gray',
             display: true,
             text:
-              'Average scheduling duration: ' +
-              Math.round(this.average()) +
-              's',
+              'Average scheduling duration: ' + Math.round(this.average) + 's',
             font: {
               size: 20,
             },
@@ -225,8 +227,8 @@ export class RenovationStatisticsComponent implements OnInit {
             annotations: {
               line1: {
                 type: 'line',
-                yMin: this.average(),
-                yMax: this.average(),
+                yMin: this.average,
+                yMax: this.average,
                 borderColor: 'rgb(255, 0, 0)',
                 borderWidth: 2,
               },

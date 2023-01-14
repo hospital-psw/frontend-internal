@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="header">
+    <img src="../../../assets/SVG/Hp.svg" class="hospital-icon" />
+    <div class="address">
+      <p class="name">Care Connect</p>
+      <p>Trg republike 2</p>
+      <p>Novi Sad 21000</p>
+      <p class="email">care@connect.com</p>
+    </div>
+  </div>
+  <div class="table">
+    <table>
+      <tr>
+        <th>Blood type</th>
+        <th>Quantity</th>
+        <th>VAT rate</th>
+      </tr>
+      <tr *ngFor="let item of data.items; let i = index">
+        <td>
+          {{
+            bloodTypes[item.bloodType]
+              .replace("_", "")
+              .replace("MINUS", "-")
+              .replace("PLUS", "+")
+          }}
+        </td>
+        <td>{{ item.quantity }}</td>
+        <td>20%</td>
+      </tr>
+    </table>
+  </div>
+  <div class="footer">
+    <!-- <p class="footer__payment">Total for payment: {{ calcTotal() }}$</p> -->
+    <p>
+      Payment accepted through Visa, Mastercard, American Express, PayPal, and
+      Apple Pay. All transactions are secure and encrypted. Thank you for your
+      business.
+    </p>
+  </div>
+</div>
