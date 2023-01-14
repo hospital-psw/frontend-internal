@@ -8,9 +8,8 @@ describe('ClosedTendersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClosedTendersComponent ]
-    })
-    .compileComponents();
+      declarations: [ClosedTendersComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ClosedTendersComponent);
     component = fixture.componentInstance;
