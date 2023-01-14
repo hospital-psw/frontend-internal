@@ -1,18 +1,20 @@
 {
     "/hospital/*": {
         "target": "https://hospitalapiserver.azurewebsites.net",
-        "secure": false,
+        "secure": true,
         "pathRewrite": {
             "^/hospital": "/api"
         },
-        "changeOrigin": true
+        "changeOrigin": true,
+        "logLevel": "debug"
     },
    "/integration/*": {
         "target": "https://integrationapiserver.azurewebsites.net",
-        "secure": false,
+        "secure": true,
         "pathRewrite": {
             "^/integration": "/api"
         },
-        "changeOrigin": true
+        "changeOrigin": true,
+        "logLevel": "debug"
    }
 }
