@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { BloodBank } from '../model/blood-bank.model';
 import { MonthlyTransfer } from '../model/MonthlyTransfer.model';
 
@@ -9,7 +10,7 @@ import { MonthlyTransfer } from '../model/MonthlyTransfer.model';
   providedIn: 'root',
 })
 export class BloodBankService {
-  apiHost: string = 'http://localhost:45488/';
+  apiHost: string = environment.apiBloodBank;
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -17,26 +18,26 @@ export class BloodBankService {
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   getBloodBanks(): Observable<BloodBank[]> {
-    return this.http.get<BloodBank[]>(this.apiHost + 'api/BloodBank/all', {
+    return this.http.get<BloodBank[]>(this.apiHost + '/all', {
       headers: this.headers,
     });
   }
 
   getBloodBank(id: number): Observable<BloodBank> {
-    return this.http.get<BloodBank>(this.apiHost + 'api/BloodBank/' + id, {
+    return this.http.get<BloodBank>(this.apiHost + '/' + id, {
       headers: this.headers,
     });
   }
 
   deleteBloodBank(id: any): Observable<any> {
-    return this.http.delete<any>(this.apiHost + 'api/BloodBank/' + id, {
+    return this.http.delete<any>(this.apiHost + '/' + id, {
       headers: this.headers,
     });
   }
 
   registerBloodBank(bloodBank: any): Observable<any> {
     return this.http.post<any>(
-      this.apiHost + 'api/BloodBank/register',
+      this.apiHost + '/register',
       bloodBank,
       {
         headers: this.headers,
@@ -45,14 +46,14 @@ export class BloodBankService {
   }
 
   updateBloodBank(bloodBank: any): Observable<any> {
-    return this.http.put<any>(this.apiHost + 'api/BloodBank/', bloodBank, {
+    return this.http.put<any>(this.apiHost, bloodBank, {
       headers: this.headers,
     });
   }
 
   checkBoodType(id: number, bloodType: string): Observable<any> {
     return this.http.get<any>(
-      this.apiHost + 'api/BloodBank/checkType/' + id + '/' + bloodType
+      this.apiHost + '/checkType/' + id + '/' + bloodType
     );
   }
 
@@ -63,7 +64,7 @@ export class BloodBankService {
     reportFrom: Date
   ) {
     return this.http.patch<any>(
-      this.apiHost + 'api/BloodBank/saveConfiguration',
+      this.apiHost + '/saveConfiguration',
       {
         id,
         frequently,
@@ -87,7 +88,7 @@ export class BloodBankService {
   ): Observable<any> {
     return this.http.get<any>(
       this.apiHost +
-        'api/BloodBank/checkAmount/' +
+        '/checkAmount/' +
         id +
         '/' +
         bloodType +
@@ -98,7 +99,7 @@ export class BloodBankService {
 
   updateMonthly(id: Number, mt: MonthlyTransfer) {
     return this.http.patch<any>(
-      this.apiHost + `api/BloodBank/monthlyTransferConfiguration/${id}`,
+      this.apiHost + `/monthlyTransferConfiguration/${id}`,
       mt
     );
   }

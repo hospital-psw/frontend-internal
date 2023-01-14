@@ -19,46 +19,46 @@ export class RoomService {
 
   getRooms(buildingId: number, floor: string) {
     return this.http.get<IRoomMap[]>(
-      `http://localhost:16177/api/map/getRooms/${buildingId}/${floor}`
+      `${environment.apiMap}/getRooms/${buildingId}/${floor}`
     );
   }
 
   getBuilding(buildingId: number) {
     return this.http.get<IRoomMap[]>(
-      `http://localhost:16177/api/map/getRooms/${buildingId}`
+      `${environment.apiMap}/getRooms/${buildingId}`
     );
   }
 
   getBuildings() {
     return this.http.get<IBuilding[]>(
-      `http://localhost:16177/api/map/getBuildings`
+      `${environment.apiMap}/getBuildings`
     );
   }
 
   editRoom(room: IRoom) {
-    return this.http.put<IRoom>(`http://localhost:16177/api/rooms`, room);
+    return this.http.put<IRoom>(`${environment.apiRooms}`, room);
   }
 
   editBuilding(building: IBuilding) {
     return this.http.put<IBuilding>(
-      `http://localhost:16177/api/buildings`,
+      `${environment.apiBuildings}`,
       building
     );
   }
 
   editFloor(floor: IFloor) {
-    return this.http.put<IBuilding>(`http://localhost:16177/api/floors`, floor);
+    return this.http.put<IBuilding>(`${environment.apiFloors}`, floor);
   }
 
   getEquipment(roomId: number) {
     return this.http.get<IEquipment[]>(
-      `http://localhost:16177/api/Equipment/${roomId}`
+      `${environment.apiEquipment}/${roomId}`
     );
   }
 
   searchRooms(searchCriteriaDto: ISearchCriteriaDto) {
     return this.http.post<IRoom[]>(
-      `http://localhost:16177/api/rooms`,
+      `${environment.apiRooms}`,
       searchCriteriaDto
     );
   }

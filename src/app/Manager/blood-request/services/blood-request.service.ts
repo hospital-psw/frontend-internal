@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BloodRequest } from '../../Model/BloodRequest';
-import { formatRFC3339WithOptions } from 'date-fns/fp';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BloodRequestService {
-  apiHost: string = 'http://localhost:16177/';
+  apiHost: string = environment.apiBloodAcquisition;
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -23,7 +23,7 @@ export class BloodRequestService {
 
   getBloodRequestId(id: number): Observable<BloodRequest> {
     return this.http.get<BloodRequest>(
-      this.apiHost + 'api/BloodAcquisition/' + id,
+      this.apiHost + '/' + id,
       {
         headers: this.headers,
       }
@@ -32,21 +32,21 @@ export class BloodRequestService {
 
   getAccepted(): Observable<BloodRequest[]> {
     return this.http.get<BloodRequest[]>(
-      this.apiHost + 'api/BloodAcquisition/get/all/accepted',
+      this.apiHost + '/get/all/accepted',
       { headers: this.headers }
     );
   }
 
   getDeclined(): Observable<BloodRequest[]> {
     return this.http.get<BloodRequest[]>(
-      this.apiHost + 'api/BloodAcquisition/get/all/declined',
+      this.apiHost + '/get/all/declined',
       { headers: this.headers }
     );
   }
 
   getReconsidering(): Observable<BloodRequest[]> {
     return this.http.get<BloodRequest[]>(
-      this.apiHost + 'api/BloodAcquisition/get/all/reconsidering',
+      this.apiHost + '/get/all/reconsidering',
       { headers: this.headers }
     );
   }

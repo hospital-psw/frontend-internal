@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Feedback } from '../interface/feedback';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FeedbackService {
-  apiHost: string = 'http://localhost:16177/';
+  apiHost: string = environment.apiFeedback;
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -16,61 +17,61 @@ export class FeedbackService {
 
   getAnonymous(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/all/anonymous',
+      this.apiHost + '/get/all/anonymous',
       { headers: this.headers }
     );
   }
   getApproved(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/all/approved',
+      this.apiHost + '/get/all/approved',
       { headers: this.headers }
     );
   }
   getDenied(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/all/denied',
+      this.apiHost + '/get/all/denied',
       { headers: this.headers }
     );
   }
   getPending(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/all/pending',
+      this.apiHost + '/get/all/pending',
       { headers: this.headers }
     );
   }
   getPublic(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/all/public',
+      this.apiHost + '/get/all/public',
       { headers: this.headers }
     );
   }
   getPrivate(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/all/private',
+      this.apiHost + '/get/all/private',
       { headers: this.headers }
     );
   }
   getFeedback(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(
-      this.apiHost + 'api/Feedback/get/manager/feedback',
+      this.apiHost + '/get/manager/feedback',
       { headers: this.headers }
     );
   }
   MakeApproved(id: number): Observable<Feedback> {
     return this.http.put<Feedback>(
-      this.apiHost + 'api/Feedback/make/approved/' + id,
+      this.apiHost + '/make/approved/' + id,
       { headers: this.headers }
     );
   }
   MakeDenied(id: number): Observable<Feedback> {
     return this.http.put<Feedback>(
-      this.apiHost + 'api/Feedback/make/denied/' + id,
+      this.apiHost + '/make/denied/' + id,
       { headers: this.headers }
     );
   }
   MakePending(id: number): Observable<Feedback> {
     return this.http.put<Feedback>(
-      this.apiHost + 'api/Feedback/make/pending/' + id,
+      this.apiHost + '/make/pending/' + id,
       { headers: this.headers }
     );
   }

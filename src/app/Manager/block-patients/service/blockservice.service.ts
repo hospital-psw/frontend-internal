@@ -8,7 +8,7 @@ import { IPatient } from '../interface/ipatient';
   providedIn: 'root',
 })
 export class BlockserviceService {
-  apiHost: string = 'http://localhost:16177/';
+  apiHost: string = environment.apiApplicationPatient;
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -27,7 +27,7 @@ export class BlockserviceService {
   }
   blockPatient(id: number): Observable<IPatient> {
     return this.http.put<IPatient>(
-      this.apiHost + 'api/ApplicationPatient/block/' + id,
+      this.apiHost + '/block/' + id,
       { headers: this.headers }
     );
   }

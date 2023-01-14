@@ -27,6 +27,15 @@ export const environment = {
   apiUrgentBloodTransfer: 'integration/UrgentBloodTransfer',
   apiExaminationEvent: 'hospital/ExaminationEvent',
   apiDoctorSchedule: 'hospital/DoctorSchedule',
+  apiBloodBank: 'integration/BloodBank',
+  apiBloodAddition: 'hospital/BloodAdditon',
+  apiFeedback: 'hospital/Feedback',
+  apiRelocation: 'hospital/Relocation',
+  apiMap: 'hospital/Map',
+  apiFloors: 'hospital/Floors',
+  apiBuildings: 'hospital/Buildings',
+  apiEquipment: 'hospital/Equipment',
+  apiNews: 'integration/News',
 };
 
 /*

@@ -16,7 +16,7 @@ export class RenovationService {
     recommendedRequest: IRecommendedRelocationRequest
   ): Observable<Date[]> {
     return this.http.put<Date[]>(
-      `http://localhost:16177/api/renovation/recommend`,
+      `hospital/renovation/recommend`,
       recommendedRequest
     );
   }
@@ -24,20 +24,20 @@ export class RenovationService {
   createRenovationRequest(request: IRenovationRequest) {
     console.log(request);
     return this.http.post<IRenovationRequest>(
-      `http://localhost:16177/api/renovation/createRenovationRequest`,
+      `hospital/renovation/createRenovationRequest`,
       request
     );
   }
 
   getRenovations(roomId: number): Observable<IRenovationRequestDisplay[]> {
     return this.http.get<IRenovationRequestDisplay[]>(
-      `http://localhost:16177/api/renovation/${roomId}`
+      `hospital/renovation/${roomId}`
     );
   }
 
   decline(requestId: number): Observable<any> {
     return this.http.post<IRenovationRequestDisplay[]>(
-      `http://localhost:16177/api/Renovation/decline`,
+      `hospital/Renovation/decline`,
       requestId
     );
   }

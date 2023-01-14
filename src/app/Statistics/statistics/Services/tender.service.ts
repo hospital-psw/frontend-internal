@@ -9,7 +9,7 @@ export class TenderService {
 
   getQuantityOfBloodPerMonth(year: number, bloodType: number) {
     return this._http.get(
-      `http://localhost:16177/api/Tender/blood/${year}/${bloodType}`
+      `hospital/Tender/blood/${year}/${bloodType}`
     );
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IAppointmentDisplay } from '../Model/AppointmentDisplay';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class AppointmentService {
 
   getAppointments(roomId: number): Observable<IAppointmentDisplay[]> {
     return this.http.get<IAppointmentDisplay[]>(
-      `http://localhost:16177/api/Appointment/room/${roomId}`
+      `${environment.apiAppointmentUrl}/room/${roomId}`
     );
   }
 }

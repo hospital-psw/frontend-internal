@@ -12,25 +12,25 @@ export class TenderService {
   constructor(private http: HttpClient) {}
 
   public getAll(): Observable<ITender[]> {
-    return this.http.get<ITender[]>(`http://localhost:45488/api/Tender/active`);
+    return this.http.get<ITender[]>(`integration/Tender/active`);
   }
 
   public finishedTender(tenderId: Number, offerIndex: Number) {
     return this.http.get<ITender[]>(
-      `http://localhost:45488/api/Tender/finish/${tenderId}/${offerIndex}`
+      `integration/Tender/finish/${tenderId}/${offerIndex}`
     );
   }
 
   public createTender(tender: CreateTenderDTO): Observable<CreateTenderDTO> {
     return this.http.post<CreateTenderDTO>(
-      `http://localhost:45488/api/Tender`,
+      `integration/Tender`,
       tender
     );
   }
 
   public generateReport(start: Date | null, end: Date | null) {
     return this.http.post(
-      `http://localhost:45488/api/Tender/generate-report`,
+      `integration/Tender/generate-report`,
       {
         start,
         end,

@@ -13,7 +13,7 @@ export class DoctorService {
   constructor(private _http: HttpClient) {}
 
   getDoctors() {
-    return this._http.get(`http://localhost:16177/api/ApplicationDoctor/all`);
+    return this._http.get(`${this.apiServerUrl}/all`);
   }
 
   getSpecializationsOfDoctorsInSameShift(

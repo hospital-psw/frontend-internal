@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { News } from '../model/news';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NewsfeedService {
-  apiHost: string = 'http://localhost:45488/';
+  apiHost: string = environment.apiNews;
   headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
   });
@@ -16,37 +17,37 @@ export class NewsfeedService {
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   getAll(): Observable<News[]> {
-    return this.http.get<News[]>('integration/News/all', {
+    return this.http.get<News[]>(environment.apiNews + '/all', {
       headers: this.headers,
     });
   }
 
   getPublished(): Observable<News[]> {
-    return this.http.get<News[]>(this.apiHost + 'api/News/published', {
+    return this.http.get<News[]>(this.apiHost + '/published', {
       headers: this.headers,
     });
   }
 
   getArchived(): Observable<News[]> {
-    return this.http.get<News[]>(this.apiHost + 'api/News/archived', {
+    return this.http.get<News[]>(this.apiHost + '/archived', {
       headers: this.headers,
     });
   }
 
   getPending(): Observable<News[]> {
-    return this.http.get<News[]>(this.apiHost + 'api/News/pending', {
+    return this.http.get<News[]>(this.apiHost + '/pending', {
       headers: this.headers,
     });
   }
 
   publish(id: number): Observable<News> {
-    return this.http.post<News>(this.apiHost + 'api/News/publish/' + id, {
+    return this.http.post<News>(this.apiHost + '/publish/' + id, {
       headers: this.headers,
     });
   }
 
   archive(id: number): Observable<News> {
-    return this.http.post<News>(this.apiHost + 'api/News/archive/' + id, {
+    return this.http.post<News>(this.apiHost + '/archive/' + id, {
       headers: this.headers,
     });
   }

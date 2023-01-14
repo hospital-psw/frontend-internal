@@ -14,14 +14,14 @@ export class RelocationService {
     recommendedRelocationRequest: IRecommendedRelocationRequest
   ): Observable<Date[]> {
     return this.http.put<Date[]>(
-      `http://localhost:16177/api/relocation/recommend`,
+      `hospital/relocation/recommend`,
       recommendedRelocationRequest
     );
   }
 
   createRelocationRequest(request: IRelocationRequest) {
     return this.http.post<IRelocationRequest>(
-      `http://localhost:16177/api/relocation/createRelocationRequest`,
+      `hospital/relocation/createRelocationRequest`,
       request
     );
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IRelocationRequestDisplay } from '../Model/RelocationRequestDisplay';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +14,13 @@ export class RelocationRequestService {
     roomId: number
   ): Observable<IRelocationRequestDisplay[]> {
     return this.http.get<IRelocationRequestDisplay[]>(
-      `http://localhost:16177/api/Relocation/${roomId}`
+      `${environment.apiRelocation}/${roomId}`
     );
   }
 
   decline(requestId: number): Observable<any> {
     return this.http.post<IRelocationRequestDisplay[]>(
-      `http://localhost:16177/api/Relocation/decline`,
+      `${environment.apiRelocation}/decline`,
       requestId
     );
   }

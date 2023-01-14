@@ -72,7 +72,7 @@ export class StatisticsService {
   }
   getMoneyPerMonth(year: number) {
     return this._http.get<number[]>(
-      `http://localhost:16177/api/tender/money/${year}`
+      `hospital/tender/money/${year}`
     );
   }
   getTimeSpentPerStep() {

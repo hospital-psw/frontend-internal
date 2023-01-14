@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BloodAddition } from '../interface/BloodAddition';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class BloodAdditionService {
 
   public GetByBloodType(bt: string): Observable<BloodAddition[]> {
     return this.http.get<BloodAddition[]>(
-      'http://localhost:16177/api/BloodAddition/' + bt
+      environment.apiBloodAddition + bt
     );
   }
 }
