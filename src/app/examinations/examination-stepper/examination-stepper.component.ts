@@ -19,7 +19,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { Appointment } from 'src/app/schedule/interface/Appointment';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Symptom } from '../interface/symptom';
+import { Symptom } from '../interface/Symptom';
 import { AnamnesisService } from '../services/anamnesis.service';
 import { NewPrescription } from '../interface/NewPrescription';
 import { AuthService } from 'src/app/common/auth/service/auth.service';
