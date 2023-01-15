@@ -16,7 +16,7 @@ export class TenderService {
     return this.http.get<ITender[]>(`${environment.apiTenderIntegration}/active`);
   }
   public getClosed(): Observable<ITender[]> {
-    return this.http.get<ITender[]>(`http://localhost:45488/api/Tender/closed`);
+    return this.http.get<ITender[]>(`${environment.apiTenderIntegration}/closed`);
   }
 
   public finishedTender(tenderId: Number, offerIndex: Number) {
