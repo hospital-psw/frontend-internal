@@ -4,12 +4,14 @@
       <mat-expansion-panel
         (opened)="showOffers[i] = true"
         (closed)="showOffers[i] = false"
+        class="item"
       >
         <mat-expansion-panel-header>
           <mat-panel-title> Tender {{ tender.id }} </mat-panel-title>
           <mat-panel-description>
-            <p>Deadline: {{ tender.dueDate.toString().split("T")[0] }}</p>
-            <span> </span>
+            <p style="display: flex; align-items: center; margin: 0">
+              Deadline: {{ tender.dueDate | date: "dd.MM.yyyy." }}
+            </p>
           </mat-panel-description>
         </mat-expansion-panel-header>
         <div *ngIf="tender.offers.length === 0">
