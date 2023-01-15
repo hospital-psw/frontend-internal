@@ -1,3 +1,27 @@
+$sidebar-color-primary: #09203F;
+$sidebar-color-secondary: #537895;
+$main-panel-bg-color: rgba(203, 203, 210, .15);
+
+$color-black: #000;
+$color-white: #fff;
+
+$card-color-blue: #0E4C92;
+$button-color-primary: #0E4C92;
+
+$button-color-green: rgba(38, 140, 76, 1.00);
+$button-color-red: #fd5c63;
+
+$medicament-bg: linear-gradient(to right, rgba(83, 120, 149, 0.9), rgba(9, 32, 63, 0.6));
+$blood-bg: linear-gradient(to right, rgba(215, 129, 106, 1), rgba(189, 79, 108, 1));
+
+$card-box-shadow: rgba(0, 0, 0, 0.35) 0px .5rem 1.5rem;
+$inner-card-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+                        rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;    
+$wrapper-card-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+$button-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+$shadow-light: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+               rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
 table{
     padding: 2%;
     width: 100%;
@@ -9,12 +33,16 @@ table{
     //border-radius: 10px;
     tr th{
         color:black;
+        padding: 10px;
+        //text-align: center;
         //border: 1px solid #537895;
         //border-radius: 10px;
     }
     tr td{
         color:black;
         padding: 10px;
+        //text-align: center;
+        //padding-left: 20px;
         //border: 1px solid #537895;
         //border-radius: 10px;
     }
@@ -24,3 +52,35 @@ div{
   //height: 400px;
   overflow: auto;
 }
+
+.theme-button {
+    border: 1px solid $button-color-primary;
+    font-weight: 600;
+    border-radius: .5rem;
+    padding: .7rem .7rem;
+    transition: all .3s;
+  
+    &:hover {
+      transform: scale(1.05);
+      transition: .3s;
+      cursor: pointer;
+      background-color: $button-color-primary;
+      color: white;
+    }
+}
+
+.btn-bg-blue {
+    background-color: $color-white;
+    color: $button-color-primary;
+    border: 1px solid $button-color-primary;
+  
+    &:hover {
+      background-color: $button-color-primary;
+      color: white;
+    }
+  
+    &:disabled {
+      background-color: $color-white;
+      color: $button-color-primary;
+    }
+  }

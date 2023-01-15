@@ -1,7 +1,7 @@
 <div>
   <table mat-table [dataSource]="relocationRequests" class="mat-elevation-z8">
     <ng-container matColumnDef="from">
-      <th mat-header-cell *matHeaderCellDef>From</th>
+      <th mat-header-cell *matHeaderCellDef>From/To</th>
       <td mat-cell *matCellDef="let element">
         {{ element.fromRoomNumber }} {{ element.toRoomNumber }}
       </td>
@@ -27,14 +27,14 @@
     </ng-container>
 
     <ng-container matColumnDef="startTime">
-      <th mat-header-cell *matHeaderCellDef>StartTime</th>
+      <th mat-header-cell *matHeaderCellDef>Start time</th>
       <td mat-cell *matCellDef="let element">
         {{ element.startTime | date: "dd.MM.yyyy. HH:mm" }}
       </td>
     </ng-container>
 
     <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef>Duration</th>
+      <th mat-header-cell *matHeaderCellDef>Duration(h)</th>
       <td mat-cell *matCellDef="let element">
         {{ element.duration }}
       </td>
@@ -43,6 +43,7 @@
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
         <button
+          class="theme-button btn-bg-red"
           id="decline-relocation"
           *ngIf="check24h(element.startTime)"
           (click)="decline(element.id)"
