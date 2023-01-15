@@ -1,5 +1,5 @@
 export enum ExaminationType {
-  OPERATION = 'OPERATION',
   GENERAL = 'GENERAL',
+  OPERATION = 'OPERATION',
   IMAGING = 'IMAGING',
 }
