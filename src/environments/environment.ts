@@ -4,7 +4,7 @@
 const hospitalApi = 'https://hospitalapiserver.azurewebsites.net/api';
 const integrationApi = 'https://integrationapiserver.azurewebsites.net/api';
 export const environment = {
-  production: true,
+  production: false,
   apiAppointmentUrl: hospitalApi + '/Appointment',
   apiPatientUrl: hospitalApi + '/ApplicationPatient',
   apiVacationRequestUrl: hospitalApi + '/VacationRequests',
