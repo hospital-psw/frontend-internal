@@ -13,6 +13,7 @@ import { NONE_TYPE } from '@angular/compiler';
 export class AnamnesisTabComponent implements OnInit {
   anamnesis: Anamnesis[] = [];
   selectedAnamnesis: Anamnesis;
+  typedInput: string = '';
 
   constructor(
     private anamnesisService: AnamnesisService,
@@ -42,10 +43,10 @@ export class AnamnesisTabComponent implements OnInit {
   }
 
   onInputChange(event: any): void {
-    if (event.target.value === undefined) {
+    if (this.typedInput === undefined) {
       return;
     }
-    if (event.target.value === '') {
+    if (this.typedInput === '') {
       this.getAnamnesis();
       return;
     }
@@ -56,7 +57,7 @@ export class AnamnesisTabComponent implements OnInit {
       symptoms: [],
       prescriptions: [],
     };
-    this.anamnesisService.searchAnamnesis(event.target.value).subscribe(
+    this.anamnesisService.searchAnamnesis(this.typedInput).subscribe(
       (response: Anamnesis[]) => {
         this.anamnesis = response;
       },

@@ -1,5 +1,12 @@
 @import './../../../../styles/helpers/variables';
 
+.src-btn {
+  width: 12rem;
+  height: 3.5rem;
+  border-radius: 10px;
+  align-self: center;
+}
+
 .tab {
   display: flex;
   flex-direction: column;

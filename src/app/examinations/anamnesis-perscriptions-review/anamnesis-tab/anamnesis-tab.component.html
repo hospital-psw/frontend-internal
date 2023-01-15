@@ -2,13 +2,19 @@
   <div class="tab__search">
     <div class="tab__search__input">
       <input
+        [(ngModel)]="typedInput"
         type="text"
         class="tab__search__input__text"
-        placeholder="Search"
+        placeholder="Type input"
         maxlength="50"
-        (keyup)="onInputChange($event)"
       />
     </div>
+    <button
+      class="theme-button btn-bg-blue src-btn"
+      (click)="onInputChange($event)"
+    >
+      Search
+    </button>
   </div>
   <div class="tab-all">
     <div class="tab-all-card-info">
