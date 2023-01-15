@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { AuthService } from 'src/app/common/auth/service/auth.service';
 import { RecommendedDatesDTO } from '../interface/RecommendedDatesDTO';
 import { ScheduleAppointmentDTO } from '../interface/ScheduleAppointmentDTO';
