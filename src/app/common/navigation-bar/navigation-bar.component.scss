@@ -33,27 +33,31 @@
   &__profile {
     display: flex;
     align-items: center;
-    font-size: 1.8rem;
-    padding: .65rem;
-    text-transform: uppercase;
-    color: #777;
-    transition-duration: .2s;
+    margin-right: 2rem;
+    
+
+    &-text {
+      color: #777;
+      font-size: 1.5rem;
+      margin-right: .5rem;
+    }
+    
 
     &-icon {
-      height: 2.75rem;
-      width: 2.75rem;
-      border-radius: 50%;
-      margin-right: 2rem;
+      height: 3rem;
+      width: 3rem;
+      margin-left: 1rem;
+      background-image: url('../../../assets/img/user.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
       fill: #777;
-    }
-  }
+      transition: all ease-out .5s;
 
-  &__profile:hover {
-    opacity: 1;
-    background: lightgray;
-    cursor: pointer;
-    border-radius: 4px;
-    transform: scale(1.05);
-    transition-duration: .2s;
+      &:hover {
+        transform: scale(1.05);
+        transition: all ease-out .5s;
+      }
+    }
   }
 }

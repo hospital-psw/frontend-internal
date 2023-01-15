@@ -12,6 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class PerscriptionsTabComponent {
   perscriptions: Perscription[] = [];
   selectedPerscription: Perscription;
+  typedInput: string = '';
 
   constructor(
     private perscriptionService: PrescriptionService,
@@ -40,10 +41,10 @@ export class PerscriptionsTabComponent {
   }
 
   onInputChange(event: any): void {
-    if (event.target.value === undefined) {
+    if (this.typedInput === undefined) {
       return;
     }
-    if (event.target.value === '') {
+    if (this.typedInput === '') {
       this.getPerscription();
       return;
     }
@@ -53,7 +54,7 @@ export class PerscriptionsTabComponent {
       description: '',
       dateRange: null as any,
     };
-    this.perscriptionService.searchPerscriptions(event.target.value).subscribe(
+    this.perscriptionService.searchPerscriptions(this.typedInput).subscribe(
       (response: Perscription[]) => {
         this.perscriptions = response;
       },
