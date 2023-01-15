@@ -45,7 +45,17 @@ export class ShowTendersComponent {
   }
 
   createTenderPage() {
-    this.dialogRef.open(CreateTenderComponent);
+    let diag = this.dialogRef.open(CreateTenderComponent);
+
+    diag.afterClosed().subscribe((res) => {
+      if(res) {
+      this.tenders = res;
+      for (let i in this.tenders) {
+        this.showOffers.push(false);
+      }
+      this.toastr.success('Successfully created tender.');
+    }
+    });
   }
 
   accept(tenderId: Number, i: Number) {

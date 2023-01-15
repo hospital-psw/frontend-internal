@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { TenderOfferComponent } from '../tender-offer/tender-offer.component';
 export class OpenTendersComponent {
   panelOpenState = false;
   showOffers: boolean[] = [];
-  tenders: ITender[];
+  @Input() tenders: ITender[];
   isLoading = false;
 
   constructor(
@@ -25,13 +25,13 @@ export class OpenTendersComponent {
   ) {}
 
   ngOnInit(): void {
-    this.tenderService.getAll().subscribe((res) => {
+    /*this.tenderService.getAll().subscribe((res) => {
       this.tenders = res;
       for (let i in this.tenders) {
         this.showOffers.push(false);
       }
       this.isLoading = true;
-    });
+    });*/
   }
   createTenderPage() {
     this.router.navigateByUrl('/app/create-tender');

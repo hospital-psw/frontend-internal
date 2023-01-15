@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { TenderService } from '../services/tender.service';
 import { Router } from '@angular/router';
 import { BloodType } from '../interface/BloodType.enum';
 import { CreateTenderDTO, TenderItem } from '../interface/CreateTenderDTO';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ITender } from '../model/tender.model';
 
 @Component({
   selector: 'app-create-tender',
@@ -32,6 +34,8 @@ export class CreateTenderComponent implements OnInit {
   oMinus: number = 0;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: ITender[],
+    private dialogRef: MatDialogRef<CreateTenderComponent>,
     private tenderService: TenderService,
     private toastrService: ToastrService,
     private router: Router
@@ -110,8 +114,12 @@ export class CreateTenderComponent implements OnInit {
 
     this.tenderService.createTender(this.createTenderDTO).subscribe(
       (response: CreateTenderDTO) => {
-        this.toastrService.success('Create tender');
-        this.router.navigateByUrl('/app/show-tenders');
+        
+        this.tenderService.getAll().subscribe((res) => {
+          this.dialogRef.close(res);          
+        });
+        //this.toastrService.success('Create tender');
+        //this.router.navigateByUrl('/app/show-tenders');
       },
       (error: HttpErrorResponse) => {
         this.toastrService.error(error.error);
