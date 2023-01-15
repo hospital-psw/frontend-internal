@@ -53,7 +53,7 @@ export class ButtonSpaceComponent {
     this.scheduleService.scheduleConsilium(this.scheduleConsiliumDto).subscribe(
       (response: Consilium) => {
         this.isScheduled = true;
-        this.router.navigate(['/app/consiliums']);
+        this.router.navigate(['/app/appointments']);
         this.toastrService.success(
           'Consilium is successfully scheduled. Date: ' +
             response.startDateTime.toString()
