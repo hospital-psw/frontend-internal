@@ -4,7 +4,8 @@
         "secure": false,
         "pathRewrite": {
             "^/hospital": "/api"
-        }
+        },
+        "changeOrigin" : true
     },
    "/integration/*": {
         "target": "http://localhost:45488",
