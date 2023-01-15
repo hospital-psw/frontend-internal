@@ -7,6 +7,7 @@ import { Appointment } from 'src/app/schedule/interface/Appointment';
 import { RecommendedDatesDTO } from 'src/app/schedule/interface/RecommendedDatesDTO';
 import { ScheduleAppointmentDTO } from 'src/app/schedule/interface/ScheduleAppointmentDTO';
 import { ScheduleService } from 'src/app/schedule/service/schedule.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-scheduling-appointment-card',
@@ -17,6 +18,7 @@ export class SchedulingAppointmentCardComponent implements OnInit {
   @Input() appointmentData: ScheduleAppointmentDTO;
   @Input() cardInfo: RecommendedDatesDTO;
   isFinished: boolean;
+  refresh: Subject<any> = new Subject();
 
   constructor(
     private scheduleService: ScheduleService,

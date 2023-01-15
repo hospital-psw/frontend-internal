@@ -1,23 +1,8 @@
-import { Route, Router } from '@angular/router';
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  OnDestroy,
-  ChangeDetectorRef,
-  ViewEncapsulation,
-} from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CalendarView, CalendarEvent } from 'angular-calendar';
-import {
-  addDays,
-  addHours,
-  startOfDay,
-  addMinutes,
-  setDate,
-  setDay,
-  subDays,
-} from 'date-fns';
-import { map, Subject, Observable, Subscription, Cons } from 'rxjs';
+import { addDays, subDays } from 'date-fns';
+import { map, Subject, Subscription } from 'rxjs';
 import { EventColor } from 'calendar-utils';
 import { Appointment } from './../../interface/Appointment';
 import { ScheduleService } from './../../service/schedule.service';
@@ -28,7 +13,6 @@ import { AuthService } from 'src/app/common/auth/service/auth.service';
 import { WorkHours } from '../../interface/WorkHours';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
-import { Consilium } from '../../interface/Consilium';
 import { DisplayConsiliumDto } from '../../interface/DisplayConsiliumDto';
 import { VacationRequest } from 'src/app/vacation-request/model/interface/vacation-request';
 import { DoctorSchedule } from '../../interface/DoctorSchedule';
@@ -37,13 +21,6 @@ import {
   createEmptyConsilium,
   createEmptyVacationRequest,
 } from './helper';
-import { Doctor } from '../../interface/Doctor';
-import { doc } from 'prettier';
-import { IRoom } from 'src/app/Manager/Model/Room';
-import { Role } from '../../enum/Role.enum';
-import { Specialization } from '../../enum/Specialization.enum';
-import { Patient } from '../../interface/Patient';
-import { VacationRequestStatus } from 'src/app/vacation-request/model/enum/vacation-request-status';
 import { BottomSheetScheduleComponent } from '../bottom-sheet-schedule/bottom-sheet-schedule.component';
 
 const colors: Record<string, EventColor> = {
@@ -96,6 +73,8 @@ export class AppointmentsComponent implements OnInit {
   workHours: WorkHours;
 
   //================================================================
+
+  refresh: Subject<any> = new Subject();
 
   appointments: CalendarEvent<{
     appointment: Appointment;
@@ -151,17 +130,20 @@ export class AppointmentsComponent implements OnInit {
   ngOnInit(): void {
     this.canClick = false;
     this.calendarEvents = [];
-    this.viewDate = new Date();
-    this.viewDateEnd = addDays(this.viewDate, 6);
     this.examinationTypes = Object.values(ExaminationType);
     this.userSub = this.authService.user.subscribe((user) => {
       this.doctorId = user.id;
     });
 
+    this.viewDate = new Date();
+    this.viewDateEnd = addDays(this.viewDate, 6);
+
     this.getDoctorSchedule(this.doctorId);
+    this.isLoading = true;
     setTimeout(() => {
       this.createCalendarEvents(this.doctorSchedule);
-    }, 1000);
+      this.isLoading = false;
+    }, 500);
     this.getDoctorsWorkHours(this.doctorId);
   }
 
@@ -175,7 +157,6 @@ export class AppointmentsComponent implements OnInit {
         let endDate = new Date(this.workHours.end);
         this.dayStartHour = startDate.getHours();
         this.dayEndHour = endDate.getHours();
-        this.isLoading = false;
       });
   }
 
@@ -201,11 +182,9 @@ export class AppointmentsComponent implements OnInit {
       .subscribe(
         (response: CalendarEvent<{ appointment: Appointment }>[]) => {
           this.appointments = response;
-          this.isLoading = false;
         },
         (error: HttpErrorResponse) => {
           this.toaster.error(error.error);
-          this.isLoading = false;
         }
       );
   }
@@ -215,7 +194,6 @@ export class AppointmentsComponent implements OnInit {
     this.appointmentService.getDoctorsSchedule(doctorId).subscribe(
       (response) => {
         this.doctorSchedule = response;
-        this.isLoading = false;
       },
       (error: HttpErrorResponse) => {
         this.isLoading = false;
@@ -269,6 +247,9 @@ export class AppointmentsComponent implements OnInit {
         },
       });
     }
+
+    this.viewDate = new Date();
+    this.viewDateEnd = addDays(this.viewDate, 6);
   }
 
   scheduleView() {
@@ -326,6 +307,7 @@ export class AppointmentsComponent implements OnInit {
       .deleteAppointment(this.selectedEvent.meta?.appointment.id as number)
       .subscribe((data) => {
         this.toaster.success('Successfuly canceled appointment');
+        history.go(0);
       });
   }
 
